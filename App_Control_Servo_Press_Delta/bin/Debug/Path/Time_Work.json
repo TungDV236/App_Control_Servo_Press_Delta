@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Ca 1",
+    "Time_Start": "6:00",
+    "Time_Stop": "14:00"
+  },
+  {
+    "Name": "Ca 2",
+    "Time_Start": "15:00",
+    "Time_Stop": "22:00"
+  },
+  {
+    "Name": "Ca 3",
+    "Time_Start": "22:00",
+    "Time_Stop": "7:00"
+  }
+]

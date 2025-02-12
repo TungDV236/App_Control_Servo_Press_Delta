@@ -1,0 +1,7 @@
+[
+{"Model":"V80","TrucID":"M8","RotorID":"R80","Beer_Up":"BU80","Beer_Down":"BD80","Jig_Up":"JU80","Jig_Mid":"JM80","Jig_Down":"JD80","HStand":80.0,"Force":8.0},
+{"Model":"V81","TrucID":"M9","RotorID":"R81","Beer_Up":"BU81","Beer_Down":"BD81","Jig_Up":"JU81","Jig_Mid":"JM81","Jig_Down":"JD81","HStand":90.0,"Force":9.0},
+{"Model":"V82","TrucID":"M10","RotorID":"R82","Beer_Up":"BU82","Beer_Down":"BD82","Jig_Up":"JU82","Jig_Mid":"JM82","Jig_Down":"JD82","HStand":100.0,"Force":10.0},
+{"Model":"V83","TrucID":"M11","RotorID":"R83","Beer_Up":"BU83","Beer_Down":"BD83","Jig_Up":"JU83","Jig_Mid":"JM83","Jig_Down":"JD83","HStand":110.0,"Force":11.0},
+{"Model":"V84","TrucID":"M12","RotorID":"R84","Beer_Up":"BU84","Beer_Down":"BD84","Jig_Up":"JU84","Jig_Mid":"JM84","Jig_Down":"JD84","HStand":120.0,"Force":12.0}
+]

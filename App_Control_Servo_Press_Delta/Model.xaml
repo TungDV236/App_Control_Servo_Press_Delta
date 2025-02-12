@@ -1,0 +1,450 @@
+﻿<UserControl x:Class="App_Control_Servo_Press_Delta.Model"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
+             mc:Ignorable="d" 
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid x:Name="Grid_size" >
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" x:Name="Grid_data1" >
+                <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Height="30" Grid.Row="0">
+
+                        <Label Content="Chọn Model"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 FontFamily="Source Sans Pro"
+                                 Foreground="Black"
+                                 FontStyle="Normal"
+                                 FontWeight="Bold"
+                                 Margin="2,0,0,0"
+                                 VerticalAlignment="Bottom">
+                        </Label>
+                    </Grid>
+                    <Grid  Grid.Row="1" x:Name="Grid_data"
+                                Margin="2,0,2,0">
+                        <DataGrid x:Name="List_Models"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="2,2,2,4"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="STT"
+                                         Foreground="Black"
+                                         Binding="{Binding STT}"
+                                         Width="80">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Model"
+                                         Binding="{Binding Model}"
+                                         Width="120" >
+
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Rotor"
+                                         Binding="{Binding RotorID}"
+                                         Width="110" >
+
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="TrụcID"
+                                         Binding="{Binding TrucID}"
+                                         Width="110" >
+
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Row="2" x:Name="Grid_data2" 
+                                 Height="40"
+                              Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="100"/>
+
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="15"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" Content="Nhập" x:Name="BTN_Import_model" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Import_model"/>
+                        <Button Grid.Column="3" Content="Template" x:Name="BTN_Template_model" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Template_model" />
+                        <Button Grid.Column="5" Content="Xuất" x:Name="BTN_Export_model" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Export_model" />
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Height="30" Grid.Row="0">
+                        <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+
+                        <Label Content="Thông Số Chạy"
+                                FontSize="20"
+                                HorizontalAlignment="Center"
+                                FontFamily="Source Sans Pro"
+                                Foreground="Black"
+                                FontStyle="Normal"
+                                FontWeight="Bold"
+                                Margin="2,0,0,0"
+                                VerticalAlignment="Bottom">
+                        </Label>
+                    </Grid>
+                    <Grid  Margin="0,10,0,0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="15"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1">
+                                <Grid>
+                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                    <TextBox  x:Name="Model_Model" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                </Grid>
+
+                                <Label Content="Model"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="40"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="10,-10,0,0"
+                                           Foreground="Black"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="15"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="1">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
+                                        <TextBox x:Name="Model_TrucID" 
+                                                Height="40" Margin="5,5,10,5"
+                                                FontSize="15" FontWeight="Bold"                                       
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Style="{StaticResource BorderTransparentTextBoxStyle}">
+                                        </TextBox>
+                                    </Grid>
+
+                                    <Label Content="TrụcID"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="40"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="10,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,0,2.5" />
+                                        <TextBox x:Name="Model_RotorID"
+                                                Margin="10,5,5,5"
+                                                Height="40" FontWeight="Bold"
+                                                FontSize="15"                                        
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Style="{StaticResource BorderTransparentTextBoxStyle}">
+                                        </TextBox>
+                                    </Grid>
+
+
+                                    <Label Content="RotorID"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="47"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="15,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="15"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="1">
+                                    <!--<ComboBox x:Name="Model_Beer_up"
+                                        Margin="0,0,5,0"
+                                        Height="35"
+                                        FontSize="15" 
+                                                 
+                                        Style="{StaticResource StyleCBbox1}">
+                                        </ComboBox>-->
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
+                                        <ComboBox x:Name="Model_Beer_Up"
+                                            Margin="5,5,10,5"
+                                            Height="40" FontWeight="Bold"
+                                            FontSize="15"
+                                            HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            Background="White"
+                                            BorderBrush="White" Grid.RowSpan="2" VerticalAlignment="Top">
+                                            <ComboBoxItem Content="Thêm mới" />
+                                        </ComboBox>
+                                    </Grid>
+
+
+                                    <Label Content="Vòng bi trên"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="72"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="10,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,0,2.5" Grid.RowSpan="2"/>
+                                        <ComboBox x:Name="Model_Beer_Down"
+                                            Margin="10,5,5,0"
+                                            Height="40" FontWeight="Bold"
+                                            FontSize="15"  
+                                            HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            Background="White"
+                                            BorderBrush="White" Grid.RowSpan="2" VerticalAlignment="Top" />
+                                    </Grid>
+                                    <Label Content="Vòng bi dưới"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="75"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="15,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="15"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="1">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
+                                        <ComboBox x:Name="Model_Jig_Up"
+                                            Margin="5,5,10,5"
+                                            Height="40" FontWeight="Bold"
+                                            FontSize="15"  
+                                            HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            Background="White"
+                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                    </Grid>
+                                    <Label Content="Jig trên"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="45"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="10,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,5,2.5" />
+                                        <ComboBox x:Name="Model_Jig_Mid"
+                                            Margin="10,5,10,5"
+                                            Height="40" FontWeight="Bold"
+                                            FontSize="15"  
+                                            HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            Background="White"
+                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                    </Grid>
+                                    <Label Content="Jig giữa"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="47"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="15,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,0,2.5" />
+                                        <ComboBox x:Name="Model_Jig_Down"
+                                            Margin="10,5,5,5"
+                                            Height="40" FontWeight="Bold"
+                                            FontSize="15"  
+                                            HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            Background="White"
+                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                    </Grid>
+                                    <Label Content="Jig dưới"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="47"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="15,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="8">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="15"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="1">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
+                                        <TextBox x:Name="Model_Hstand"                
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Margin="5,5,10,5"
+                                                Height="40" FontWeight="Bold"
+                                                FontSize="15"               
+                                                Style="{StaticResource BorderTransparentTextBoxStyle}">
+                                        </TextBox>
+                                    </Grid>
+
+
+                                    <Label Content="Độ cao tiêu chuẩn (mm)"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="137"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="10,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,0,2.5" />
+                                        <TextBox x:Name="Model_force"                 
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Margin="10,5,5,5"
+                                                Height="40" FontWeight="Bold"
+                                                FontSize="15"               
+                                                Style="{StaticResource BorderTransparentTextBoxStyle}">
+                                        </TextBox>
+                                    </Grid>
+                                    <Label Content="Lực nén(N/m)"
+                                           FontWeight="Bold"
+                                           Background="White"
+                                           Width="80"
+                                           Height="20"
+                                           Padding="1"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="15,-10,0,0"
+                                           Foreground="Black"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+                    <Grid Grid.Row="2"
+                                 Height="40" Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="15"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" Content="Xóa" x:Name="BTN_Del_Model"  Background="White" Margin="0,0,5,0"   Click="Click_bt_Del_Model"/>
+                        <Button Grid.Column="5" Content="Lưu" x:Name="BTN_Save_Model"  Background="White"   Margin="5,0,0,0"   Click="Click_bt_Save_Model" />
+
+
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+
+</UserControl>

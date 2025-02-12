@@ -1,0 +1,23 @@
+﻿<Application x:Class="App_Control_Servo_Press_Delta.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Secondary/MaterialDesignColor.Lime.xaml" />
+                <materialDesign:CustomColorTheme BaseTheme="Light"
+                                                 PrimaryColor="White"
+                                                 SecondaryColor="LightGreen" />
+                <!-- Kết hợp tài nguyên từ tệp tin ngôn ngữ hiện tại (mặc định là tiếng Việt) -->
+                <ResourceDictionary Source="Style/Style_Element.xaml" />
+                <ResourceDictionary Source="Resources/vi.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

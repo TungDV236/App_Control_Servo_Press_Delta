@@ -1,0 +1,66 @@
+﻿<Window x:Class="App_Control_Servo_Press_Delta.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
+        mc:Ignorable="d"
+        Title="Đăng nhập"
+        Width="400" 
+        Height="320" 
+        ResizeMode="NoResize" 
+        WindowStyle="None" 
+        AllowsTransparency="True"        
+        Background="Transparent" >
+    <Border CornerRadius="20" BorderThickness="1" BorderBrush="Black" Background="White" MouseDown="Grid_MouseDown" >
+        <Grid>
+            <Button Grid.Row="0" x:Name="btn_infor" HorizontalAlignment="Right" Width="35" Height="25 " VerticalAlignment="Top" Background="Transparent" BorderBrush="White" BorderThickness="0"
+                       Margin="0,5,5,0" Padding="0" 
+                       MouseEnter="exitButton_MouseEnter" 
+                       MouseLeave="exitButton_MouseLeave"
+                       PreviewMouseDown="MouseDown_Close">
+                <StackPanel  Width="20">
+                    <Image  Source="Images\Exit.png"
+                    HorizontalAlignment="Left"
+                    Stretch="Fill">
+                    </Image>
+                </StackPanel>
+            </Button>
+            <StackPanel Margin="30,30,25,30">
+                <Label Content="Đăng Nhập" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" />
+                <TextBlock Text="Tên đăng nhập" />
+                <Grid>
+                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" Background="White"/>
+                    <ComboBox x:Name="txtUsername" 
+                            Margin="5,5,10,5"
+                            Height="40" FontWeight="Bold"
+                            FontSize="15"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            Background="White"
+                              BorderThickness="0"
+                             BorderBrush="White"  VerticalAlignment="Top">
+                    </ComboBox>
+                </Grid>
+                <TextBlock Text="Mật khẩu"
+                       Margin="0,10,0,0" />
+                <Grid>
+                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" Background="White"/>
+                    <PasswordBox x:Name="txtPassword"
+                         Margin="5" Height="40" BorderBrush="Transparent" GotFocus="Text_GotFocus"/>
+                </Grid>
+
+
+                <Button Content="Đăng nhập"
+                    FontSize="18"
+                        Height="50"
+                    FontWeight="Bold"
+                    Background="#ff3366"
+                    Foreground="White"
+                    x:Name="bt_Login"
+                    Click="BtnLogin_Click"
+                    Margin="0,20,0,0" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="btn_Auto">Auto</system:String>
+    <system:String x:Key="btn_Man">Manual</system:String>
+    <system:String x:Key="btn_History">History</system:String>
+    <system:String x:Key="btn_Home">Home</system:String>
+    <system:String x:Key="btn_GPIO">Signal GPIO</system:String>
+    <system:String x:Key="btn_Report">Report</system:String>
+    <system:String x:Key="btn_Model">Model</system:String>
+    <system:String x:Key="btn_Setting">Setting</system:String>
+    <system:String x:Key="btn_login">Login</system:String>
+    <system:String x:Key="btn_logout">Logout</system:String>
+    <system:String x:Key="btn_Close">Close</system:String>
+
+    <system:String x:Key="lb_Position">Position(mm)</system:String>
+    <system:String x:Key="lb_Force">Force(N)</system:String>
+    <system:String x:Key="lb_User">User:</system:String>
+    <system:String x:Key="lb_Infor">Infor</system:String>
+
+
+    <system:String x:Key="lb_Auto_Op_Para">Operating parameters</system:String>
+    <system:String x:Key="lb_Auto_Working_Origin">Working Origin</system:String>
+    <system:String x:Key="lb_Auto_PST_Origin">Origin Position</system:String>
+    <system:String x:Key="lb_Auto_Velocity_Origin">Origin Velocity</system:String>
+    <system:String x:Key="btn_Visiable_Order">Scan Order</system:String>
+    <system:String x:Key="lb_Auto_PST_Standby">Standby Position</system:String>
+    <system:String x:Key="lb_Auto_Velocity_Standby">Standby Velocity</system:String>
+    <system:String x:Key="lb_Auto_Standby_Time">Standby Time</system:String>
+    <system:String x:Key="lb_Auto_Pressing Condition">Pressing Condition</system:String>
+    <system:String x:Key="List_Pressing_condition_No">No</system:String>
+    <system:String x:Key="List_Pressing_condition_Name">Pressing Condition</system:String>
+    <system:String x:Key="lb_Auto_Step">Step</system:String>
+    <system:String x:Key="lb_Auto_Pressing_mode">Pressing_mode</system:String>
+    <system:String x:Key="lb_Auto_Pressing_Position">Pressing_Position</system:String>
+    <system:String x:Key="lb_Auto_Pressing_Velocity">Pressing Velocity</system:String>
+    <system:String x:Key="lb_Auto_Pressing_Time">Pressing Time</system:String>
+    <system:String x:Key="lb_Auto_Max_Position">Max Position</system:String>
+    <system:String x:Key="lb_Auto_Min_Position">Min Position</system:String>
+    <system:String x:Key="lb_Auto_Max_Force">Max Force</system:String>
+    <system:String x:Key="lb_Auto_Min_Force">Min Force</system:String>
+
+
+    <system:String x:Key="lb_Auto_Chart">Chart</system:String>
+
+    <system:String x:Key="lb_List_Model">List Model</system:String>
+    <system:String x:Key="lb_Auto_Mode_Parameter">Model Parameter</system:String>
+    <system:String x:Key="lb_Order_Code">Order Code</system:String>
+    <system:String x:Key="lb_Model">Model</system:String>
+    <system:String x:Key="lb_Rotor">ID Rotor</system:String>
+    <system:String x:Key="lb_Shaft">ID Shaft</system:String>
+    <system:String x:Key="lb_BearingU">Upper Bearing</system:String>
+    <system:String x:Key="lb_BearingD">Lower Bearing</system:String>
+    <system:String x:Key="lb_JigU">Upper Jig</system:String>
+    <system:String x:Key="lb_JigD">Lower Jig</system:String>
+    <system:String x:Key="lb_JigM">Middle Jig</system:String>
+    <system:String x:Key="lb_Stand_Height">Stand Height</system:String>
+    <system:String x:Key="lb_Auto_Stats">Stats</system:String>
+    <system:String x:Key="lb_Auto_Total">Total</system:String>
+    <system:String x:Key="lb_Auto_Pass">Pass</system:String>
+    <system:String x:Key="lb_Auto_NG">NG</system:String>
+    <system:String x:Key="lb_Auto_Pressed_Result">Pressed Result</system:String>
+    <system:String x:Key="lb_Auto_Pressed_Force_Max">Pressed Force Max</system:String>
+    <system:String x:Key="lb_Auto_Position_Force_Max">Position Force Max</system:String>
+
+</ResourceDictionary>
