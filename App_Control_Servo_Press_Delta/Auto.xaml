@@ -66,7 +66,7 @@
                         <Label Grid.Row="1" Grid.Column="2"   Content="mm/s" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                     </Grid>
                 </Grid>
-                <Label Grid.Row="3"    Content="{DynamicResource lb_Auto_StandByPST}" Width="200" Height="30" Background="#FFFF9D59"
+                <Label Grid.Row="3"    Content="{DynamicResource lb_Auto_PST_Standby}" Width="200" Height="30" Background="#FFFF9D59"
                        Foreground="Black"
                        FontSize="20"
                        FontWeight="Bold"
@@ -232,7 +232,7 @@
                        VerticalContentAlignment="Center"
                        FontFamily="Source Sans Pro"  >
                 </Label>
-                <Button Grid.Row="0" Content="{DynamicResource btn_Visiable_Order}"   FontSize="15" Foreground="Black" Width="90" Padding="1"   FontWeight="Bold" FontFamily="Source Sans Pro"  Margin ="220,0,0,0" Command="{Binding Visiable_Order}" CommandParameter="" />
+                <Button Grid.Row="0" Content="{DynamicResource btn_Visiable_Order}"   FontSize="15" Foreground="Black" Width="90" Padding="1"   FontWeight="Bold" FontFamily="Source Sans Pro"  Margin ="220,0,0,0" Command="{Binding Visiable_Order}" CommandParameter="" Click="Button_Click" />
                 <Grid Grid.Row="1" Margin="0,5,0,5">
                     <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-8"/>
                     <Grid>

@@ -43,8 +43,6 @@ namespace App_Control_Servo_Press_Delta
         private static int check;
         private static double Height_Screen;
         PLC plc = new PLC();
-        Auto_Chart Auto_Chart_Screen = new Auto_Chart();
-        Auto_Step Auto_Step_Screen = new Auto_Step();
         public Auto()
         {
             InitializeComponent();
@@ -315,6 +313,12 @@ namespace App_Control_Servo_Press_Delta
         private void Auto_RotorID_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Monitor_Order monitor_order = new Monitor_Order(); 
+            monitor_order.ShowDialog();
         }
     }
 }

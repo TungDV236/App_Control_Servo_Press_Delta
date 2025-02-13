@@ -134,6 +134,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Monitor_Order.xaml.cs">
+      <DependentUpon>Monitor_Order.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
@@ -145,14 +148,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Auto.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Auto_Chart.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Auto_Step.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,12 +197,6 @@
     <Compile Include="Auto.xaml.cs">
       <DependentUpon>Auto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Auto_Chart.xaml.cs">
-      <DependentUpon>Auto_Chart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Auto_Step.xaml.cs">
-      <DependentUpon>Auto_Step.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Class\Common.cs" />
     <Compile Include="Class\Data.cs" />
     <Compile Include="Class\Data_Excel.cs" />
@@ -247,6 +236,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Model.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Monitor_Order.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

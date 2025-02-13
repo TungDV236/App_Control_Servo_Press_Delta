@@ -5,24 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
              mc:Ignorable="d" 
-             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             d:DesignHeight="785" d:DesignWidth="1752">
     <Grid x:Name="Grid_size" >
         <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" x:Name="Grid_data1" >
-                <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
-                <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid Height="30" Grid.Row="0">
+            <Grid.RowDefinitions >
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
 
-                        <Label Content="Chọn Model"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" x:Name="Grid_data1" >
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Height="30" Grid.Row="0">
+
+                            <Label Content="{DynamicResource lb_List_Model}"
                                  FontSize="20"
                                  HorizontalAlignment="Center"
                                  FontFamily="Source Sans Pro"
@@ -31,11 +40,11 @@
                                  FontWeight="Bold"
                                  Margin="2,0,0,0"
                                  VerticalAlignment="Bottom">
-                        </Label>
-                    </Grid>
-                    <Grid  Grid.Row="1" x:Name="Grid_data"
+                            </Label>
+                        </Grid>
+                        <Grid  Grid.Row="1" x:Name="Grid_data"
                                 Margin="2,0,2,0">
-                        <DataGrid x:Name="List_Models"
+                            <DataGrid x:Name="List_Models"
                               AutoGenerateColumns="False"
                               FontSize="20"
                               Foreground="Black"
@@ -48,68 +57,51 @@
                               CanUserResizeRows="False"
                               IsReadOnly="True"
                               Grid.ColumnSpan="2">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="STT"
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT"
                                          Foreground="Black"
                                          Binding="{Binding STT}"
                                          Width="80">
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                            <Setter Property="HorizontalAlignment"
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment"
                                                  Value="Center" />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="Model"
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Model"
                                          Binding="{Binding Model}"
                                          Width="120" >
 
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="Rotor"
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Rotor"
                                          Binding="{Binding RotorID}"
                                          Width="110" >
 
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="TrụcID"
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="TrụcID"
                                          Binding="{Binding TrucID}"
                                          Width="110" >
 
-                                </DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="2" x:Name="Grid_data2" 
-                                 Height="40"
-                              Margin="0,5,0,5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="100"/>
-
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="15"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1" Content="Nhập" x:Name="BTN_Import_model" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Import_model"/>
-                        <Button Grid.Column="3" Content="Template" x:Name="BTN_Template_model" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Template_model" />
-                        <Button Grid.Column="5" Content="Xuất" x:Name="BTN_Export_model" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Export_model" />
-
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                       
                     </Grid>
                 </Grid>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid Height="30" Grid.Row="0">
-                        <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                <Grid Grid.Column="1">
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Height="30" Grid.Row="0">
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
 
-                        <Label Content="Thông Số Chạy"
+                            <Label Content="{DynamicResource lb_Auto_Mode_Parameter}"
                                 FontSize="20"
                                 HorizontalAlignment="Center"
                                 FontFamily="Source Sans Pro"
@@ -118,332 +110,393 @@
                                 FontWeight="Bold"
                                 Margin="2,0,0,0"
                                 VerticalAlignment="Bottom">
-                        </Label>
-                    </Grid>
-                    <Grid  Margin="0,10,0,0" Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="15"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="1">
+                            </Label>
+                        </Grid>
+                        <Grid  Margin="0,10,0,0" Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"  Margin="5,12,5,0">
                                 <Grid>
                                     <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="Model_Model" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                    <TextBox  x:Name="tb_Model"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                 </Grid>
 
-                                <Label Content="Model"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="40"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="10,-10,0,0"
-                                           Foreground="Black"/>
+                                <Label Content="{DynamicResource lb_Model}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                             </Grid>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <Grid>
+
+                            <Grid Grid.Row="1"  Margin="5,12,5,0">
+
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="15"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="1">
+                                <Grid Grid.Column="0" Margin="0,0,5,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
-                                        <TextBox x:Name="Model_TrucID" 
-                                                Height="40" Margin="5,5,10,5"
-                                                FontSize="15" FontWeight="Bold"                                       
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Stretch"
-                                                Style="{StaticResource BorderTransparentTextBoxStyle}">
-                                        </TextBox>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_Rotor"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
 
-                                    <Label Content="TrụcID"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="40"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="10,-10,0,0"
-                                           Foreground="Black"/>
+                                    <Label Content="{DynamicResource lb_Rotor}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
-                                <Grid Grid.Column="2">
+                                <Grid Grid.Column="1" Margin="5,0,0,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,0,2.5" />
-                                        <TextBox x:Name="Model_RotorID"
-                                                Margin="10,5,5,5"
-                                                Height="40" FontWeight="Bold"
-                                                FontSize="15"                                        
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Stretch"
-                                                Style="{StaticResource BorderTransparentTextBoxStyle}">
-                                        </TextBox>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_Shaft"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
 
-
-                                    <Label Content="RotorID"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="47"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="15,-10,0,0"
-                                           Foreground="Black"/>
+                                    <Label Content="{DynamicResource lb_Shaft}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
+
                             </Grid>
-                        </Grid>
-                        <Grid Grid.Row="4">
-                            <Grid>
+                            <Grid Grid.Row="2"  Margin="5,12,5,0">
+
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="15"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="1">
-                                    <!--<ComboBox x:Name="Model_Beer_up"
-                                        Margin="0,0,5,0"
-                                        Height="35"
-                                        FontSize="15" 
-                                                 
-                                        Style="{StaticResource StyleCBbox1}">
-                                        </ComboBox>-->
+                                <Grid Grid.Column="0" Margin="0,0,5,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
-                                        <ComboBox x:Name="Model_Beer_Up"
-                                            Margin="5,5,10,5"
-                                            Height="40" FontWeight="Bold"
-                                            FontSize="15"
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            Background="White"
-                                            BorderBrush="White" Grid.RowSpan="2" VerticalAlignment="Top">
-                                            <ComboBoxItem Content="Thêm mới" />
-                                        </ComboBox>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_BearingU"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
 
-
-                                    <Label Content="Vòng bi trên"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="72"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="10,-10,0,0"
-                                           Foreground="Black"/>
+                                    <Label Content="{DynamicResource lb_BearingU}"   FontWeight="Bold"    Background="White"   Width="90"  Height="20"   Padding="1" 
+             HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
-                                <Grid Grid.Column="2">
-
+                                <Grid Grid.Column="1" Margin="5,0,0,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,0,2.5" Grid.RowSpan="2"/>
-                                        <ComboBox x:Name="Model_Beer_Down"
-                                            Margin="10,5,5,0"
-                                            Height="40" FontWeight="Bold"
-                                            FontSize="15"  
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            Background="White"
-                                            BorderBrush="White" Grid.RowSpan="2" VerticalAlignment="Top" />
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_BearingD"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
-                                    <Label Content="Vòng bi dưới"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="75"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="15,-10,0,0"
-                                           Foreground="Black"/>
+
+                                    <Label Content="{DynamicResource lb_BearingD}"   FontWeight="Bold"    Background="White"   Width="90"  Height="20"   Padding="1" 
+             HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
+
                             </Grid>
-                        </Grid>
-                        <Grid Grid.Row="6">
-                            <Grid>
+                            <Grid Grid.Row="3"  Margin="5,12,5,0">
+
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="15"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="1">
+                                <Grid Grid.Column="0" Margin="0,0,5,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
-                                        <ComboBox x:Name="Model_Jig_Up"
-                                            Margin="5,5,10,5"
-                                            Height="40" FontWeight="Bold"
-                                            FontSize="15"  
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            Background="White"
-                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_JigU"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
-                                    <Label Content="Jig trên"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="45"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="10,-10,0,0"
-                                           Foreground="Black"/>
+
+                                    <Label Content="{DynamicResource lb_JigU}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
-                                <Grid Grid.Column="2">
+                                <Grid Grid.Column="1" Margin="5,0,0,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,5,2.5" />
-                                        <ComboBox x:Name="Model_Jig_Mid"
-                                            Margin="10,5,10,5"
-                                            Height="40" FontWeight="Bold"
-                                            FontSize="15"  
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            Background="White"
-                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_JigD"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
-                                    <Label Content="Jig giữa"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="47"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="15,-10,0,0"
-                                           Foreground="Black"/>
+
+                                    <Label Content="{DynamicResource lb_JigD}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
-                                <Grid Grid.Column="3">
-                                    <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,0,2.5" />
-                                        <ComboBox x:Name="Model_Jig_Down"
-                                            Margin="10,5,5,5"
-                                            Height="40" FontWeight="Bold"
-                                            FontSize="15"  
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            Background="White"
-                                            BorderBrush="White"  VerticalAlignment="Top" />
-                                    </Grid>
-                                    <Label Content="Jig dưới"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="47"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="15,-10,0,0"
-                                           Foreground="Black"/>
-                                </Grid>
+
                             </Grid>
-                        </Grid>
-                        <Grid Grid.Row="8">
-                            <Grid>
+                            <Grid Grid.Row="4"  Margin="5,12,5,0">
+
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="15"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="1">
+                                <Grid Grid.Column="0" Margin="0,0,5,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
-                                        <TextBox x:Name="Model_Hstand"                
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Stretch"
-                                                Margin="5,5,10,5"
-                                                Height="40" FontWeight="Bold"
-                                                FontSize="15"               
-                                                Style="{StaticResource BorderTransparentTextBoxStyle}">
-                                        </TextBox>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_JigM"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
 
-
-                                    <Label Content="Độ cao tiêu chuẩn (mm)"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="137"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="10,-10,0,0"
-                                           Foreground="Black"/>
+                                    <Label Content="{DynamicResource lb_JigM}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
-                                <Grid Grid.Column="2">
+                                <Grid Grid.Column="1" Margin="5,0,0,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,0,2.5" />
-                                        <TextBox x:Name="Model_force"                 
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Stretch"
-                                                Margin="10,5,5,5"
-                                                Height="40" FontWeight="Bold"
-                                                FontSize="15"               
-                                                Style="{StaticResource BorderTransparentTextBoxStyle}">
-                                        </TextBox>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_Stand_Height"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
-                                    <Label Content="Lực nén(N/m)"
-                                           FontWeight="Bold"
-                                           Background="White"
-                                           Width="80"
-                                           Height="20"
-                                           Padding="1"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Top"
-                                           Margin="15,-10,0,0"
-                                           Foreground="Black"/>
+
+                                    <Label Content="{DynamicResource lb_Stand_Height}"   FontWeight="Bold"    Background="White"   Width="125"  Height="20"   Padding="1" 
+HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
+
                             </Grid>
-                        </Grid>
 
+                        </Grid>
+                      
                     </Grid>
-                    <Grid Grid.Row="2"
-                                 Height="40" Margin="0,0,0,5">
+
+                </Grid>
+                <Grid Grid.Column="2">
+
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Height="30" Grid.Row="0">
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                            <Label Content="{DynamicResource lb_Operation_Parameter}"  FontSize="20"  HorizontalAlignment="Center"   FontFamily="Source Sans Pro"   Foreground="Black"    FontStyle="Normal"
+  FontWeight="Bold"  Margin="2,0,0,0"  VerticalAlignment="Bottom">
+                            </Label>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0"    Content="{DynamicResource lb_Auto_Working_Origin}"  Height="30" Background="#FFFF9D59" Foreground="Black"   FontSize="20"
+                                       FontWeight="Bold"   Margin="10,5,10,0"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" FontFamily="Source Sans Pro"  >
+                                    </Label>
+                                    <Grid Grid.Row="1" Margin="10,0,10,0">
+                                        <Border BorderBrush="Black" BorderThickness="1"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="170"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="50"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0"   Content="{DynamicResource lb_Auto_PST_Origin}" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
+                                            <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding Auto_PST_Origin}" Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="0" Grid.Column="2"   Content="mm" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="1" Grid.Column="0"   Content="{DynamicResource lb_Auto_Velocity_Origin}" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Position}" Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="1" Grid.Column="2"   Content="mm/s" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                        </Grid>
+                                    </Grid>
+                                    <Label Grid.Row="2"    Content="{DynamicResource lb_Auto_PST_Standby}" Height="30" Background="#0E9002" Foreground="Black"   FontSize="20"
+                                       FontWeight="Bold"   Margin="10,5,10,0"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" FontFamily="Source Sans Pro"  >
+                                    </Label>
+                                    <Grid Grid.Row="3" Margin="10,0,10,0">
+                                        <Border BorderBrush="Black" BorderThickness="1"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="170"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="50"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0"   Content="{DynamicResource lb_Auto_PST_Standby}" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
+                                            <TextBox Grid.Row="0" Grid.Column="1"  x:Name="Auto_PST_Standby"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="0" Grid.Column="2"   Content="mm" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="1" Grid.Column="0"   Content="{DynamicResource lb_Auto_Velocity_Standby}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="Auto_Velocity_Standby"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="1" Grid.Column="2"   Content="mm/s" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="2" Grid.Column="0"   Content="{DynamicResource lb_Auto_Standby_Time}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="Auto_Standby_Time"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="2" Grid.Column="2"   Content="s" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                        </Grid>
+                                    </Grid>
+                                    <Label Grid.Row="4"    Content="{DynamicResource lb_Basic_Limit}" Height="30" Background="#546DEB" Foreground="Black"   FontSize="20"
+                                       FontWeight="Bold"   Margin="10,5,10,0"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" FontFamily="Source Sans Pro"  >
+                                    </Label>
+                                    <Grid Grid.Row="5" Margin="10,0,10,0">
+                                        <Border BorderBrush="Black" BorderThickness="1"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="170"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="50"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0"   Content="{DynamicResource lb_Force_Min}" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
+                                            <TextBox Grid.Row="0" Grid.Column="1"  x:Name="tb_Model_Force_Min"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="0" Grid.Column="2"   Content="(N)" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="1" Grid.Column="0"   Content="{DynamicResource lb_Force Max}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tb_Model_Force_Max"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="1" Grid.Column="2"   Content="(N)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="2" Grid.Column="0"   Content="{DynamicResource lb_Position_Min}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tb_Model_Position_Min"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="2" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="3" Grid.Column="0"   Content="{DynamicResource lb_Position_Max}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tb_Model_Position_Max"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="3" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0"    Content="{DynamicResource lb_Auto_Pressing Condition}"  Height="30" Background="#7354EB" Foreground="Black"   FontSize="20"
+                                       FontWeight="Bold"   Margin="10,5,10,0"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" FontFamily="Source Sans Pro"  >
+                                </Label>
+                                <Grid Grid.Row="6" Margin="10,0,10,5">
+                                    <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-8"/>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <DataGrid x:Name="List_Pressing_condition" Grid.Row="0"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                                  Height="210"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="10"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="{Binding List_Pressing_condition_No}"
+                                         Foreground="Black"
+                                         Binding="{Binding STT}"
+                                                    
+                                         Width="80">
+                                                    <DataGridTextColumn.ElementStyle>
+                                                        <Style TargetType="{x:Type TextBlock}">
+                                                            <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                                        </Style>
+                                                    </DataGridTextColumn.ElementStyle>
+                                                </DataGridTextColumn>
+                                                <DataGridTextColumn Header="{Binding List_Pressing_condition_Name}"
+                                         Binding="{Binding Pressing_condition}"
+                                         Width="120" >
+
+                                                </DataGridTextColumn>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+
+                                        <Label Grid.Row="1"   Content="{DynamicResource lb_Auto_Step}"  Width="70"  Height="30" HorizontalAlignment="Left" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
+                                        <TextBox Grid.Row="1" x:Name="Auto_Step"  FontWeight="Bold" Width="50"  FontSize="15" HorizontalAlignment="Left"  Height="30" Style="{StaticResource BorderBlackTextboxStyle}" Margin="80,5,20,0"/>
+                                        <TextBox Grid.Row="1" x:Name="Auto_Pressing_condition"  FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}" Margin="150,5,10,0"/>
+                                        <Grid Grid.Row="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="170"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="50"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0"   Content="{DynamicResource lb_Press_PositionDistance}" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
+                                            <TextBox Grid.Row="0" Grid.Column="1"  x:Name="tb_Model_Press_PositionDistance"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="0" Grid.Column="2"   Content="(N)" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="1" Grid.Column="0"   Content="{DynamicResource lb_Press_Force}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tb_Model_Press_Force"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="1" Grid.Column="2"   Content="(N)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="2" Grid.Column="0"   Content="{DynamicResource lb_Press_Velocity}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tb_Model_Press_Velocity"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="2" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="3" Grid.Column="0"   Content="{DynamicResource lb_Press_Time}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
+                                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tb_Model_Press_Time"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <Label Grid.Row="3" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Border BorderBrush="Black" BorderThickness="1"/>
+                    <Grid    Margin="0,5,0,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="120"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="120"/>
                             <ColumnDefinition Width="15"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1" Content="Xóa" x:Name="BTN_Del_Model"  Background="White" Margin="0,0,5,0"   Click="Click_bt_Del_Model"/>
-                        <Button Grid.Column="5" Content="Lưu" x:Name="BTN_Save_Model"  Background="White"   Margin="5,0,0,0"   Click="Click_bt_Save_Model" />
-
+                        <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="BTN_Import_model" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Import_model"/>
+                        <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="BTN_Export_model" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Export_model" />
 
                     </Grid>
+
                 </Grid>
+                <Grid Grid.Column="1">
+                    <Border BorderBrush="Black" BorderThickness="1"/>
+                    <Grid    Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="15"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_Model" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Import_model"/>
+                        <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_Model" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Export_model" />
 
+                    </Grid>
+
+                </Grid>
             </Grid>
-
         </Grid>
     </Grid>
 

@@ -10,12 +10,18 @@
     <Grid x:Name="Grid_size" >
         <Border BorderBrush ="Black" BorderThickness="1" Margin="-1,0,-1,0"/>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Label Content="LỊCH SỬ LỖI MÁY"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label Content="LỊCH SỬ LỖI MÁY"
                 FontSize="20"
                 FontStyle="Normal"
                 FontWeight="Bold"
@@ -24,9 +30,9 @@
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"></Label>
-            </Grid>
-            <Grid Grid.Row="1" x:Name="Grid_His">
-                <DataGrid x:Name="List_Err"
+                    </Grid >
+                    <Grid Grid.Row="1" x:Name="Grid_His">
+                        <DataGrid x:Name="List_Err"
                               AutoGenerateColumns="False"
                                 FontSize="20"
                                 Foreground="Black"
@@ -39,33 +45,36 @@
                                 CanUserResizeRows="False"
                                 IsReadOnly="True"
                                 Grid.ColumnSpan="2">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="STT" 
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="STT" 
                                     Binding="{Binding STT}"
                                     Width="80" >
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Mã Lỗi" 
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Mã Lỗi" 
                                     Binding="{Binding Code}"
                                     Width="120" >
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Nội dung lỗi"
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Nội dung lỗi"
                                     Binding="{Binding Content_}"
                                     Width="260" >
 
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Cách xử lý"
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Cách xử lý"
                             Binding="{Binding Solution}"
                             Width="260">
 
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Thời Gian"
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Thời Gian"
                             Binding="{Binding Time}"
                             Width="Auto" >
 
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
             </Grid>
+
 
 
         </Grid>

@@ -16,7 +16,7 @@
                                                  SecondaryColor="LightGreen" />
                 <!-- Kết hợp tài nguyên từ tệp tin ngôn ngữ hiện tại (mặc định là tiếng Việt) -->
                 <ResourceDictionary Source="Style/Style_Element.xaml" />
-                <ResourceDictionary Source="Resources/vi.xaml" />
+                <ResourceDictionary Source="Resources/en.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

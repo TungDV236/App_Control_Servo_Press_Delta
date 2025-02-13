@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!-- Main-->
     <system:String x:Key="btn_Auto">Auto</system:String>
     <system:String x:Key="btn_Man">Manual</system:String>
     <system:String x:Key="btn_History">History</system:String>
@@ -18,12 +19,14 @@
     <system:String x:Key="lb_User">User:</system:String>
     <system:String x:Key="lb_Infor">Infor</system:String>
 
+    <system:String x:Key="lb_exit">Close</system:String>
 
+    <!-- Auto-->
     <system:String x:Key="lb_Auto_Op_Para">Operating parameters</system:String>
     <system:String x:Key="lb_Auto_Working_Origin">Working Origin</system:String>
     <system:String x:Key="lb_Auto_PST_Origin">Origin Position</system:String>
     <system:String x:Key="lb_Auto_Velocity_Origin">Origin Velocity</system:String>
-    <system:String x:Key="btn_Visiable_Order">Scan Order</system:String>
+    <system:String x:Key="btn_Visiable_Order">Scan Order</system:String> 
     <system:String x:Key="lb_Auto_PST_Standby">Standby Position</system:String>
     <system:String x:Key="lb_Auto_Velocity_Standby">Standby Velocity</system:String>
     <system:String x:Key="lb_Auto_Standby_Time">Standby Time</system:String>
@@ -44,6 +47,8 @@
     <system:String x:Key="lb_Auto_Chart">Chart</system:String>
 
     <system:String x:Key="lb_List_Model">List Model</system:String>
+    <system:String x:Key="lb_Scan">Scan</system:String>
+    <system:String x:Key="lb_State">State</system:String>
     <system:String x:Key="lb_Auto_Mode_Parameter">Model Parameter</system:String>
     <system:String x:Key="lb_Order_Code">Order Code</system:String>
     <system:String x:Key="lb_Model">Model</system:String>
@@ -62,5 +67,43 @@
     <system:String x:Key="lb_Auto_Pressed_Result">Pressed Result</system:String>
     <system:String x:Key="lb_Auto_Pressed_Force_Max">Pressed Force Max</system:String>
     <system:String x:Key="lb_Auto_Position_Force_Max">Position Force Max</system:String>
+
+
+    <!-- Man-->
+
+
+
+    <!-- History-->
+
+    <system:String x:Key="lb_History_Error">History Error</system:String>
+    <system:String x:Key="lb_History_Operation">History Operation</system:String>
+    <!-- Report-->
+
+    <!-- Signal IO-->
+
+
+    <system:String x:Key="lb_Input_Status">Input Status</system:String>
+    <system:String x:Key="lb_Ouput_Status">Output Status</system:String>
+    <!-- Model-->
+
+    <system:String x:Key="lb_Operation_Parameter">Operation Parameter</system:String>
+    <system:String x:Key="lb_Press_PositionDistance">Press Position/Distance</system:String>
+    <system:String x:Key="lb_Press_Force">Press Force</system:String>
+    <system:String x:Key="lb_Press_Velocity">Press Velocity</system:String>
+    <system:String x:Key="lb_Press_Time">Press Time</system:String>
+    <system:String x:Key="lb_Basic_Limit">Basic Limit</system:String>
+    <system:String x:Key="lb_Force_Min">Force Min</system:String>
+    <system:String x:Key="lb_Force Max">Force Max</system:String>
+    <system:String x:Key="lb_Position_Min">Position Min</system:String>
+    <system:String x:Key="lb_Position_Max">Position Max</system:String>
+    <system:String x:Key="lb_Import">Import Excel</system:String>
+    <system:String x:Key="lb_Export">Export Excel</system:String>
+    <system:String x:Key="lb_Delete">Delete</system:String>
+    <system:String x:Key="lb_Save">Save</system:String>
+    <!-- Setting-->
+   
+
+
+  
 
 </ResourceDictionary>

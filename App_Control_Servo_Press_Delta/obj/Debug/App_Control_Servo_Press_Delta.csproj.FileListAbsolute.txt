@@ -8,8 +8,6 @@ E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delt
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Style\Style_Element.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Assignment.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Auto.g.cs
-E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Auto_Chart.g.cs
-E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Auto_Step.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Create_GPIO.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\GPIO.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History.g.cs
@@ -80,8 +78,6 @@ E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delt
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Assignment.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Auto.baml
-E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Auto_Chart.baml
-E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Auto_Step.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Create_GPIO.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\GPIO.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History.baml
@@ -108,3 +104,5 @@ E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delt
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App_Cont.E46C1E66.Up2Date
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App_Control_Servo_Press_Delta.exe
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App_Control_Servo_Press_Delta.pdb
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Monitor_Order.g.cs
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Monitor_Order.baml
