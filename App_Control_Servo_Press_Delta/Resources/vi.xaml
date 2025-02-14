@@ -79,12 +79,16 @@
 
     <!-- History-->
 
+    <system:String x:Key="lb_History_Error">Lịch Sử Lỗi</system:String>
+    <system:String x:Key="lb_History_Operation">Lịch Sử Vận Hành</system:String>
     <!-- Report-->
 
     <system:String x:Key="btn_Search">Tìm kiếm</system:String>
     <!-- Signal IO-->
 
 
+    <system:String x:Key="lb_Input_Status">Tín Hiệu Đầu Vào</system:String>
+    <system:String x:Key="lb_Ouput_Status">Tín Hiệu Đầu Ra</system:String>
     <!-- Model-->
 
     <system:String x:Key="lb_Operation_Parameter">Thông số hoạt động</system:String>

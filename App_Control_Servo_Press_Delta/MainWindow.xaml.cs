@@ -46,36 +46,27 @@ namespace App_Control_Servo_Press_Delta
         Link_Path path = new Link_Path();
         Common Common = new Common();
         Socket_client socket = new Socket_client();
+
         #endregion
         #region khai báo dữ liệu
         List<List_History> List_History = new List<List_History>();
         PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-        DataPoint newPoint1 = new DataPoint();
         #endregion
         #region Khai báo biến public
         public static string UserName = "";
         public static ObservableCollection<string> _queue;
         public static ObservableCollection<string> Queue_sever;
-        public double newY1;
+        private DispatcherTimer logoutTimer;
+        private DateTime lastActivityTime;
         public ObservableCollection<string> Notifications { get; set; }
         #endregion
         #region khai bao biến private
-        private static string[] Time_start1;
-        private static string[] Time_start2;
-        private static string[] Time_start3;
-        private static string[] Time_stop1;
-        private static string[] Time_stop2;
-        private static string[] Time_stop3;
         private static uint Value_Al_old;
         private static uint Value_Err_old;
         private static string Status_PLC;
         private int position = 0;
-        private bool Flag;
-        private bool Flag1;
-        private double _Force_max;
         private DispatcherTimer Update_Status;
         private DispatcherTimer Update_Sys;
-        private int pointCount = 0;
         #endregion
 
 
@@ -85,21 +76,17 @@ namespace App_Control_Servo_Press_Delta
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
             this.Closing += MainWindow_Closing;
-            Notifications = new ObservableCollection<string>();
             DataContext = this;
-            Global.DataPoints1 = new List<DataPoint>();
 
             var workingArea = SystemParameters.WorkArea;
             _queue = new ObservableCollection<string>();
             _queue.CollectionChanged += Queue_CollectionChanged;
-            Queue_sever = new ObservableCollection<string>();
-            Queue_sever.CollectionChanged += Queue_Server_CollectionChanged;
             socket.ConnectToServer();
             // Đặt kích thước và vị trí của cửa sổ
-            // this.Left = workingArea.Left-5;
-            // this.Top = workingArea.Top;
-            // this.Width = workingArea.Width + 10;
-            // this.Height = workingArea.Height + 5;
+             this.Left = workingArea.Left -7;
+             this.Top = workingArea.Top;
+             this.Width = workingArea.Width + 11;
+             this.Height = workingArea.Height + 5;
             // Program.Main();
         }
         private void Queue_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -110,32 +97,8 @@ namespace App_Control_Servo_Press_Delta
                 PLC.SendPostRequestAsync();
             }
         }
-        private void Queue_Server_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            if (Queue_sever.Count > 0)
-            {
-                // Gửi HTTP POST request khi số lượng phần tử thay đổi
-               // PLC.SendPostRequestAsync();
-            }
-        }
-        public static string GetMacAddress()
-        {
-            string macAddress = "";
-            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
-            {
-                if (nic.OperationalStatus == OperationalStatus.Up && !nic.Description.ToLower().Contains("virtual") && !nic.Description.ToLower().Contains("pseudo"))
-                {
-                    if (nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) // Check if it's a Wi-Fi interface
-                    {
-                        byte[] macBytes = nic.GetPhysicalAddress().GetAddressBytes();
-                        macAddress = string.Join(":", macBytes.Select(b => b.ToString("X2")));
-                        break;
-                    }
 
-                }
-            }
-            return macAddress;
-        }
+
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
@@ -171,12 +134,6 @@ namespace App_Control_Servo_Press_Delta
             }
 
             LanguageComboBox.SelectedIndex = 1;
-            //
-            //
-            // LanguageComboBox.SelectedIndex = 1;
-            //
-            //Reset Jig
-
         }
 
 
@@ -198,16 +155,7 @@ namespace App_Control_Servo_Press_Delta
                // Momen_PV.Text = Math.Round(Data.Momen_PV, 2).ToString("F1");
             });
             //   Scan_Err();
-            if (Global.Start)
-            {
-                Update_Datachart();
-            }
-            else if (!Global.Start & Flag)
-            {
-                Flag = false;
-                Flag1 = false;
-            }
-            animation(TB_Notification);
+           Animation(TB_Notification);
 
         }
         private void Update_Status_Tick1000ms(object sender, EventArgs e)
@@ -300,12 +248,7 @@ namespace App_Control_Servo_Press_Delta
             string formattedCpuUsage = cpuUsage.ToString("F2") + "%";
 
         }
-        private void Combobox_Changed(object sender, RoutedEventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
 
-
-        }
         private void Button_MouseDown(object sender, RoutedEventArgs e)
         {
             string buttonName = ((Button)sender).Name;
@@ -374,7 +317,7 @@ namespace App_Control_Servo_Press_Delta
         private void Click_BTN_History(object sender, RoutedEventArgs e)
         {
             Pannel_Monitor.Children.Clear();
-            Pannel_Monitor.Children.Add(History_Screen);
+            Pannel_Monitor.Children.Add(History_Error);
             BTN_History.Background = new SolidColorBrush(Color.FromRgb(100, 149, 237));
             BTN_Report.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             BTN_Auto.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
@@ -449,8 +392,6 @@ namespace App_Control_Servo_Press_Delta
                 MessageBox.Show("Vui Lòng Đăng Nhập");
             }
         }
-        private DispatcherTimer logoutTimer;
-        private DateTime lastActivityTime;
         private void LoginWindow_LoginSuccessful(object sender, EventArgs e)
         {
             lb_Name.Content = UserName;
@@ -484,36 +425,9 @@ namespace App_Control_Servo_Press_Delta
             loginWindow.ShowDialog();
         }
 
-        private void bt_Logout_Click(object sender, RoutedEventArgs e)
-        {
-            Logout();
-        }
 
 
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
-        }
 
-        private void MouseDown_Close(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn đóng cửa sổ giám sát không? ", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                Application.Current.Shutdown();
-            }
-
-        }
-        private void MouseDown_infor(object sender, RoutedEventArgs e)
-        {
-            Infor InforWindow = new Infor();
-            InforWindow.Owner = this;
-            InforWindow.Show();
-        }
         public void Scan()
         {
             uint Value_al = (uint)((Data.Alarm2 << 16) | Data.Alarm1);
@@ -925,7 +839,7 @@ namespace App_Control_Servo_Press_Delta
             Console.WriteLine(" ma loi: " + code_E + "da xu ly");
             //    Common.Load_View_Model(List_History_);
         }
-        private void animation(TextBox sender)
+        private void Animation(TextBox sender)
         {
             TextBox textBox = (TextBox)sender;
 
@@ -943,33 +857,7 @@ namespace App_Control_Servo_Press_Delta
             // Cập nhật nội dung của TextBox
             textBox.Text = _mylistString.Substring(position) + _mylistString.Substring(0, position);
         }
-        private void Fill_para(string name)
-        {
-            string json = File.ReadAllText(path.Time_work);
-            // string json = File.ReadAllText(linkpath.Model);
-            if (json.Length > 0)
-            {
-                JArray jsonArray = JArray.Parse(json);
-                foreach (JObject obj in jsonArray)
-                {
-                    if ((string)obj["Name"] == "Ca 1")
-                    {
-                        Time_start1 = ((string)obj["Time_Start"]).Split(new char[] { ':' });
-                        Time_stop1 = ((string)obj["Time_Stop"]).Split(new char[] { ':' });
-                    }
-                    else if ((string)obj["Name"] == "Ca 2")
-                    {
-                        Time_start2 = ((string)obj["Time_Start"]).Split(new char[] { ':' });
-                        Time_stop2 = ((string)obj["Time_Stop"]).Split(new char[] { ':' });
-                    }
-                    else if ((string)obj["Name"] == "Ca 3")
-                    {
-                        Time_start3 = ((string)obj["Time_Start"]).Split(new char[] { ':' });
-                        Time_stop3 = ((string)obj["Time_Stop"]).Split(new char[] { ':' });
-                    }
-                }
-            }
-        }
+
         private void exitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             BTN_Exit.Background = Brushes.Red; // Thay đổi màu nền khi di chuột qua
@@ -988,100 +876,38 @@ namespace App_Control_Servo_Press_Delta
         {
             btn_infor.Background = Brushes.Transparent; // Đặt lại màu nền khi chuột rời đi
         }
-        public void Update_Datachart()
+        private void MouseDown_Close(object sender, RoutedEventArgs e)
         {
-            pointCount++;
-            newY1 = Math.Sin(pointCount * 100);
-            newPoint1 = new DataPoint(pointCount, newY1);
-            Global.DataPoints1.Add(newPoint1);
-            if (_Force_max < Data.Momen_PV)
+            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn đóng cửa sổ giám sát không? ", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
             {
-                _Force_max = Data.Momen_PV;
-            }
-            if (Global.DataPoints1 != null)
-            {
-
-                if (Global.Start & !Flag)
-                {
-                    if (AreTextBoxesFilled())
-                    {
-                        Data_Report_temp2.Force_Max = _Force_max.ToString();
-
-                        if (Global.DataPoints1.Count > 2 & !Flag1)
-                        {
-                            Flag1 = true;
-                            Save_Model();
-                            Global.DataPoints1.Clear();
-
-                        }
-                        Flag = true;
-                        pointCount = 0;
-                    }
-                    else
-                    {
-                        Global.DataPoints1.Clear();
-                    }
-                }
-
-
-
-
-            }
-        }
-
-        private void Off_Buzzer_Click(object sender, RoutedEventArgs e)
-        {
-            Global.Start = !Global.Start;
-        }
-        private void Save_Model()
-        {
-            System.DateTime dateTime = System.DateTime.Now;
-            string formattedDate = dateTime.ToString("dd/MM/yyyy");
-            string FilePath = System.IO.Path.Combine("Log", formattedDate.Replace('/', '_') + "_Report.json");
-            string formattedtime = dateTime.ToString("HH:mm:ss");
-            string ID = formattedDate.Replace("/", "") + formattedtime.Replace(":", "");
-            Data_Report List_Report = new Data_Report();
-            List_Report.Time = formattedtime;
-            List_Report.OrderCode = Data_Report_temp2.OrderCode;
-            List_Report.Model = Data_Report_temp2.Model;
-            List_Report.TrucID = Data_Report_temp2.TrucID;
-            List_Report.RotorID = Data_Report_temp2.RotorID;
-            List_Report.Beer_Up = Data_Report_temp2.Beer_Up;
-            List_Report.Beer_Down = Data_Report_temp2.Beer_Down;
-            List_Report.Jig_Up = Data_Report_temp2.Jig_Up;
-            List_Report.Jig_Mid = Data_Report_temp2.Jig_Mid;
-            List_Report.Jig_Down = Data_Report_temp2.Jig_Down;
-            List_Report.HStand = Data_Report_temp2.HStand;
-            List_Report.Force = Data_Report_temp2.Force;
-            List_Report.Force_Max = Data_Report_temp2.Force_Max;
-            List_Report.Position = List_to_String(Global.DataPoints1);
-            string list_Json = JsonConvert.SerializeObject(List_Report);
-            try
-            {
-                string json = File.ReadAllText(FilePath);
-                json = json.Remove(json.Length - 1);
-                json = json + ",\n" + list_Json + "]";
-                File.WriteAllText(FilePath, json);
-                // MessageBox.Show("Đã Lưu  Thành Công");
-            }
-            catch
-            {
-                string json_;
-                json_ = "[\n" + list_Json + "\n]";
-                File.WriteAllText(FilePath, json_);
-                //  MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
+                Application.Current.Shutdown();
             }
 
         }
-        private static string List_to_String(List<DataPoint> dataPoint)
+        private void MouseDown_infor(object sender, RoutedEventArgs e)
         {
-            string result = (string.Join(",", dataPoint.Select(o => $"{(o.X.ToString().Trim('.', ' ')).Replace(',', '.')}." + "_" + $"{(o.Y.ToString().Trim('.', ' ')).Replace(',', '.')}"))).Replace("._", "_");
-            return result;
+            Infor InforWindow = new Infor();
+            InforWindow.Owner = this;
+            InforWindow.Show();
         }
-        private bool AreTextBoxesFilled()
+        private void bt_Logout_Click(object sender, RoutedEventArgs e)
         {
-            // Kiểm tra từng TextBox
-            return !string.IsNullOrWhiteSpace(Data_Report_temp2.Model);
+            Logout();
         }
+
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+
+
+
     }
 }

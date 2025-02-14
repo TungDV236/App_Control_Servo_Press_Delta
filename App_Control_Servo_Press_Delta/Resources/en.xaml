@@ -85,8 +85,8 @@
     <!-- Signal IO-->
 
 
-    <system:String x:Key="lb_Input_Status">Input Status</system:String>
-    <system:String x:Key="lb_Ouput_Status">Output Status</system:String>
+    <system:String x:Key="lb_Input_Status">Signal Input</system:String>
+    <system:String x:Key="lb_Ouput_Status">Signal Output</system:String>
     <!-- Model-->
 
     <system:String x:Key="lb_Operation_Parameter">Operation Parameter</system:String>

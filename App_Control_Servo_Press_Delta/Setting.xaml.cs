@@ -36,12 +36,12 @@ namespace App_Control_Servo_Press_Delta
             InitializeComponent();
             Loaded += Setting_Loaded;
             Unloaded += Setting_Unloaded;
-
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
         }
         private void Setting_Loaded(object sender, RoutedEventArgs e)
         {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+
             timer.Tick += Timer_Tick;
             timer.Start();
             foreach (var button in Common.FindVisualChildren<Button>(this))
@@ -53,6 +53,22 @@ namespace App_Control_Servo_Press_Delta
                 textBox.TextChanged += TextBox_TextChanged;
                 textBox.GotFocus += TextBox_GotFocus;
                 textBox.LostFocus += TextBox_LostFocus;
+            }
+
+        }
+        private void Setting_Unloaded(object sender, RoutedEventArgs e)
+        {
+            timer.Tick -= Timer_Tick;
+             timer.Stop();
+            foreach (var button in Common.FindVisualChildren<Button>(this))
+            {
+                button.Click -= Button_Click;
+            }
+            foreach (var textBox in Common.FindVisualChildren<TextBox>(this))
+            {
+                textBox.TextChanged -= TextBox_TextChanged;
+                textBox.GotFocus -= TextBox_GotFocus;
+                textBox.LostFocus -= TextBox_LostFocus;
             }
 
         }
@@ -107,43 +123,17 @@ namespace App_Control_Servo_Press_Delta
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
         }
-        private void Setting_Unloaded(object sender, RoutedEventArgs e)
-        {
-            timer.Stop();
-        }
+
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Model_Beer_Up Model_Beer_Up = new Model_Beer_Up();
-            Model_Beer_Down Model_Beer_Down = new Model_Beer_Down();
-            Model_Jig_Up Model_Jig_Up = new Model_Jig_Up();
-            Model_Jig_Mid Model_Jig_Mid = new Model_Jig_Mid();
-            Model_Jig_Down Model_Jig_Down = new Model_Jig_Down();
+         
             string buttonName = ((Button)sender).Name;
             string PopupName = buttonName.Substring(4);
             if (Is_String(buttonName, "Set_Model"))
             {
-                if (PopupName == "Model_Beer_Up")
-                {
-                    Model_Beer_Up.ShowDialog();
-                }
-                else if (PopupName == "Model_Beer_Down")
-                {
-                    Model_Beer_Down.ShowDialog();
-                }
-                else if (PopupName == "Model_Jig_Up")
-                {
-                    Model_Jig_Up.ShowDialog();
-                }
-                else if (PopupName == "Model_Jig_Mid")
-                {
-                    Model_Jig_Mid.ShowDialog();
-                }
-                else if (PopupName == "Model_Jig_Down")
-                {
-                    Model_Jig_Down.ShowDialog();
-                }
+               
                 //  MessageBox.Show("bạn cần thêm mới model"+ comboBoxName);
             }
             else if (PopupName == "History")
@@ -249,124 +239,6 @@ namespace App_Control_Servo_Press_Delta
             return input.Contains(Compari_1);
         }
 
-        private void Click_bt_Import_BearingU(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void Click_bt_Export_BearingU(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Import_BearingD(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Export_BearingD(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Import_JigU(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Export_JigU(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Import_JigM(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Export_JigM(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Import_JigD(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Export_JigD(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Import_HisE(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Export_HisE(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Del_BearingU(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Save_BearingU(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Del_BearingD(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Save_BearingD(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Del_JigU(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Save_JigU(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Del_JigM(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Save_JigM(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Del_JigD(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Del_HisE(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_bt_Save_HisE(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_off_bz(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
