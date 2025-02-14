@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Net.NetworkInformation;
 using OxyPlot;
 using App_Control_Servo_Press_Delta.Class;
+using System.Net.Sockets;
 
 
 
@@ -44,6 +45,7 @@ namespace App_Control_Servo_Press_Delta
         PLC PLC = new PLC();
         Link_Path path = new Link_Path();
         Common Common = new Common();
+        Socket_client socket = new Socket_client();
         #endregion
         #region khai báo dữ liệu
         List<List_History> List_History = new List<List_History>();
@@ -53,6 +55,7 @@ namespace App_Control_Servo_Press_Delta
         #region Khai báo biến public
         public static string UserName = "";
         public static ObservableCollection<string> _queue;
+        public static ObservableCollection<string> Queue_sever;
         public double newY1;
         public ObservableCollection<string> Notifications { get; set; }
         #endregion
@@ -89,11 +92,14 @@ namespace App_Control_Servo_Press_Delta
             var workingArea = SystemParameters.WorkArea;
             _queue = new ObservableCollection<string>();
             _queue.CollectionChanged += Queue_CollectionChanged;
+            Queue_sever = new ObservableCollection<string>();
+            Queue_sever.CollectionChanged += Queue_Server_CollectionChanged;
+            socket.ConnectToServer();
             // Đặt kích thước và vị trí của cửa sổ
-           // this.Left = workingArea.Left-5;
-           // this.Top = workingArea.Top;
-           // this.Width = workingArea.Width + 10;
-           // this.Height = workingArea.Height + 5;
+            // this.Left = workingArea.Left-5;
+            // this.Top = workingArea.Top;
+            // this.Width = workingArea.Width + 10;
+            // this.Height = workingArea.Height + 5;
             // Program.Main();
         }
         private void Queue_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -102,6 +108,14 @@ namespace App_Control_Servo_Press_Delta
             {
                 // Gửi HTTP POST request khi số lượng phần tử thay đổi
                 PLC.SendPostRequestAsync();
+            }
+        }
+        private void Queue_Server_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (Queue_sever.Count > 0)
+            {
+                // Gửi HTTP POST request khi số lượng phần tử thay đổi
+               // PLC.SendPostRequestAsync();
             }
         }
         public static string GetMacAddress()
@@ -272,6 +286,14 @@ namespace App_Control_Servo_Press_Delta
                 MainWindow._queue.Clear();
                 lb_Connect.Foreground = System.Windows.Media.Brushes.Red;
                 Status_PLC = formattedDate + " - " + formattedtime + " - " + "Mất kết Nối PLC";
+            }
+            if (Socket_client.IsConnected)
+            {
+                lb_server_Connect.Foreground = System.Windows.Media.Brushes.Green;
+            }
+            else
+            {
+                lb_server_Connect.Foreground = System.Windows.Media.Brushes.Red;
             }
             //
             float cpuUsage = cpuCounter.NextValue();

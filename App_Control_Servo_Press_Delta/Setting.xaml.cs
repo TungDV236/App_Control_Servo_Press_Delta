@@ -73,11 +73,6 @@ namespace App_Control_Servo_Press_Delta
         {
             if (!is_Forcus)
             {
-                TB_Force_Max.Text = Data.Momen_max.ToString();       //------------------------------------
-                TB_Vman.Text = Data.V_man.ToString();            //------------------------------------
-                TB_VAuto.Text = Data.V_Auto.ToString();
-                TB_Limit_Up.Text = Data.Limit_U.ToString();
-                TB_Limit_Down.Text = Data.Limit_D.ToString(); //------------------------------------
 
             }
             if (!is_Forcus2)
@@ -125,7 +120,6 @@ namespace App_Control_Servo_Press_Delta
             Model_Jig_Up Model_Jig_Up = new Model_Jig_Up();
             Model_Jig_Mid Model_Jig_Mid = new Model_Jig_Mid();
             Model_Jig_Down Model_Jig_Down = new Model_Jig_Down();
-            History_Config History_Config = new History_Config();
             string buttonName = ((Button)sender).Name;
             string PopupName = buttonName.Substring(4);
             if (Is_String(buttonName, "Set_Model"))
@@ -154,7 +148,6 @@ namespace App_Control_Servo_Press_Delta
             }
             else if (PopupName == "History")
             {
-                History_Config.ShowDialog();
             }
         }
         private void Click_BTN_Set_SysEdit(object sender, RoutedEventArgs e)
@@ -199,9 +192,8 @@ namespace App_Control_Servo_Press_Delta
         private bool AreTextBoxesFilled()
         {
             // Kiểm tra từng TextBox
-            return !string.IsNullOrWhiteSpace(TB_Force_Max.Text) &&
-                   !string.IsNullOrWhiteSpace(TB_Vman.Text) &&
-                   !string.IsNullOrWhiteSpace(TB_VAuto.Text);
+            return true;
+
         }
 
         private void Click_Para_Save(object sender, RoutedEventArgs e)
@@ -213,20 +205,12 @@ namespace App_Control_Servo_Press_Delta
                 {
                     var data = new
                     {
-                        Momen_max = TB_Force_Max.Text,
-                        Limit_D = TB_Limit_Down.Text,
-                        Limit_U = TB_Limit_Up.Text,
-                        V_Auto = TB_VAuto.Text,
-                        V_man = TB_Vman.Text
+
                         // Limit_Y1 = TB_LimitYUp.Text
                     };
                     string jsonData = JsonConvert.SerializeObject(data);
                     MainWindow._queue.Add(jsonData);
-                    TB_Force_Max.IsReadOnly = true;
-                    TB_Vman.IsReadOnly = true;
-                    TB_VAuto.IsReadOnly = true;
-                    TB_Limit_Up.IsReadOnly = true;
-                    TB_Limit_Down.IsReadOnly = true;
+
 
                     // TB_LimitYUp.IsReadOnly = true;
                     is_Forcus = false;
@@ -246,20 +230,12 @@ namespace App_Control_Servo_Press_Delta
         {
             if (MainWindow.UserName == "STI-Technical")
             {
-                TB_Force_Max.IsReadOnly = false;
-                TB_Limit_Up.IsReadOnly = false;
-                TB_Limit_Down.IsReadOnly = false;
-                TB_VAuto.IsReadOnly = false;
-                TB_Vman.IsReadOnly = false;
+
 
             }
             if (MainWindow.UserName != "")
             {
-                TB_Force_Max.IsReadOnly = false;
-                TB_Limit_Up.IsReadOnly = false;
-                TB_Limit_Down.IsReadOnly = false;
-                TB_VAuto.IsReadOnly = false;
-                TB_Vman.IsReadOnly = false;
+
             }
             MessageBox.Show("Có thể cài đặt thông số");
             is_Forcus = true;
@@ -271,6 +247,126 @@ namespace App_Control_Servo_Press_Delta
         private static bool Is_String(string input, string Compari_1)
         {
             return input.Contains(Compari_1);
+        }
+
+        private void Click_bt_Import_BearingU(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Export_BearingU(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Import_BearingD(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Export_BearingD(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Import_JigU(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Export_JigU(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Import_JigM(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Export_JigM(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Import_JigD(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Export_JigD(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Import_HisE(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Export_HisE(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Del_BearingU(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Save_BearingU(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Del_BearingD(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Save_BearingD(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Del_JigU(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Save_JigU(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Del_JigM(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Save_JigM(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Del_JigD(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Del_HisE(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Save_HisE(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_off_bz(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

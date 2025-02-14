@@ -6,13 +6,11 @@ E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delt
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Resources\en.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Resources\vi.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Style\Style_Element.baml
-E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Assignment.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Auto.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Create_GPIO.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\GPIO.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History_Alarm.g.cs
-E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History_Config.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History_Error.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Infor.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\LoginWindow.g.cs
@@ -76,13 +74,11 @@ E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delt
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\System.ValueTuple.xml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App.baml
-E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Assignment.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Auto.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Create_GPIO.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\GPIO.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History_Alarm.baml
-E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History_Config.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\History_Error.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Infor.baml
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\LoginWindow.baml
@@ -106,3 +102,8 @@ E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delt
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App_Control_Servo_Press_Delta.pdb
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Monitor_Order.g.cs
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\Monitor_Order.baml
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\SocketIO.Core.dll
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\SocketIO.Serializer.Core.dll
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\SocketIO.Serializer.SystemTextJson.dll
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\SocketIOClient.dll
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\SocketIOClient.xml

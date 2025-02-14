@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
              mc:Ignorable="d" 
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch">
+             VerticalAlignment="Stretch"
+             d:DesignHeight="785" d:DesignWidth="1752">
     <Grid x:Name="Grid_size" >
         <Grid>
             <Grid.ColumnDefinitions>
@@ -17,8 +18,8 @@
                 <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
                 <Grid VerticalAlignment="Top"
                        Height="50">
-                    <Label Content="Trạng Thái Input"
-                        FontSize="20"
+                    <Label Content="{DynamicResource lb_Input_Status}"
+                        FontSize="25"
                         FontStyle="Normal"
                         FontWeight="Bold"
                         FontFamily="Source Sans Pro"
@@ -28,6 +29,10 @@
                 </Grid>
                 <Grid Margin="5,40,5,0" >
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
@@ -91,14 +96,14 @@
                             <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
                             <RowDefinition Height="5" />
                         </Grid.RowDefinitions>
-                        <Button  Grid.Row="0"  Content="I1.0"  x:Name="I1_0"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row="1"  Content="I1.1"  x:Name="I1_1"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row="2"  Content="I1.2"  x:Name="I1_2"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row="3"  Content="I1.3"  x:Name="I1_3"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row="4"  Content="I1.4"  x:Name="I1_4"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row="5"  Content="I1.5"  x:Name="I1_5"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row="6"  Content="---"   x:Name="I1_6"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row="7"  Content="---"   x:Name="I1_7"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="0"  Content="X00"  x:Name="X0_0"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="1"  Content="X01"  x:Name="X0_1"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="2"  Content="X02"  x:Name="X0_2"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="3"  Content="X03"  x:Name="X0_3"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="4"  Content="X04"  x:Name="X0_4"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="5"  Content="X05"  x:Name="X0_5"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="6"  Content="X06"   x:Name="X0_6"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="7"  Content="X07"   x:Name="X0_7"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
 
                     </Grid>
 
@@ -114,28 +119,127 @@
                             <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
                             <RowDefinition Height="5" />
                         </Grid.RowDefinitions>
-                        <Button Grid.Row="0" x:Name="GPI10"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button Grid.Row="1" x:Name="GPI11"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button Grid.Row="2" x:Name="GPI12"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button Grid.Row="3" x:Name="GPI13"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button Grid.Row="4" x:Name="GPI14"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button Grid.Row="5" x:Name="GPI15"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button Grid.Row="6" x:Name="GPI16"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button Grid.Row="7" x:Name="GPI17"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="0" x:Name="GPX00"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="1" x:Name="GPX01"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="2" x:Name="GPX02"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="3" x:Name="GPX03"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="4" x:Name="GPX04"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="5" x:Name="GPX05"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="6" x:Name="GPX06"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="7" x:Name="GPX07"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
 
 
 
 
 
                     </Grid>
+                    <Grid Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+                        <Button  Grid.Row="0"  Content="X10"  x:Name="X1_0"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="1"  Content="X11"  x:Name="X1_1"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="2"  Content="X12"  x:Name="X1_2"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="3"  Content="X13"  x:Name="X1_3"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="4"  Content="X14"  x:Name="X1_4"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="5"  Content="X15"  x:Name="X1_5"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="6"  Content="X16"   x:Name="X1_6"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="7"  Content="X17"   x:Name="X1_7"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="5" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" x:Name="GPX10"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="1" x:Name="GPX11"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="2" x:Name="GPX12"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="3" x:Name="GPX13"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="4" x:Name="GPX14"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="5" x:Name="GPX15"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="6" x:Name="GPX16"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="7" x:Name="GPX17"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+
+
+
+
+
+                    </Grid>
+                    <Grid Grid.Column="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+                        <Button  Grid.Row="0"  Content="X20"  x:Name="X2_0"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="1"  Content="X21"  x:Name="X2_1"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="2"  Content="X22"  x:Name="X2_2"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="3"  Content="X23"  x:Name="X2_3"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="4"  Content="X24"  x:Name="X2_4"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="5"  Content="X25"  x:Name="X2_5"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="6"  Content="X26"   x:Name="X2_6"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row="7"  Content="X27"   x:Name="X2_7"  Margin="2"   FontSize="14"  Height="Auto" Click="Edit_IO"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="7" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" x:Name="GPX20"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="1" x:Name="GPX21"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="2" x:Name="GPX22"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="3" x:Name="GPX23"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="4" x:Name="GPX24"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="5" x:Name="GPX25"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="6" x:Name="GPX26"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="7" x:Name="GPX27"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+
+
+
+
+
+                    </Grid>
+
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">
                 <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
                 <Grid VerticalAlignment="Top"
                        Height="50">
-                    <Label Content="Trạng Thái Output"
-                        FontSize="20"
+                    <Label Content="{DynamicResource lb_Ouput_Status}"
+                        FontSize="25"
                         FontStyle="Normal"
                         FontWeight="Bold"
                         FontFamily="Source Sans Pro"
@@ -149,7 +253,10 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
-
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
@@ -207,15 +314,15 @@
                             <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
                             <RowDefinition Height="5" />
                         </Grid.RowDefinitions>
+                        <Button  Grid.Row = "0"  Content="Y00"  x:Name="Y0_0"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "1"  Content="Y01"  x:Name="Y0_1"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "2"  Content="Y02"  x:Name="Y0_2"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "3"  Content="Y03"  x:Name="Y0_3"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "4"  Content="Y04"  x:Name="Y0_4"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "5"  Content="Y05"  x:Name="Y0_5"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "6"  Content="Y06"  x:Name="Y0_6"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "7"  Content="Y07"  x:Name="Y0_7"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
 
-                        <Button  Grid.Row = "0"  Content="Q1.0"  x:Name="Q1_0"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "1"  Content="Q1.1"  x:Name="Q1_1"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "2"  Content="---"  x:Name="Q1_2"  Margin="2"  FontSize="14"   Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "3"  Content="---"  x:Name="Q1_3"  Margin="2"  FontSize="14"   Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "4"  Content="---"  x:Name="Q1_4"  Margin="2"  FontSize="14"   Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "5"  Content="---"  x:Name="Q1_5"  Margin="2"  FontSize="14"   Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "6"  Content="---"  x:Name="Q1_6"  Margin="2"  FontSize="14"   Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "7"  Content="---"  x:Name="Q1_7"  Margin="2"  FontSize="14"   Height="Auto" Click="Edit_IO"/>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Grid.RowDefinitions>
@@ -229,14 +336,103 @@
                             <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
                             <RowDefinition Height="5" />
                         </Grid.RowDefinitions>
-                        <Button  Grid.Row = "0" x:Name="GPI30"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "1" x:Name="GPI31"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "2" x:Name="GPI32"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "3" x:Name="GPI33"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "4" x:Name="GPI34"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "5" x:Name="GPI35"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "6" x:Name="GPI36"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
-                        <Button  Grid.Row = "7" x:Name="GPI37"  Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="0"  x:Name="GPY00" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="1"  x:Name="GPY01" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="2"  x:Name="GPY02" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="3"  x:Name="GPY03" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="4"  x:Name="GPY04" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="5"  x:Name="GPY05" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="6"  x:Name="GPY06" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="7"  x:Name="GPY07" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+                        <Button  Grid.Row = "0"  Content="Y10"  x:Name="Y1_0"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "1"  Content="Y11"  x:Name="Y1_1"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "2"  Content="Y12"  x:Name="Y1_2"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "3"  Content="Y13"  x:Name="Y1_3"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "4"  Content="Y14"  x:Name="Y1_4"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "5"  Content="Y15"  x:Name="Y1_5"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "6"  Content="Y16"  x:Name="Y1_6"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "7"  Content="Y17"  x:Name="Y1_7"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+
+                    </Grid>
+                    <Grid Grid.Column="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0"  x:Name="GPY10" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="1"  x:Name="GPY11" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="2"  x:Name="GPY12" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="3"  x:Name="GPY13" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="4"  x:Name="GPY14" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="5"  x:Name="GPY15" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="6"  x:Name="GPY16" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="7"  x:Name="GPY17" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+
+                    </Grid>
+                    <Grid Grid.Column="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+                        <Button  Grid.Row = "0"  Content="Y20"  x:Name="Y2_0"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "1"  Content="Y21"  x:Name="Y2_1"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "2"  Content="Y22"  x:Name="Y2_2"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "3"  Content="Y23"  x:Name="Y2_3"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "4"  Content="Y24"  x:Name="Y2_4"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "5"  Content="Y25"  x:Name="Y2_5"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "6"  Content="Y26"  x:Name="Y2_6"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+                        <Button  Grid.Row = "7"  Content="Y27"  x:Name="Y2_7"  Margin="2"  FontSize="14" Height="Auto" Click="Edit_IO"/>
+
+                    </Grid>
+                    <Grid Grid.Column="7">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="*" MinHeight="30" MaxHeight="60"/>
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0"  x:Name="GPY20" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="1"  x:Name="GPY21" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="2"  x:Name="GPY22" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="3"  x:Name="GPY23" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="4"  x:Name="GPY24" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="5"  x:Name="GPY25" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="6"  x:Name="GPY26" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+                        <Button Grid.Row="7"  x:Name="GPY27" Margin="2"  FontSize="14"  Height="Auto" Click="Edit_IO"/>
+
                     </Grid>
                 </Grid>
             </Grid>

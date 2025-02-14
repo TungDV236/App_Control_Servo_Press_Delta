@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
              mc:Ignorable="d" 
-             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             d:DesignHeight="785" d:DesignWidth="1752">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,33 +17,26 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Margin="5">
+            <Grid Grid.Column="1" Margin="5">
                 <Grid>
                     <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,-5" Height="50"/>
-                    <TextBox  x:Name="Select_date"  FontWeight="Bold" FontSize="15" Height="40"  Width="150" HorizontalAlignment="Left" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                    <DatePicker Grid.Column="0" Name="datePicker" Visibility="Visible"  Width="30" Height="35" BorderThickness="0.5" HorizontalAlignment="Right" BorderBrush="Transparent"
-                    SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="10" MouseEnter="Move_datetime"   Style="{x:Null}" TextBlock.TextAlignment="Center" TextBlock.FontSize="15" TextBlock.FontWeight="Bold"  Calendar.SelectedDatesChanged="calendar_SelectedDateChanged">
+                    <TextBox  x:Name="Select_date_start"  FontWeight="Bold" FontSize="15" Height="40"  Width="150" HorizontalAlignment="Left" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                    <DatePicker Grid.Column="0" Name="datePicker_start" Visibility="Visible"  Width="30" Height="35" BorderThickness="0.5" HorizontalAlignment="Right" BorderBrush="Transparent"
+                    SelectedDateChanged="DatePicker_SelectedDateChanged_start" Margin="10" MouseEnter="Move_datetime_start"   Style="{x:Null}" TextBlock.TextAlignment="Center" TextBlock.FontSize="15" TextBlock.FontWeight="Bold"  Calendar.SelectedDatesChanged="calendar_SelectedDateChanged_start">
 
                     </DatePicker>
                 </Grid>
-                <Label Content="Ngày"      
-        FontWeight="Bold"
-   Background="White"
-   Width="35"
-   Height="20"
-   Padding="1"
-   HorizontalAlignment="Left"
-   VerticalAlignment="Top"
-   Margin="10,-5,0,0"
-   Foreground="Black"/>
+
             </Grid>
             <Grid Grid.Column="2">
                 <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,-5" Height="50" />
@@ -59,21 +54,24 @@
                     <Label Grid.Column="3" Content=":" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <ComboBox Grid.Column="4" x:Name="Second_start" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" BorderBrush="Transparent"/>
                 </Grid>
-                <Label Content="Giờ bắt đầu"      
-                       FontWeight="Bold"
-                  Background="White"
-                  Width="70"
-                  Height="20"
-                  Padding="1"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
-                  Margin="10,0,0,0"
-                  Foreground="Black"/>
+
 
 
 
             </Grid>
-            <Grid Grid.Column="4" Margin="5,0,5,0">
+
+            <Grid Grid.Column="4" Margin="5">
+                <Grid>
+                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,-5" Height="50"/>
+                    <TextBox  x:Name="Select_date_stop"  FontWeight="Bold" FontSize="15" Height="40"  Width="150" HorizontalAlignment="Left" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                    <DatePicker Grid.Column="0" Name="datePicker_stop" Visibility="Visible"  Width="30" Height="35" BorderThickness="0.5" HorizontalAlignment="Right" BorderBrush="Transparent"
+                    SelectedDateChanged="DatePicker_SelectedDateChanged_stop" Margin="10" MouseEnter="Move_datetime_stop"   Style="{x:Null}" TextBlock.TextAlignment="Center" TextBlock.FontSize="15" TextBlock.FontWeight="Bold"  Calendar.SelectedDatesChanged="calendar_SelectedDateChanged_stop">
+
+                    </DatePicker>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Column="5" Margin="5,0,5,0">
                 <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,-5" Height="50" />
                 <Grid Margin="5,0,5,0">
                     <Grid.ColumnDefinitions>
@@ -89,20 +87,22 @@
                     <Label Grid.Column="3" Content=":" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <ComboBox Grid.Column="4" x:Name="Second_Stop" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" BorderBrush="Transparent"/>
                 </Grid>
-                <Label Content="Giờ kết thúc"      
-                       FontWeight="Bold"
-                  Background="White"
-                  Width="70"
-                  Height="20"
-                  Padding="1"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
-                  Margin="10,0,0,0"
-                  Foreground="Black"/>
+
+
 
 
 
             </Grid>
+            <Grid Grid.Column="7"  Margin="5,12,5,0">
+                <Grid>
+                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                    <TextBox  x:Name="tb_Model_search"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                </Grid>
+
+                <Label Content="{DynamicResource lb_Model}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+        HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+            </Grid>
+            <Button Grid.Column="8" Content="{DynamicResource btn_Search}" Width="120" x:Name="btn_off_bz" Padding="0"  Height="40" Margin="5,15,5,5"   Click="Click_search" />
         </Grid>
         <Grid  Grid.Row="1" Margin="2" >
             <DataGrid x:Name="List_Report"
@@ -130,6 +130,10 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
+                    <DataGridTextColumn Header="Time"
+                                                Binding="{Binding Time}"
+                                                Width="300" >
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Model"
                                                 Binding="{Binding Model}"
                                                 Width="150" >
@@ -143,23 +147,27 @@
                                                 Binding="{Binding RotorID}"
                                                 Width="150" >
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Momen Max"
+                    <DataGridTextColumn Header="Upper Bearings"
+                                                Binding="{Binding BearingU}"
+                                                Width="200" >
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Lower Bearings"
+                                                Binding="{Binding BearingD}"
+                                                Width="200" >
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Force Max"
                                                 Binding="{Binding Force_Max}"
                                                 Width="150" >
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Momen Set"
-                                                Binding="{Binding Force}"
+                    <DataGridTextColumn Header="Result"
+                                                Binding="{Binding Result}"
                                                 Width="150" >
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Thời Gian"
-                                                Binding="{Binding Time}"
-                                                Width="300" >
                     </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
         </Grid>
-        <Button Grid.Row="2" Content="Xuất tất cả" x:Name="BTN_Export_All" Background="White"  Width="150"  Margin="5,10,170,10" HorizontalAlignment="Right"  Click="Click_bt_Export_All" />
-        <Button Grid.Row="2" Content="Xuất file chọn" x:Name="BTN_Export_model" Background="White"  Width="150"  Margin="5,10,10,10" HorizontalAlignment="Right"  Click="Click_bt_Export_model" />
+        <Button Grid.Row="2" Content="{DynamicResource lb_Auto_Chart}" x:Name="btn_chart" Background="White"  Width="150"  Margin="5,10,170,10" HorizontalAlignment="Right"  Click="Click_bt_chart" />
+        <Button Grid.Row="2" Content="{DynamicResource lb_Export}" x:Name="btn_export" Background="White"  Width="150"  Margin="5,10,10,10" HorizontalAlignment="Right"  Click="Click_bt_Export" />
     </Grid>
 </UserControl>

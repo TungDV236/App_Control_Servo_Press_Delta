@@ -17,7 +17,8 @@ namespace App_Control_Servo_Press_Delta.Class
         public static List<DataView_Report> List_report_temp { get; set; }
         public static List<DataPoint> DataPoints1 { get; set; } // Lưu trữ điểm cho biểu đồ 1
         public static bool Start { get; set; }
-
+        public static bool Receive { get; set; }
+        public static bool Check_done_Order { get; set; }
         public static bool clear_forcus { get; set; }
         public static string OrderCode { get; set; }
     }
@@ -173,7 +174,16 @@ namespace App_Control_Servo_Press_Delta.Class
         public string ID { get; set; }
         // public string Time { get; set; }
     }
+    public class ID_Model
+    {
+        public static string Orrder_Code { get; set; }
+        public static string ID_Shaft { get; set; }
+        public static string ID_Rotor { get; set; }
+        public static string ID_Bearing_Upper { get; set; }
+        public static string ID_Bearing_Lower { get; set; }
+        public static string Quality { get; set; }
 
+    }
 
     public class List_Model
     {

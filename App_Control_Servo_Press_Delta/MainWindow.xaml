@@ -84,7 +84,7 @@
                         </Grid>
 
                         <Grid Grid.Column="1">
-                            <Label   Content="MÁY ÉP VÒNG BI"
+                            <Label  Content="{DynamicResource lb_Machine_Press_Bearings}" 
                                       x:Name="lb_Name_Machine"
                                       Foreground="Black"
                                       FontSize="30"
@@ -154,8 +154,8 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0" Content="{DynamicResource btn_login}" x:Name="BTN_Login"  Padding="5,5" Height="35" Margin="2.5,0,2.5,0" FontSize="10"  VerticalAlignment="Top" />
-                                <Button Grid.Column="1" Content="{DynamicResource btn_logout}"  x:Name="BTN_Logout"  Padding="5,5" Height="35"  Margin="2.5,0,2.5,0"  FontSize="10"  VerticalAlignment="Top" />
+                                <Button Grid.Column="0" Content="{DynamicResource btn_login}" x:Name="BTN_Login"  Padding="5,5" Height="35" Margin="2.5,0,2.5,0" FontSize="10"  VerticalAlignment="Top"  Click="bt_Login_Click"/>
+                                <Button Grid.Column="1" Content="{DynamicResource btn_logout}"  x:Name="BTN_Logout"  Padding="5,5" Height="35"  Margin="2.5,0,2.5,0"  FontSize="10"  VerticalAlignment="Top" Click="bt_Logout_Click" />
                             </Grid>
                             <Grid Grid.Row="9" >
                                 <Grid.ColumnDefinitions>

@@ -2,6 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!-- Main-->
+
+    <system:String x:Key="lb_Machine_Press_Bearings">MACHINE PRESS BEARINGS</system:String>
     <system:String x:Key="btn_Auto">Auto</system:String>
     <system:String x:Key="btn_Man">Manual</system:String>
     <system:String x:Key="btn_History">History</system:String>
@@ -79,6 +81,7 @@
     <system:String x:Key="lb_History_Operation">History Operation</system:String>
     <!-- Report-->
 
+    <system:String x:Key="btn_Search">Search</system:String>
     <!-- Signal IO-->
 
 
@@ -101,9 +104,21 @@
     <system:String x:Key="lb_Delete">Delete</system:String>
     <system:String x:Key="lb_Save">Save</system:String>
     <!-- Setting-->
-   
 
-
-  
+    <system:String x:Key="lb_List_Upper_Bearings">List Upper Bearings</system:String>
+    <system:String x:Key="lb_List_Lower_Bearings">List Lower Bearings</system:String>
+    <system:String x:Key="lb_List_Upper_Jig">List Upper Jig</system:String>
+    <system:String x:Key="lb_List_Middle_Jig">List Middle Jig</system:String>
+    <system:String x:Key="lb_List_Lower_Jig">List Lower Jig</system:String>
+    <system:String x:Key="lb_History_Error_Config">History Config</system:String>
+    <system:String x:Key="lb_Systems">Systems</system:String>
+    <system:String x:Key="lb_Thicknness">Thickness</system:String>
+    <system:String x:Key="lb_Code">Code</system:String>
+    <system:String x:Key="lb_DescriptionVi">Description (Vi)</system:String>
+    <system:String x:Key="lb_SolutionVI">Solution (Vi)</system:String>
+    <system:String x:Key="lb_DescriptionEn">Description (En)</system:String>
+    <system:String x:Key="lb_SolutionEn">Solution (En)</system:String>
+    <system:String x:Key="lb_Edit">Edit</system:String>
+    <system:String x:Key="btn_Off_Buzzer">Off Buzzer</system:String>
 
 </ResourceDictionary>

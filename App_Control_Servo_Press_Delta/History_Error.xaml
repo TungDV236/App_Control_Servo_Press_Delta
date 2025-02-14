@@ -16,23 +16,72 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
+
+                    <Border BorderBrush ="Black" BorderThickness="1" Margin="-1,0,-1,0"/>
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Label Content="{DynamicResource lb_History_Error}"      FontSize="20"     FontStyle="Normal"      FontWeight="Bold" FontFamily="Source Sans Pro"   Height="50"
+                VerticalContentAlignment="Center"    HorizontalAlignment="Center"     VerticalAlignment="Center"></Label>
+                        </Grid >
+                        <Grid Grid.Row="1" Margin="5">
+                            <DataGrid x:Name="List_Err"
+                              AutoGenerateColumns="False"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="White"
+                                BorderBrush="Black"
+                                BorderThickness="0.5"
+                                Margin="2,2,2,4"
+                                HorizontalGridLinesBrush="Black"
+                                CanUserResizeColumns="False"
+                                CanUserResizeRows="False"
+                                IsReadOnly="True"
+                                Grid.ColumnSpan="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT" 
+                                    Binding="{Binding STT}"
+                                    Width="80" >
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Mã Lỗi" 
+                                    Binding="{Binding Code}"
+                                    Width="120" >
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Nội dung lỗi"
+                                    Binding="{Binding Content_}"
+                                    Width="260" >
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Cách xử lý"
+                            Binding="{Binding Solution}"
+                            Width="260">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Thời Gian"
+                            Binding="{Binding Time}"
+                            Width="Auto" >
+
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <Label Content="LỊCH SỬ LỖI MÁY"
-                FontSize="20"
-                FontStyle="Normal"
-                FontWeight="Bold"
-                FontFamily="Source Sans Pro"              
-                Height="50"
-                VerticalContentAlignment="Center"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"></Label>
+                        <Label Content="{DynamicResource lb_History_Operation}"      FontSize="20"     FontStyle="Normal"      FontWeight="Bold" FontFamily="Source Sans Pro"   Height="50"
+                VerticalContentAlignment="Center"    HorizontalAlignment="Center"     VerticalAlignment="Center"></Label>
                     </Grid >
-                    <Grid Grid.Row="1" x:Name="Grid_His">
-                        <DataGrid x:Name="List_Err"
+                    <Grid Grid.Row="1" Margin="5">
+                        <DataGrid x:Name="List_History_Operation"
                               AutoGenerateColumns="False"
                                 FontSize="20"
                                 Foreground="Black"

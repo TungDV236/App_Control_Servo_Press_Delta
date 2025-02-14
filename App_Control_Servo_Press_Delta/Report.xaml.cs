@@ -45,7 +45,7 @@ namespace App_Control_Servo_Press_Delta
             SetDefaultValues();
             Loaded += Report_Loaded;  // Thêm sự kiện Loaded
             Unloaded += Report_Unloaded;
-            datePicker.SelectedDate = DateTime.Today;
+            datePicker_start.SelectedDate = DateTime.Today;
             List_Position = new List<Position>();
             Global.List_Position_all = new List<Position>();
 
@@ -55,7 +55,7 @@ namespace App_Control_Servo_Press_Delta
             if (cnt < 1)
             {
                 Read_time();
-                trim_date(datePicker.SelectedDate.Value);
+                trim_date(datePicker_start.SelectedDate.Value);
                 fill_time();
                 cnt++;
             }
@@ -82,19 +82,24 @@ namespace App_Control_Servo_Press_Delta
         {
 
         }
-        private void DatePicker_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void DatePicker_SelectedDateChanged_start(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             // Lấy ngày đã chọn
-            if (datePicker.SelectedDate.HasValue)
+            if (datePicker_start.SelectedDate.HasValue)
             {
-                DateTime selectedDate = datePicker.SelectedDate.Value;
+                DateTime selectedDate = datePicker_start.SelectedDate.Value;
 
                 string[] part = selectedDate.ToString().Split(' ');
-                Select_date.Text = part[0];
+                Select_date_start.Text = part[0];
                 // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
                 Common.Load_View_Report(List_Report, part[0].Replace('/', '_'));
                 fill_time();
             }
+        }
+        private void DatePicker_SelectedDateChanged_stop(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            // Lấy ngày đã chọn
+
         }
         private void YourMethod()
         {
@@ -111,14 +116,14 @@ namespace App_Control_Servo_Press_Delta
             {
                 DateTime date = DateTime.Parse(textBox.Text + " 11:59:59 PM");
                 //  MessageBox.Show($"{textBox.Text} đúng định dạng !");
-                datePicker.SelectedDate = date;
+                datePicker_start.SelectedDate = date;
             }
             else
             {
                 MessageBox.Show($"{textBox.Text} sai định dạng !");
                 string[] part = DateTime.Today.ToString().Split(' ');
                 textBox.Text = part[0];
-                datePicker.SelectedDate = DateTime.Today;
+                datePicker_start.SelectedDate = DateTime.Today;
             }
 
         }
@@ -132,7 +137,7 @@ namespace App_Control_Servo_Press_Delta
         }
         private void Fill_Value_Mode(string time)
         {
-            DateTime selectedDate = datePicker.SelectedDate.Value;
+            DateTime selectedDate = datePicker_start.SelectedDate.Value;
             string[] part = selectedDate.ToString().Split(' ');
             // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
             string filepath = part[0].Replace('/', '_') + "_Report.json";
@@ -200,10 +205,10 @@ namespace App_Control_Servo_Press_Delta
                 }
             }
         }
-        private void calendar_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void calendar_SelectedDateChanged_start(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             // Lấy ngày đã chọn
-            datePicker.IsDropDownOpen = false;
+            datePicker_start.IsDropDownOpen = false;
         }
         private void trim_date(DateTime dateTime)
         {
@@ -212,12 +217,21 @@ namespace App_Control_Servo_Press_Delta
             Common.Load_View_Report(List_Report, part[0].Replace('/', '_'));
             fill_time();
         }
-
-
-
-        private void Move_datetime(object sender, RoutedEventArgs e)
+        private void calendar_SelectedDateChanged_stop(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            datePicker.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            // Lấy ngày đã chọn
+
+        }
+
+
+
+        private void Move_datetime_start(object sender, RoutedEventArgs e)
+        {
+            datePicker_start.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+        }
+        private void Move_datetime_stop(object sender, RoutedEventArgs e)
+        {
+           // datePicker_start.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
         private void LoadTimeComboboxes()
         {
@@ -293,7 +307,7 @@ namespace App_Control_Servo_Press_Delta
         }
         private void Click_bt_Export_model(object sender, RoutedEventArgs e)
         {
-            DateTime selectedDate = datePicker.SelectedDate.Value;
+            DateTime selectedDate = datePicker_start.SelectedDate.Value;
             string[] part = selectedDate.ToString().Split(' ');
             // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
             Excel excel = new Excel();
@@ -315,7 +329,7 @@ namespace App_Control_Servo_Press_Delta
         }
         private void Click_bt_Export_All(object sender, RoutedEventArgs e)
         {
-            DateTime selectedDate = datePicker.SelectedDate.Value;
+            DateTime selectedDate = datePicker_start.SelectedDate.Value;
             string[] part = selectedDate.ToString().Split(' ');
             // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
             Excel excel = new Excel();
@@ -333,6 +347,21 @@ namespace App_Control_Servo_Press_Delta
 
             }
             catch { }
+        }
+
+        private void Click_bt_chart(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_bt_Export(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_search(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

@@ -3,6 +3,8 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!-- Main-->
+
+    <system:String x:Key="lb_Machine_Press_Bearings">MÁY ÉP VÒNG BI</system:String>
     <system:String x:Key="btn_Auto">Tự Động</system:String>
     <system:String x:Key="btn_Man">Bằng Tay</system:String>
     <system:String x:Key="btn_History">Lịch Sử</system:String>
@@ -79,6 +81,7 @@
 
     <!-- Report-->
 
+    <system:String x:Key="btn_Search">Tìm kiếm</system:String>
     <!-- Signal IO-->
 
 
@@ -99,8 +102,23 @@
     <system:String x:Key="lb_Delete">Xóa</system:String>
     <system:String x:Key="lb_Save"> Lưu</system:String>
     <!-- Setting-->
-   
+
+    <system:String x:Key="lb_List_Upper_Bearings">Danh sách Vòng bi trên</system:String>
+    <system:String x:Key="lb_List_Lower_Bearings">Danh sách Vòng bi dưới</system:String>
+    <system:String x:Key="lb_List_Upper_Jig">Danh Sách Jig trên</system:String>
+    <system:String x:Key="lb_List_Middle_Jig">Danh sách Jig giữa</system:String>
+    <system:String x:Key="lb_List_Lower_Jig">Danh sách Jig dưới</system:String>
+    <system:String x:Key="lb_History_Error_Config">Cài đặt Lỗi</system:String>
+    <system:String x:Key="lb_Systems">Hệ Thống</system:String>
+    <system:String x:Key="lb_Thicknness">Độ đày</system:String>
+
+    <system:String x:Key="lb_Code">Mã Lỗi</system:String>
+    <system:String x:Key="lb_DescriptionVi">Mô tả Lỗi (Vi)</system:String>
+    <system:String x:Key="lb_SolutionVI">Cách xử lý (Vi)</system:String>
+    <system:String x:Key="lb_DescriptionEn">Mô tả Lỗi (En)</system:String>
+    <system:String x:Key="lb_SolutionEn">Cách xử lý (En)</system:String>
+    <system:String x:Key="lb_Edit">Sửa</system:String>
+    <system:String x:Key="btn_Off_Buzzer">Tắt Còi</system:String>
 
 
-  
 </ResourceDictionary>

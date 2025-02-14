@@ -6,151 +6,771 @@
              xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
              mc:Ignorable="d" 
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch" d:DesignWidth="830.697" >
+             VerticalAlignment="Stretch"
+             d:DesignHeight="785" d:DesignWidth="1752">
 
     <Grid x:Name="Grid_size" >
         <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
-                <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Height="30" Grid.Row="0">
-                        <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
-                        <Label Content="Thông Số"
-                                    FontSize="20"
-                                    HorizontalAlignment="Center"
-                                    FontFamily="Source Sans Pro"
-                                    Foreground="Black"
-                                    FontStyle="Normal"
-                                    FontWeight="Bold"
-                                    Margin="2,0,0,0"
-                                    VerticalAlignment="Bottom">
-                        </Label>
-                    </Grid>
-                    <Grid Grid.Row="1"
-                            Margin="5,0,5,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Label    Content="THÔNG SỐ MÁY"  FontSize="15" Margin="10,2,2,-5"  Style="{StaticResource Basic_labelStyle}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="10"/>
-                            </Grid.ColumnDefinitions>
-                            <Label  Grid.Column="1" FontSize="15"  Content="Lực ép max (N/m)"   Margin="2,2,2,-5"  Style="{StaticResource Basic_labelStyle}"   />
-                            <Label  Grid.Column="2" FontSize="15"  Content="V Man (mm/s)"   Margin="2,2,2,-5" Style="{StaticResource Basic_labelStyle}"  />
-                            <Label  Grid.Column="3" FontSize="15"  Content="V Auto (mm/s)"  Margin="2,2,2,-5"  Style="{StaticResource Basic_labelStyle}"  />
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="10"/>
-                            </Grid.ColumnDefinitions>
 
-                            <TextBox  Grid.Column="1" IsReadOnly="True"   x:Name="TB_Force_Max"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                            <TextBox  Grid.Column="2" IsReadOnly="True"   x:Name="TB_Vman"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                            <TextBox  Grid.Column="3" IsReadOnly="True"   x:Name="TB_VAuto"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                        </Grid>
-                        <Grid Grid.Row="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="10"/>
-                            </Grid.ColumnDefinitions>
-                            <Label  Grid.Column="1" FontSize="15"  Content="Limit Up"   Margin="2,2,2,-5"  Style="{StaticResource Basic_labelStyle}"  />
-                            <Label  Grid.Column="2" FontSize="15"  Content="Limit Down"   Margin="2,2,2,-5"  Style="{StaticResource Basic_labelStyle}"  />
-                            <Label  Grid.Column="3" FontSize="15"  Content="---"  Margin="2,2,2,-5"  Style="{StaticResource Basic_labelStyle}"  />
-                        </Grid>
-                        <Grid Grid.Row="4">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="10"/>
-                            </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0"  Content="{DynamicResource lb_List_Upper_Bearings}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 FontFamily="Source Sans Pro"
+                                 Foreground="Black"
+                                 FontStyle="Normal"
+                                 FontWeight="Bold"
+                                 Margin="2,0,0,0"
+                                 VerticalAlignment="Bottom">
+                        </Label>
 
-                            <TextBox  Grid.Column="1" IsReadOnly="True"   x:Name="TB_Limit_Up"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                            <TextBox  Grid.Column="2" IsReadOnly="True"   x:Name="TB_Limit_Down"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                            <TextBox  Grid.Column="3" IsReadOnly="True"   x:Name="TB_Spare"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                        <Grid  Grid.Row="1"
+                                Margin="2,0,2,0">
+                            <DataGrid x:Name="List_Upper_Bearings"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="2,2,2,4"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT"
+                                         Foreground="Black"
+                                         Binding="{Binding STT}"
+                                         Width="80">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="ID"
+                                         Binding="{Binding ID_BearingU}"
+                                         Width="120" >
+
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
-                        <Grid Grid.Row="6">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="1" Content="Sửa" x:Name="BTN_Set_ParEdit" Height="30" Margin="5,5,5,5"   Click="Click_Para_Edit"/>
-                            <Button Grid.Column="2" Content="Lưu" x:Name="BTN_Set_ParSave" Height="30"  Margin="5,5,4,5"   Click="Click_Para_Save" />
+
+                        <Grid    Grid.Row="2">
+
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_BearingU" Background="White" Padding="0"  Margin="0,0,5,0"   Click="Click_bt_Import_BearingU"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_BearingU" Background="White" Padding="0"  Margin="5,0,0,0"   Click="Click_bt_Export_BearingU" Height="32" VerticalAlignment="Top" />
+
+                            </Grid>
+                           </Grid>
+                        <Grid Grid.Row="3"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_ID_BearingU"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                         </Grid>
-                        <Grid Grid.Row="8">
-                            <Label    Content="THÔNG SỐ ĐẦU VÀO" FontSize="15"  Margin="10,2,2,2"  Style="{StaticResource Basic_labelStyle}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <Grid Grid.Row="4" Height="50" Margin="5,12,5,0">
+                            
                         </Grid>
-                        <Grid Grid.Row="9">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Content="Jig trên" x:Name="Set_Model_Jig_Up" Height="40" FontSize="15"  Margin=" 5"  />
-                            <Button Grid.Column="1" Content="Jig giữa" x:Name="Set_Model_Jig_Mid" Height="40"  FontSize="15"   Margin="5"  />
-                            <Button Grid.Column="2" Content="Jig dưới" x:Name="Set_Model_Jig_Down" Height="40"  FontSize="15"  Margin=" 5"    />
-                        </Grid>
-                        <Grid Grid.Row="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Content="Vòng bi trên" x:Name="Set_Model_Beer_Up" Height="40"  FontSize="15"  Margin="5"   />
-                            <Button Grid.Column="1" Content="Vòng bi dưới" x:Name="Set_Model_Beer_Down" Height="40"  FontSize="15"  Margin="5"   />
-                            <Button Grid.Column="2" Content="Lỗi/ Cảnh báo" x:Name="Set_History"  Height="40" FontSize="15"   Margin="5"   />
+                        <Grid Grid.Row="5">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <Grid    Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_BearingU" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Del_BearingU"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_BearingU" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Save_BearingU" />
+
+                            </Grid>
+
                         </Grid>
                     </Grid>
+
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"  Content="{DynamicResource lb_List_Lower_Bearings}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 FontFamily="Source Sans Pro"
+                                 Foreground="Black"
+                                 FontStyle="Normal"
+                                 FontWeight="Bold"
+                                 Margin="2,0,0,0"
+                                 VerticalAlignment="Bottom">
+                        </Label>
+
+                        <Grid  Grid.Row="1" 
+                               Margin="2,0,2,0">
+                            <DataGrid x:Name="List_Lower_Bearings"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="2,2,2,4"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT"
+                                         Foreground="Black"
+                                         Binding="{Binding STT}"
+                                         Width="80">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="ID"
+                                         Binding="{Binding ID_BearingD}"
+                                         Width="120" >
+
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                        <Grid    Grid.Row="2">
+
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_BearingD" Background="White" Padding="0"  Margin="0,0,5,0"   Click="Click_bt_Import_BearingD"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_BearingD" Background="White" Padding="0"  Margin="5,0,0,0"   Click="Click_bt_Export_BearingD" />
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_ID_BearingD"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        </Grid>
+
+                        <Grid Grid.Row="4" Height="50" Margin="5,12,5,0">
+
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <Grid    Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_BearingD" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Del_BearingD"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_BearingD" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Save_BearingD" />
+
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"  Content="{DynamicResource lb_List_Upper_Jig}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 FontFamily="Source Sans Pro"
+                                 Foreground="Black"
+                                 FontStyle="Normal"
+                                 FontWeight="Bold"
+                                 Margin="2,0,0,0"
+                                 VerticalAlignment="Bottom">
+                        </Label>
+
+                        <Grid  Grid.Row="1" 
+                               Margin="2,0,2,0">
+                            <DataGrid x:Name="List_Upper_Jig"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="2,2,2,4"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT"
+                                         Foreground="Black"
+                                         Binding="{Binding STT}"
+                                         Width="80">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="ID"
+                                         Binding="{Binding ID_JigU}"
+                                         Width="120" >
+
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                        <Grid    Grid.Row="2">
+
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigU" Background="White" Padding="0"  Margin="0,0,5,0"   Click="Click_bt_Import_JigU"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigU" Background="White" Padding="0"  Margin="5,0,0,0"   Click="Click_bt_Export_JigU" Height="32" VerticalAlignment="Top" />
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_ID_JigU"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        </Grid>
+                        <Grid Grid.Row="4"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_Thichness_JigU"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <Label Content="{DynamicResource lb_Thicknness}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <Grid    Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_JigU" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Del_JigU"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_JigU" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Save_JigU" />
+
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Column="3">
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"  Content="{DynamicResource lb_List_Middle_Jig}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 FontFamily="Source Sans Pro"
+                                 Foreground="Black"
+                                 FontStyle="Normal"
+                                 FontWeight="Bold"
+                                 Margin="2,0,0,0"
+                                 VerticalAlignment="Bottom">
+                        </Label>
+
+                        <Grid  Grid.Row="1" 
+                               Margin="2,0,2,0">
+                            <DataGrid x:Name="List_Middle_Jig"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="2,2,2,4"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT"
+                                         Foreground="Black"
+                                         Binding="{Binding STT}"
+                                         Width="80">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="ID"
+                                         Binding="{Binding ID_JigM}"
+                                         Width="120" >
+
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                        <Grid    Grid.Row="2">
+
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigM" Background="White" Padding="0"  Margin="0,0,5,0"   Click="Click_bt_Import_JigM"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigM" Background="White" Padding="0"  Margin="5,0,0,0"   Click="Click_bt_Export_JigM" />
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_ID_JigM"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        </Grid>
+                        <Grid Grid.Row="4"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_Thichness_JigM"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <Label Content="{DynamicResource lb_Thicknness}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <Grid    Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_JigM" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Del_JigM"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_JigM" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Save_JigM" />
+
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Column="4">
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"  Content="{DynamicResource lb_List_Lower_Jig}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 FontFamily="Source Sans Pro"
+                                 Foreground="Black"
+                                 FontStyle="Normal"
+                                 FontWeight="Bold"
+                                 Margin="2,0,0,0"
+                                 VerticalAlignment="Bottom">
+                        </Label>
+
+                        <Grid  Grid.Row="1" 
+                               Margin="2,0,2,0">
+                            <DataGrid x:Name="List_Lower_Jig"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="2,2,2,4"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT"
+                                         Foreground="Black"
+                                         Binding="{Binding STT}"
+                                         Width="80">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="ID"
+                                         Binding="{Binding ID_JigD}"
+                                         Width="120" >
+
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                        <Grid    Grid.Row="2">
+
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigD" Background="White" Padding="0"  Margin="0,0,5,0"   Click="Click_bt_Import_JigD"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigD" Background="White" Padding="0"  Margin="5,0,0,0"   Click="Click_bt_Export_JigD" />
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_ID_JigD"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        </Grid>
+                        <Grid Grid.Row="4"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_Thichness_JigD"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <Label Content="{DynamicResource lb_Thicknness}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <Grid    Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_JigD" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Del_JigD"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_JigD" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Del_JigD" />
+
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Column="5">
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"  Content="{DynamicResource lb_History_Error_Config}"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 FontFamily="Source Sans Pro"
+                                 Foreground="Black"
+                                 FontStyle="Normal"
+                                 FontWeight="Bold"
+                                 Margin="2,0,0,0"
+                                 VerticalAlignment="Bottom">
+                        </Label>
+
+                        <Grid  Grid.Row="1" 
+                               Margin="2,0,2,0">
+                            <DataGrid x:Name="List_History_Error_Config"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="2,2,2,4"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT"
+                                         Foreground="Black"
+                                         Binding="{Binding STT}"
+                                         Width="80">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="ID"
+                                         Binding="{Binding ID_Code}"
+                                         Width="120" >
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Description"
+                                         Binding="{Binding Description}"
+                                         Width="300" >
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Solution"
+                                         Binding="{Binding Solution}"
+                                         Width="300" >
+
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                        <Grid    Grid.Row="2">
+
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_HisE" Background="White" Padding="0"  Margin="0,0,5,0"   Click="Click_bt_Import_HisE"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_HisE" Background="White" Padding="0"  Margin="5,0,0,0"   Click="Click_bt_Export_HisE" />
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3"  Margin="5,12,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid >
+                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                    <TextBox  x:Name="tb_code"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                </Grid>
+
+                                <Label Content="{DynamicResource lb_Code}"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
+      HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                            </Grid>
+                            <Grid Grid.Column="1" Margin="5,0,0,0">
+                                <Grid >
+                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                    <TextBox  x:Name="tb_DescriptionEN"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                </Grid>
+
+                                <Label Content="{DynamicResource lb_DescriptionEn}"   FontWeight="Bold"    Background="White"   Width="100"  Height="20"   Padding="1" 
+                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                            </Grid>
+                            <Grid Grid.Column="2" Margin="5,0,0,0">
+                                <Grid >
+                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                    <TextBox  x:Name="tb_SolutionEn"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                </Grid>
+
+                                <Label Content="{DynamicResource lb_SolutionEn}"   FontWeight="Bold"    Background="White"   Width="100"  Height="20"   Padding="1" 
+                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="4"  Margin="5,12,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                          
+                            <Grid Grid.Column="1" Margin="5,0,0,0">
+                                <Grid >
+                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                    <TextBox  x:Name="tb_DescriptionVI"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                </Grid>
+
+                                <Label Content="{DynamicResource lb_DescriptionVi}"   FontWeight="Bold"    Background="White"   Width="100"  Height="20"   Padding="1" 
+                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                            </Grid>
+                            <Grid Grid.Column="2" Margin="5,0,0,0">
+                                <Grid >
+                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                    <TextBox  x:Name="tb_SolutionVi"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                </Grid>
+
+                                <Label Content="{DynamicResource lb_SolutionVI}"   FontWeight="Bold"    Background="White"   Width="100"  Height="20"   Padding="1" 
+                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Border BorderBrush="Black" BorderThickness="1"/>
+                            <Grid    Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_HisE" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Del_HisE"/>
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_HisE" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Save_HisE" />
+
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1" >
-                <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
-                <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Height="30" Grid.Row="0">
-                        <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+            
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                        <Label Content="Hệ Thống"
+                <Grid Grid.Column="0" >
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Height="30" Grid.Row="0">
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+
+                            <Label Content="{DynamicResource lb_Systems}"
                                     FontSize="20"
                                     HorizontalAlignment="Center"
                                     FontFamily="Source Sans Pro"
@@ -159,60 +779,66 @@
                                     FontWeight="Bold"
                                     Margin="2,0,0,0"
                                     VerticalAlignment="Bottom">
-                        </Label>
-                    </Grid>
-                    <Grid Grid.Row="1"
+                            </Label>
+                        </Grid>
+                        <Grid Grid.Row="1"
                             Margin="0,0,5,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label  Grid.Column="1"   Content="IP"  FontSize="15" Margin="2"  Style="{StaticResource Basic_labelStyle}"  />
-                            <Label  Grid.Column="2"   Content="Port" FontSize="15"  Margin="2"  Style="{StaticResource Basic_labelStyle}"  />
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label  Grid.Column="0"   Content="Server:"  FontSize="15" HorizontalAlignment="Left" Margin="10,0,0,0"   Style="{StaticResource Basic_labelStyle}"  />
-                            <TextBox  Grid.Column="1"  IsReadOnly="True"  x:Name="TB_Server_IP"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                            <TextBox  Grid.Column="2"  IsReadOnly="True"  x:Name="TB_Server_Port"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label  Grid.Column="0"   Content="PLC:"   FontSize="15"  HorizontalAlignment="Left" Margin="10,0,0,0"  Style="{StaticResource Basic_labelStyle}"  />
-                            <TextBox  Grid.Column="1"  IsReadOnly="True"  x:Name="TB_PLC_IP"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                            <TextBox  Grid.Column="2"  IsReadOnly="True"  x:Name="TB_PLC_Port"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                        </Grid>
-                        <Grid Grid.Row="4">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="1" Content="Sửa" x:Name="BTN_Set_SysEdit"  Height="30" Margin="5,5,5,5"   Click="Click_BTN_Set_SysEdit"/>
-                            <Button Grid.Column="2" Content="Lưu" x:Name="BTN_Set_SysSave"  Height="30" Margin="5,5,4,5"   Click="Click_BTN_Set_SysSave" />
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="6*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1"   Content="IP"    Background="White"  FontWeight="Bold"   FontSize="15"   Height="40"   Padding="1" HorizontalContentAlignment="Center"
+                            HorizontalAlignment="Stretch"    VerticalAlignment="Top"   Margin="0,5,5,0"    Foreground="Black"/>
+                                <Label  Grid.Column="2"   Content="Port"   Background="White"  FontWeight="Bold"   FontSize="15"   Height="40"   Padding="1" HorizontalContentAlignment="Center"
+                            HorizontalAlignment="Stretch"    VerticalAlignment="Top"   Margin="0,5,5,0"    Foreground="Black"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="6*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="0"   Content="Server:"  FontSize="15" HorizontalAlignment="Left" Margin="10,0,0,0"   Style="{StaticResource Basic_labelStyle}"  />
+                                <TextBox  Grid.Column="1"  IsReadOnly="True"  x:Name="TB_Server_IP"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                                <TextBox  Grid.Column="2"  IsReadOnly="True"  x:Name="TB_Server_Port"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="6*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="0"   Content="PLC:"   FontSize="15"  HorizontalAlignment="Left" Margin="10,0,0,0"  Style="{StaticResource Basic_labelStyle}"  />
+                                <TextBox  Grid.Column="1"  IsReadOnly="True"  x:Name="TB_PLC_IP"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                                <TextBox  Grid.Column="2"  IsReadOnly="True"  x:Name="TB_PLC_Port"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1" Content="{DynamicResource lb_Edit}" x:Name="BTN_Set_SysEdit"  Height="30" Margin="5,5,5,5"   Click="Click_BTN_Set_SysEdit"/>
+                                <Button Grid.Column="2" Content="{DynamicResource lb_Save}" x:Name="BTN_Set_SysSave"  Height="30" Margin="5,5,4,5"   Click="Click_BTN_Set_SysSave" />
 
+                            </Grid>
+                            <Grid Grid.Row="6">
+
+                                <Button  Content="{DynamicResource btn_Off_Buzzer}" Width="100" x:Name="btn_off_bz"  Height="40" Margin="5,5,4,5"   Click="Click_off_bz" />
+                            </Grid>
                         </Grid>
-                        <Grid Grid.Row="5"/>
                     </Grid>
                 </Grid>
             </Grid>

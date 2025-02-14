@@ -76,14 +76,6 @@ namespace App_Control_Servo_Press_Delta
             update.Inout(I0_7, I0[7]);
             //
 
-            bool[] I1 = ByteToBits(Data.IB1);
-            update.Inout(I1_0, I1[0]);
-            update.Inout(I1_1, I1[1]);
-            update.Inout(I1_2, I1[2]);
-            update.Inout(I1_3, I1[3]);
-            update.Inout(I1_4, I1[4]);
-            update.Inout(I1_5, I1[5]);
-
             //
             bool[] Q0 = ByteToBits(Data.QB0);
             update.Inout(Q0_0, Q0[0]);
@@ -95,9 +87,6 @@ namespace App_Control_Servo_Press_Delta
             update.Inout(Q0_6, Q0[6]);
             update.Inout(Q0_7, Q0[7]);
             //
-            bool[] Q1 = ByteToBits(Data.QB1);
-            update.Inout(Q1_0, Q1[0]);
-            update.Inout(Q1_1, Q1[1]);
             //
             ushort word1 = Data.Error1;
         }
