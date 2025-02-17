@@ -410,8 +410,8 @@ namespace App_Control_Servo_Press_Delta.Class
                 return;
             }
             var filePath = System.IO.Path.Combine(folderPath, File_Root_name + "_ExportedData.xlsx");
-            Beer_Jig List_Beer_Jig = new Beer_Jig();
-            string Fill_json = File.ReadAllText(linkpath.History);
+            string Fill_json_EN = File.ReadAllText(linkpath.History_EN);
+            string Fill_json_VN = File.ReadAllText(linkpath.History_VN);
             int cnt = 0;
             try
             {
@@ -422,21 +422,29 @@ namespace App_Control_Servo_Press_Delta.Class
 
                 if (fileExists)
                 {
-                    if (Fill_json.Length > 0)
+                    if (Fill_json_EN.Length > 0 & Fill_json_VN.Length > 0)
                     {
                         using (var package = new ExcelPackage(fileInfo))
                         {
-                            int nextRow = 2;
-                            JArray json_fillArray = JArray.Parse(Fill_json);
-
                             worksheet = package.Workbook.Worksheets.First();
-                            foreach (JObject obj in json_fillArray)
+                            int nextRow = 6;
+                            JArray json_fillArray_EN = JArray.Parse(Fill_json_EN);
+                            foreach (JObject obj in json_fillArray_EN)
                             {
                                 worksheet.Cells[nextRow, 1].Value = (string)obj["Code"];
-                                worksheet.Cells[nextRow, 2].Value = (string)obj["Content_"];
+                                worksheet.Cells[nextRow, 2].Value = (string)obj["Description"];
                                 worksheet.Cells[nextRow, 3].Value = (string)obj["Solution"];
                                 nextRow = nextRow + 1;
                             }
+                            nextRow = 6;
+                            JArray json_fillArray_VN = JArray.Parse(Fill_json_VN);
+                            foreach (JObject obj in json_fillArray_VN)
+                            {
+                                worksheet.Cells[nextRow, 4].Value = (string)obj["Description"];
+                                worksheet.Cells[nextRow, 5].Value = (string)obj["Solution"];
+                                nextRow = nextRow + 1;
+                            }
+
                             package.Save();
                             System.Windows.MessageBox.Show("Dữ liệu đã được xuất ra Excel thành công!");
                         }
@@ -449,16 +457,26 @@ namespace App_Control_Servo_Press_Delta.Class
                     using (var package = new ExcelPackage())
                     {
                         worksheet = package.Workbook.Worksheets.Add("Sheet1");
-                        worksheet.Cells[1, 1].Value = "Code";
-                        worksheet.Cells[1, 2].Value = "Content";
-                        worksheet.Cells[1, 3].Value = "Solution";
-                        int nextRow = 2;
-                        JArray json_fillArray = JArray.Parse(Fill_json);
-                        foreach (JObject obj in json_fillArray)
+                        worksheet.Cells[5, 1].Value = "Code";
+                        worksheet.Cells[5, 2].Value = "Desciption_EN";
+                        worksheet.Cells[5, 3].Value = "Solution_EN";
+                        worksheet.Cells[5, 2].Value = "Desciption_VN";
+                        worksheet.Cells[5, 3].Value = "Solution_VN";
+                        int nextRow = 6;
+                        JArray json_fillArray_EN = JArray.Parse(Fill_json_EN);
+                        foreach (JObject obj in json_fillArray_EN)
                         {
                             worksheet.Cells[nextRow, 1].Value = (string)obj["Code"];
-                            worksheet.Cells[nextRow, 2].Value = (string)obj["Content_"];
+                            worksheet.Cells[nextRow, 2].Value = (string)obj["Description"];
                             worksheet.Cells[nextRow, 3].Value = (string)obj["Solution"];
+                            nextRow = nextRow + 1;
+                        }
+                        nextRow = 6;
+                        JArray json_fillArray_VN = JArray.Parse(Fill_json_VN);
+                        foreach (JObject obj in json_fillArray_VN)
+                        {
+                            worksheet.Cells[nextRow, 4].Value = (string)obj["Description"];
+                            worksheet.Cells[nextRow, 5].Value = (string)obj["Solution"];
                             nextRow = nextRow + 1;
                         }
                         package.SaveAs(filePath);
@@ -492,9 +510,12 @@ namespace App_Control_Servo_Press_Delta.Class
             // string formattedDate = dateTime.ToString("dd/MM/yy");
             // string formattedtime = dateTime.ToString("HH:mm:ss");
             // string ID = formattedDate.Replace("/", "") + formattedtime.Replace(":", "");
-            string Jsontemp;
-            string Json_new = "";
-            List_History List_History = new List_History();
+            string Jsontemp_EN;
+            string Jsontemp_VN;
+            string Json_new_EN = "";
+            string Json_new_VN = "";
+            List_History List_History_EN = new List_History();
+            List_History List_History_VN = new List_History();
             // Kiểm tra xem file có tồn tại không
             if (!File.Exists(filePath))
             {
@@ -507,28 +528,40 @@ namespace App_Control_Servo_Press_Delta.Class
             {
                 // Lấy worksheet đầu tiên
                 var worksheet = package.Workbook.Worksheets[0];
-                if (worksheet.Cells[1, 3].Text == "Solution")
+                if (worksheet.Cells[5, 3].Text == "Solution_EN")
                 {
-                    for (int row = 2; row <= worksheet.Dimension.Rows; row++)
+                    for (int row = 6; row <= worksheet.Dimension.Rows; row++)
                     {
-                        List_History.Code = worksheet.Cells[row, 1].Text;
-                        List_History.Content_ = worksheet.Cells[row, 2].Text;
-                        List_History.Solution = worksheet.Cells[row, 3].Text;
-
-                        Jsontemp = JsonConvert.SerializeObject(List_History);
-                        if (Json_new.Length < 2)
+                        List_History_EN.Code = worksheet.Cells[row, 1].Text;
+                        List_History_EN.Description = worksheet.Cells[row, 2].Text;
+                        List_History_EN.Solution = worksheet.Cells[row, 3].Text;
+                        List_History_VN.Code = worksheet.Cells[row, 1].Text;
+                        List_History_VN.Description = worksheet.Cells[row, 4].Text;
+                        List_History_VN.Solution = worksheet.Cells[row, 5].Text;
+                        Jsontemp_EN = JsonConvert.SerializeObject(List_History_EN);
+                        Jsontemp_VN = JsonConvert.SerializeObject(List_History_VN);
+                        if (Json_new_EN.Length < 2)
                         {
-                            Json_new = Json_new + Jsontemp;
+                            Json_new_EN = Json_new_EN + Jsontemp_EN;
                         }
                         else
                         {
-                            Json_new = Json_new + "," + Jsontemp;
+                            Json_new_EN = Json_new_EN + "," + Jsontemp_EN;
+                        }
+                        if (Json_new_VN.Length < 2)
+                        {
+                            Json_new_VN = Json_new_VN + Jsontemp_VN;
+                        }
+                        else
+                        {
+                            Json_new_VN = Json_new_VN + "," + Jsontemp_VN;
                         }
 
-
                     }
-                    Json_new = "[" + Json_new + "]";
-                    File.WriteAllText(linkpath.History, Json_new);
+                    Json_new_EN = "[" + Json_new_EN + "]";
+                    File.WriteAllText(linkpath.History_EN, Json_new_EN);
+                    Json_new_VN = "[" + Json_new_VN + "]";
+                    File.WriteAllText(linkpath.History_VN, Json_new_VN);
                     System.Windows.MessageBox.Show("Đã nhập dữ liệu thành công!");
                 }
                 else

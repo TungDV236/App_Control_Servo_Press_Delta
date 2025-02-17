@@ -29,12 +29,10 @@ namespace App_Control_Servo_Press_Delta
         #region khai báo màn hình
         Auto Auto_Screen = new Auto();
         Manual Manual_Screen = new Manual();
-        History History_Screen = new History();
         GPIO GPIO_Screen = new GPIO();
         Model Model_Screen = new Model();
         Setting Setting_Screen = new Setting();
         History_Error History_Error = new History_Error();
-        History_Alarm History_al = new History_Alarm();
         Report Report_Screen = new Report();
         //
 
@@ -134,6 +132,7 @@ namespace App_Control_Servo_Press_Delta
             }
 
             LanguageComboBox.SelectedIndex = 1;
+            Global.Language = "VN";
         }
 
 
@@ -202,6 +201,7 @@ namespace App_Control_Servo_Press_Delta
                     Source = new Uri("Resources/en.xaml", UriKind.Relative)
                 };
                 Application.Current.Resources.MergedDictionaries.Add(englishResource);
+                Global.Language = "EN";
             }
             else if (languageTag == "Vietnamese")
             {
@@ -214,6 +214,7 @@ namespace App_Control_Servo_Press_Delta
                     Source = new Uri("Resources/vi.xaml", UriKind.Relative)
                 };
                 Application.Current.Resources.MergedDictionaries.Add(VNResource);
+                Global.Language = "VN";
             }
         }
         private void Update_Screen()
@@ -246,7 +247,7 @@ namespace App_Control_Servo_Press_Delta
             //
             float cpuUsage = cpuCounter.NextValue();
             string formattedCpuUsage = cpuUsage.ToString("F2") + "%";
-
+            Per_CPU.Content = formattedCpuUsage;
         }
 
         private void Button_MouseDown(object sender, RoutedEventArgs e)
@@ -375,8 +376,8 @@ namespace App_Control_Servo_Press_Delta
 
         private void Click_BTN_Setting(object sender, RoutedEventArgs e)
         {
-            if (UserName != "")
-            {
+           // if (UserName != "")
+           // {
                 Pannel_Monitor.Children.Clear();
                 Pannel_Monitor.Children.Add(Setting_Screen);
                 BTN_Setting.Background = new SolidColorBrush(Color.FromRgb(100, 149, 237));
@@ -386,11 +387,11 @@ namespace App_Control_Servo_Press_Delta
                 BTN_GPIO.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 BTN_Model.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 BTN_Manual.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-            }
-            else
-            {
-                MessageBox.Show("Vui Lòng Đăng Nhập");
-            }
+          //  }
+          //  else
+          //  {
+          //      MessageBox.Show("Vui Lòng Đăng Nhập");
+          //  }
         }
         private void LoginWindow_LoginSuccessful(object sender, EventArgs e)
         {
@@ -722,9 +723,9 @@ namespace App_Control_Servo_Press_Delta
             List_History List_History_ = new List_History();
             System.DateTime dateTime = System.DateTime.Now;
             Link_Path linkpath = new Link_Path();
-            string Fill_json = File.ReadAllText(linkpath.History);
+            string Fill_json = File.ReadAllText(linkpath.History_VN);
             //   string json_ = File.ReadAllText(linkpath.Error);
-            string json = File.ReadAllText(linkpath.Error);
+            string json = File.ReadAllText(linkpath.Error_EN);
             int cnt = 0;
             //try
             //{
@@ -747,7 +748,7 @@ namespace App_Control_Servo_Press_Delta
                         {
                             List_History_.STT = 1;
                             List_History_.Code = (string)obj["Code"];
-                            List_History_.Content_ = (string)obj["Content_"];
+                            List_History_.Description = (string)obj["Content_"];
                             List_History_.Solution = (string)obj["Solution"];
                             List_History_.Time = dateTime.ToString();
                             string list_Error_Json = JsonConvert.SerializeObject(List_History_);
@@ -756,13 +757,13 @@ namespace App_Control_Servo_Press_Delta
                             {
                                 json = json.Remove(json.Length - 1);
                                 json = json + list_Error_Json + "]";
-                                File.WriteAllText(linkpath.Error, json);
+                                File.WriteAllText(linkpath.Error_EN, json);
                             }
                             else
                             {
                                 json = json.Remove(json.Length - 1);
                                 json = json + ",\r" + list_Error_Json + "]";
-                                File.WriteAllText(linkpath.Error, json);
+                                File.WriteAllText(linkpath.Error_EN, json);
                                 //   List_Alarm.ItemsSource = List_History;
                             }
                         }
@@ -776,7 +777,7 @@ namespace App_Control_Servo_Press_Delta
             List_History List_History_ = new List_History();
             System.DateTime dateTime = System.DateTime.Now;
             Link_Path linkpath = new Link_Path();
-            string Fill_json = File.ReadAllText(linkpath.History);
+            string Fill_json = File.ReadAllText(linkpath.History_EN);
             //   string json_ = File.ReadAllText(linkpath.Error);
             string json = File.ReadAllText(linkpath.Alarm);
             int cnt = 0;
@@ -799,7 +800,7 @@ namespace App_Control_Servo_Press_Delta
                         {
                             List_History_.STT = 1;
                             List_History_.Code = (string)obj["Code"];
-                            List_History_.Content_ = (string)obj["Content_"];
+                            List_History_.Description = (string)obj["Content_"];
                             List_History_.Solution = (string)obj["Solution"];
                             List_History_.Time = dateTime.ToString();
                             string list_Alarm_Json = JsonConvert.SerializeObject(List_History_);
@@ -843,7 +844,7 @@ namespace App_Control_Servo_Press_Delta
         {
             TextBox textBox = (TextBox)sender;
 
-            string mylistString = Status_PLC + string.Join("           ", List_History.Select(o => $"{o.STT}" + " - " + $"{o.Code}" + " - " + $" {o.Content_}")) + "                                               ";
+            string mylistString = Status_PLC + string.Join("           ", List_History.Select(o => $"{o.STT}" + " - " + $"{o.Code}" + " - " + $" {o.Description}")) + "                                               ";
 
             string _mylistString = mylistString + mylistString + mylistString;
 

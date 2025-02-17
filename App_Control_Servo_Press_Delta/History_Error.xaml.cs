@@ -80,7 +80,7 @@ namespace App_Control_Servo_Press_Delta
             int index = 1;
             //try
             //{
-            string List_Show = File.ReadAllText(path.Error);
+            string List_Show = File.ReadAllText(path.Error_EN);
             if (List_Show.Length > 0)
             {
                 JArray List_Show_array = JArray.Parse(List_Show);
@@ -109,8 +109,8 @@ namespace App_Control_Servo_Press_Delta
             //
             string time = " ";
             string Err = "[]";
-            File.WriteAllText(path.Error, "");
-            File.WriteAllText(path.Error, Err);
+            File.WriteAllText(path.Error_EN, "");
+            File.WriteAllText(path.Error_EN, Err);
         }
 
         private void bt_Clear_Click(object sender, RoutedEventArgs e)

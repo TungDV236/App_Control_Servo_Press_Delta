@@ -21,6 +21,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool Check_done_Order { get; set; }
         public static bool clear_forcus { get; set; }
         public static string OrderCode { get; set; }
+        public static string Language { get; set; }
     }
     public class Data_Report
     {
@@ -168,11 +169,11 @@ namespace App_Control_Servo_Press_Delta.Class
         public string TrucID { get; set; }
         // public string Time { get; set; }
     }
-    public class DataView
+    public class DataView_Jig
     {
-        public int STT { get; set; }
+        public int No { get; set; }
         public string ID { get; set; }
-        // public string Time { get; set; }
+        public string Thickness { get; set; }
     }
     public class ID_Model
     {

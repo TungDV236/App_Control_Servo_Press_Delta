@@ -107,7 +107,6 @@ namespace App_Control_Servo_Press_Delta
         {
 
             var buttons = Common.FindVisualChildren2<Button>(this);
-
             foreach (var button in buttons)
             {
                 if (button.Name.StartsWith("GP"))

@@ -22,227 +22,11 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
+
+
                 <Grid Grid.Column="0">
-                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
-                    <Grid >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <Label Grid.Row="0"  Content="{DynamicResource lb_List_Upper_Bearings}"
-                                 FontSize="20"
-                                 HorizontalAlignment="Center"
-                                 FontFamily="Source Sans Pro"
-                                 Foreground="Black"
-                                 FontStyle="Normal"
-                                 FontWeight="Bold"
-                                 Margin="2,0,0,0"
-                                 VerticalAlignment="Bottom">
-                        </Label>
-
-                        <Grid  Grid.Row="1"
-                                Margin="2,0,2,0">
-                            <DataGrid x:Name="List_Upper_Bearings"
-                              AutoGenerateColumns="False"
-                              FontSize="20"
-                              Foreground="Black"
-                              Background="White"
-                              BorderBrush="Black"
-                              BorderThickness="0.5"
-                              Margin="2,2,2,4"
-                              HorizontalGridLinesBrush="Black"
-                              CanUserResizeColumns="False"
-                              CanUserResizeRows="False"
-                              IsReadOnly="True"
-                              Grid.ColumnSpan="2">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="STT"
-                                         Foreground="Black"
-                                         Binding="{Binding STT}"
-                                         Width="80">
-                                        <DataGridTextColumn.ElementStyle>
-                                            <Style TargetType="{x:Type TextBlock}">
-                                                <Setter Property="HorizontalAlignment"
-                                                 Value="Center" />
-                                            </Style>
-                                        </DataGridTextColumn.ElementStyle>
-                                    </DataGridTextColumn>
-                                    <DataGridTextColumn Header="ID"
-                                         Binding="{Binding ID_BearingU}"
-                                         Width="120" >
-
-                                    </DataGridTextColumn>
-
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-
-                        <Grid    Grid.Row="2">
-
-                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
-                            <Grid Margin="0,5,0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="5"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_BearingU" Background="White" Padding="0"  Margin="0,0,5,0"  />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_BearingU" Background="White" Padding="0"  Margin="5,0,0,0"  Height="32" VerticalAlignment="Top" />
-
-                            </Grid>
-                           </Grid>
-                        <Grid Grid.Row="3"  Margin="5,12,5,0">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_ID_BearingU"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
-                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-                        <Grid Grid.Row="4" Height="50" Margin="5,12,5,0">
-                            
-                        </Grid>
-                        <Grid Grid.Row="5">
-                            <Border BorderBrush="Black" BorderThickness="1"/>
-                            <Grid    Margin="0,5,0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="5"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_BearingU" Background="White"  Margin="0,0,5,0" />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_BearingU" Background="White"   Margin="5,0,0,0"  />
-
-                            </Grid>
-
-                        </Grid>
-                    </Grid>
-
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
-                    <Grid >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <Label Grid.Row="0"  Content="{DynamicResource lb_List_Lower_Bearings}"
-                                 FontSize="20"
-                                 HorizontalAlignment="Center"
-                                 FontFamily="Source Sans Pro"
-                                 Foreground="Black"
-                                 FontStyle="Normal"
-                                 FontWeight="Bold"
-                                 Margin="2,0,0,0"
-                                 VerticalAlignment="Bottom">
-                        </Label>
-
-                        <Grid  Grid.Row="1" 
-                               Margin="2,0,2,0">
-                            <DataGrid x:Name="List_Lower_Bearings"
-                              AutoGenerateColumns="False"
-                              FontSize="20"
-                              Foreground="Black"
-                              Background="White"
-                              BorderBrush="Black"
-                              BorderThickness="0.5"
-                              Margin="2,2,2,4"
-                              HorizontalGridLinesBrush="Black"
-                              CanUserResizeColumns="False"
-                              CanUserResizeRows="False"
-                              IsReadOnly="True"
-                              Grid.ColumnSpan="2">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="STT"
-                                         Foreground="Black"
-                                         Binding="{Binding STT}"
-                                         Width="80">
-                                        <DataGridTextColumn.ElementStyle>
-                                            <Style TargetType="{x:Type TextBlock}">
-                                                <Setter Property="HorizontalAlignment"
-                                                 Value="Center" />
-                                            </Style>
-                                        </DataGridTextColumn.ElementStyle>
-                                    </DataGridTextColumn>
-                                    <DataGridTextColumn Header="ID"
-                                         Binding="{Binding ID_BearingD}"
-                                         Width="120" >
-
-                                    </DataGridTextColumn>
-
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-
-                        <Grid    Grid.Row="2">
-
-                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
-                            <Grid Margin="0,5,0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="5"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_BearingD" Background="White" Padding="0"  Margin="0,0,5,0"  />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_BearingD" Background="White" Padding="0"  Margin="5,0,0,0"  />
-
-                            </Grid>
-                        </Grid>
-                        <Grid Grid.Row="3"  Margin="5,12,5,0">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_ID_BearingD"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
-                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-
-                        <Grid Grid.Row="4" Height="50" Margin="5,12,5,0">
-
-                        </Grid>
-                        <Grid Grid.Row="5">
-                            <Border BorderBrush="Black" BorderThickness="1"/>
-                            <Grid    Margin="0,5,0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="5"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_BearingD" Background="White"  Margin="0,0,5,0" />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_BearingD" Background="White"   Margin="5,0,0,0"  />
-
-                            </Grid>
-
-                        </Grid>
-                    </Grid>
-
-                </Grid>
-
-                <Grid Grid.Column="2">
                     <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
                     <Grid >
                         <Grid.RowDefinitions>
@@ -281,9 +65,9 @@
                               IsReadOnly="True"
                               Grid.ColumnSpan="2">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="STT"
+                                    <DataGridTextColumn Header="{DynamicResource lb_No}"
                                          Foreground="Black"
-                                         Binding="{Binding STT}"
+                                         Binding="{Binding No}"
                                          Width="80">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="{x:Type TextBlock}">
@@ -293,7 +77,7 @@
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="ID"
-                                         Binding="{Binding ID_JigU}"
+                                         Binding="{Binding ID}"
                                          Width="120" >
 
                                     </DataGridTextColumn>
@@ -313,8 +97,8 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigU" Background="White" Padding="0"  Margin="0,0,5,0"  />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigU" Background="White" Padding="0"  Margin="5,0,0,0"   Height="32" VerticalAlignment="Top" />
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigU" Background="White" Padding="0"  Margin="0,0,5,0" Click="btn_import_JigU_Click"  />
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigU" Background="White" Padding="0"  Margin="5,0,0,0"   Height="32" VerticalAlignment="Top" Click="btn_export_JigU_Click" />
 
                             </Grid>
                         </Grid>
@@ -327,7 +111,7 @@
                             <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
                                  HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                         </Grid>
-                        <Grid Grid.Row="4"  Margin="5,12,5,0">
+                        <Grid Grid.Row="4"  Margin="5,12,5,20">
                             <Grid>
                                 <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
                                 <TextBox  x:Name="tb_Thichness_JigU"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
@@ -346,8 +130,8 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_JigU" Background="White"  Margin="0,0,5,0" />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_JigU" Background="White"   Margin="5,0,0,0"  />
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="btn_Del_JigU" Background="White"  Margin="0,0,5,0" Click="btn_Del_JigU_Click" />
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="btn_Save_JigU" Background="White"   Margin="5,0,0,0" Click="btn_Save_JigU_Click"  />
 
                             </Grid>
 
@@ -356,7 +140,7 @@
 
                 </Grid>
 
-                <Grid Grid.Column="3">
+                <Grid Grid.Column="1" Margin="-1,0,0,0">
                     <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
                     <Grid >
                         <Grid.RowDefinitions>
@@ -395,9 +179,9 @@
                               IsReadOnly="True"
                               Grid.ColumnSpan="2">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="STT"
+                                    <DataGridTextColumn Header="{DynamicResource lb_No}"
                                          Foreground="Black"
-                                         Binding="{Binding STT}"
+                                         Binding="{Binding No}"
                                          Width="80">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="{x:Type TextBlock}">
@@ -407,7 +191,7 @@
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="ID"
-                                         Binding="{Binding ID_JigM}"
+                                         Binding="{Binding ID}"
                                          Width="120" >
 
                                     </DataGridTextColumn>
@@ -427,8 +211,8 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigM" Background="White" Padding="0"  Margin="0,0,5,0"  />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigM" Background="White" Padding="0"  Margin="5,0,0,0"  />
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigM" Background="White" Padding="0"  Margin="0,0,5,0" Click="btn_import_JigM_Click"  />
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigM" Background="White" Padding="0"  Margin="5,0,0,0" Click="btn_export_JigM_Click"  />
 
                             </Grid>
                         </Grid>
@@ -441,14 +225,8 @@
                             <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
                                  HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                         </Grid>
-                        <Grid Grid.Row="4"  Margin="5,12,5,0">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Thichness_JigM"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Thicknness}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        <Grid Grid.Row="4" Height="50" Margin="5,12,5,20">
+                            
                         </Grid>
                         <Grid Grid.Row="5">
                             <Border BorderBrush="Black" BorderThickness="1"/>
@@ -460,8 +238,8 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_JigM" Background="White"  Margin="0,0,5,0" />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_JigM" Background="White"   Margin="5,0,0,0"  />
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="btn_Del_JigM" Background="White"  Margin="0,0,5,0" Click="btn_Del_JigM_Click" />
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="btn_Save_JigM" Background="White"   Margin="5,0,0,0" Click="btn_Save_JigM_Click"  />
 
                             </Grid>
 
@@ -470,7 +248,7 @@
 
                 </Grid>
 
-                <Grid Grid.Column="4">
+                <Grid Grid.Column="2" Margin="-1,0,0,0">
                     <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
                     <Grid >
                         <Grid.RowDefinitions>
@@ -509,9 +287,9 @@
                               IsReadOnly="True"
                               Grid.ColumnSpan="2">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="STT"
+                                    <DataGridTextColumn Header="{DynamicResource lb_No}"
                                          Foreground="Black"
-                                         Binding="{Binding STT}"
+                                         Binding="{Binding No}"
                                          Width="80">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="{x:Type TextBlock}">
@@ -521,7 +299,7 @@
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="ID"
-                                         Binding="{Binding ID_JigD}"
+                                         Binding="{Binding ID}"
                                          Width="120" >
 
                                     </DataGridTextColumn>
@@ -541,8 +319,8 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigD" Background="White" Padding="0"  Margin="0,0,5,0" />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigD" Background="White" Padding="0"  Margin="5,0,0,0"   />
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_JigD" Background="White" Padding="0"  Margin="0,0,5,0" Height="32" VerticalAlignment="Top" Click="btn_import_JigD_Click" />
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_JigD" Background="White" Padding="0"  Margin="5,0,0,0" Click="btn_export_JigD_Click"   />
 
                             </Grid>
                         </Grid>
@@ -555,7 +333,7 @@
                             <Label Content="ID"   FontWeight="Bold"    Background="White"   Width="30"  Height="20"   Padding="1" 
                                  HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                         </Grid>
-                        <Grid Grid.Row="4"  Margin="5,12,5,0">
+                        <Grid Grid.Row="4"  Margin="5,12,5,20">
                             <Grid>
                                 <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
                                 <TextBox  x:Name="tb_Thichness_JigD"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
@@ -574,8 +352,8 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_JigD" Background="White"  Margin="0,0,5,0" />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_JigD" Background="White"   Margin="5,0,0,0"  />
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="btn_Del_JigD" Background="White"  Margin="0,0,5,0" Click="btn_Del_JigD_Click" />
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="btn_Save_JigD" Background="White"   Margin="5,0,0,0" Click="btn_Save_JigD_Click"  />
 
                             </Grid>
 
@@ -584,7 +362,7 @@
 
                 </Grid>
 
-                <Grid Grid.Column="5">
+                <Grid Grid.Column="3" Margin="-1,0,0,0">
                     <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
                     <Grid >
                         <Grid.RowDefinitions>
@@ -623,9 +401,9 @@
                               IsReadOnly="True"
                               Grid.ColumnSpan="2">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="STT"
+                                    <DataGridTextColumn Header="{DynamicResource lb_No}"
                                          Foreground="Black"
-                                         Binding="{Binding STT}"
+                                         Binding="{Binding No}"
                                          Width="80">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style TargetType="{x:Type TextBlock}">
@@ -634,17 +412,17 @@
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="ID"
-                                         Binding="{Binding ID_Code}"
+                                    <DataGridTextColumn Header="{DynamicResource lb_Code}"
+                                         Binding="{Binding Code}"
                                          Width="120" >
 
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Description"
+                                    <DataGridTextColumn Header="{DynamicResource lb_Description}"
                                          Binding="{Binding Description}"
                                          Width="300" >
 
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Solution"
+                                    <DataGridTextColumn Header="{DynamicResource lb_Solution}"
                                          Binding="{Binding Solution}"
                                          Width="300" >
 
@@ -665,8 +443,8 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_HisE" Background="White" Padding="0"  Margin="0,0,5,0" />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_HisE" Background="White" Padding="0"  Margin="5,0,0,0" />
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Import}" x:Name="btn_import_HisE" Background="White" Padding="0"  Margin="0,0,5,0" Click="btn_import_HisE_Click" />
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Export}" x:Name="btn_export_HisE" Background="White" Padding="0"  Margin="5,0,0,0" Click="btn_export_HisE_Click" />
 
                             </Grid>
                         </Grid>
@@ -704,7 +482,7 @@
                                    HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="4"  Margin="5,12,5,0">
+                        <Grid Grid.Row="4"  Margin="5,12,5,20">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="*"/>
@@ -714,7 +492,7 @@
                             <Grid Grid.Column="1" Margin="5,0,0,0">
                                 <Grid >
                                     <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_DescriptionVI"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                    <TextBox  x:Name="tb_DescriptionVN"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                 </Grid>
 
                                 <Label Content="{DynamicResource lb_DescriptionVi}"   FontWeight="Bold"    Background="White"   Width="100"  Height="20"   Padding="1" 
@@ -723,7 +501,7 @@
                             <Grid Grid.Column="2" Margin="5,0,0,0">
                                 <Grid >
                                     <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_SolutionVi"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                    <TextBox  x:Name="tb_SolutionVN"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                 </Grid>
 
                                 <Label Content="{DynamicResource lb_SolutionVI}"   FontWeight="Bold"    Background="White"   Width="100"  Height="20"   Padding="1" 
@@ -740,8 +518,8 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_HisE" Background="White"  Margin="0,0,5,0"  />
-                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_HisE" Background="White"   Margin="5,0,0,0"  />
+                                <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="btn_Del_HisE" Background="White"  Margin="0,0,5,0" Click="btn_Del_HisE_Click"  />
+                                <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="btn_Save_HisE" Background="White"   Margin="5,0,0,0" Click="btn_Save_HisE_Click"  />
 
                             </Grid>
 
@@ -751,9 +529,8 @@
                 </Grid>
             </Grid>
             
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Margin="0,-1,0,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -830,13 +607,13 @@
                                     <ColumnDefinition Width="80"/>
                                     <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1" Content="{DynamicResource lb_Edit}" x:Name="btn_Set_SysEdit"  Height="30" Margin="5,5,5,5" />
-                                <Button Grid.Column="2" Content="{DynamicResource lb_Save}" x:Name="btn_Set_SysSave"  Height="30" Margin="5,5,4,5" />
+                                <Button Grid.Column="1" Content="{DynamicResource lb_Edit}" x:Name="btn_Set_SysEdit"  Height="30" Margin="5,5,5,5" Click="btn_Set_SysEdit_Click" />
+                                <Button Grid.Column="2" Content="{DynamicResource lb_Save}" x:Name="btn_Set_SysSave"  Height="30" Margin="5,5,4,5" Click="btn_Set_SysSave_Click" />
 
                             </Grid>
                             <Grid Grid.Row="6">
 
-                                <Button  Content="{DynamicResource btn_Off_Buzzer}" Width="100" x:Name="btn_off_bz"  Height="40" Margin="5,5,4,5"  />
+                                <Button  Content="{DynamicResource btn_Off_Buzzer}" Width="100" x:Name="btn_off_bz"  Height="40" Margin="5,5,4,5" Click="btn_off_bz_Click"  />
                             </Grid>
                         </Grid>
                     </Grid>

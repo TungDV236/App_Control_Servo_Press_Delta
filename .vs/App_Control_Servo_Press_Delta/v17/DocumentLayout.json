@@ -3,24 +3,64 @@
   "WorkspaceRootPath": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|e:\\cong viec\\sti\\du an\\06.control_servo_press_delta\\app_control_servo_press_delta\\app_control_servo_press_delta\\setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\report.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\report.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|e:\\cong viec\\sti\\du an\\06.control_servo_press_delta\\app_control_servo_press_delta\\app_control_servo_press_delta\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\monitor_order.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\monitor_order.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|e:\\cong viec\\sti\\du an\\06.control_servo_press_delta\\app_control_servo_press_delta\\app_control_servo_press_delta\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|e:\\cong viec\\sti\\du an\\06.control_servo_press_delta\\app_control_servo_press_delta\\app_control_servo_press_delta\\gpio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\gpio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|e:\\cong viec\\sti\\du an\\06.control_servo_press_delta\\app_control_servo_press_delta\\app_control_servo_press_delta\\resources\\en.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\auto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\auto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\model.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\model.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\create_gpio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\create_gpio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\class\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\class\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\resources\\vi.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\resources\\vi.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\resources\\en.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\resources\\en.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|e:\\cong viec\\sti\\du an\\06.control_servo_press_delta\\app_control_servo_press_delta\\app_control_servo_press_delta\\resources\\vi.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\resources\\vi.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\class\\data_excel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\class\\data_excel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\class\\data_history.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\class\\data_history.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\app_control_servo_press_delta\\class\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1AE9640-4A6F-4DB1-B5BB-A7F7A5972C81}|App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta.csproj|solutionrelative:app_control_servo_press_delta\\class\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,69 +70,187 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Setting.xaml",
-              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Setting.xaml",
-              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Setting.xaml",
-              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Setting.xaml",
-              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Setting.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T01:54:18.47Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Setting.xaml.cs",
-              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Setting.xaml.cs",
-              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Setting.xaml.cs",
-              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Setting.xaml.cs",
-              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Setting.xaml.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAowD8AAAANAAAAAAAAAA==",
+              "Title": "Report.xaml.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Report.xaml.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Report.xaml.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Report.xaml.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Report.xaml.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAQwD4AAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T01:52:33.866Z",
+              "WhenOpened": "2025-02-14T09:01:50.738Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "vi.xaml",
-              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Resources\\vi.xaml",
-              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Resources\\vi.xaml",
-              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Resources\\vi.xaml",
-              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Resources\\vi.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T01:38:58.569Z",
+              "DocumentIndex": 6,
+              "Title": "Model.xaml.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Model.xaml.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Model.xaml.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Model.xaml.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Model.xaml.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAkwBIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T09:01:44.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Create_GPIO.xaml.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Create_GPIO.xaml.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Create_GPIO.xaml.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Create_GPIO.xaml.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Create_GPIO.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T09:01:15.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GPIO.xaml.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\GPIO.xaml.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\GPIO.xaml.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\GPIO.xaml.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\GPIO.xaml.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAcwHYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T08:58:07.848Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
+              "Title": "Data.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Class\\Data.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Class\\Data.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Class\\Data.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Class\\Data.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T07:50:11.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Common.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Class\\Common.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Class\\Common.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Class\\Common.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Class\\Common.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAMwG8AAACLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T07:50:18.463Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Data_Excel.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Class\\Data_Excel.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Class\\Data_Excel.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Class\\Data_Excel.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Class\\Data_Excel.cs",
+              "ViewState": "AgIAAAgCAAAAAAAAAAAUwBYCAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T07:48:19.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "en.xaml",
               "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Resources\\en.xaml",
               "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Resources\\en.xaml",
               "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Resources\\en.xaml",
               "RelativeToolTip": "App_Control_Servo_Press_Delta\\Resources\\en.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T01:38:49.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T07:38:24.946Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
+              "Title": "vi.xaml",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Resources\\vi.xaml",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Resources\\vi.xaml",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Resources\\vi.xaml",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Resources\\vi.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-14T07:38:03.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Setting.xaml",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Setting.xaml",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Setting.xaml",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Setting.xaml",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Setting.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-14T07:33:32.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Data_History.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Class\\Data_History.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Class\\Data_History.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Class\\Data_History.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Class\\Data_History.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAswG8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T07:23:56.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\MainWindow.xaml.cs",
               "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\MainWindow.xaml.cs",
               "RelativeToolTip": "App_Control_Servo_Press_Delta\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAFIBAAAAAAAAAAAUwDsAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAYwCIAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T01:34:09.873Z",
+              "WhenOpened": "2025-02-14T07:22:15.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Setting.xaml.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Setting.xaml.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Setting.xaml.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Setting.xaml.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Setting.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T07:17:30.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Monitor_Order.xaml.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Monitor_Order.xaml.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Monitor_Order.xaml.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Monitor_Order.xaml.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Monitor_Order.xaml.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAwwGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T07:11:21.251Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Auto.xaml.cs",
+              "DocumentMoniker": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Auto.xaml.cs",
+              "RelativeDocumentMoniker": "App_Control_Servo_Press_Delta\\Auto.xaml.cs",
+              "ToolTip": "E:\\Cong Viec\\STI\\Du An\\06.Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\App_Control_Servo_Press_Delta\\Auto.xaml.cs",
+              "RelativeToolTip": "App_Control_Servo_Press_Delta\\Auto.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T07:11:17.03Z"
             }
           ]
         }

@@ -168,14 +168,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="History.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="History_Alarm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="History_Error.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,12 +203,6 @@
     <Compile Include="GPIO.xaml.cs">
       <DependentUpon>GPIO.xaml</DependentUpon>
     </Compile>
-    <Compile Include="History.xaml.cs">
-      <DependentUpon>History.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="History_Alarm.xaml.cs">
-      <DependentUpon>History_Alarm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="History_Error.xaml.cs">
       <DependentUpon>History_Error.xaml</DependentUpon>
     </Compile>
@@ -239,30 +225,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Monitor_Order.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Popup\Model_Add.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Popup\Model_Beer_Down.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Popup\Model_Beer_Up.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Popup\Model_Jig_Down.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Popup\Model_Jig_Mid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Popup\Model_Jig_Up.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -293,24 +255,6 @@
     </Compile>
     <Compile Include="Model.xaml.cs">
       <DependentUpon>Model.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\Model_Add.xaml.cs">
-      <DependentUpon>Model_Add.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\Model_Beer_Down.xaml.cs">
-      <DependentUpon>Model_Beer_Down.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\Model_Beer_Up.xaml.cs">
-      <DependentUpon>Model_Beer_Up.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\Model_Jig_Down.xaml.cs">
-      <DependentUpon>Model_Jig_Down.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\Model_Jig_Mid.xaml.cs">
-      <DependentUpon>Model_Jig_Mid.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\Model_Jig_Up.xaml.cs">
-      <DependentUpon>Model_Jig_Up.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

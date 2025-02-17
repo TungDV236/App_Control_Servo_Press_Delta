@@ -27,14 +27,14 @@ namespace App_Control_Servo_Press_Delta
         public string Jig_Up = System.IO.Path.Combine("Model", "Jig_Up.json");
         public string Jig_Mid = System.IO.Path.Combine("Model", "Jig_Mid.json");
         public string Jig_Down = System.IO.Path.Combine("Model", "Jig_Down.json");
-        public string Error = System.IO.Path.Combine("Path", "Error.json");
-        public string History = System.IO.Path.Combine("Path", "History.json");
+        public string Error_EN = System.IO.Path.Combine("Path", "Error_EN.json");
+        public string Error_VN = System.IO.Path.Combine("Path", "Error_VN.json");
+        public string History_EN = System.IO.Path.Combine("Path", "History_EN.json");
+        public string History_VN = System.IO.Path.Combine("Path", "History_VN.json");
         public string Alarm = System.IO.Path.Combine("Path", "Alarm.json");
-        public string List_Error = System.IO.Path.Combine("Path", "List_Error.ini");
-        public string List_Alarm = System.IO.Path.Combine("Path", "List_Alarm.ini");
         public string User_List = System.IO.Path.Combine("Path", "UserCredentials.json");
-        public string GPIO = System.IO.Path.Combine("Path", "GPIO.json");
-        public string Time_work = System.IO.Path.Combine("Path", "Time_Work.json");
+        public string GPIO_EN = System.IO.Path.Combine("Path", "GPIO_EN.json");
+        public string GPIO_VN = System.IO.Path.Combine("Path", "GPIO_VN.json");
         public string Chart = System.IO.Path.Combine("Path", "Chart.json");
     }
     public class ColorChecker
@@ -87,17 +87,35 @@ namespace App_Control_Servo_Press_Delta
             int index = 1;
             try
             {
-                string List_Show = File.ReadAllText(linkpath.History);
-                if (List_Show.Length > 0)
+                string List_Show_EN = File.ReadAllText(linkpath.History_EN);
+                string List_Show_VN = File.ReadAllText(linkpath.History_VN);
+                if (Global.Language =="EN")
                 {
-                    JArray List_Show_array = JArray.Parse(List_Show);
-                    foreach (JObject obj in List_Show_array)
+                    if (List_Show_EN.Length > 0)
                     {
-                        items.Add(new DataView_History { STT = index, Code = (string)obj["Code"], Content_ = (string)obj["Content_"], Solution = (string)obj["Solution"] });
-                        index++;
+                        JArray List_Show_array = JArray.Parse(List_Show_EN);
+                        foreach (JObject obj in List_Show_array)
+                        {
+                            items.Add(new DataView_History { No = index, Code = (string)obj["Code"], Description = (string)obj["Description"], Solution = (string)obj["Solution"] });
+                            index++;
+                        }
+                        dataGrid.ItemsSource = items;
                     }
-                    dataGrid.ItemsSource = items;
                 }
+                if (Global.Language == "VN")
+                {
+                    if (List_Show_VN.Length > 0)
+                    {
+                        JArray List_Show_array = JArray.Parse(List_Show_VN);
+                        foreach (JObject obj in List_Show_array)
+                        {
+                            items.Add(new DataView_History { No = index, Code = (string)obj["Code"], Description = (string)obj["Description"], Solution = (string)obj["Solution"] });
+                            index++;
+                        }
+                        dataGrid.ItemsSource = items;
+                    }
+                }
+
             }
             catch
             {
@@ -106,7 +124,8 @@ namespace App_Control_Servo_Press_Delta
         }
         public void Load_View(DataGrid dataGrid, string path)
         {
-            List<DataView> items = new List<DataView>();
+            string datagridname = dataGrid.Name;
+            List<DataView_Jig> items = new List<DataView_Jig>();
             int index = 1;
             try
             {
@@ -116,8 +135,16 @@ namespace App_Control_Servo_Press_Delta
                     JArray List_Show_array = JArray.Parse(List_Show);
                     foreach (JObject obj in List_Show_array)
                     {
-                        items.Add(new DataView { STT = index, ID = (string)obj["ID"] });
-                        index++;
+                        if (datagridname == "List_Upper_Jig"|| datagridname == "List_Lower_Jig")
+                        {
+                            items.Add(new DataView_Jig { No = index, ID = (string)obj["ID"],Thickness = (string)obj["Thickness"] });
+                            index++;
+                        }
+                        if (datagridname == "List_Middle_Jig")
+                        {
+                            items.Add(new DataView_Jig { No = index, ID = (string)obj["ID"], Thickness = (string)obj["Thickness"] });
+                            index++;
+                        }
                     }
                     dataGrid.ItemsSource = items;
                 }
@@ -229,25 +256,26 @@ namespace App_Control_Servo_Press_Delta
             }
             return "---";
         }
-        public void Edit_IO(string IO_Name, string IO_Define)
+        public void Edit_IO(string IO_Name, string IO_Define_EN, string IO_Define_VN)
         {
-            string json = File.ReadAllText(linkpath.GPIO);
+            string json_EN = File.ReadAllText(linkpath.GPIO_EN);
+            string json_VN = File.ReadAllText(linkpath.GPIO_VN);
             Items_IO Items_IO_ = new Items_IO();
             //try
             //{
-            if (json.Length > 0)
+            if (json_EN.Length > 0)
             {
                 var options = new JsonSerializerOptions { ReadCommentHandling = JsonCommentHandling.Skip };
-                var data = System.Text.Json.JsonSerializer.Deserialize<Items_IO_temp[]>(json, options);
+                var data = System.Text.Json.JsonSerializer.Deserialize<Items_IO_temp[]>(json_EN, options);
                 foreach (var item in data)
                 {
                     if (item.IO_Name == IO_Name.Substring(2))
                     {
                         //  item.IO_Name = IO_Name;
-                        item.IO_Define = IO_Define;
+                        item.IO_Define = IO_Define_EN;
                         var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
                         string newJsonString = System.Text.Json.JsonSerializer.Serialize(data, jsonOptions);
-                        File.WriteAllText(linkpath.GPIO, newJsonString);
+                        File.WriteAllText(linkpath.GPIO_EN, newJsonString);
                         MessageBox.Show("Đã Lưu Thành Công");
                         break;
                     }

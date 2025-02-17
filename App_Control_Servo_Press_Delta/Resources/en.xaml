@@ -113,11 +113,14 @@
     <system:String x:Key="lb_History_Error_Config">History Config</system:String>
     <system:String x:Key="lb_Systems">Systems</system:String>
     <system:String x:Key="lb_Thicknness">Thickness</system:String>
+    <system:String x:Key="lb_No">No</system:String>
     <system:String x:Key="lb_Code">Code</system:String>
-    <system:String x:Key="lb_DescriptionVi">Description (Vi)</system:String>
-    <system:String x:Key="lb_SolutionVI">Solution (Vi)</system:String>
-    <system:String x:Key="lb_DescriptionEn">Description (En)</system:String>
-    <system:String x:Key="lb_SolutionEn">Solution (En)</system:String>
+    <system:String x:Key="lb_Description">Description</system:String>
+    <system:String x:Key="lb_Solution">Solution</system:String>
+    <system:String x:Key="lb_DescriptionVi">Description (VN)</system:String>
+    <system:String x:Key="lb_SolutionVI">Solution (VN)</system:String>
+    <system:String x:Key="lb_DescriptionEn">Description (EN)</system:String>
+    <system:String x:Key="lb_SolutionEn">Solution (EN)</system:String>
     <system:String x:Key="lb_Edit">Edit</system:String>
     <system:String x:Key="btn_Off_Buzzer">Off Buzzer</system:String>
 

@@ -1,5 +1,4 @@
 ﻿using App_Control_Servo_Press_Delta.Class;
-using App_Control_Servo_Press_Delta.Popup;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;

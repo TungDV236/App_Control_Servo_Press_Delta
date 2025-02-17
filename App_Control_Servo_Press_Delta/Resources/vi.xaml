@@ -116,11 +116,14 @@
     <system:String x:Key="lb_Systems">Hệ Thống</system:String>
     <system:String x:Key="lb_Thicknness">Độ đày</system:String>
 
+    <system:String x:Key="lb_No">STT</system:String>
     <system:String x:Key="lb_Code">Mã Lỗi</system:String>
-    <system:String x:Key="lb_DescriptionVi">Mô tả Lỗi (Vi)</system:String>
-    <system:String x:Key="lb_SolutionVI">Cách xử lý (Vi)</system:String>
-    <system:String x:Key="lb_DescriptionEn">Mô tả Lỗi (En)</system:String>
-    <system:String x:Key="lb_SolutionEn">Cách xử lý (En)</system:String>
+    <system:String x:Key="lb_Description">Nội Dung</system:String>
+    <system:String x:Key="lb_Solution">Cách Xử Lý</system:String>
+    <system:String x:Key="lb_DescriptionVi">Mô tả Lỗi (VN)</system:String>
+    <system:String x:Key="lb_SolutionVI">Cách xử lý (VN)</system:String>
+    <system:String x:Key="lb_DescriptionEn">Mô tả Lỗi (EN)</system:String>
+    <system:String x:Key="lb_SolutionEn">Cách xử lý (EN)</system:String>
     <system:String x:Key="lb_Edit">Sửa</system:String>
     <system:String x:Key="btn_Off_Buzzer">Tắt Còi</system:String>
 

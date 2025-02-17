@@ -17,7 +17,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using IOPath = System.IO.Path;
-using App_Control_Servo_Press_Delta.Popup;
 using Microsoft.Win32;
 using System.ComponentModel;
 using App_Control_Servo_Press_Delta.Class;

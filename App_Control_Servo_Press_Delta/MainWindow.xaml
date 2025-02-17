@@ -30,7 +30,7 @@
                             <ColumnDefinition Width="250"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0" Height="60">
+                        <Grid Grid.Column="0" Height="80">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
@@ -43,10 +43,10 @@
                      Margin="5,0,0,0"
                      Stretch="Fill">
                                 </Image>
-                                <ComboBox x:Name="LanguageComboBox" Width="150" Height="20" Margin="10"   Background="White"  BorderThickness="0" BorderBrush="White" Foreground="Black" FontWeight="Bold" 
+                                <ComboBox x:Name="LanguageComboBox" Width="120" Height="30" Margin="10"  FontSize="15" Background="White"  BorderThickness="0" BorderBrush="White" Foreground="Black" FontWeight="Bold" 
                                             SelectionChanged="LanguageComboBox_SelectionChanged">
                                     <ComboBoxItem Content="English"/>
-                                    <ComboBoxItem Content="Vietnamese" /> 
+                                    <ComboBoxItem Content="Vietnamese" />
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal">
@@ -100,17 +100,36 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                           
 
-                            <Grid Grid.Row="1" >
+
+                            <Grid Grid.Row="0" >
                                 <Grid  HorizontalAlignment="Right" Margin="0,0,5,0">
                                     <Button  Width="115"  Padding="0"    Name="btn_infor"  Background="Transparent"   BorderBrush="Transparent">
                                         <StackPanel Orientation="Horizontal" Width="200">
-                                            <Image Source="Images\info.png"    Width="32"   HorizontalAlignment="Left"    Margin="0,0,0,0"     Stretch="Fill" >                                            </Image>
+                                            <Image Source="Images\info.png"    Width="32"   HorizontalAlignment="Left"    Margin="0,0,0,0"     Stretch="Fill" ></Image>
                                             <Label Content="{DynamicResource lb_Infor}"   FontSize="15"  FontFamily="Arial"   FontWeight="Bold"     VerticalContentAlignment="Bottom"
-                                                  HorizontalContentAlignment="Left"      BorderThickness="1"   Width="85"   VerticalAlignment="Center">                                            </Label>
+                                                  HorizontalContentAlignment="Left"      BorderThickness="1"   Width="85"   VerticalAlignment="Center"></Label>
                                         </StackPanel>
                                     </Button>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1" >
+                                <Grid>
+                                    <Label   Content="CPU:"
+                                             Margin="130,0,0,0"
+                                            FontSize="15"
+                                            FontFamily="Arial"
+                                            FontWeight="Bold"
+                                            HorizontalContentAlignment="Left"
+                                            VerticalContentAlignment="Center"/>
+                                    <Label x:Name="Per_CPU"
+                                        Margin="180,0,20,0"
+                                           Height="25"
+                                           HorizontalContentAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Source Sans Pro"
+                                        FontSize="15"
+                                        FontStyle="Normal" />
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -184,7 +203,7 @@
                         </Grid>
                     </Grid>
 
-                    
+
                 </Grid>
                 <Grid Grid.Column="1" Margin="2">
                     <Border BorderBrush="Black" BorderThickness="2"

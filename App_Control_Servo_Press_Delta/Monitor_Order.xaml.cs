@@ -79,6 +79,7 @@ namespace App_Control_Servo_Press_Delta
                 if (code_old != Order_Code.Text & Order_Code.Text != null & Order_Code.Text!= "")
                 {
                     code_old = Order_Code.Text;
+                    step_scan = 1;
                 }
                 else if (code_old == Order_Code.Text & Order_Code.Text != null & Order_Code.Text != "" & step_scan == 1)
                 {
@@ -215,11 +216,17 @@ namespace App_Control_Servo_Press_Delta
         {
             TextBox textBox = (TextBox)sender;
             string textboxName = textBox.Name;
-            if (textboxName == "TB_Model")
-            {
-               
+           // if (textboxName == "Order_Code")
+           // {
+            int caretIndex = textBox.CaretIndex;
+            //
+            // // Chuyển đổi văn bản thành chữ in hoa
+            textBox.Text = textBox.Text.ToUpper();
+            //
+            // // Đặt lại vị trí con trỏ
+            textBox.CaretIndex = caretIndex;
                 // model = Model_Model.Text;
-            }
+          //  }
         }
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {

@@ -41,7 +41,7 @@ namespace App_Control_Servo_Press_Delta
 
         private void bt_update_Click(object sender, RoutedEventArgs e)
         {
-            Common.Edit_IO(_targetButton.Name, Name_IO_New.Text);
+          //  Common.Edit_IO(_targetButton.Name, Name_IO_New.Text);
             this.Close(); // Đóng cửa sổ khi nhấn OK
         }
 

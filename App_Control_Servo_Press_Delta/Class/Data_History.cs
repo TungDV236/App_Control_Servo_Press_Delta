@@ -27,7 +27,8 @@ namespace App_Control_Servo_Press_Delta
     public class Items_IO
     {
         public string IO_Name { get; set; }
-        public string IO_Define { get; set; }
+        public string IO_Define_EN { get; set; }
+        public string IO_Define_VN { get; set; }
     }
     public class Items_IO_temp
     {
@@ -96,7 +97,7 @@ namespace App_Control_Servo_Press_Delta
     {
         public int STT { get; set; }
         public string Code { get; set; }
-        public string Content_ { get; set; }
+        public string Description { get; set; }
         public string Solution { get; set; }
         public string Time { get; set; }
     }
@@ -104,15 +105,15 @@ namespace App_Control_Servo_Press_Delta
     {
         public int STT { get; set; }
         public string Code { get; set; }
-        public string Content_ { get; set; }
+        public string Description { get; set; }
         public string Solution { get; set; }
         public string Time { get; set; }
     }
     public class DataView_History
     {
-        public int STT { get; set; }
+        public int No { get; set; }
         public string Code { get; set; }
-        public string Content_ { get; set; }
+        public string Description { get; set; }
         public string Solution { get; set; }
     }
     public class History_UL
