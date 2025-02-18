@@ -218,13 +218,13 @@ namespace App_Control_Servo_Press_Delta
             string textboxName = textBox.Name;
            // if (textboxName == "Order_Code")
            // {
-            int caretIndex = textBox.CaretIndex;
+           // int caretIndex = textBox.CaretIndex;
             //
             // // Chuyển đổi văn bản thành chữ in hoa
-            textBox.Text = textBox.Text.ToUpper();
+           // textBox.Text = textBox.Text.ToUpper();
             //
             // // Đặt lại vị trí con trỏ
-            textBox.CaretIndex = caretIndex;
+           // textBox.CaretIndex = caretIndex;
                 // model = Model_Model.Text;
           //  }
         }

@@ -22,6 +22,9 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool clear_forcus { get; set; }
         public static string OrderCode { get; set; }
         public static string Language { get; set; }
+        public static List<DataFunC> Function1 { get; set; }
+        public static List<DataFunC> Function2 { get; set; } 
+        public static List<List_Model> list_model { get; set; } 
     }
     public class Data_Report
     {
@@ -175,6 +178,11 @@ namespace App_Control_Servo_Press_Delta.Class
         public string ID { get; set; }
         public string Thickness { get; set; }
     }
+    public class DataView_PressingCondition
+    {
+        public int No { get; set; }
+        public string PressingCondition { get; set; }
+    }
     public class ID_Model
     {
         public static string Orrder_Code { get; set; }
@@ -185,33 +193,69 @@ namespace App_Control_Servo_Press_Delta.Class
         public static string Quality { get; set; }
 
     }
-
+    public class DataFunC
+    {
+        public float Mode { get; set; }
+        public string Press_Condition { get; set; }
+        public float Press_Pos { get; set; }
+        public float Press_Force { get; set; }
+        public float Press_Vel { get; set; }
+        public float Press_Time { get; set; }
+        public float End_Max_Force_Limit { get; set; }
+        public float End_Min_Force_Limit { get; set; }
+        public float End_Max_Pos_Limit { get; set; }
+        public float End_Min_Pos_Limit { get; set; }
+    }
+    public class DataFunC2
+    {
+        public float Mode { get; set; }
+        public string Press_Condition { get; set; }
+        public float Press_Pos { get; set; }
+        public float Press_Force { get; set; }
+        public float Press_Vel { get; set; }
+        public float Press_Time { get; set; }
+        public float End_Max_Force_Limit { get; set; }
+        public float End_Min_Force_Limit { get; set; }
+        public float End_Max_Pos_Limit { get; set; }
+        public float End_Min_Pos_Limit { get; set; }
+    }
     public class List_Model
     {
         public string Model { get; set; }
-        public string TrucID { get; set; }
-        public string RotorID { get; set; }
-        public string Beer_Up { get; set; }
-        public string Beer_Down { get; set; }
+        public string ID_Shaft { get; set; }
+        public string ID_Rotor { get; set; }
+        public string ID_Bearings_Up { get; set; }
+        public string ID_Bearings_Down { get; set; }
         public string Jig_Up { get; set; }
         public string Jig_Mid { get; set; }
         public string Jig_Down { get; set; }
-        public float HStand { get; set; }
-        public float Force { get; set; }
+        public float Height_Stand { get; set; }
+        public float Thickness_Jig_Up { get; set; }
+        public float Thickness_Jig_Down { get; set; }
 
+        public float Origin_Position { get; set; }
+        public float Origin_Velocity { get; set; }
+        public float Standby_Position  { get; set; }
+        public float Standby_Velocity { get; set; }
+        public float Standby_Time { get; set; }
+        public List<DataFunC> Data_Func1 { get; set; }
+        public List<DataFunC> Data_Func2 { get; set; }
     }
     public class List_Model_Temp
     {
         public string Model { get; set; }
-        public string TrucID { get; set; }
-        public string RotorID { get; set; }
-        public string Beer_Up { get; set; }
-        public string Beer_Down { get; set; }
+        public string ID_Shaft { get; set; }
+        public string ID_Rotor { get; set; }
+        public string ID_Bearings_Up { get; set; }
+        public string ID_Bearings_Down { get; set; }
         public string Jig_Up { get; set; }
         public string Jig_Mid { get; set; }
         public string Jig_Down { get; set; }
-        public float HStand { get; set; }
-        public float Force { get; set; }
+        public float Height_Stand { get; set; }
+        public float Thickness_Jig_Up { get; set; }
+        public float Thickness_Jig_Down { get; set; }
+        public List<DataFunC> Data_Func1 { get; set; }
+        public List<DataFunC> Data_Func2 { get; set; }
     }
     public class Beer_Jig
     {

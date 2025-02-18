@@ -1,7 +1,2 @@
-[
-{"Model":"V80","TrucID":"M8","RotorID":"R80","Beer_Up":"BU80","Beer_Down":"BD80","Jig_Up":"JU80","Jig_Mid":"JM80","Jig_Down":"JD80","HStand":80.0,"Force":8.0},
-{"Model":"V81","TrucID":"M9","RotorID":"R81","Beer_Up":"BU81","Beer_Down":"BD81","Jig_Up":"JU81","Jig_Mid":"JM81","Jig_Down":"JD81","HStand":90.0,"Force":9.0},
-{"Model":"V82","TrucID":"M10","RotorID":"R82","Beer_Up":"BU82","Beer_Down":"BD82","Jig_Up":"JU82","Jig_Mid":"JM82","Jig_Down":"JD82","HStand":100.0,"Force":10.0},
-{"Model":"V83","TrucID":"M11","RotorID":"R83","Beer_Up":"BU83","Beer_Down":"BD83","Jig_Up":"JU83","Jig_Mid":"JM83","Jig_Down":"JD83","HStand":110.0,"Force":11.0},
-{"Model":"V84","TrucID":"M12","RotorID":"R84","Beer_Up":"BU84","Beer_Down":"BD84","Jig_Up":"JU84","Jig_Mid":"JM84","Jig_Down":"JD84","HStand":120.0,"Force":12.0}
+[{"Model":"v63","ID_Shaft":"DJT010W-01","ID_Rotor":"MP257WW-01","ID_Bearings_Up":"5006305ZZCMKG","ID_Bearings_Down":"DJT010W-01","Jig_Up":"JU80","Jig_Mid":"JM80","Jig_Down":"JD80","Height_Stand":0.0,"Thickness_Jig_Up":70.0,"Thickness_Jig_Down":90.0,"Origin_Position":11.1,"Origin_Velocity":11.2,"Standby_Position":11.3,"Standby_Velocity":11.4,"Standby_Time":11.5,"Data_Func1":[{"Mode":-1.0,"Press_Condition":"System.Windows.Controls.ComboBoxItem: Positon","Press_Pos":12.1,"Press_Force":12.2,"Press_Vel":11.3,"Press_Time":12.4,"End_Max_Force_Limit":11.7,"End_Min_Force_Limit":11.6,"End_Max_Pos_Limit":11.9,"End_Min_Pos_Limit":11.8}],"Data_Func2":[{"Mode":0.0,"Press_Condition":"","Press_Pos":0.0,"Press_Force":0.0,"Press_Vel":0.0,"Press_Time":0.0,"End_Max_Force_Limit":0.0,"End_Min_Force_Limit":0.0,"End_Max_Pos_Limit":0.0,"End_Min_Pos_Limit":0.0}]}
 ]

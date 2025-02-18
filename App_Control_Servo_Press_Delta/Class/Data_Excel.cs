@@ -66,15 +66,14 @@ namespace App_Control_Servo_Press_Delta.Class
                     for (int row = 2; row <= worksheet.Dimension.Rows; row++)
                     {
                         List_Model.Model = worksheet.Cells[row, 1].Text;
-                        List_Model.TrucID = worksheet.Cells[row, 2].Text;
-                        List_Model.RotorID = worksheet.Cells[row, 3].Text;
-                        List_Model.Beer_Up = worksheet.Cells[row, 4].Text;
-                        List_Model.Beer_Down = worksheet.Cells[row, 5].Text;
+                        List_Model.ID_Shaft = worksheet.Cells[row, 2].Text;
+                        List_Model.ID_Rotor = worksheet.Cells[row, 3].Text;
+                        List_Model.ID_Bearings_Up = worksheet.Cells[row, 4].Text;
+                        List_Model.ID_Bearings_Down = worksheet.Cells[row, 5].Text;
                         List_Model.Jig_Up = worksheet.Cells[row, 6].Text;
                         List_Model.Jig_Mid = worksheet.Cells[row, 7].Text;
                         List_Model.Jig_Down = worksheet.Cells[row, 8].Text;
-                        List_Model.HStand = float.Parse(worksheet.Cells[row, 9].Text);
-                        List_Model.Force = float.Parse(worksheet.Cells[row, 10].Text);
+                        List_Model.Height_Stand = float.Parse(worksheet.Cells[row, 9].Text);
 
                         Jsontemp = JsonConvert.SerializeObject(List_Model);
                         if (Json_new.Length < 2)
