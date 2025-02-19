@@ -19,12 +19,30 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool Start { get; set; }
         public static bool Receive { get; set; }
         public static bool Check_done_Order { get; set; }
+        public static bool Update_Order { get; set; }
         public static bool clear_forcus { get; set; }
         public static string OrderCode { get; set; }
         public static string Language { get; set; }
         public static List<DataFunC> Function1 { get; set; }
-        public static List<DataFunC> Function2 { get; set; } 
-        public static List<List_Model> list_model { get; set; } 
+        public static List<DataFunC> Function2 { get; set; }
+
+        public static List<DataFunC> Data_Auto_FC1 { get; set; }
+        public static List<DataFunC> Data_Auto_FC2 { get; set; }
+        public static List<List_Model> list_model { get; set; }
+
+        public static string Server  { get; set; }
+        public static string PLC_IP { get; set; }
+        public static string Order_Code { get; set; }
+        public static string ID_Rotor { get; set; }
+        public static string ID_Shaft { get; set; }
+        public static string ID_BearingsU { get; set; }
+        public static string ID_BearingsD { get; set; }
+        public static string Model { get; set; }
+        public static double Force_Max { get; set; }
+        public static double Position_Force_Max { get; set; }
+        public static bool Pressing { get; set; }
+        public static bool Check_Write_Model { get; set; }
+        public static bool Write_Done  { get; set; }
     }
     public class Data_Report
     {
@@ -36,13 +54,8 @@ namespace App_Control_Servo_Press_Delta.Class
         public string RotorID { get; set; }
         public string Beer_Up { get; set; }
         public string Beer_Down { get; set; }
-        public string Jig_Up { get; set; }
-        public string Jig_Mid { get; set; }
-        public string Jig_Down { get; set; }
-        public string HStand { get; set; }
-        public string Force { get; set; }
         public string Force_Max { get; set; }
-        public string Position { get; set; }
+        public string Status { get; set; }
     }
     public class DataView_Report
     {
@@ -121,45 +134,67 @@ namespace App_Control_Servo_Press_Delta.Class
     public class Data
     {
         //Input
+
         public static uint IB0 { get; set; }
-        public static uint IB1 { get; set; }
+        public static uint XB0 { get; set; }
+        public static uint XB1 { get; set; }
+        public static uint XB2 { get; set; }
+        //Output
         public static uint QB0 { get; set; }
-        public static uint QB1 { get; set; }
-
-
-        //Man
+        public static uint YB0 { get; set; }
+        public static uint YB1 { get; set; }
+        public static uint YB2 { get; set; }
+        public static double Jog_Max_Force { get; set; }
+        public static double Jog_Distance_ABS { get; set; }
+        public static double Jog_Vel { get; set; }
+        public static double Go_Home_Vel { get; set; }
+        public static double Origin_Work_Pos { get; set; }
+        public static double Origin_Work_Vel { get; set; }
+        public static double Standby_Pos { get; set; }
+        public static double Standby_Vel { get; set; }
+        public static double Standby_Time { get; set; }
+        public static double Mode1 { get; set; }
+        public static double Press_Pos1 { get; set; }
+        public static double Press_Force1 { get; set; }
+        public static double Press_Vel1 { get; set; }
+        public static double Press_Time1 { get; set; }
+        public static double End_Max_Force_Limit1 { get; set; }
+        public static double End_Min_Force_Limit1 { get; set; }
+        public static double End_Max_Pos_Limit1 { get; set; }
+        public static double End_Min_Pos_Limit1 { get; set; }
+        public static double Mode2 { get; set; }
+        public static double Press_Pos2 { get; set; }
+        public static double Press_Force2 { get; set; }
+        public static double Press_Vel2 { get; set; }
+        public static double Press_Time2 { get; set; }
+        public static double End_Max_Force_Limit2 { get; set; }
+        public static double End_Min_Force_Limit2 { get; set; }
+        public static double End_Max_Pos_Limit2 { get; set; }
+        public static double End_Min_Pos_Limit2 { get; set; }
+        public static double Height_Jig_Top { get; set; }
+        public static double Height_Jig_Mid { get; set; }
+        public static double Height_Jig_Bottom { get; set; }
+        public static double Standard_Roto { get; set; }
+        public static double Height_Frame { get; set; }
+        public static double Height_Shaft { get; set; }
+        public static ushort ID_Error1 { get; set; }
+        public static ushort ID_Error2 { get; set; }
+        public static bool M_Home_Ep_J_P { get; set; }
         public static bool M_Ep_J_P { get; set; }
         public static bool M_Ep_J_N { get; set; }
-        public static bool M_Ep_ABS_J_P { get; set; }
-        public static bool M_Ep_ABS_J_N { get; set; }
         public static bool M_Door_J_P { get; set; }
         public static bool M_Door_J_N { get; set; }
-        public static bool M_Home_J_N { get; set; }
-        public static bool Off_Buzzer { get; set; }
-        public static bool On_Ep { get; set; }
-        public static bool ORG_X { get; set; }
-
-        //
-        public static double Step_abs { get; set; }
-        public static int Process { get; set; }
-        public static ushort Alarm1 { get; set; }
-        public static ushort Alarm2 { get; set; }
-        public static ushort Error1 { get; set; }
-        public static ushort Error2 { get; set; }
-        public static double Momen_set { get; set; }
-        public static double H_Stand { get; set; }
-        public static double Limit_U { get; set; }
-        public static double Limit_D { get; set; }
-        public static double Momen_max { get; set; }
-        public static double Momen_PV { get; set; }
-        public static double Position { get; set; }
-        public static bool Check_Connect { get; set; }
-        public static int Error { get; set; }
-        public static int Alarm { get; set; }
-        public static double V_Auto { get; set; }
-        public static double V_man { get; set; }
-        public static bool Check_Update { get; set; }
-
+        public static bool M_Ep_ABS { get; set; }
+        public static bool Working_Origin { get; set; }
+        public static bool Begin_Press { get; set; }
+        public static bool Done_Press { get; set; }
+        public static bool Product_OK { get; set; }
+        public static bool Product_NG { get; set; }
+        public static double Position_PV { get; set; }
+        public static double Force_PV { get; set; }
+        public static bool Check_From_HMI { get; set; }
+        public static bool Check_To_HMI { get; set; }
+        public static bool Check_Done_Tranfer { get; set; }
 
 
 
@@ -190,6 +225,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public static string ID_Rotor { get; set; }
         public static string ID_Bearing_Upper { get; set; }
         public static string ID_Bearing_Lower { get; set; }
+        public static string Model { get; set; }
         public static string Quality { get; set; }
 
     }
@@ -254,8 +290,24 @@ namespace App_Control_Servo_Press_Delta.Class
         public float Height_Stand { get; set; }
         public float Thickness_Jig_Up { get; set; }
         public float Thickness_Jig_Down { get; set; }
+
+        public float Origin_Position { get; set; }
+        public float Origin_Velocity { get; set; }
+        public float Standby_Position { get; set; }
+        public float Standby_Velocity { get; set; }
+        public float Standby_Time { get; set; }
         public List<DataFunC> Data_Func1 { get; set; }
         public List<DataFunC> Data_Func2 { get; set; }
+    }
+    public class Items_IO
+    {
+        public string IO_Name { get; set; }
+        public string IO_Define { get; set; }
+    }
+    public class Items_IO_temp
+    {
+        public string IO_Name { get; set; }
+        public string IO_Define { get; set; }
     }
     public class Beer_Jig
     {

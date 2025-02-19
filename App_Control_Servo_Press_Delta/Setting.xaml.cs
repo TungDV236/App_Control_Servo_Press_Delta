@@ -143,9 +143,11 @@ namespace App_Control_Servo_Press_Delta
                 string[] parts = SplitString(data_Setting["Server"], ':');
                 TB_Server_IP.Text = parts[0];
                 TB_Server_Port.Text = parts[1];
-                string[] parts2 = SplitString(data_Setting["PLC_IP"], ':');
+                string[] parts2 = SplitString(data_Setting["PLC"], ':');
                 TB_PLC_IP.Text = parts2[0];
                 TB_PLC_Port.Text = parts2[1];
+                Global.PLC_IP = TB_PLC_IP.Text + ":" + TB_PLC_Port.Text;
+                Global.Server = TB_Server_IP.Text + ":" + TB_Server_Port.Text;
             }
         }
         private void Model_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -958,12 +960,42 @@ namespace App_Control_Servo_Press_Delta
 
         private void btn_Set_SysEdit_Click(object sender, RoutedEventArgs e)
         {
+            string buttonName = ((Button)sender).Name;
+            if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service")
+            {
 
+                //  PLC.PLC_Read = TB_PLC_IP.Text;
+                TB_Server_IP.IsReadOnly = false;
+                TB_Server_Port.IsReadOnly = false;
+                TB_PLC_IP.IsReadOnly = false;
+                TB_PLC_Port.IsReadOnly = false;
+
+                is_Forcus2 = true;
+            }
         }
 
         private void btn_Set_SysSave_Click(object sender, RoutedEventArgs e)
         {
+            if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service")
+            {
 
+
+                object data_Setting = new
+                {
+                    Server = TB_Server_IP.Text + ":" + TB_Server_Port.Text,
+                    PLC = TB_PLC_IP.Text + ":" + TB_PLC_Port.Text
+                };
+                string json = System.Text.Json.JsonSerializer.Serialize(data_Setting);
+                File.WriteAllText(path.Setting, json);
+                // PLC.PLC_Read = TB_PLC_IP.Text;
+                // PLC.PLC_Write = TB_PLC_IP.Text;
+                MessageBox.Show("Đã Lưu Thành Công");
+                TB_Server_IP.IsReadOnly = true;
+                TB_Server_Port.IsReadOnly = true;
+                TB_PLC_IP.IsReadOnly = true;
+                TB_PLC_Port.IsReadOnly = true;
+                is_Forcus2 = false; 
+            }
         }
 
         private void btn_off_bz_Click(object sender, RoutedEventArgs e)

@@ -40,6 +40,7 @@
     <system:String x:Key="lb_Auto_Step">Bước</system:String>
     <system:String x:Key="lb_Auto_Pressing_mode">Chế độ Ép</system:String>
     <system:String x:Key="lb_Auto_Pressing_Position">Vị trí Ép</system:String>
+    <system:String x:Key="lb_Auto_Pressing_Force">Lực Ép</system:String>
     <system:String x:Key="lb_Auto_Pressing_Velocity">Tốc độ Ép</system:String>
     <system:String x:Key="lb_Auto_Pressing_Time">Thời gian Ép</system:String>
     <system:String x:Key="lb_Auto_Max_Position">Vị trí lớn nhất</system:String>
@@ -76,6 +77,16 @@
     <!-- Man-->
 
 
+    <system:String x:Key="lb_Press_Shaft">Trục Ép</system:String>
+    <system:String x:Key="lb_Velocity_Home">Tốc độ về gốc(mm/s)</system:String>
+    <system:String x:Key="lb_Step_ABS">Bước tiến(mm)</system:String>
+    <system:String x:Key="lb_Velocity_Jog">Tốc độ(mm/s)</system:String>
+    <system:String x:Key="lb_Jog_Force_max">Giới hạn lực ép(N)</system:String>
+    <system:String x:Key="lb_Control">Điều khiển</system:String>
+    <system:String x:Key="lb_Go_Home">Về Gốc</system:String>
+    <system:String x:Key="lb_Up">Lên</system:String>
+    <system:String x:Key="lb_Down">Xuống</system:String>
+    <system:String x:Key="lb_Door">Cửa</system:String>
 
     <!-- History-->
 

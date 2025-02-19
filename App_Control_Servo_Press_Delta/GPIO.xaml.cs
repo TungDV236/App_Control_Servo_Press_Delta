@@ -16,7 +16,7 @@ namespace App_Control_Servo_Press_Delta
         private DispatcherTimer timer;
         Update_Screen update = new Update_Screen();
         Common Common = new Common();
-
+        Excel excel = new Excel();
         bool ud = false;
         public GPIO()
         {
@@ -75,7 +75,36 @@ namespace App_Control_Servo_Press_Delta
             update.Inout(I0_6, I0[6]);
             update.Inout(I0_7, I0[7]);
             //
-
+            bool[] X0 = ByteToBits(Data.XB0);
+            update.Inout(X0_0, X0[0]);
+            update.Inout(X0_1, X0[1]);
+            update.Inout(X0_2, X0[2]);
+            update.Inout(X0_3, X0[3]);
+            update.Inout(X0_4, X0[4]);
+            update.Inout(X0_5, X0[5]);
+            update.Inout(X0_6, X0[6]);
+            update.Inout(X0_7, X0[7]);
+            //
+            bool[] X1 = ByteToBits(Data.XB1);
+            update.Inout(X1_0, X1[0]);
+            update.Inout(X1_1, X1[1]);
+            update.Inout(X1_2, X1[2]);
+            update.Inout(X1_3, X1[3]);
+            update.Inout(X1_4, X1[4]);
+            update.Inout(X1_5, X1[5]);
+            update.Inout(X1_6, X1[6]);
+            update.Inout(X1_7, X1[7]);
+            //
+            bool[] X2 = ByteToBits(Data.XB2);
+            update.Inout(X2_0, X2[0]);
+            update.Inout(X2_1, X2[1]);
+            update.Inout(X2_2, X2[2]);
+            update.Inout(X2_3, X2[3]);
+            update.Inout(X2_4, X2[4]);
+            update.Inout(X2_5, X2[5]);
+            update.Inout(X2_6, X2[6]);
+            update.Inout(X2_7, X2[7]);
+            //
             //
             bool[] Q0 = ByteToBits(Data.QB0);
             update.Inout(Q0_0, Q0[0]);
@@ -87,8 +116,36 @@ namespace App_Control_Servo_Press_Delta
             update.Inout(Q0_6, Q0[6]);
             update.Inout(Q0_7, Q0[7]);
             //
+            bool[] Y0 = ByteToBits(Data.YB0);
+            update.Inout(Y0_0, Y0[0]);
+            update.Inout(Y0_1, Y0[1]);
+            update.Inout(Y0_2, Y0[2]);
+            update.Inout(Y0_3, Y0[3]);
+            update.Inout(Y0_4, Y0[4]);
+            update.Inout(Y0_5, Y0[5]);
+            update.Inout(Y0_6, Y0[6]);
+            update.Inout(Y0_7, Y0[7]);
             //
-            ushort word1 = Data.Error1;
+            bool[] Y1 = ByteToBits(Data.YB1);
+            update.Inout(Y1_0, Y1[0]);
+            update.Inout(Y1_1, Y1[1]);
+            update.Inout(Y1_2, Y1[2]);
+            update.Inout(Y1_3, Y1[3]);
+            update.Inout(Y1_4, Y1[4]);
+            update.Inout(Y1_5, Y1[5]);
+            update.Inout(Y1_6, Y1[6]);
+            update.Inout(Y1_7, Y1[7]);
+            //
+            bool[] Y2 = ByteToBits(Data.YB2);
+            update.Inout(Y2_0, Y2[0]);
+            update.Inout(Y2_1, Y2[1]);
+            update.Inout(Y2_2, Y2[2]);
+            update.Inout(Y2_3, Y2[3]);
+            update.Inout(Y2_4, Y2[4]);
+            update.Inout(Y2_5, Y2[5]);
+            update.Inout(Y2_6, Y2[6]);
+            update.Inout(Y2_7, Y2[7]);
+            //
         }
 
 

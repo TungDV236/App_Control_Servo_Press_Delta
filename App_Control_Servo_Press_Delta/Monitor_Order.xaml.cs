@@ -66,6 +66,8 @@ namespace App_Control_Servo_Press_Delta
                 textBox.TextChanged -= TextBox_TextChanged;
                 textBox.LostFocus += TextBox_LostFocus;
             }
+            timer.Tick -= Timer_Tick;
+            timer.Stop();
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -134,6 +136,7 @@ namespace App_Control_Servo_Press_Delta
                     tb_Shaft.Text = ID_Model.ID_Shaft.ToString();
                     tb_BearingU.Text = ID_Model.ID_Bearing_Upper.ToString();
                     tb_BearingD.Text = ID_Model.ID_Bearing_Lower.ToString();
+                    tb_Model.Text = ID_Model.Model.ToString();
                     Global.Receive = false;
                     Check_Order = true;
                 }
@@ -199,11 +202,16 @@ namespace App_Control_Servo_Press_Delta
                 }
                 if (Global.Check_done_Order)
                 {
+                    Global.ID_Rotor = tb_Rotor_Scan.Text;
+                    Global.ID_Shaft = tb_Shaft_Scan.Text;
+                    Global.ID_BearingsU = tb_BearingU_Scan.Text;
+                    Global.ID_BearingsD = tb_BearingD_Scan.Text;
+                    Global.Order_Code = Order_Code.Text;
+                    Global.Model = tb_Model.Text;
                     count_close++;
-                    if (count_close >= 15)
+                    Global.Update_Order = true;
+                    if (count_close >= 15 & Global.Write_Done)
                     {
-
-
                         this.Close();
                     }
                 }
@@ -218,13 +226,9 @@ namespace App_Control_Servo_Press_Delta
             string textboxName = textBox.Name;
            // if (textboxName == "Order_Code")
            // {
-           // int caretIndex = textBox.CaretIndex;
-            //
-            // // Chuyển đổi văn bản thành chữ in hoa
-           // textBox.Text = textBox.Text.ToUpper();
-            //
-            // // Đặt lại vị trí con trỏ
-           // textBox.CaretIndex = caretIndex;
+            int caretIndex = textBox.CaretIndex;
+            textBox.Text = textBox.Text.ToUpper();
+            textBox.CaretIndex = caretIndex;
                 // model = Model_Model.Text;
           //  }
         }
@@ -257,6 +261,7 @@ namespace App_Control_Servo_Press_Delta
         }
         private void MouseDown_Close(object sender, RoutedEventArgs e)
         {
+
             this.Close();
 
         }

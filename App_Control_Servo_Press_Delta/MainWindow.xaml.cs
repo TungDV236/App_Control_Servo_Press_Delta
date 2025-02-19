@@ -49,6 +49,8 @@ namespace App_Control_Servo_Press_Delta
         #region khai báo dữ liệu
         List<List_History> List_History = new List<List_History>();
         PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+
+        DataPoint newPoint1 = new DataPoint();
         #endregion
         #region Khai báo biến public
         public static string UserName = "";
@@ -68,7 +70,11 @@ namespace App_Control_Servo_Press_Delta
         #endregion
 
 
-
+        public double newY1;
+        private bool Flag;
+        private bool Flag1;
+        private double _Force_max;
+        private int pointCount = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -76,6 +82,7 @@ namespace App_Control_Servo_Press_Delta
             this.Closing += MainWindow_Closing;
             DataContext = this;
 
+            Global.DataPoints1 = new List<DataPoint>();
             var workingArea = SystemParameters.WorkArea;
             _queue = new ObservableCollection<string>();
             _queue.CollectionChanged += Queue_CollectionChanged;
@@ -155,7 +162,34 @@ namespace App_Control_Servo_Press_Delta
             });
             //   Scan_Err();
            Animation(TB_Notification);
-
+            if(Data.Begin_Press)
+            {
+                Global.Pressing= true;
+                Global.Force_Max = 0;
+                Global.Position_Force_Max = 0;
+            }
+            if(Data.Done_Press)
+            {
+                Global.Pressing = false;
+            }
+            if (Global.Pressing)
+            {
+                Update_Datachart();
+                if (Data.Force_PV > Global.Force_Max)
+                {
+                    Global.Force_Max = Data.Force_PV;
+                    Global.Position_Force_Max = Data.Position_PV;
+                }    
+            }
+            else if (!Global.Pressing & Flag)
+            {
+                Flag = false;
+                Flag1 = false;
+            }
+            if (Global.Check_Write_Model)
+            {
+                Check_Write_data_Setting();
+            }
         }
         private void Update_Status_Tick1000ms(object sender, EventArgs e)
         {
@@ -166,6 +200,8 @@ namespace App_Control_Servo_Press_Delta
                 Dispatcher.Invoke(() =>
                 {
                     Update_Screen();
+                    tb_Position.Text= Math.Round(Data.Position_PV , 2).ToString("F3");
+                    tb_Force.Text = Math.Round(Data.Force_PV, 2).ToString("F3");
                 });
             }
             catch
@@ -431,12 +467,12 @@ namespace App_Control_Servo_Press_Delta
 
         public void Scan()
         {
-            uint Value_al = (uint)((Data.Alarm2 << 16) | Data.Alarm1);
-            uint Value_Err = (uint)((Data.Error2 << 16) | Data.Error1);
-            string code_A = "";
+
+            uint Value_Err = (uint)((Data.ID_Error2 << 16) | Data.ID_Error1);
+
             string code_E = "";
             // Phát hiện sự thay đổi của bit
-            uint changed_A_Bits = Value_Al_old ^ Value_al;
+
             uint changed_E_Bits = Value_Err_old ^ Value_Err;
             //  Console.WriteLine("Changed bits:");
 
@@ -472,37 +508,7 @@ namespace App_Control_Servo_Press_Delta
                 List_History = List_History_Copy;
             }
 
-            if (Value_al != Value_Al_old)
-            {
-                for (int i = 0; i < 32; i++)
-                {
-                    if ((changed_A_Bits & (1U << i)) != 0)
-                    {
-                        if ((Value_al & (1U << i)) != 0)
-                        {
-                            code_E = Choose_Data_Al(i);
-                            //   Console.WriteLine(" ma loi: " + code_E + "da xu ly");
-                            //   Clear_History(code_E);
-                            Add_Al(code_E);
 
-                        }
-                        else
-                        {
-                            code_E = Choose_Data_Al(i);
-                            //  Console.WriteLine(" ma loi: " + code_E + "ton tai");
-                            // Save_History(code_E);
-                            Clear_His(code_E);
-                        }
-                    }
-                }
-                Value_Al_old = Value_al;
-                List<List_History> List_History_Copy = new List<List_History>(List_History);
-                for (int i = 0; i < List_History_Copy.Count; i++)
-                {
-                    List_History_Copy[i].STT = i + 1;
-                }
-                List_History = List_History_Copy;
-            }
 
         }
 
@@ -575,71 +581,6 @@ namespace App_Control_Servo_Press_Delta
                     return "E1E";
                 case 31:
                     return "E1F";
-                case 32:
-                    return "A00";
-                case 33:
-                    return "A01";
-                case 34:
-                    return "A02";
-                case 35:
-                    return "A03";
-                case 36:
-                    return "A04";
-                case 37:
-                    return "A05";
-                case 38:
-                    return "A06";
-                case 39:
-                    return "A07";
-                case 40:
-                    return "A08";
-                case 41:
-                    return "A09";
-                case 42:
-                    return "A0A";
-                case 43:
-                    return "A0B";
-                case 44:
-                    return "A0C";
-                case 45:
-                    return "A0D";
-                case 46:
-                    return "A0E";
-                case 47:
-                    return "A0F";
-                case 48:
-                    return "A10";
-                case 49:
-                    return "A11";
-                case 50:
-                    return "A12";
-                case 51:
-                    return "A13";
-                case 52:
-                    return "A14";
-                case 53:
-                    return "A15";
-                case 54:
-                    return "A16";
-                case 55:
-                    return "A17";
-                case 56:
-                    return "A18";
-                case 57:
-                    return "A19";
-                case 58:
-                    return "A1A";
-                case 59:
-                    return "A1B";
-                case 60:
-                    return "A1C";
-                case 61:
-                    return "A1D";
-                case 62:
-                    return "A1E";
-                case 63:
-                    return "A1F";
-
                 default:
                     return "Invalid option";
             }
@@ -823,6 +764,96 @@ namespace App_Control_Servo_Press_Delta
                 }
             }
         }
+        public void Update_Datachart()
+        {
+
+            pointCount++;
+            newY1 = Math.Sin(pointCount * 100) + 50;
+            double _Force_PV = Data.Force_PV;
+            double _Position_PV = Data.Position_PV;
+            newPoint1 = new DataPoint(_Position_PV, _Force_PV);
+            Global.DataPoints1.Add(newPoint1);
+
+            if (Global.DataPoints1 != null)
+            {
+
+                if (Global.Pressing & !Flag)
+                {
+                    if (AreTextBoxesFilled())
+                    {
+
+                        if (Global.DataPoints1.Count > 2 & !Flag1)
+                        {
+                            Flag1 = true;
+                            Save_Model();
+                            Global.DataPoints1.Clear();
+
+                        }
+                        Flag = true;
+                        pointCount = 0;
+                    }
+                    else
+                    {
+                        Global.DataPoints1.Clear();
+                    }
+                }
+
+
+
+
+            }
+        }
+        private void Save_Model()
+        {
+            System.DateTime dateTime = System.DateTime.Now;
+            string formattedDate = dateTime.ToString("dd/MM/yyyy");
+            string FilePath = System.IO.Path.Combine("Log", formattedDate.Replace('/', '_') + "_Report.json");
+            string formattedtime = dateTime.ToString("HH:mm:ss");
+            string ID = formattedDate.Replace("/", "") + formattedtime.Replace(":", "");
+            Data_Report List_Report = new Data_Report();
+            List_Report.Time = formattedtime;
+            List_Report.OrderCode = Data_Report_temp2.OrderCode;
+            List_Report.Model = Data_Report_temp2.Model;
+            List_Report.TrucID = Data_Report_temp2.TrucID;
+            List_Report.RotorID = Data_Report_temp2.RotorID;
+            List_Report.Beer_Up = Data_Report_temp2.Beer_Up;
+            List_Report.Beer_Down = Data_Report_temp2.Beer_Down;
+            List_Report.Force_Max = Data_Report_temp2.Force_Max;
+            if (Data.Product_NG)
+            {
+                List_Report.Status = "NG";
+            }
+            else if (Data.Product_OK)
+            {
+                List_Report.Status = "OK";
+            }
+            else
+            {
+                List_Report.Status = "Unknow";
+            }    
+            string list_Json = JsonConvert.SerializeObject(List_Report);
+            try
+            {
+                string json = File.ReadAllText(FilePath);
+                json = json.Remove(json.Length - 1);
+                json = json + ",\n" + list_Json + "]";
+                File.WriteAllText(FilePath, json);
+                // MessageBox.Show("Đã Lưu  Thành Công");
+            }
+            catch
+            {
+                string json_;
+                json_ = "[\n" + list_Json + "\n]";
+                File.WriteAllText(FilePath, json_);
+                //  MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
+            }
+
+        }
+        private bool AreTextBoxesFilled()
+        {
+            // Kiểm tra từng TextBox
+            return !string.IsNullOrWhiteSpace(ID_Model.Orrder_Code);
+        }
         private void Clear_His(string code_E)
         {
             var newData = new List<List_History>();
@@ -858,7 +889,72 @@ namespace App_Control_Servo_Press_Delta
             // Cập nhật nội dung của TextBox
             textBox.Text = _mylistString.Substring(position) + _mylistString.Substring(0, position);
         }
+        public void Check_Write_data_Setting()
+        {
+            if ((Math.Round(Data.Mode1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Mode, 3)) ||
+                (Math.Round(Data.Press_Pos1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Press_Pos, 3)) ||
+                (Math.Round(Data.Press_Force1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Press_Force, 3)) ||
+                (Math.Round(Data.Press_Vel1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Press_Vel, 3)) ||
+                (Math.Round(Data.Press_Time1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Press_Time, 3)) ||
+                 (Math.Round(Data.End_Max_Force_Limit1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].End_Max_Force_Limit, 3)) ||
+                 (Math.Round(Data.End_Min_Force_Limit1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].End_Min_Force_Limit, 3)) ||
+                 (Math.Round(Data.End_Max_Pos_Limit1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit, 3)) ||
+                 (Math.Round(Data.End_Min_Pos_Limit1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit, 3)) ||
+                 (Math.Round(Data.Mode2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Mode, 3)) ||
+                 (Math.Round(Data.Press_Pos2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Press_Pos, 3)) ||
+                 (Math.Round(Data.Press_Force2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Press_Force, 3)) ||
+                (Math.Round(Data.Press_Vel2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Press_Vel, 3)) ||
+                (Math.Round(Data.Press_Time2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Press_Time, 3)) ||
+                 (Math.Round(Data.End_Max_Force_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Max_Force_Limit, 3)) ||
+                 (Math.Round(Data.End_Min_Force_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Min_Force_Limit, 3)) ||
+                 (Math.Round(Data.End_Max_Pos_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Max_Pos_Limit, 3)) ||
+                 (Math.Round(Data.End_Min_Pos_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit, 3))) 
+            {
+                var data = new
+                {
+                    Mode1 = Global.list_model[0].Data_Func1[0].Mode,
+                    Press_Pos1 = Global.list_model[0].Data_Func1[0].Press_Pos,
+                    Press_Force1 = Global.list_model[0].Data_Func1[0].Press_Force,
+                    Press_Vel1 = Global.list_model[0].Data_Func1[0].Press_Vel,
+                    Press_Time1 = Global.list_model[0].Data_Func1[0].Press_Time,
+                    End_Max_Force_Limit1 = Global.list_model[0].Data_Func1[0].End_Max_Force_Limit,
+                    End_Min_Force_Limit1 = Global.list_model[0].Data_Func1[0].End_Min_Force_Limit,
+                    End_Max_Pos_Limit1 = Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit,
+                    End_Min_Pos_Limit1 = Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit,
+                    Mode2 = Global.list_model[0].Data_Func2[0].Mode,
+                    Press_Pos2 = Global.list_model[0].Data_Func2[0].Press_Pos,
+                    Press_Force2 = Global.list_model[0].Data_Func2[0].Press_Force,
+                    Press_Vel2 = Global.list_model[0].Data_Func2[0].Press_Vel,
+                    Press_Time2 = Global.list_model[0].Data_Func2[0].Press_Time,
+                    End_Max_Force_Limit2 = Global.list_model[0].Data_Func2[0].End_Max_Force_Limit,
+                    End_Min_Force_Limit2 = Global.list_model[0].Data_Func2[0].End_Min_Force_Limit,
+                    End_Max_Pos_Limit2 = Global.list_model[0].Data_Func2[0].End_Max_Pos_Limit,
+                    End_Min_Pos_Limit2 = Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit,
+                    Height_Jig_Top = Global.list_model[0].Thickness_Jig_Up,
+                    Height_Jig_Bottom = Global.list_model[0].Thickness_Jig_Down,
+                    Standard_Roto = Global.list_model[0].Height_Stand
+                };
+                string jsonData = JsonConvert.SerializeObject(data);
+                MainWindow._queue.Add(jsonData);
+            }
+            else if (!Data.Check_Done_Tranfer)
+            {
+                var data = new
+                {
+                    Check_Done_Tranfer = true
+                };
+                string jsonData = JsonConvert.SerializeObject(data);
+                MainWindow._queue.Add(jsonData);
+                // Console.WriteLine($"read : {Data.Write_Model_Done}");
+            }
+            else
+            {
 
+                Global.Check_Write_Model = false;
+                Global.Write_Done = true;
+            }
+
+        }
         private void exitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             BTN_Exit.Background = Brushes.Red; // Thay đổi màu nền khi di chuột qua

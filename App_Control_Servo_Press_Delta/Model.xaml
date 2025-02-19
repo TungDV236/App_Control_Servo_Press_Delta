@@ -363,16 +363,16 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Row="0" Grid.Column="0"   Content="{DynamicResource lb_Force_Min}" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
-                                            <TextBox Grid.Row="0" Grid.Column="1"  x:Name="tb_Force_Min"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox Grid.Row="0" Grid.Column="1"  x:Name="tb_Force_Min"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="0" Grid.Column="2"   Content="(N)" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="1" Grid.Column="0"   Content="{DynamicResource lb_Force Max}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
-                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tb_Force_Max"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tb_Force_Max"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="1" Grid.Column="2"   Content="(N)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="2" Grid.Column="0"   Content="{DynamicResource lb_Position_Min}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
-                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tb_Position_Min"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tb_Position_Min"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="2" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="3" Grid.Column="0"   Content="{DynamicResource lb_Position_Max}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
-                                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tb_Position_Max"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tb_Position_Max"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="3" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                         </Grid>
                                     </Grid>
@@ -467,7 +467,7 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                             Background="White"
                                             BorderBrush="White"  VerticalAlignment="Top" >
 
-                                                <ComboBoxItem Content="Positon"/>
+                                                <ComboBoxItem Content="Position"/>
                                                 <ComboBoxItem Content="Force"/>
                                                 <ComboBoxItem Content="Distance"/>
                                                 <ComboBoxItem Content="Force Position"/>
@@ -487,16 +487,16 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Row="0" Grid.Column="0"   Content="{DynamicResource lb_Press_PositionDistance}" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
-                                            <TextBox Grid.Row="0" Grid.Column="1"  x:Name="tb_Press_PositionDistance"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox Grid.Row="0" Grid.Column="1"  x:Name="tb_Press_PositionDistance"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="0" Grid.Column="2"   Content="(N)" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="1" Grid.Column="0"   Content="{DynamicResource lb_Press_Force}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
-                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tb_Press_Force"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tb_Press_Force"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="1" Grid.Column="2"   Content="(N)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="2" Grid.Column="0"   Content="{DynamicResource lb_Press_Velocity}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
-                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tb_Press_Velocity"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tb_Press_Velocity"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="2" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="3" Grid.Column="0"   Content="{DynamicResource lb_Press_Time}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
-                                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tb_Press_Time"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="tb_Press_Time"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="3" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                         </Grid>
                                     </Grid>
@@ -511,8 +511,8 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                             <ColumnDefinition Width="120"/>
                                             <ColumnDefinition Width="15"/>
                                         </Grid.ColumnDefinitions>
-                                        <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_Para" Background="White"  Margin="0,0,5,0"   Click="Click_bt_Import_model"/>
-                                        <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="BTN_Save_Para" Background="White"   Margin="5,0,0,0"   Click="Click_bt_Export_model" />
+                                        <Button Grid.Column="3"  Content="{DynamicResource lb_Delete}" x:Name="BTN_Del_Para" Background="White"  Margin="0,0,5,0"   Click="Click_bt_del_Condition"/>
+                                      
 
                                     </Grid>
 

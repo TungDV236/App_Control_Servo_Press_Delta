@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
              mc:Ignorable="d"  
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch" d:DesignWidth="760.593" >
+             VerticalAlignment="Stretch" 
+             d:DesignHeight="785" d:DesignWidth="1752">
 
     <Grid x:Name="Grid_size">
         <Grid >
@@ -15,7 +16,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" >
-                <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                <Border  BorderBrush="#1f1f1f" BorderThickness="1" x:Name="FocusBorder"/>
                 <Grid Margin="5,0,5,0"  >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
@@ -29,34 +30,29 @@
 
                     </Grid.RowDefinitions>
 
-                    <TextBlock  Grid.Row="0"  Text="Trục Ép"   Margin="10,2,2,2" FontSize="18"  FontWeight="Bold" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                    <TextBlock  Grid.Row="1"  Text="Điều khiển:"   Margin="10,2,2,2" FontSize="15"  FontWeight="Bold" TextAlignment="Left" TextDecorations="Underline" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-                    <Grid Grid.Row="2">
+                    <TextBlock  Grid.Row="0"  Text="{DynamicResource lb_Press_Shaft}"  Margin="10,2,2,2" FontSize="18"  FontWeight="Bold" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <TextBlock  Grid.Row="1"  Text="{DynamicResource lb_Operation_Parameter}"  Margin="10,2,2,2" FontSize="15"  FontWeight="Bold" TextAlignment="Left" TextDecorations="Underline" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    <Grid Grid.Row="2" Margin="0,10,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
-                        <Button Grid.Column="0" Content="On" x:Name="On_Ep" FontSize="15"  Height="55"  Margin="5"   />
-                        <Button Grid.Column="1" Content="Lên" x:Name="M_Ep_J_P" FontSize="15"  Height="55" Margin="5"   />
-                        <Button Grid.Column="2" Content="Xuống" x:Name="M_Ep_J_N"  FontSize="15"  Height="55"  Margin="5"   />
-                        <Grid Grid.Column="3" Height="60">
+                        <Grid Grid.Column="0" Height="60">
                             <Grid Margin="5,0,0,0">
                                 <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
-                                <TextBox x:Name="Step_abs"
+                                <TextBox x:Name="Go_Home_Vel"
                                  Margin="5,0,10,0"
                                  Height="40" FontWeight="Bold"
                                  FontSize="15"  
                                  HorizontalAlignment="Stretch"
                                  Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                             </Grid>
-                            <Label Content="Bước tiến"
+                            <Label Content="{DynamicResource lb_Velocity_Home}"
                                  FontWeight="Bold"
                                  Background="White"
-                                 Width="60"
+                                 Width="150"
                                  Height="20"
                                  Padding="1"
                                 VerticalAlignment="Top"
@@ -65,22 +61,89 @@
                                  Foreground="Black"/>
 
                         </Grid>
-                        <Button Grid.Column="4" Content="Jog" x:Name="M_Ep_ABS"  FontSize="15"  Height="55" Margin="5"   />
-                    </Grid>
-                    <TextBlock  Grid.Row="3"  Text="Về Gốc:"   Margin="10,2,2,2" FontSize="15"  FontWeight="Bold" TextAlignment="Left" TextDecorations="Underline" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Grid Grid.Column="1" Height="60">
+                            <Grid Margin="5,0,0,0">
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
+                                <TextBox x:Name="Jog_Distance_ABS"
+                                      Margin="5,0,10,0"
+                                      Height="40" FontWeight="Bold"
+                                      FontSize="15"  
+                                      HorizontalAlignment="Stretch"
+                                      Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+                            <Label Content="{DynamicResource lb_Step_ABS}"
+                                      FontWeight="Bold"
+                                      Background="White"
+                                      Width="120"
+                                      Height="20"
+                                      Padding="1"
+                                     VerticalAlignment="Top"
+                                      HorizontalAlignment="Left"
+                                      Margin="10,-10,0,0"
+                                      Foreground="Black"/>
 
-                    <Grid Grid.Row="3">
+                        </Grid>
+                        <Grid Grid.Column="2" Height="60" >
+                            <Grid Margin="5,0,0,0">
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
+                                <TextBox x:Name="Jog_Vel"
+                                 Margin="5,0,10,0"
+                                 Height="40" FontWeight="Bold"
+                                 FontSize="15"  
+                                 HorizontalAlignment="Stretch"
+                                 Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+                            <Label Content="{DynamicResource lb_Velocity_Jog}"
+                                 FontWeight="Bold"
+                                 Background="White"
+                                 Width="120"
+                                 Height="20"
+                                 Padding="1"
+                                VerticalAlignment="Top"
+                                 HorizontalAlignment="Left"
+                                 Margin="10,-10,0,0"
+                                 Foreground="Black"/>
+
+                        </Grid>
+                        <Grid Grid.Column="3" Height="60">
+                            <Grid Margin="5,0,0,0">
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,5,2.5" />
+                                <TextBox x:Name="Jog_Max_Force"
+                                         Margin="5,0,10,0"
+                                         Height="40" FontWeight="Bold"
+                                         FontSize="15"  
+                                         HorizontalAlignment="Stretch"
+                                         Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+                            <Label Content="{DynamicResource lb_Jog_Force_max}"
+                                     FontWeight="Bold"
+                                     Background="White"
+                                     Width="120"
+                                     Height="20"
+                                     Padding="1"
+                                    VerticalAlignment="Top"
+                                     HorizontalAlignment="Left"
+                                     Margin="10,-10,0,0"
+                                     Foreground="Black"/>
+
+                        </Grid>
+                    </Grid>
+                    <TextBlock  Grid.Row="3"  Text="{DynamicResource lb_Control}"   Margin="10,2,2,2" FontSize="15"  FontWeight="Bold" TextAlignment="Left" TextDecorations="Underline" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                   
+                    <Grid Grid.Row="4" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-
-                        <Button Grid.Column="1" Content="Trục Ép" x:Name="M_Home_J_N" FontSize="15"  Height="55"  Margin="5"   />
+                        <Button Grid.Column="0" Content="{DynamicResource lb_Go_Home}" x:Name="M_Home_Ep_J_P" FontSize="15"  Height="70"  Margin="5"   />
+                        <Button Grid.Column="1" Content="{DynamicResource lb_Up}" x:Name="M_Ep_J_P" FontSize="15"  Height="70" Margin="5"   />
+                        <Button Grid.Column="2" Content="{DynamicResource lb_Down}" x:Name="M_Ep_J_N"  FontSize="15"  Height="70"  Margin="5"   />
+                        <Button Grid.Column="3" Content="Jog" x:Name="M_Ep_ABS"  FontSize="15"  Height="70" Margin="5"   />
                     </Grid>
+
 
                 </Grid>
             </Grid>
@@ -98,14 +161,14 @@
                         <RowDefinition Height="55"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label    Content="Cửa"    FontSize="18"  Style="{StaticResource Basic_labelStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label    Content="{DynamicResource lb_Door}"    FontSize="18"  Style="{StaticResource Basic_labelStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Content="Lên" x:Name="M_Door_J_P" FontSize="15"  Height="55"  Margin="5,5,5,5"   />
-                        <Button Grid.Column="1" Content="Xuống" x:Name="M_Door_J_N" FontSize="15"  Height="55"  Margin="5,5,4,5"   />
+                        <Button Grid.Column="0" Content="{DynamicResource lb_Up}" x:Name="M_Door_J_P" FontSize="15"  Height="70"  Margin="5,5,5,5"   />
+                        <Button Grid.Column="1" Content="{DynamicResource lb_Down}"  x:Name="M_Door_J_N" FontSize="15"  Height="70"  Margin="5,5,4,5"   />
                     </Grid>
 
                 </Grid>

@@ -1,2 +1,140 @@
-[{"Model":"v63","ID_Shaft":"DJT010W-01","ID_Rotor":"MP257WW-01","ID_Bearings_Up":"5006305ZZCMKG","ID_Bearings_Down":"DJT010W-01","Jig_Up":"JU80","Jig_Mid":"JM80","Jig_Down":"JD80","Height_Stand":0.0,"Thickness_Jig_Up":70.0,"Thickness_Jig_Down":90.0,"Origin_Position":11.1,"Origin_Velocity":11.2,"Standby_Position":11.3,"Standby_Velocity":11.4,"Standby_Time":11.5,"Data_Func1":[{"Mode":-1.0,"Press_Condition":"System.Windows.Controls.ComboBoxItem: Positon","Press_Pos":12.1,"Press_Force":12.2,"Press_Vel":11.3,"Press_Time":12.4,"End_Max_Force_Limit":11.7,"End_Min_Force_Limit":11.6,"End_Max_Pos_Limit":11.9,"End_Min_Pos_Limit":11.8}],"Data_Func2":[{"Mode":0.0,"Press_Condition":"","Press_Pos":0.0,"Press_Force":0.0,"Press_Vel":0.0,"Press_Time":0.0,"End_Max_Force_Limit":0.0,"End_Min_Force_Limit":0.0,"End_Max_Pos_Limit":0.0,"End_Min_Pos_Limit":0.0}]}
+[
+    {
+        "Model": "V63",
+        "ID_Shaft": "DJT010W-01",
+        "ID_Rotor": "MP257WW-01",
+        "ID_Bearings_Up": "500TMB202ZZKG",
+        "ID_Bearings_Down": "5006305ZZCMKG",
+        "Jig_Up": "JU80",
+        "Jig_Mid": "JM80",
+        "Jig_Down": "JD80",
+        "Height_Stand": 80.1999969,
+        "Thickness_Jig_Up": 70,
+        "Thickness_Jig_Down": 90,
+        "Origin_Position": 11.1000004,
+        "Origin_Velocity": 11.1999998,
+        "Standby_Position": 11.3000002,
+        "Standby_Velocity": 11.3999996,
+        "Standby_Time": 11.5,
+        "Data_Func1": [
+            {
+                "Mode": 1,
+                "Press_Condition": "Position",
+                "Press_Pos": 12.5,
+                "Press_Force": 0,
+                "Press_Vel": 12.6999998,
+                "Press_Time": 12.8000002,
+                "End_Max_Force_Limit": 12.1999998,
+                "End_Min_Force_Limit": 12.1000004,
+                "End_Max_Pos_Limit": 0,
+                "End_Min_Pos_Limit": 0
+            }
+        ],
+        "Data_Func2": [
+            {
+                "Mode": 2,
+                "Press_Condition": "Force",
+                "Press_Pos": 0,
+                "Press_Force": 13.6000004,
+                "Press_Vel": 13.6999998,
+                "Press_Time": 13.8000002,
+                "End_Max_Force_Limit": 0,
+                "End_Min_Force_Limit": 0,
+                "End_Max_Pos_Limit": 13.3999996,
+                "End_Min_Pos_Limit": 13.3000002
+            }
+        ]
+    },
+    {
+        "Model": "V61",
+        "ID_Shaft": "DJT010W-01",
+        "ID_Rotor": "MP257WW-01",
+        "ID_Bearings_Up": "500TMB202ZZKG",
+        "ID_Bearings_Down": "DJT010W-01",
+        "Jig_Up": "JU81",
+        "Jig_Mid": "JM81",
+        "Jig_Down": "JD81",
+        "Height_Stand": 0.0,
+        "Thickness_Jig_Up": 71.0,
+        "Thickness_Jig_Down": 91.0,
+        "Origin_Position": 21.1,
+        "Origin_Velocity": 21.2,
+        "Standby_Position": 21.3,
+        "Standby_Velocity": 21.4,
+        "Standby_Time": 21.5,
+        "Data_Func1": [
+            {
+                "Mode": 1.0,
+                "Press_Condition": "Position",
+                "Press_Pos": 22.5,
+                "Press_Force": 0.0,
+                "Press_Vel": 22.6,
+                "Press_Time": 22.7,
+                "End_Max_Force_Limit": 22.2,
+                "End_Min_Force_Limit": 22.1,
+                "End_Max_Pos_Limit": 0.0,
+                "End_Min_Pos_Limit": 0.0
+            }
+        ],
+        "Data_Func2": [
+            {
+                "Mode": 0.0,
+                "Press_Condition": "---",
+                "Press_Pos": 0.0,
+                "Press_Force": 0.0,
+                "Press_Vel": 0.0,
+                "Press_Time": 0.0,
+                "End_Max_Force_Limit": 0.0,
+                "End_Min_Force_Limit": 0.0,
+                "End_Max_Pos_Limit": 0.0,
+                "End_Min_Pos_Limit": 0.0
+            }
+        ]
+    },
+    {
+        "Model": "V62",
+        "ID_Shaft": "DJT010W-01",
+        "ID_Rotor": "MP257WW-01",
+        "ID_Bearings_Up": "500TMB202ZZKG",
+        "ID_Bearings_Down": "DJT010W-01",
+        "Jig_Up": "JU82",
+        "Jig_Mid": "JM82",
+        "Jig_Down": "JD82",
+        "Height_Stand": 0.0,
+        "Thickness_Jig_Up": 82.0,
+        "Thickness_Jig_Down": 92.0,
+        "Origin_Position": 31.1,
+        "Origin_Velocity": 31.2,
+        "Standby_Position": 31.3,
+        "Standby_Velocity": 31.4,
+        "Standby_Time": 31.5,
+        "Data_Func1": [
+            {
+                "Mode": 0.0,
+                "Press_Condition": "---",
+                "Press_Pos": 0.0,
+                "Press_Force": 0.0,
+                "Press_Vel": 0.0,
+                "Press_Time": 0.0,
+                "End_Max_Force_Limit": 0.0,
+                "End_Min_Force_Limit": 0.0,
+                "End_Max_Pos_Limit": 0.0,
+                "End_Min_Pos_Limit": 0.0
+            }
+        ],
+        "Data_Func2": [
+            {
+                "Mode": 2.0,
+                "Press_Condition": "Force",
+                "Press_Pos": 0.0,
+                "Press_Force": 32.6,
+                "Press_Vel": 32.7,
+                "Press_Time": 32.8,
+                "End_Max_Force_Limit": 0.0,
+                "End_Min_Force_Limit": 0.0,
+                "End_Max_Pos_Limit": 32.4,
+                "End_Min_Pos_Limit": 32.3
+            }
+        ]
+    }
 ]

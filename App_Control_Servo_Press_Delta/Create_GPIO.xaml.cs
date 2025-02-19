@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using App_Control_Servo_Press_Delta;
+using App_Control_Servo_Press_Delta.Class;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -24,6 +26,8 @@ namespace App_Control_Servo_Press_Delta
         private Button _targetButton;
         private string _Address;
 
+        Link_Path path = new Link_Path();
+        Excel excel = new Excel();
         Common Common = new Common();
         public Create_GPIO(Button targetButton, string Address)
         {
@@ -59,12 +63,12 @@ namespace App_Control_Servo_Press_Delta
 
         private void bt_import_Click(object sender, RoutedEventArgs e)
         {
-
+            excel.Import_IO_Filepath();
         }
 
         private void bt_export_Click(object sender, RoutedEventArgs e)
         {
-
+            excel.Export_IO_File("Template_IO");
         }
         private void MouseDown_Close(object sender, RoutedEventArgs e)
         {

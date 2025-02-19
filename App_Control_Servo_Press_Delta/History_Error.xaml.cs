@@ -65,10 +65,7 @@ namespace App_Control_Servo_Press_Delta
         private void Timer_Tick(object sender, EventArgs e)
         {
 
-            if (Data.Error > 0)
-            {
-                // LoadErrs();
-            }
+
             LoadErrs();
             //  Main();
 

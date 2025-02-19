@@ -38,6 +38,7 @@
     <system:String x:Key="lb_Auto_Step">Step</system:String>
     <system:String x:Key="lb_Auto_Pressing_mode">Pressing_mode</system:String>
     <system:String x:Key="lb_Auto_Pressing_Position">Pressing_Position</system:String>
+    <system:String x:Key="lb_Auto_Pressing_Force">Pressing Force</system:String>
     <system:String x:Key="lb_Auto_Pressing_Velocity">Pressing Velocity</system:String>
     <system:String x:Key="lb_Auto_Pressing_Time">Pressing Time</system:String>
     <system:String x:Key="lb_Auto_Max_Position">Max Position</system:String>
@@ -72,7 +73,16 @@
 
 
     <!-- Man-->
-
+    <system:String x:Key="lb_Press_Shaft">Press Shaft</system:String>
+    <system:String x:Key="lb_Velocity_Home">Velocity to Home(mm/s)</system:String>
+    <system:String x:Key="lb_Step_ABS">Step absolute(mm)</system:String>
+    <system:String x:Key="lb_Velocity_Jog">Velocity Jog(mm/s)</system:String>
+    <system:String x:Key="lb_Jog_Force_max">Jog_Force_Max(N)</system:String>
+    <system:String x:Key="lb_Control">Control</system:String>
+    <system:String x:Key="lb_Go_Home">Home</system:String>
+    <system:String x:Key="lb_Up">Up</system:String>
+    <system:String x:Key="lb_Down">Down</system:String>
+    <system:String x:Key="lb_Door">Door</system:String>
 
 
     <!-- History-->

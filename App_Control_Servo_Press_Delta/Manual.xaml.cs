@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace App_Control_Servo_Press_Delta
@@ -38,11 +39,14 @@ namespace App_Control_Servo_Press_Delta
         }
         private void Manual_Loaded(object sender, RoutedEventArgs e)
         {
-
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
             foreach (var textBox in Common.FindVisualChildren<TextBox>(this))
             {
                 textBox.TextChanged += TextBox_TextChanged;
+                textBox.GotFocus += TextBox_GotFocus;
                 textBox.LostFocus += TextBox_LostFocus;
+                textBox.KeyDown += TextBox_KeyDown;
             }
             foreach (var button in Common.FindVisualChildren<Button>(this))
             {
@@ -50,10 +54,28 @@ namespace App_Control_Servo_Press_Delta
                 button.PreviewMouseDown += Button_MouseDown;
                 button.PreviewMouseUp += Button_MouseUp;
             }
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+
             timer.Tick += Timer_Tick;
             timer.Start();
+        }
+        private void Manual_Unloaded(object sender, RoutedEventArgs e)
+        {
+            foreach (var textBox in Common.FindVisualChildren<TextBox>(this))
+            {
+                textBox.TextChanged -= TextBox_TextChanged;
+                textBox.GotFocus -= TextBox_GotFocus;
+                textBox.LostFocus -= TextBox_LostFocus;
+                textBox.KeyDown -= TextBox_KeyDown;
+            }
+            foreach (var button in Common.FindVisualChildren<Button>(this))
+            {
+                button.Click -= Button_Click;
+                button.PreviewMouseDown -= Button_MouseDown;
+                button.PreviewMouseUp -= Button_MouseUp;
+            }
+            timer.Tick += Timer_Tick;
+            timer.Start();
+            timer = null;
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -68,23 +90,45 @@ namespace App_Control_Servo_Press_Delta
             {
             }
         }
-        private void Manual_Unloaded(object sender, RoutedEventArgs e)
-        {
 
-        }
         private void Update_Screen()
         {
             if (!is_Forcus)
             {
-                Step_abs.Text = Data.Step_abs.ToString();
+                Jog_Max_Force.Text = Math.Round(Data.Jog_Max_Force, 2).ToString();
+                Jog_Distance_ABS.Text = Math.Round(Data.Jog_Distance_ABS, 2).ToString();
+                Jog_Vel.Text = Math.Round(Data.Jog_Vel, 2).ToString();
+                Go_Home_Vel.Text = Math.Round(Data.Go_Home_Vel, 2).ToString();
+                // Console.WriteLine("Đã cập nhật");
             }
-            ud.bt_Green(M_Home_J_N, Data.M_Home_J_N);
-            ud.bt_Green(M_Ep_J_P, Data.M_Ep_J_P);
-            ud.bt_Green(M_Ep_J_N, Data.M_Ep_J_N);
-            ud.bt_Green(M_Ep_ABS, Data.M_Ep_ABS_J_P);
-            ud.bt_Green(On_Ep, Data.On_Ep);
-            ud.bt_Green(M_Door_J_P, Data.M_Door_J_P);
-            ud.bt_Green(M_Door_J_N, Data.M_Door_J_N);
+            if (Data.M_Ep_ABS)
+            {
+                if (Global.Language == "EN")
+                {
+                    M_Ep_ABS.Content = "Inch";
+                }
+                if (Global.Language == "VN")
+                {
+                    M_Ep_ABS.Content = "Tuyệt đối";
+                }
+            }    
+            else
+            {
+                if (Global.Language == "EN")
+                {
+                    M_Ep_ABS.Content = "Jog";
+                }
+                if (Global.Language == "VN")
+                {
+                    M_Ep_ABS.Content = "Tương đối";
+                }
+            }    
+
+        }
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            is_Forcus = true;
 
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -97,23 +141,63 @@ namespace App_Control_Servo_Press_Delta
                 MessageBox.Show("Vui Lòng nhập lại dữ liệu kiểu số");
                 textBox.Text = "";
             }
-            is_Forcus = true;
+
+        }
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                // Mất focus khi nhấn Enter
+                Keyboard.ClearFocus();
+            }
         }
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             string textboxName = textBox.Name;
-            if (!double.TryParse(textBox.Text, out _) & (textBox.Text != ""))
+            //  FocusBorder.Focusable = true; // Đảm bảo Border có thể nhận focus
+            // FocusBorder.Focus();
+            if (string.IsNullOrEmpty(textBox.Text))
             {
-                // Nếu là số, xóa thông báo lỗi
-                var data = new
+                textBox.Text = "0";
+            }
+            else
+            {
+                try
+                { 
+                    if (textboxName == "Go_Home_Vel")
+                    {
+                        Common.Log_data("Man", textboxName, Data.Go_Home_Vel.ToString(), textBox.Text);
+                    }
+                    if (textboxName == "Jog_Vel")
+                    {
+                        Common.Log_data("Man", textboxName, Data.Jog_Vel.ToString(), textBox.Text);
+                    }
+                    if (textboxName == "Jog_Distance_ABS")
+                    {
+                        Common.Log_data("Man", textboxName, Data.Jog_Distance_ABS.ToString(), textBox.Text);
+                    }
+                    if (textboxName == "Jog_Max_Force")
+                    {
+                        Common.Log_data("Man", textboxName, Data.Jog_Max_Force.ToString(), textBox.Text);
+                    }
+                }
+                catch { }
+                if (double.TryParse(textBox.Text, out double doubleValue))
                 {
-                    Step_abs = Step_abs.Text,
-                };
-                string jsonData = JsonConvert.SerializeObject(data);
-                MainWindow._queue.Add(jsonData);
+                    var data = new Dictionary<string, object>
+                {
+                        { textboxName, doubleValue }
+                    };
+
+                    string jsonData = JsonConvert.SerializeObject(data);
+                    MainWindow._queue.Add(jsonData);
+                }
             }
             is_Forcus = false;
+            Keyboard.ClearFocus();
+            FocusBorder.Focusable = true;
+            FocusBorder.Focus();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {

@@ -226,7 +226,7 @@
                                  HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                         </Grid>
                         <Grid Grid.Row="4" Height="50" Margin="5,12,5,20">
-                            
+
                         </Grid>
                         <Grid Grid.Row="5">
                             <Border BorderBrush="Black" BorderThickness="1"/>
@@ -488,7 +488,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                          
+
                             <Grid Grid.Column="1" Margin="5,0,0,0">
                                 <Grid >
                                     <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
@@ -528,7 +528,7 @@
 
                 </Grid>
             </Grid>
-            
+
             <Grid Grid.Row="1" Margin="0,-1,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -607,7 +607,7 @@
                                     <ColumnDefinition Width="80"/>
                                     <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1" Content="{DynamicResource lb_Edit}" x:Name="btn_Set_SysEdit"  Height="30" Margin="5,5,5,5" Click="btn_Set_SysEdit_Click" />
+                                <Button Grid.Column="1" Content="{DynamicResource lb_Edit}" x:Name="btn_Set_SysEdit" Margin="5,5,5,0" Click="btn_Set_SysEdit_Click" Height="32" VerticalAlignment="Top" />
                                 <Button Grid.Column="2" Content="{DynamicResource lb_Save}" x:Name="btn_Set_SysSave"  Height="30" Margin="5,5,4,5" Click="btn_Set_SysSave_Click" />
 
                             </Grid>

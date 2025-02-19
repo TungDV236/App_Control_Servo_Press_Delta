@@ -291,7 +291,7 @@
                                                   Margin="0,5,0,-5"
                                                   FontFamily="Source Sans Pro">
                                             </Label>
-                                            <TextBox IsReadOnly="true" Text="{Binding Position}" Margin="5" FontWeight="Bold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox IsReadOnly="true" x:Name="tb_Position"  Margin="5" FontWeight="Bold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Label  Content="{DynamicResource lb_Force}"
@@ -304,7 +304,7 @@
                                                   HorizontalContentAlignment="Center"
                                                   FontFamily="Source Sans Pro">
                                             </Label>
-                                            <TextBox IsReadOnly="true"  Text="{Binding tb_Model}"  x:Name="Momen_PV" Margin="5" FontWeight="Bold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox IsReadOnly="true"  x:Name="tb_Force"   Margin="5" FontWeight="Bold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="2" Orientation="Vertical">
                                             <Label  Content="---"

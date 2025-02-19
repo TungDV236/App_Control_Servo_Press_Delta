@@ -570,6 +570,172 @@ namespace App_Control_Servo_Press_Delta.Class
                 // Gán DataTable cho DataGridView
             }
         }
+        public void Export_IO_File(string File_Root_name)
+        {
+            var result = Coppy_File(File_Root_name);
+            var folderPath = result.Item1;
+            string sourcePath = result.Item2;
+
+            // Kiểm tra xem đường dẫn thư mục có hợp lệ không
+            if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
+            {
+                System.Windows.MessageBox.Show("Vui lòng nhập một đường dẫn thư mục hợp lệ.");
+                return;
+            }
+            var filePath = System.IO.Path.Combine(folderPath, File_Root_name + "_ExportedData.xlsx");
+            string Fill_json_EN = File.ReadAllText(linkpath.GPIO_EN);
+            string Fill_json_VN = File.ReadAllText(linkpath.GPIO_VN);
+            int cnt = 0;
+            try
+            {
+                // Tạo một FileInfo cho file Excel
+                var fileInfo = new FileInfo(sourcePath);//------------------------
+                bool fileExists = fileInfo.Exists;
+                ExcelWorksheet worksheet;
+
+                if (fileExists)
+                {
+                    if (Fill_json_EN.Length > 0 & Fill_json_VN.Length > 0)
+                    {
+                        using (var package = new ExcelPackage(fileInfo))
+                        {
+                            worksheet = package.Workbook.Worksheets.First();
+                            int nextRow = 6;
+                            JArray json_fillArray_EN = JArray.Parse(Fill_json_EN);
+                            foreach (JObject obj in json_fillArray_EN)
+                            {
+                                worksheet.Cells[nextRow, 1].Value = (string)obj["IO_Name"];
+                                worksheet.Cells[nextRow, 2].Value = (string)obj["IO_Define"];
+                                nextRow = nextRow + 1;
+                            }
+                            nextRow = 6;
+                            JArray json_fillArray_VN = JArray.Parse(Fill_json_VN);
+                            foreach (JObject obj in json_fillArray_VN)
+                            {
+                                worksheet.Cells[nextRow, 3].Value = (string)obj["IO_Define"];
+                                nextRow = nextRow + 1;
+                            }
+
+                            package.Save();
+                            System.Windows.MessageBox.Show("Dữ liệu đã được xuất ra Excel thành công!");
+                        }
+
+                    }
+                }
+                else
+                {
+                    // Nếu file không tồn tại, tạo worksheet mới và thêm tiêu đề
+                    using (var package = new ExcelPackage())
+                    {
+                        worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                        worksheet.Cells[5, 1].Value = "IO_Name";
+                        worksheet.Cells[5, 2].Value = "IO_Define_EN";
+                        worksheet.Cells[5, 3].Value = "IO_Define_VN";
+                        int nextRow = 6;
+                        JArray json_fillArray_EN = JArray.Parse(Fill_json_EN);
+                        foreach (JObject obj in json_fillArray_EN)
+                        {
+                            worksheet.Cells[nextRow, 1].Value = (string)obj["IO_Name"];
+                            worksheet.Cells[nextRow, 2].Value = (string)obj["IO_Define"];
+                            nextRow = nextRow + 1;
+                        }
+                        nextRow = 6;
+                        JArray json_fillArray_VN = JArray.Parse(Fill_json_VN);
+                        foreach (JObject obj in json_fillArray_VN)
+                        {
+                            worksheet.Cells[nextRow, 3].Value = (string)obj["IO_Define"];
+                            nextRow = nextRow + 1;
+                        }
+                        package.SaveAs(filePath);
+                        System.Windows.MessageBox.Show("Dữ liệu đã được xuất ra Excel thành công!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Đã xảy ra lỗi khi xuất dữ liệu: {ex.Message}");
+            }
+        }
+        public void Import_IO_Filepath()
+        {
+            string filePath;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Excel Files|*.xlsx;*.xls";
+                openFileDialog.Title = "Chọn file Excel";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    Import_IO(filePath);
+                }
+            }
+        }
+        public void Import_IO(string filePath)
+        {
+            // System.DateTime dateTime = System.DateTime.Now;
+            // string formattedDate = dateTime.ToString("dd/MM/yy");
+            // string formattedtime = dateTime.ToString("HH:mm:ss");
+            // string ID = formattedDate.Replace("/", "") + formattedtime.Replace(":", "");
+            string Jsontemp_EN;
+            string Jsontemp_VN;
+            string Json_new_EN = "";
+            string Json_new_VN = "";
+            Items_IO List_IO_EN = new Items_IO();
+            Items_IO List_IO_VN = new Items_IO();
+            // Kiểm tra xem file có tồn tại không
+            if (!File.Exists(filePath))
+            {
+                System.Windows.MessageBox.Show("File không tồn tại.");
+                return;
+            }
+            // Sử dụng EPPlus để đọc file Excel
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Thiết lập ngữ cảnh giấy phép
+            using (var package = new ExcelPackage(new FileInfo(filePath)))
+            {
+                // Lấy worksheet đầu tiên
+                var worksheet = package.Workbook.Worksheets[0];
+                if (worksheet.Cells[5, 1].Text == "IO_Name")
+                {
+                    for (int row = 6; row <= worksheet.Dimension.Rows; row++)
+                    {
+                        List_IO_EN.IO_Name = worksheet.Cells[row, 1].Text;
+                        List_IO_EN.IO_Define = worksheet.Cells[row, 2].Text;
+                        List_IO_VN.IO_Name = worksheet.Cells[row, 1].Text;
+                        List_IO_VN.IO_Define = worksheet.Cells[row, 3].Text;
+                        Jsontemp_EN = JsonConvert.SerializeObject(List_IO_EN);
+                        Jsontemp_VN = JsonConvert.SerializeObject(List_IO_VN);
+                        if (Json_new_EN.Length < 2)
+                        {
+                            Json_new_EN = Json_new_EN + Jsontemp_EN;
+                        }
+                        else
+                        {
+                            Json_new_EN = Json_new_EN + "," + Jsontemp_EN;
+                        }
+                        if (Json_new_VN.Length < 2)
+                        {
+                            Json_new_VN = Json_new_VN + Jsontemp_VN;
+                        }
+                        else
+                        {
+                            Json_new_VN = Json_new_VN + "," + Jsontemp_VN;
+                        }
+
+                    }
+                    Json_new_EN = "[" + Json_new_EN + "]";
+                    File.WriteAllText(linkpath.GPIO_EN, Json_new_EN);
+                    Json_new_VN = "[" + Json_new_VN + "]";
+                    File.WriteAllText(linkpath.GPIO_VN, Json_new_VN);
+                    System.Windows.MessageBox.Show("Đã nhập dữ liệu thành công!");
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("File nhập không đúng mẫu");
+                }
+                // Gán DataTable cho DataGridView
+            }
+        }
         public void Export_Chart_File(string File_Root_name, List<Position> dataPoint)
         {
             string json = File.ReadAllText(linkpath.Chart);

@@ -81,6 +81,7 @@ namespace App_Control_Servo_Press_Delta
 
             }
         }
+
         public void Load_View_History(DataGrid dataGrid)
         {
             List<DataView_History> items = new List<DataView_History>();
@@ -238,7 +239,15 @@ namespace App_Control_Servo_Press_Delta
         }
         public static string Search_IO(string IO_Name)
         {
-            string json = File.ReadAllText(System.IO.Path.Combine("Path", "GPIO.json"));
+            string json = "";
+            if (Global.Language == "EN")
+            {
+                json = File.ReadAllText(System.IO.Path.Combine("Path", "GPIO_EN.json"));
+            }
+            if (Global.Language == "VN")
+            {
+                json = File.ReadAllText(System.IO.Path.Combine("Path", "GPIO_VN.json"));
+            }
             // string IO_Define;
             if (json.Length > 0)
             {
