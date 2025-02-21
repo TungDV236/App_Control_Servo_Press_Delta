@@ -43,25 +43,25 @@
                                 IsReadOnly="True"
                                 Grid.ColumnSpan="2">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="STT" 
+                                    <DataGridTextColumn Header="No" 
                                     Binding="{Binding STT}"
                                     Width="80" >
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Mã Lỗi" 
+                                    <DataGridTextColumn Header="Code" 
                                     Binding="{Binding Code}"
                                     Width="120" >
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Nội dung lỗi"
+                                    <DataGridTextColumn Header="Description"
                                     Binding="{Binding Content_}"
                                     Width="260" >
 
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Cách xử lý"
+                                    <DataGridTextColumn Header="Solution"
                             Binding="{Binding Solution}"
                             Width="260">
 
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Thời Gian"
+                                    <DataGridTextColumn Header="Time"
                             Binding="{Binding Time}"
                             Width="Auto" >
 
@@ -95,25 +95,20 @@
                                 IsReadOnly="True"
                                 Grid.ColumnSpan="2">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="STT" 
+                                <DataGridTextColumn Header="No" 
                                     Binding="{Binding STT}"
                                     Width="80" >
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Mã Lỗi" 
-                                    Binding="{Binding Code}"
+                                <DataGridTextColumn Header="User" 
+                                    Binding="{Binding User}"
                                     Width="120" >
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Nội dung lỗi"
-                                    Binding="{Binding Content_}"
-                                    Width="260" >
+                                <DataGridTextColumn Header="Log Operation"
+                                    Binding="{Binding Log}"
+                                    Width="400" >
 
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Cách xử lý"
-                            Binding="{Binding Solution}"
-                            Width="260">
-
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header="Thời Gian"
+                                <DataGridTextColumn Header="Time"
                             Binding="{Binding Time}"
                             Width="Auto" >
 

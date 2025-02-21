@@ -281,7 +281,7 @@ namespace App_Control_Servo_Press_Delta
         }
         private void Click_BTN_Set_SysEdit(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.UserName == "STI-Technical")
+            if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service")
             {
                 //  PLC.PLC_Read = TB_PLC_IP.Text;
                 TB_Server_IP.IsReadOnly = false;
@@ -293,13 +293,15 @@ namespace App_Control_Servo_Press_Delta
             }
             else
             {
-                MessageBox.Show("Vui lòng đăng nhập tài khoản STI-Technical ");
+                MessageBox.Show("Vui lòng đăng nhập tài khoản STI-Technical/ STI-Service");
             }
         }
 
         private void Click_BTN_Set_SysSave(object sender, RoutedEventArgs e)
         {
-            string buttonName = ((Button)sender).Name;
+            if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service")
+            {
+                string buttonName = ((Button)sender).Name;
             object data_Setting = new
             {
                 Server = TB_Server_IP.Text + ":" + TB_Server_Port.Text,
@@ -318,6 +320,11 @@ namespace App_Control_Servo_Press_Delta
 
             is_Forcus2 = false;
         }
+            else
+            {
+                MessageBox.Show("Vui lòng đăng nhập tài khoản STI-Technical/ STI-Service");
+            }
+}
         private bool AreTextBoxesFilled()
         {
             // Kiểm tra từng TextBox

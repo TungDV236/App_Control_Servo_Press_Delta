@@ -258,26 +258,26 @@ namespace App_Control_Servo_Press_Delta
             if (step == 1)
             {
 
-                tb_Force_Max.Text = string.Format("{0:F2}", Global.Function1[0].End_Max_Force_Limit);
-                tb_Force_Min.Text = string.Format("{0:F2}", Global.Function1[0].End_Min_Force_Limit);
-                tb_Position_Max.Text = string.Format("{0:F2}", Global.Function1[0].End_Max_Pos_Limit);
-                tb_Position_Min.Text = string.Format("{0:F2}", Global.Function1[0].End_Min_Pos_Limit);
-                tb_Press_PositionDistance.Text = string.Format("{0:F2}", Global.Function1[0].Press_Pos);
-                tb_Press_Force.Text = string.Format("{0:F2}", Global.Function1[0].Press_Force);
-                tb_Press_Velocity.Text = string.Format("{0:F2}", Global.Function1[0].Press_Vel);
-                tb_Press_Time.Text = string.Format("{0:F2}", Global.Function1[0].Press_Time);
+                tb_num_Force_Max.Text = string.Format("{0:F2}", Global.Function1[0].End_Max_Force_Limit);
+                tb_num_Force_Min.Text = string.Format("{0:F2}", Global.Function1[0].End_Min_Force_Limit);
+                tb_num_Position_Max.Text = string.Format("{0:F2}", Global.Function1[0].End_Max_Pos_Limit);
+                tb_num_Position_Min.Text = string.Format("{0:F2}", Global.Function1[0].End_Min_Pos_Limit);
+                tb_num_Press_PositionDistance.Text = string.Format("{0:F2}", Global.Function1[0].Press_Pos);
+                tb_num_Press_Force.Text = string.Format("{0:F2}", Global.Function1[0].Press_Force);
+                tb_num_Press_Velocity.Text = string.Format("{0:F2}", Global.Function1[0].Press_Vel);
+                tb_num_Press_Time.Text = string.Format("{0:F2}", Global.Function1[0].Press_Time);
             }
             if (step == 2)
             {
 
-                tb_Force_Max.Text = string.Format("{0:F2}", Global.Function2[0].End_Max_Force_Limit);
-                tb_Force_Min.Text = string.Format("{0:F2}", Global.Function2[0].End_Min_Force_Limit);
-                tb_Position_Max.Text = string.Format("{0:F2}", Global.Function2[0].End_Max_Pos_Limit);
-                tb_Position_Min.Text = string.Format("{0:F2}", Global.Function2[0].End_Min_Pos_Limit);
-                tb_Press_PositionDistance.Text = string.Format("{0:F2}", Global.Function2[0].Press_Pos);
-                tb_Press_Force.Text = string.Format("{0:F2}", Global.Function2[0].Press_Force);
-                tb_Press_Velocity.Text = string.Format("{0:F2}", Global.Function2[0].Press_Vel);
-                tb_Press_Time.Text = string.Format("{0:F2}", Global.Function2[0].Press_Time);
+                tb_num_Force_Max.Text = string.Format("{0:F2}", Global.Function2[0].End_Max_Force_Limit);
+                tb_num_Force_Min.Text = string.Format("{0:F2}", Global.Function2[0].End_Min_Force_Limit);
+                tb_num_Position_Max.Text = string.Format("{0:F2}", Global.Function2[0].End_Max_Pos_Limit);
+                tb_num_Position_Min.Text = string.Format("{0:F2}", Global.Function2[0].End_Min_Pos_Limit);
+                tb_num_Press_PositionDistance.Text = string.Format("{0:F2}", Global.Function2[0].Press_Pos);
+                tb_num_Press_Force.Text = string.Format("{0:F2}", Global.Function2[0].Press_Force);
+                tb_num_Press_Velocity.Text = string.Format("{0:F2}", Global.Function2[0].Press_Vel);
+                tb_num_Press_Time.Text = string.Format("{0:F2}", Global.Function2[0].Press_Time);
             }
         }
 
@@ -339,19 +339,19 @@ namespace App_Control_Servo_Press_Delta
             Global.Function2[0].End_Max_Pos_Limit = 0;
             Global.Function2[0].End_Min_Pos_Limit = 0;
             //
-            tb_Origin_PST.Text = "";
-            tb_Origin_Velo.Text = "";
-            tb_PST_Standby.Text = "";
-            tb_Standby_Velocity.Text = "";
-            tb_Standby_Time.Text = "";
-            tb_Force_Min.Text = "";
-            tb_Force_Max.Text = "";
-            tb_Position_Min.Text = "";
-            tb_Position_Max.Text = "";
-            tb_Press_PositionDistance.Text = "";
-            tb_Press_Force.Text = "";
-            tb_Press_Velocity.Text = "";
-            tb_Press_Time.Text = "";
+            tb_num_Origin_PST.Text = "";
+            tb_num_Origin_Velo.Text = "";
+            tb_num_PST_Standby.Text = "";
+            tb_num_Standby_Velocity.Text = "";
+            tb_num_Standby_Time.Text = "";
+            tb_num_Force_Min.Text = "";
+            tb_num_Force_Max.Text = "";
+            tb_num_Position_Min.Text = "";
+            tb_num_Position_Max.Text = "";
+            tb_num_Press_PositionDistance.Text = "";
+            tb_num_Press_Force.Text = "";
+            tb_num_Press_Velocity.Text = "";
+            tb_num_Press_Time.Text = "";
             cbb_Pressing_condition.SelectedIndex = -1;
             cbb_step.SelectedIndex = -1;
             //
@@ -387,14 +387,14 @@ namespace App_Control_Servo_Press_Delta
                             new DataView_PressingCondition { No = 2,PressingCondition = _Pressing_Condition.PressingCondition }
                         };
                     List_Pressing_condition.ItemsSource = Pressing_Condition;
-                    tb_Force_Min.Text = "";
-                    tb_Force_Max.Text = "";
-                    tb_Position_Min.Text = "";
-                    tb_Position_Max.Text = "";
-                    tb_Press_PositionDistance.Text = "";
-                    tb_Press_Force.Text = "";
-                    tb_Press_Velocity.Text = "";
-                    tb_Press_Time.Text = "";
+                    tb_num_Force_Min.Text = "";
+                    tb_num_Force_Max.Text = "";
+                    tb_num_Position_Min.Text = "";
+                    tb_num_Position_Max.Text = "";
+                    tb_num_Press_PositionDistance.Text = "";
+                    tb_num_Press_Force.Text = "";
+                    tb_num_Press_Velocity.Text = "";
+                    tb_num_Press_Time.Text = "";
                     cbb_Pressing_condition.SelectedIndex = -1;
                     cbb_step.SelectedIndex = -1;
                     Global.Function1[0].Mode = 0;
@@ -418,14 +418,14 @@ namespace App_Control_Servo_Press_Delta
                         };
                     List_Pressing_condition.ItemsSource = Pressing_Condition;
 
-                    tb_Force_Min.Text = "";
-                    tb_Force_Max.Text = "";
-                    tb_Position_Min.Text = "";
-                    tb_Position_Max.Text = "";
-                    tb_Press_PositionDistance.Text = "";
-                    tb_Press_Force.Text = "";
-                    tb_Press_Velocity.Text = "";
-                    tb_Press_Time.Text = "";
+                    tb_num_Force_Min.Text = "";
+                    tb_num_Force_Max.Text = "";
+                    tb_num_Position_Min.Text = "";
+                    tb_num_Position_Max.Text = "";
+                    tb_num_Press_PositionDistance.Text = "";
+                    tb_num_Press_Force.Text = "";
+                    tb_num_Press_Velocity.Text = "";
+                    tb_num_Press_Time.Text = "";
                     cbb_Pressing_condition.SelectedIndex = -1;
                     cbb_step.SelectedIndex = -1;
                     Global.Function2[0].Mode = 0;
@@ -455,14 +455,14 @@ namespace App_Control_Servo_Press_Delta
                             new DataView_PressingCondition { No = 2,PressingCondition = _Pressing_Condition.PressingCondition }
                         };
                     List_Pressing_condition.ItemsSource = Pressing_Condition;
-                    tb_Force_Min.Text = "";
-                    tb_Force_Max.Text = "";
-                    tb_Position_Min.Text = "";
-                    tb_Position_Max.Text = "";
-                    tb_Press_PositionDistance.Text = "";
-                    tb_Press_Force.Text = "";
-                    tb_Press_Velocity.Text = "";
-                    tb_Press_Time.Text = "";
+                    tb_num_Force_Min.Text = "";
+                    tb_num_Force_Max.Text = "";
+                    tb_num_Position_Min.Text = "";
+                    tb_num_Position_Max.Text = "";
+                    tb_num_Press_PositionDistance.Text = "";
+                    tb_num_Press_Force.Text = "";
+                    tb_num_Press_Velocity.Text = "";
+                    tb_num_Press_Time.Text = "";
                     //cbb_Pressing_condition.SelectedIndex = -1;
                     //cbb_step.SelectedIndex = -1;
                     if (Global.Function1[0].Press_Condition != null)
@@ -489,14 +489,14 @@ namespace App_Control_Servo_Press_Delta
                         };
                     List_Pressing_condition.ItemsSource = Pressing_Condition;
 
-                    tb_Force_Min.Text = "";
-                    tb_Force_Max.Text = "";
-                    tb_Position_Min.Text = "";
-                    tb_Position_Max.Text = "";
-                    tb_Press_PositionDistance.Text = "";
-                    tb_Press_Force.Text = "";
-                    tb_Press_Velocity.Text = "";
-                    tb_Press_Time.Text = "";
+                    tb_num_Force_Min.Text = "";
+                    tb_num_Force_Max.Text = "";
+                    tb_num_Position_Min.Text = "";
+                    tb_num_Position_Max.Text = "";
+                    tb_num_Press_PositionDistance.Text = "";
+                    tb_num_Press_Force.Text = "";
+                    tb_num_Press_Velocity.Text = "";
+                    tb_num_Press_Time.Text = "";
                     //cbb_Pressing_condition.SelectedIndex = -1;
                     //cbb_step.SelectedIndex = -1;
                     if (Global.Function2[0].Press_Condition != null)
@@ -637,53 +637,53 @@ namespace App_Control_Servo_Press_Delta
             if (cbb_Pressing_condition.SelectedItem != null)
             {
                 var selectedItem = (ComboBoxItem)cbb_Pressing_condition.SelectedItem;
-                tb_Press_PositionDistance.IsReadOnly = true;
-                tb_Press_Force.IsReadOnly = true;
-                tb_Press_Time.IsReadOnly = true;
-                tb_Press_Velocity.IsReadOnly = true;
-                tb_Position_Max.IsReadOnly = true;
-                tb_Position_Min.IsReadOnly = true;
-                tb_Force_Max.IsReadOnly = true;
-                tb_Force_Min.IsReadOnly = true;
+                tb_num_Press_PositionDistance.IsReadOnly = true;
+                tb_num_Press_Force.IsReadOnly = true;
+                tb_num_Press_Time.IsReadOnly = true;
+                tb_num_Press_Velocity.IsReadOnly = true;
+                tb_num_Position_Max.IsReadOnly = true;
+                tb_num_Position_Min.IsReadOnly = true;
+                tb_num_Force_Max.IsReadOnly = true;
+                tb_num_Force_Min.IsReadOnly = true;
                 switch (selectedItem.Content.ToString())
                 {
                    
                     case "Position":
-                        tb_Press_PositionDistance.IsReadOnly = false;
-                        tb_Press_Time.IsReadOnly = false;
-                        tb_Press_Velocity.IsReadOnly = false;
-                        tb_Force_Max.IsReadOnly = false;
-                        tb_Force_Min.IsReadOnly = false;
+                        tb_num_Press_PositionDistance.IsReadOnly = false;
+                        tb_num_Press_Time.IsReadOnly = false;
+                        tb_num_Press_Velocity.IsReadOnly = false;
+                        tb_num_Force_Max.IsReadOnly = false;
+                        tb_num_Force_Min.IsReadOnly = false;
                         break;
                     case "Force":
-                        tb_Press_Force.IsReadOnly = false;
-                        tb_Press_Time.IsReadOnly = false;
-                        tb_Press_Velocity.IsReadOnly = false;
-                        tb_Position_Max.IsReadOnly = false;
-                        tb_Position_Min.IsReadOnly = false;
+                        tb_num_Press_Force.IsReadOnly = false;
+                        tb_num_Press_Time.IsReadOnly = false;
+                        tb_num_Press_Velocity.IsReadOnly = false;
+                        tb_num_Position_Max.IsReadOnly = false;
+                        tb_num_Position_Min.IsReadOnly = false;
                         break;
                     case "Distance":
-                        tb_Press_PositionDistance.IsReadOnly = false;
-                        tb_Press_Time.IsReadOnly = false;
-                        tb_Press_Velocity.IsReadOnly = false;
-                        tb_Position_Max.IsReadOnly = false;
-                        tb_Position_Min.IsReadOnly = false;
-                        tb_Force_Max.IsReadOnly = false;
-                        tb_Force_Min.IsReadOnly = false;
+                        tb_num_Press_PositionDistance.IsReadOnly = false;
+                        tb_num_Press_Time.IsReadOnly = false;
+                        tb_num_Press_Velocity.IsReadOnly = false;
+                        tb_num_Position_Max.IsReadOnly = false;
+                        tb_num_Position_Min.IsReadOnly = false;
+                        tb_num_Force_Max.IsReadOnly = false;
+                        tb_num_Force_Min.IsReadOnly = false;
                         break;
                     case "Force Position":
-                        tb_Press_PositionDistance.IsReadOnly = false;
-                        tb_Press_Force.IsReadOnly = false;
-                        tb_Press_Time.IsReadOnly = false;
-                        tb_Press_Velocity.IsReadOnly = false;
+                        tb_num_Press_PositionDistance.IsReadOnly = false;
+                        tb_num_Press_Force.IsReadOnly = false;
+                        tb_num_Press_Time.IsReadOnly = false;
+                        tb_num_Press_Velocity.IsReadOnly = false;
                         break;
                     case "Force Distance":
-                        tb_Press_PositionDistance.IsReadOnly = false;
-                        tb_Press_Force.IsReadOnly = false;
-                        tb_Press_Time.IsReadOnly = false;
-                        tb_Press_Velocity.IsReadOnly = false;
-                        tb_Position_Max.IsReadOnly = false;
-                        tb_Position_Min.IsReadOnly = false;
+                        tb_num_Press_PositionDistance.IsReadOnly = false;
+                        tb_num_Press_Force.IsReadOnly = false;
+                        tb_num_Press_Time.IsReadOnly = false;
+                        tb_num_Press_Velocity.IsReadOnly = false;
+                        tb_num_Position_Max.IsReadOnly = false;
+                        tb_num_Position_Min.IsReadOnly = false;
                         break;
 
                 }
@@ -704,14 +704,14 @@ namespace App_Control_Servo_Press_Delta
                     {
                         Global.Function1[0].Press_Condition = "";
                     }
-                    Global.Function1[0].Press_Pos = float.Parse(tb_Press_PositionDistance.Text);
-                    Global.Function1[0].Press_Force = float.Parse(tb_Press_Force.Text);
-                    Global.Function1[0].Press_Vel = float.Parse(tb_Press_Velocity.Text);
-                    Global.Function1[0].Press_Time = float.Parse(tb_Press_Time.Text);
-                    Global.Function1[0].End_Max_Force_Limit = float.Parse(tb_Force_Max.Text);
-                    Global.Function1[0].End_Min_Force_Limit = float.Parse(tb_Force_Min.Text);
-                    Global.Function1[0].End_Max_Pos_Limit = float.Parse(tb_Position_Max.Text);
-                    Global.Function1[0].End_Min_Pos_Limit = float.Parse(tb_Position_Min.Text);
+                    Global.Function1[0].Press_Pos = float.Parse(tb_num_Press_PositionDistance.Text);
+                    Global.Function1[0].Press_Force = float.Parse(tb_num_Press_Force.Text);
+                    Global.Function1[0].Press_Vel = float.Parse(tb_num_Press_Velocity.Text);
+                    Global.Function1[0].Press_Time = float.Parse(tb_num_Press_Time.Text);
+                    Global.Function1[0].End_Max_Force_Limit = float.Parse(tb_num_Force_Max.Text);
+                    Global.Function1[0].End_Min_Force_Limit = float.Parse(tb_num_Force_Min.Text);
+                    Global.Function1[0].End_Max_Pos_Limit = float.Parse(tb_num_Position_Max.Text);
+                    Global.Function1[0].End_Min_Pos_Limit = float.Parse(tb_num_Position_Min.Text);
                 }
                 if (step == 2)
                 {
@@ -724,14 +724,14 @@ namespace App_Control_Servo_Press_Delta
                     {
                         Global.Function2[0].Press_Condition = "";
                     }
-                    Global.Function2[0].Press_Pos = float.Parse(tb_Press_PositionDistance.Text);
-                    Global.Function2[0].Press_Force = float.Parse(tb_Press_Force.Text);
-                    Global.Function2[0].Press_Vel = float.Parse(tb_Press_Velocity.Text);
-                    Global.Function2[0].Press_Time = float.Parse(tb_Press_Time.Text);
-                    Global.Function2[0].End_Max_Force_Limit = float.Parse(tb_Force_Max.Text);
-                    Global.Function2[0].End_Min_Force_Limit = float.Parse(tb_Force_Min.Text);
-                    Global.Function2[0].End_Max_Pos_Limit = float.Parse(tb_Position_Max.Text);
-                    Global.Function2[0].End_Min_Pos_Limit = float.Parse(tb_Position_Min.Text);
+                    Global.Function2[0].Press_Pos = float.Parse(tb_num_Press_PositionDistance.Text);
+                    Global.Function2[0].Press_Force = float.Parse(tb_num_Press_Force.Text);
+                    Global.Function2[0].Press_Vel = float.Parse(tb_num_Press_Velocity.Text);
+                    Global.Function2[0].Press_Time = float.Parse(tb_num_Press_Time.Text);
+                    Global.Function2[0].End_Max_Force_Limit = float.Parse(tb_num_Force_Max.Text);
+                    Global.Function2[0].End_Min_Force_Limit = float.Parse(tb_num_Force_Min.Text);
+                    Global.Function2[0].End_Max_Pos_Limit = float.Parse(tb_num_Position_Max.Text);
+                    Global.Function2[0].End_Min_Pos_Limit = float.Parse(tb_num_Position_Min.Text);
                 }
             }
             catch { }
@@ -757,11 +757,11 @@ namespace App_Control_Servo_Press_Delta
             List_Model.Jig_Down = cbb_JigD.SelectedItem.ToString();
             List_Model.Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
             List_Model.Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
-            List_Model.Origin_Position= float.Parse(tb_Origin_PST.Text);
-            List_Model.Origin_Velocity = float.Parse(tb_Origin_Velo.Text);
-            List_Model.Standby_Position = float.Parse(tb_PST_Standby.Text);
-            List_Model.Standby_Time = float.Parse(tb_Standby_Time.Text);
-            List_Model.Standby_Velocity = float.Parse(tb_Standby_Velocity.Text);
+            List_Model.Origin_Position= float.Parse(tb_num_Origin_PST.Text);
+            List_Model.Origin_Velocity = float.Parse(tb_num_Origin_Velo.Text);
+            List_Model.Standby_Position = float.Parse(tb_num_PST_Standby.Text);
+            List_Model.Standby_Time = float.Parse(tb_num_Standby_Time.Text);
+            List_Model.Standby_Velocity = float.Parse(tb_num_Standby_Velocity.Text);
             List_Model.Data_Func1 = Global.Function1;
             List_Model.Data_Func2 = Global.Function2;
 
@@ -788,13 +788,13 @@ namespace App_Control_Servo_Press_Delta
                         item.Jig_Down = cbb_JigD.SelectedValue.ToString();
                         item.Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
                         item.Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
-                        item.Height_Stand = float.Parse(tb_Stand_Height.Text);
+                        item.Height_Stand = float.Parse(tb_num_Stand_Height.Text);
 
-                        item.Origin_Position = float.Parse(tb_Origin_PST.Text);
-                        item.Origin_Velocity = float.Parse(tb_Origin_Velo.Text);
-                        item.Standby_Position = float.Parse(tb_PST_Standby.Text);
-                        item.Standby_Time = float.Parse(tb_Standby_Time.Text);
-                        item.Standby_Velocity = float.Parse(tb_Standby_Velocity.Text);
+                        item.Origin_Position = float.Parse(tb_num_Origin_PST.Text);
+                        item.Origin_Velocity = float.Parse(tb_num_Origin_Velo.Text);
+                        item.Standby_Position = float.Parse(tb_num_PST_Standby.Text);
+                        item.Standby_Time = float.Parse(tb_num_Standby_Time.Text);
+                        item.Standby_Velocity = float.Parse(tb_num_Standby_Velocity.Text);
                         item.Data_Func1 = Global.Function1;
                         item.Data_Func2 = Global.Function2;
                         var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
@@ -898,16 +898,16 @@ namespace App_Control_Servo_Press_Delta
                             CheckValueInComboBox(obj.Jig_Up.ToString(), cbb_JigU);
                             CheckValueInComboBox(obj.Jig_Mid.ToString(), cbb_JigM);
                             CheckValueInComboBox(obj.Jig_Down.ToString(), cbb_JigD);
-                            tb_Stand_Height.Text = string.Format("{0:F2}", obj.Height_Stand);
+                            tb_num_Stand_Height.Text = string.Format("{0:F2}", obj.Height_Stand);
                             Global.Function1.Clear();   
                             Global.Function2.Clear();
                             Global.Function1.AddRange(obj.Data_Func1);
                             Global.Function2.AddRange(obj.Data_Func2);
-                            tb_Origin_PST.Text= string.Format("{0:F2}", obj.Origin_Position);
-                            tb_Origin_Velo.Text = string.Format("{0:F2}", obj.Origin_Velocity);
-                            tb_PST_Standby.Text = string.Format("{0:F2}", obj.Standby_Position);
-                            tb_Standby_Velocity.Text = string.Format("{0:F2}", obj.Standby_Velocity);
-                            tb_Standby_Time.Text = string.Format("{0:F2}", obj.Standby_Time);
+                            tb_num_Origin_PST.Text= string.Format("{0:F2}", obj.Origin_Position);
+                            tb_num_Origin_Velo.Text = string.Format("{0:F2}", obj.Origin_Velocity);
+                            tb_num_PST_Standby.Text = string.Format("{0:F2}", obj.Standby_Position);
+                            tb_num_Standby_Velocity.Text = string.Format("{0:F2}", obj.Standby_Velocity);
+                            tb_num_Standby_Time.Text = string.Format("{0:F2}", obj.Standby_Time);
                             Load_View_Codition();
                             Load_CBB();
                             flag = true;
@@ -983,14 +983,29 @@ namespace App_Control_Servo_Press_Delta
 
         private void Click_bt_Del_Model(object sender, RoutedEventArgs e)
         {
-            Del_Model();
+            if (MainWindow.UserName != "")
+            {
+                Del_Model();
+            }
 
+            else
+            {
+                MessageBox.Show("Vui Lòng Đăng Nhập");
+            }
         }
 
         private void Click_bt_Import_model(object sender, RoutedEventArgs e)
         {
-            excel.Import_Model_Filepath();
+            if (MainWindow.UserName != "")
+            {
+                excel.Import_Model_Filepath();
             Common.Load_View_Model(List_Models);
+            }
+
+            else
+            {
+                MessageBox.Show("Vui Lòng Đăng Nhập");
+            }
         }
 
         private void Click_bt_Export_model(object sender, RoutedEventArgs e)
@@ -1006,20 +1021,35 @@ namespace App_Control_Servo_Press_Delta
 
         private void Click_bt_Save_model(object sender, RoutedEventArgs e)
         {
-            Save_Model();
+            if (MainWindow.UserName != "")
+            {
+                    Save_Model();
+            }
+
+            else
+            {
+                MessageBox.Show("Vui Lòng Đăng Nhập");
+            }
         }
 
         private void Click_bt_del_Condition(object sender, RoutedEventArgs e)
         {
             int selectedValue;
-
-            if (cbb_step.SelectedItem != null & cbb_Pressing_condition.SelectedItem != null)
+            if (MainWindow.UserName != "")
+            {
+                if (cbb_step.SelectedItem != null & cbb_Pressing_condition.SelectedItem != null)
             {
                 var selectedItem = (ComboBoxItem)cbb_step.SelectedItem;
                 if (int.TryParse(selectedItem.Content.ToString(), out selectedValue))
                 {
                     Del_Pressing_condition(selectedValue);
                 }
+            }
+            }
+
+            else
+            {
+                MessageBox.Show("Vui Lòng Đăng Nhập");
             }
 
         }

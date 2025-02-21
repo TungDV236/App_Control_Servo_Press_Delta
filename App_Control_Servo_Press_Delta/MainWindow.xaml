@@ -43,7 +43,7 @@
                      Margin="5,0,0,0"
                      Stretch="Fill">
                                 </Image>
-                                <ComboBox x:Name="LanguageComboBox" Width="120" Height="30" Margin="10"  FontSize="15" Background="White"  BorderThickness="0" BorderBrush="White" Foreground="Black" FontWeight="Bold" 
+                                <ComboBox x:Name="LanguageComboBox" Width="120" Height="30" Margin="10"  FontFamily="Source Sans Pro" FontSize="15" Background="White"  BorderThickness="0" BorderBrush="White" Foreground="Black" FontWeight="Bold" 
                                             SelectionChanged="LanguageComboBox_SelectionChanged">
                                     <ComboBoxItem Content="English"/>
                                     <ComboBoxItem Content="Vietnamese" />
@@ -60,23 +60,23 @@
                                 <Label  Content="{DynamicResource lb_User}"
                                             Name="L_Select_Model"
                                             FontSize="15"
-                                            FontFamily="Arial"
                                             FontWeight="Bold"
                                             HorizontalContentAlignment="Left"
-                                            VerticalContentAlignment="Center"
+                                            VerticalContentAlignment="Center" 
+                                        FontFamily="Source Sans Pro"
                                             BorderThickness="1"
-                                            Width="102"
+                                            Width="105"
                                             Margin="5,0,0,0">
                                 </Label>
                                 <Label Content="-------"
                                             Name="lb_Name"
                                             Foreground="Black"
                                             FontSize="12"
+                                       VerticalAlignment="Center"
                                             HorizontalAlignment="Stretch"
                                             FontStyle="Normal"
                                             FontWeight="Bold"
                                             Margin="2,0,0,0"
-                                            VerticalAlignment="Bottom"
                                             FontFamily="Source Sans Pro">
                                 </Label>
                             </StackPanel>
@@ -104,10 +104,13 @@
 
                             <Grid Grid.Row="0" >
                                 <Grid  HorizontalAlignment="Right" Margin="0,0,5,0">
-                                    <Button  Width="115"  Padding="0"    Name="btn_infor"  Background="Transparent"   BorderBrush="Transparent">
+                                    <Button  Width="115"  Padding="0"    Name="btn_infor"  Background="Transparent"   BorderBrush="Transparent"
+                                           PreviewMouseDown="MouseDown_infor" 
+                                           MouseEnter="Infor_MouseEnter" 
+                                           MouseLeave="Infor_MouseLeave">
                                         <StackPanel Orientation="Horizontal" Width="200">
                                             <Image Source="Images\info.png"    Width="32"   HorizontalAlignment="Left"    Margin="0,0,0,0"     Stretch="Fill" ></Image>
-                                            <Label Content="{DynamicResource lb_Infor}"   FontSize="15"  FontFamily="Arial"   FontWeight="Bold"     VerticalContentAlignment="Bottom"
+                                            <Label Content="{DynamicResource lb_Infor}"   FontSize="15"   FontFamily="Source Sans Pro"  FontWeight="Bold"     VerticalContentAlignment="Bottom"
                                                   HorizontalContentAlignment="Left"      BorderThickness="1"   Width="85"   VerticalAlignment="Center"></Label>
                                         </StackPanel>
                                     </Button>
@@ -118,12 +121,12 @@
                                     <Label   Content="CPU:"
                                              Margin="130,0,0,0"
                                             FontSize="15"
-                                            FontFamily="Arial"
+                                           FontFamily="Source Sans Pro"
                                             FontWeight="Bold"
                                             HorizontalContentAlignment="Left"
                                             VerticalContentAlignment="Center"/>
                                     <Label x:Name="Per_CPU"
-                                        Margin="180,0,20,0"
+                                        Margin="180,0,10,0"
                                            Height="25"
                                            HorizontalContentAlignment="Left"
                                         VerticalAlignment="Center"
@@ -185,7 +188,7 @@
                                 <Label  Grid.Column="1" Content="hh/mm/ss"   x:Name="lb_time" Foreground="Black" FontSize="10" Margin="0,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontStyle="Normal" FontWeight="Bold" FontFamily="Source Sans Pro"/>
                             </Grid>
 
-                            <Label Grid.Row="10"  Content="ver 1.0.1"
+                            <Label Grid.Row="10" x:Name="lb_Version"  Content="Ver 1.0.1"
                                              FontFamily="Arial"
                                              FontWeight="Bold"
                                              VerticalContentAlignment="Bottom"

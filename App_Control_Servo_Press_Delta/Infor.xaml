@@ -30,7 +30,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0">
                         <Label Content="Machine Press Bearing" FontSize="12" FontFamily="Source Sans Pro" Foreground="Black" FontWeight="Bold" Width="140" HorizontalAlignment="Left"  />
-                        <Label Content="Version 1.0.1" FontSize="12" FontFamily="Source Sans Pro" Foreground="Black"  Width="80" HorizontalAlignment="Left" Margin="145,-24,0,0 " VerticalAlignment="Center"/>
+                        <Label x:Name="lb_Version" FontSize="12" FontFamily="Source Sans Pro" Foreground="Black"  Width="80" HorizontalAlignment="Left" Margin="145,-24,0,0 " VerticalAlignment="Center"/>
                         <StackPanel Width="15"
                                     Height="15"
                                     HorizontalAlignment="Right"
@@ -76,7 +76,7 @@
                   Height="210">
                 <Border BorderBrush="Black" BorderThickness="0.5"></Border>
                 <Grid>
-                    <Label Content="Name:  Machine Press Bearing UI" FontSize="12" FontFamily="Source Sans Pro" Foreground="Black" Margin="5,5,0,0" Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Name:  Machine Press Bearings UI" FontSize="12" FontFamily="Source Sans Pro" Foreground="Black" Margin="5,5,0,0" Height="20" VerticalAlignment="Top"/>
                     <Label Content="PO" FontSize="12" FontFamily="Source Sans Pro" Foreground="Black" Margin="5,25,0,0" Height="20" VerticalAlignment="Top"/>
                     <Label Content="Create date: 20/08/2024" FontSize="12" FontFamily="Source Sans Pro" Foreground="Black" Margin="5,45,0,0" Height="20" VerticalAlignment="Top"/>
                     <Label Content="Infor Service:" FontSize="12" FontFamily="Source Sans Pro" Foreground="Black" Margin="5,45,0,0" Height="20" VerticalAlignment="Bottom"/>

@@ -171,6 +171,22 @@ namespace App_Control_Servo_Press_Delta
                     End_Min_Pos_Limit = 0
                 }
              };
+            Global.Data_FC_temp = new List<DataFunC>
+           {
+                new DataFunC
+                {
+                    Mode = 0,
+                    Press_Condition = "",
+                    Press_Pos = 0,
+                    Press_Force = 0,
+                    Press_Vel = 0,
+                    Press_Time = 0,
+                    End_Max_Force_Limit = 0,
+                    End_Min_Force_Limit = 0,
+                    End_Max_Pos_Limit = 0,
+                    End_Min_Pos_Limit = 0
+                }
+             };
             Global.list_model = new List<List_Model>
            {
                 new List_Model
@@ -388,6 +404,7 @@ namespace App_Control_Servo_Press_Delta
             {
                 Position = AxisPosition.Bottom,
                 FontSize = 15,
+                Title = title_x,
                 // Minimum = 0,
                 // Maximum = 1
             });

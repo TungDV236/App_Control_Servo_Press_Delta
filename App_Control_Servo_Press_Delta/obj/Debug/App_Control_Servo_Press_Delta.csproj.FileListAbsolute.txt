@@ -91,3 +91,5 @@ E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delt
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App_Cont.E46C1E66.Up2Date
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App_Control_Servo_Press_Delta.exe
 E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\App_Control_Servo_Press_Delta.pdb
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\NumPad.g.cs
+E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\obj\Debug\NumPad.baml

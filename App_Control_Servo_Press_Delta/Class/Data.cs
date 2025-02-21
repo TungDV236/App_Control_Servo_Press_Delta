@@ -30,6 +30,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public static List<DataFunC> Data_Auto_FC2 { get; set; }
         public static List<List_Model> list_model { get; set; }
 
+        public static List<DataFunC> Data_FC_temp { get; set; }
         public static string Server  { get; set; }
         public static string PLC_IP { get; set; }
         public static string Order_Code { get; set; }
@@ -43,6 +44,15 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool Pressing { get; set; }
         public static bool Check_Write_Model { get; set; }
         public static bool Write_Done  { get; set; }
+        public static bool NumPad_Visiable { get; set; }
+
+        public static string Textbox_string { get; set; }
+        public static string Infor { get; set; }
+        public static bool M_Home_Ep_J_P { get; set; }
+        public static bool M_Ep_J_P { get; set; }
+        public static bool M_Ep_J_N { get; set; }
+        public static bool M_Door_J_P { get; set; }
+        public static bool M_Door_J_N { get; set; }
     }
     public class Data_Report
     {

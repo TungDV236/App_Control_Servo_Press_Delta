@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using App_Control_Servo_Press_Delta.Class;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -23,6 +24,7 @@ namespace App_Control_Servo_Press_Delta
         public Infor()
         {
             InitializeComponent();
+            lb_Version.Content = Global.Infor;
         }
 
         private void infor_exit(object sender, RoutedEventArgs e)

@@ -140,6 +140,7 @@ namespace App_Control_Servo_Press_Delta
 
             LanguageComboBox.SelectedIndex = 1;
             Global.Language = "VN";
+            Global.Infor = lb_Version.Content.ToString();
         }
 
 
@@ -190,6 +191,7 @@ namespace App_Control_Servo_Press_Delta
             {
                 Check_Write_data_Setting();
             }
+
         }
         private void Update_Status_Tick1000ms(object sender, EventArgs e)
         {
@@ -270,7 +272,16 @@ namespace App_Control_Servo_Press_Delta
 
                 MainWindow._queue.Clear();
                 lb_Connect.Foreground = System.Windows.Media.Brushes.Red;
-                Status_PLC = formattedDate + " - " + formattedtime + " - " + "Mất kết Nối PLC";
+                if (Global.Language =="EN")
+                {
+
+                    Status_PLC = formattedDate + " - " + formattedtime + " - " + "Disconnect PLC";
+                }
+                if (Global.Language == "VN")
+                {
+                    Status_PLC = formattedDate + " - " + formattedtime + " - " + "Mất kết Nối PLC";
+                }    
+                
             }
             if (Socket_client.IsConnected)
             {
@@ -412,8 +423,8 @@ namespace App_Control_Servo_Press_Delta
 
         private void Click_BTN_Setting(object sender, RoutedEventArgs e)
         {
-           // if (UserName != "")
-           // {
+            if (UserName != "")
+            {
                 Pannel_Monitor.Children.Clear();
                 Pannel_Monitor.Children.Add(Setting_Screen);
                 BTN_Setting.Background = new SolidColorBrush(Color.FromRgb(100, 149, 237));
@@ -423,11 +434,11 @@ namespace App_Control_Servo_Press_Delta
                 BTN_GPIO.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 BTN_Model.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 BTN_Manual.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-          //  }
-          //  else
-          //  {
-          //      MessageBox.Show("Vui Lòng Đăng Nhập");
-          //  }
+            }
+            else
+            {
+                MessageBox.Show("Vui Lòng Đăng Nhập");
+            }
         }
         private void LoginWindow_LoginSuccessful(object sender, EventArgs e)
         {
@@ -487,8 +498,8 @@ namespace App_Control_Servo_Press_Delta
                             code_E = Choose_Data_Err(i);
                             //   Console.WriteLine(" ma loi: " + code_E + "da xu ly");
                             //   Clear_History(code_E);
-                            Add_Err(code_E);
-
+                            Add_Err(code_E,path.History_EN,path.Error_EN);
+                            Add_Err(code_E, path.History_VN, path.Error_VN);
                         }
                         else
                         {
@@ -658,15 +669,14 @@ namespace App_Control_Servo_Press_Delta
                     return "Invalid option";
             }
         }
-        private void Add_Err(string code_E)
+        private void Add_Err(string code_E, string path_His, string path_Error)
         {
 
             List_History List_History_ = new List_History();
             System.DateTime dateTime = System.DateTime.Now;
-            Link_Path linkpath = new Link_Path();
-            string Fill_json = File.ReadAllText(linkpath.History_VN);
+            string Fill_json = File.ReadAllText(path_His);
             //   string json_ = File.ReadAllText(linkpath.Error);
-            string json = File.ReadAllText(linkpath.Error_EN);
+            string json = File.ReadAllText(path_Error);
             int cnt = 0;
             //try
             //{
@@ -698,65 +708,13 @@ namespace App_Control_Servo_Press_Delta
                             {
                                 json = json.Remove(json.Length - 1);
                                 json = json + list_Error_Json + "]";
-                                File.WriteAllText(linkpath.Error_EN, json);
+                                File.WriteAllText(path_Error, json);
                             }
                             else
                             {
                                 json = json.Remove(json.Length - 1);
                                 json = json + ",\r" + list_Error_Json + "]";
-                                File.WriteAllText(linkpath.Error_EN, json);
-                                //   List_Alarm.ItemsSource = List_History;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        private void Add_Al(string code_E)
-        {
-
-            List_History List_History_ = new List_History();
-            System.DateTime dateTime = System.DateTime.Now;
-            Link_Path linkpath = new Link_Path();
-            string Fill_json = File.ReadAllText(linkpath.History_EN);
-            //   string json_ = File.ReadAllText(linkpath.Error);
-            string json = File.ReadAllText(linkpath.Alarm);
-            int cnt = 0;
-            if (Fill_json.Length > 0)
-            {
-                JArray json_fillArray = JArray.Parse(Fill_json);
-                foreach (JObject obj in json_fillArray)
-                {
-                    if ((string)obj["Code"] == code_E)
-                    {
-                        foreach (var data in List_History)
-                        {
-                            if (data.Code == code_E)
-                            {
-                                cnt = 1;
-                                break;
-                            }
-                        }
-                        if (cnt == 0)
-                        {
-                            List_History_.STT = 1;
-                            List_History_.Code = (string)obj["Code"];
-                            List_History_.Description = (string)obj["Content_"];
-                            List_History_.Solution = (string)obj["Solution"];
-                            List_History_.Time = dateTime.ToString();
-                            string list_Alarm_Json = JsonConvert.SerializeObject(List_History_);
-                            List_History.Add(List_History_);
-                            if (json.Length < 50)
-                            {
-                                json = json.Remove(json.Length - 1);
-                                json = json + list_Alarm_Json + "]";
-                                File.WriteAllText(linkpath.Alarm, json);
-                            }
-                            else
-                            {
-                                json = json.Remove(json.Length - 1);
-                                json = json + ",\r" + list_Alarm_Json + "]";
-                                File.WriteAllText(linkpath.Alarm, json);
+                                File.WriteAllText(path_Error, json);
                                 //   List_Alarm.ItemsSource = List_History;
                             }
                         }

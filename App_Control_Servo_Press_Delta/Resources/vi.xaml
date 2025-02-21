@@ -95,6 +95,8 @@
     <!-- Report-->
 
     <system:String x:Key="btn_Search">Tìm kiếm</system:String>
+    <system:String x:Key="lb_From">Từ:</system:String>
+    <system:String x:Key="lb_to">Đến:</system:String>
     <!-- Signal IO-->
 
 

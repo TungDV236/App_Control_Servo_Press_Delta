@@ -17,6 +17,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows.Threading;
 using App_Control_Servo_Press_Delta.Class;
+using System.ComponentModel;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -80,7 +81,14 @@ namespace App_Control_Servo_Press_Delta
             {
             }
         }
-
+        private void Keydown_Login(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                // Mất focus khi nhấn Enter
+                BtnLogin_Click(bt_Login,null);
+            }
+        }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             Username = txtUsername.Text;
@@ -128,8 +136,9 @@ namespace App_Control_Servo_Press_Delta
         }
         private void Text_GotFocus(object sender, RoutedEventArgs e)
         {
-            Common.Open_KeyBoard();
+             Common.Open_KeyBoard();
         }
+
         private void exitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             btn_infor.Background = Brushes.Red; // Thay đổi màu nền khi di chuột qua

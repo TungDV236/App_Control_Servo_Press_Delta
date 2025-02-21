@@ -92,6 +92,8 @@
     <!-- Report-->
 
     <system:String x:Key="btn_Search">Search</system:String>
+    <system:String x:Key="lb_From">From:</system:String>
+    <system:String x:Key="lb_to">To:</system:String>
     <!-- Signal IO-->
 
 
