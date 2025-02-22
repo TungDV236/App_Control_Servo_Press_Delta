@@ -1,6 +1,7 @@
 ﻿using OxyPlot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,11 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool M_Ep_J_N { get; set; }
         public static bool M_Door_J_P { get; set; }
         public static bool M_Door_J_N { get; set; }
+        public static float Height_Shaft_Press { get; set; } = 697;
+        public static float Thickness_Jig_Up { get; set; } 
+        public static float Thickness_Jig_Down { get; set; }
+        public static float Standby_Position  { get; set; }
+        public static bool Fill_Done { get; set; }
     }
     public class Data_Report
     {
@@ -183,8 +189,8 @@ namespace App_Control_Servo_Press_Delta.Class
         public static double End_Min_Force_Limit2 { get; set; }
         public static double End_Max_Pos_Limit2 { get; set; }
         public static double End_Min_Pos_Limit2 { get; set; }
-        public static double Height_Jig_Top { get; set; }
-        public static double Height_Jig_Mid { get; set; }
+        public static double ofset_Machine { get; set; }
+        public static double Height_Jig_Base  { get; set; }
         public static double Height_Jig_Bottom { get; set; }
         public static double Standard_Roto { get; set; }
         public static double Height_Frame { get; set; }
@@ -207,6 +213,9 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool Check_From_HMI { get; set; }
         public static bool Check_To_HMI { get; set; }
         public static bool Check_Done_Tranfer { get; set; }
+        public static ushort Total_NG { get; set; }
+        public static ushort Total_OK { get; set; }
+        public static bool Alarm_Scan_Order { get; set; }
 
 
 
@@ -280,7 +289,12 @@ namespace App_Control_Servo_Press_Delta.Class
         public float Height_Stand { get; set; }
         public float Thickness_Jig_Up { get; set; }
         public float Thickness_Jig_Down { get; set; }
-
+        public float Pre_press_Bearings_distance { get; set; }
+        public float After_press_bearings_distance { get; set; }
+        public float Upper_Bearings_Thicknness { get; set; }
+        public float Lower_Bearings_Thicknness { get; set; }
+        public float Ofset_position1 { get; set; }
+        public float Ofset_position2 { get; set; }
         public float Origin_Position { get; set; }
         public float Origin_Velocity { get; set; }
         public float Standby_Position  { get; set; }
@@ -302,6 +316,12 @@ namespace App_Control_Servo_Press_Delta.Class
         public float Height_Stand { get; set; }
         public float Thickness_Jig_Up { get; set; }
         public float Thickness_Jig_Down { get; set; }
+        public float Pre_press_Bearings_distance { get; set; }
+        public float After_press_bearings_distance { get; set; }
+        public float Upper_Bearings_Thicknness { get; set; }
+        public float Lower_Bearings_Thicknness { get; set; }
+        public float Ofset_position1 { get; set; }
+        public float Ofset_position2 { get; set; }
 
         public float Origin_Position { get; set; }
         public float Origin_Velocity { get; set; }

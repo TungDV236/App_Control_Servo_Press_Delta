@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Input;
 using System.Windows.Threading;
+using static App_Control_Servo_Press_Delta.LoginWindow;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -254,7 +255,7 @@ namespace App_Control_Servo_Press_Delta
             else
             {
                 try
-                { 
+                {
                     if (textboxName == "Go_Home_Vel")
                     {
                         Common.Log_data("Man", textboxName, Data.Go_Home_Vel.ToString(), textBox.Text);
@@ -273,7 +274,7 @@ namespace App_Control_Servo_Press_Delta
                     }
                 }
                 catch { }
-                if (double.TryParse(textBox.Text, out double doubleValue))
+                if (double.TryParse(textBox.Text, out double doubleValue) & textBox.Name != "Jog_Max_Force")
                 {
                     var data = new Dictionary<string, object>
                 {
@@ -283,15 +284,44 @@ namespace App_Control_Servo_Press_Delta
                     string jsonData = JsonConvert.SerializeObject(data);
                     MainWindow._queue.Add(jsonData);
 
-                    Common.Log_Operation("Write "+ textboxName +":   "+ doubleValue, path.Log);
+                    Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log);
                 }
+                if (double.TryParse(textBox.Text, out double doubleValue1) & textBox.Name == "Jog_Max_Force")
+                {
+                    if (doubleValue1 <= 3300)
+                    {
+                        var data = new Dictionary<string, object>
+                        {
+                        { textboxName, doubleValue }
+                         };
+                        string jsonData = JsonConvert.SerializeObject(data);
+                        MainWindow._queue.Add(jsonData);
+                    }
+                    else
+                    {
+                        var data = new Dictionary<string, object>
+                        {
+                        { textboxName, 3300}
+                         };
+                        string jsonData = JsonConvert.SerializeObject(data);
+                        MainWindow._queue.Add(jsonData);
+                    }
 
-            }
+
+                }
+           
+
+
+                    Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log);
+                }
             is_Forcus = false;
             flag2 = false;
             Keyboard.ClearFocus();
-
         }
+
+
+        
+            
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 

@@ -121,6 +121,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
@@ -259,6 +260,7 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                 </Grid>
 
                             </Grid>
+
                             <Grid Grid.Row="5"  Margin="5,12,5,0">
 
                                 <Grid.ColumnDefinitions>
@@ -267,32 +269,26 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0" Margin="0,0,5,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,5,2.5" />
-                                        <ComboBox x:Name="cbb_JigM"
-                                            Margin="10,5,10,5"
-                                            Height="40" FontWeight="Bold"
-                                            FontSize="15"  
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            Background="White"
-                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_num_Thickness_BearingsU"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
 
-                                    <Label Content="{DynamicResource lb_JigM}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                    <Label Content="{DynamicResource lb_Thickness_BearingsU}"   FontWeight="Bold"    Background="White"   Width="180"  Height="20"   Padding="1" 
+             HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
                                 <Grid Grid.Column="1" Margin="5,0,0,0">
                                     <Grid>
                                         <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                        <TextBox  x:Name="tb_num_Stand_Height"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                        <TextBox  x:Name="tb_num_Thickness_BearingsD"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
 
-                                    <Label Content="{DynamicResource lb_Stand_Height}"   FontWeight="Bold"    Background="White"   Width="125"  Height="20"   Padding="1" 
-HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                    <Label Content="{DynamicResource lb_Thickness_BearingsD}"   FontWeight="Bold"    Background="White"   Width="180"  Height="20"   Padding="1" 
+             HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
 
                             </Grid>
-                            <Grid Grid.Row="4"  Margin="5,12,5,0">
+
+                            <Grid Grid.Row="6"  Margin="5,12,5,0">
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -300,29 +296,40 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0" Margin="0,0,5,0">
                                     <Grid>
-                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,5,2.5" />
-                                        <ComboBox x:Name="cbb_JigM"
-                                            Margin="10,5,10,5"
-                                            Height="40" FontWeight="Bold"
-                                            FontSize="15"  
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Center"
-                                            Background="White"
-                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_num_Distance_Bearings_Before"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
 
-                                    <Label Content="{DynamicResource lb_JigM}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                    <Label Content="{DynamicResource lb_Distance_Bearings_Before}"   FontWeight="Bold"    Background="White"   Width="200"  Height="20"   Padding="1" 
+             HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
                                 <Grid Grid.Column="1" Margin="5,0,0,0">
                                     <Grid>
                                         <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                        <TextBox  x:Name="tb_num_Stand_Height"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                        <TextBox  x:Name="tb_num_Distance_Bearings_After"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                                     </Grid>
 
-                                    <Label Content="{DynamicResource lb_Stand_Height}"   FontWeight="Bold"    Background="White"   Width="125"  Height="20"   Padding="1" 
-HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                    <Label Content="{DynamicResource lb_Distance_Bearings_After}"   FontWeight="Bold"    Background="White"   Width="200"  Height="20"   Padding="1" 
+             HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
                                 </Grid>
+
+                            </Grid>
+                            <Grid Grid.Row="7"  Margin="5,12,5,0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Margin="0,0,5,0">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_num_Ofset"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                    </Grid>
+
+                                    <Label Content="{DynamicResource lb_Ofset_Model}"   FontWeight="Bold"    Background="White"   Width="105"  Height="20"   Padding="1" 
+             HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                </Grid>
+
 
                             </Grid>
                         </Grid>
@@ -555,16 +562,16 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Row="0" Grid.Column="0"   Content="{DynamicResource lb_Press_PositionDistance}" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
                                             <TextBox Grid.Row="0" Grid.Column="1"  x:Name="tb_num_Press_PositionDistance"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
-                                            <Label Grid.Row="0" Grid.Column="2"   Content="(N)" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="0" Grid.Column="2"   Content="(mm)" Height="35" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="1" Grid.Column="0"   Content="{DynamicResource lb_Press_Force}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
                                             <TextBox Grid.Row="1" Grid.Column="1" x:Name="tb_num_Press_Force"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
                                             <Label Grid.Row="1" Grid.Column="2"   Content="(N)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="2" Grid.Column="0"   Content="{DynamicResource lb_Press_Velocity}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
                                             <TextBox Grid.Row="2" Grid.Column="1" x:Name="tb_num_Press_Velocity"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
-                                            <Label Grid.Row="2" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="2" Grid.Column="2"   Content="(mm/s)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                             <Label Grid.Row="3" Grid.Column="0"   Content="{DynamicResource lb_Press_Time}" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,5" />
                                             <TextBox Grid.Row="3" Grid.Column="1" x:Name="tb_num_Press_Time"  Margin="5" FontWeight="Bold" FontSize="15" Height="30" Style="{StaticResource BorderBlackIsReadOnlyTextboxStyle}"/>
-                                            <Label Grid.Row="3" Grid.Column="2"   Content="(mm)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
+                                            <Label Grid.Row="3" Grid.Column="2"   Content="(s)" Height="30" Style="{StaticResource Basic_labelStyle}" Margin="0,5,0,0" />
                                         </Grid>
                                     </Grid>
                                 </Grid>

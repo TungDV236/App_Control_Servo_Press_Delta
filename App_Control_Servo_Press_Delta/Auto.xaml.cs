@@ -40,6 +40,7 @@ namespace App_Control_Servo_Press_Delta
         private DispatcherTimer timer;
         public static string Order_Code;
         private static bool Check_Log = false;
+        private static bool Fill_Log = false;
         private static int check;
         PLC plc = new PLC();
         
@@ -108,14 +109,15 @@ namespace App_Control_Servo_Press_Delta
 
         private void Update_Screen()
         {
-            if (Global.Update_Order)
+            if (Global.Update_Order & !Global.Fill_Done)
             {
+
                 Fill_Value_Mode();
-                Global.Update_Order = false;
-                
+                Global.Fill_Done = true;
             }
-            if (Global.Write_Done & !Global.Update_Order & !Check_Log)
+            if (Global.Write_Done  & !Check_Log)
             {
+
                 Visiable_Order();
                 Global.Write_Done = false;
                 Check_Log = true;
@@ -131,16 +133,30 @@ namespace App_Control_Servo_Press_Delta
                 lb_Status.Background = new SolidColorBrush(Color.FromRgb(5, 222, 37));
                 lb_Status.Content = "OK";
                 lb_Status.Visibility = Visibility.Visible;
+                tb_Auto_Pressed_Force_Max.Text = Global.Force_Max.ToString();
+                tb_Auto_Position_Force_Max.Text = Global.Position_Force_Max.ToString();
             }
             else if (Data.Product_NG)
             {
                 lb_Status.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
                 lb_Status.Content = "NG";
                 lb_Status.Visibility = Visibility.Visible;
+                tb_Auto_Pressed_Force_Max.Text = Global.Force_Max.ToString();
+                tb_Auto_Position_Force_Max.Text = Global.Position_Force_Max.ToString();
             }
             else
             {
                 lb_Status.Visibility = Visibility.Hidden;
+                tb_Auto_Pressed_Force_Max.Text = "";
+                tb_Auto_Position_Force_Max.Text ="";
+            }    
+            tb_Auto_NG.Text = Data.Total_NG.ToString();
+            tb_Auto_Pass.Text = Data.Total_OK.ToString();
+            tb_Auto_Total.Text = (Data.Total_NG + Data.Total_OK ).ToString();
+            if (!Global.Pressing)
+            {
+                tb_Auto_Pressed_Force_Max.Text = Global.Force_Max.ToString();
+                tb_Auto_Pressed_Force_Max.Text = Global.Force_Max.ToString();
             }    
         }
 
@@ -331,8 +347,6 @@ namespace App_Control_Servo_Press_Delta
                                     End_Min_Force_Limit2 = Global.list_model[0].Data_Func2[0].End_Min_Force_Limit,
                                     End_Max_Pos_Limit2 = Global.list_model[0].Data_Func2[0].End_Max_Pos_Limit,
                                     End_Min_Pos_Limit2 = Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit,
-                                    Height_Jig_Top = Global.list_model[0].Thickness_Jig_Up,
-                                    Height_Jig_Bottom = Global.list_model[0].Thickness_Jig_Down,
                                     Standard_Roto = Global.list_model[0].Height_Stand
                                 };
                                 string jsonData = JsonConvert.SerializeObject(data);

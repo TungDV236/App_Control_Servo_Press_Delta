@@ -35,7 +35,7 @@ namespace App_Control_Servo_Press_Delta
         public event EventHandler LoginSuccessful;
         Common Common = new Common();
         private static bool keyboardIsOpen;
-        public class Data
+        public class Data_name
         {
             public string Name { get; set; }
         }
@@ -45,7 +45,7 @@ namespace App_Control_Servo_Press_Delta
             Loaded += LoginWindow_Loaded;
             Unloaded += LoginWindow_Unloaded;
             string json_ = File.ReadAllText(path.User_List);
-            List<Data> dataList = JsonConvert.DeserializeObject<List<Data>>(json_);
+            List<Data_name> dataList = JsonConvert.DeserializeObject<List<Data_name>>(json_);
 
             List<string> names = dataList.Select(item => item.Name).ToList();
             txtUsername.ItemsSource = names;

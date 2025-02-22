@@ -118,7 +118,12 @@
     <system:String x:Key="lb_Import">Nhập Excel</system:String>
     <system:String x:Key="lb_Export">Xuất Excel</system:String>
     <system:String x:Key="lb_Delete">Xóa</system:String>
-    <system:String x:Key="lb_Save"> Lưu</system:String>
+    <system:String x:Key="lb_Save">Lưu</system:String>
+    <system:String x:Key="lb_Thickness_BearingsU"> Độ dạy vòng bi trên(mm)</system:String>
+    <system:String x:Key="lb_Thickness_BearingsD">Độ dày vòng bi dưới(mm)</system:String>
+    <system:String x:Key="lb_Distance_Bearings_Before">K.Cách 2 vòng bi trước ép(mm)</system:String>
+    <system:String x:Key="lb_Distance_Bearings_After">K.Cách 2 vòng bi sau ép(mm)</system:String>
+    <system:String x:Key="lb_Ofset_Model">Ofset model(mm)</system:String>
     <!-- Setting-->
 
     <system:String x:Key="lb_List_Upper_Bearings">Danh sách Vòng bi trên</system:String>
@@ -141,6 +146,8 @@
     <system:String x:Key="lb_Edit">Sửa</system:String>
     <system:String x:Key="btn_Off_Buzzer">Tắt Còi</system:String>
     <system:String x:Key="LB_Base_Jig_Thickness">Chiều dày Jig Đế (mm)</system:String>
+    <system:String x:Key="LB_Ofset_Shaft_Machine">Ofset Trục Máy(mm)</system:String>
+    <system:String x:Key="lb_Cancel">Hủy</system:String>
 
 
 </ResourceDictionary>

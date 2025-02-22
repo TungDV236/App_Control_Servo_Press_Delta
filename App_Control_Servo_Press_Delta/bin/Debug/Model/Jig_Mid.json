@@ -1,1 +1,14 @@
-[{"ID":"JM80","Thickness":0.0},{"ID":"JM81","Thickness":0.0},{"ID":"JM82","Thickness":0.0},{"ID":"JM83","Thickness":0.0},{"ID":"JM84","Thickness":0.0},{"ID":"","Thickness":0.0}]
+[
+  {
+    "ID": "JIG 1",
+    "Thickness": 0
+  },
+  {
+    "ID": "JIG 2",
+    "Thickness": 0
+  },
+  {
+    "ID": "JIG 3",
+    "Thickness": 0
+  }
+]

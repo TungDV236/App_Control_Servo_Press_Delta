@@ -255,10 +255,14 @@ namespace App_Control_Servo_Press_Delta
                 {
                     textBox.Text = "0";
                 }
-            }    
-
+            }
+            Global.Function1[0].Press_Pos = Caculate_Position_Distance(Global.Function1[0].Mode, tb_num_Thickness_BearingsD.Text, tb_num_Distance_Bearings_After.Text,
+    tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+            Global.Function2[0].Press_Pos = Caculate_Position_Distance(Global.Function2[0].Mode, tb_num_Thickness_BearingsD.Text, tb_num_Distance_Bearings_After.Text,
+    tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
             flag2 = false;
             IsForcus = false;
+
         }
         private void Datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -338,7 +342,19 @@ namespace App_Control_Servo_Press_Delta
 
                 }
             }
+            if (comboboxname == "cbb_JigU" & comboBox.SelectedItem != null)
+            {
+                Global.Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
 
+            }
+            if (comboboxname == "cbb_JigD" & comboBox.SelectedItem != null)
+            {
+                Global.Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
+            }
+            Global.Function1[0].Press_Pos = Caculate_Position_Distance(Global.Function1[0].Mode, tb_num_Thickness_BearingsD.Text, tb_num_Distance_Bearings_After.Text,
+tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+            Global.Function2[0].Press_Pos = Caculate_Position_Distance(Global.Function2[0].Mode, tb_num_Thickness_BearingsD.Text, tb_num_Distance_Bearings_After.Text,
+    tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
 
         }
         private void Update_Data()
@@ -443,11 +459,11 @@ namespace App_Control_Servo_Press_Delta
             Global.Function2[0].End_Max_Pos_Limit = 0;
             Global.Function2[0].End_Min_Pos_Limit = 0;
             //
-            tb_num_Origin_PST.Text = "";
-            tb_num_Origin_Velo.Text = "";
-            tb_num_PST_Standby.Text = "";
-            tb_num_Standby_Velocity.Text = "";
-            tb_num_Standby_Time.Text = "";
+            tb_num_Origin_PST.Text = "0";
+            tb_num_Origin_Velo.Text = "0";
+            tb_num_PST_Standby.Text = "0";
+            tb_num_Standby_Velocity.Text = "0";
+            tb_num_Standby_Time.Text = "0";
             tb_num_Force_Min.Text = "";
             tb_num_Force_Max.Text = "";
             tb_num_Position_Min.Text = "";
@@ -459,6 +475,7 @@ namespace App_Control_Servo_Press_Delta
             cbb_Pressing_condition.SelectedIndex = -1;
             cbb_step.SelectedIndex = -1;
             //
+            tb_Model.Text = "";
             tb_Rotor.Text = "";
             tb_Shaft.Text = "";
             tb_BearingD.Text = "";
@@ -466,6 +483,12 @@ namespace App_Control_Servo_Press_Delta
             cbb_JigU.SelectedIndex = -1;
             cbb_JigM.SelectedIndex = -1;
             cbb_JigD.SelectedIndex = -1;
+            tb_num_Stand_Height.Text = "0";
+            tb_num_Thickness_BearingsD.Text = "0";
+            tb_num_Thickness_BearingsU.Text = "0";
+            tb_num_Distance_Bearings_After.Text = "0";
+            tb_num_Distance_Bearings_Before.Text = "0";
+            tb_num_Ofset.Text = "0";
 
             // Tạo dữ liệu mẫu
             var Pressing_Condition = new List<DataView_PressingCondition>
@@ -605,16 +628,16 @@ namespace App_Control_Servo_Press_Delta
                     //cbb_step.SelectedIndex = -1;
                     if (Global.Function2[0].Press_Condition != null)
                     {
-                        Global.Function1[0].Mode = 0;
-                        Global.Function1[0].Press_Condition = "---";
-                        Global.Function1[0].Press_Pos = 0;
-                        Global.Function1[0].Press_Force = 0;
-                        Global.Function1[0].Press_Vel = 0;
-                        Global.Function1[0].Press_Time = 0;
-                        Global.Function1[0].End_Max_Force_Limit = 0;
-                        Global.Function1[0].End_Min_Force_Limit = 0;
-                        Global.Function1[0].End_Max_Pos_Limit = 0;
-                        Global.Function1[0].End_Min_Pos_Limit = 0;
+                        Global.Function2[0].Mode = 0;
+                        Global.Function2[0].Press_Condition = "---";
+                        Global.Function2[0].Press_Pos = 0;
+                        Global.Function2[0].Press_Force = 0;
+                        Global.Function2[0].Press_Vel = 0;
+                        Global.Function2[0].Press_Time = 0;
+                        Global.Function2[0].End_Max_Force_Limit = 0;
+                        Global.Function2[0].End_Min_Force_Limit = 0;
+                        Global.Function2[0].End_Max_Pos_Limit = 0;
+                        Global.Function2[0].End_Min_Pos_Limit = 0;
                     }
                 }
             }
@@ -717,19 +740,14 @@ namespace App_Control_Servo_Press_Delta
 
                     case "Position":
                         return 1;
-                        break;
                     case "Force":
                         return 2;
-                        break;
                     case "Distance":
                         return 3;
-                        break;
                     case "Force Position":
                         return 4;
-                        break;
                     case "Force Distance":
                         return 5;
-                        break;
 
                 }
             }
@@ -753,7 +771,6 @@ namespace App_Control_Servo_Press_Delta
                 {
                    
                     case "Position":
-                        tb_num_Press_PositionDistance.IsReadOnly = false;
                         tb_num_Press_Time.IsReadOnly = false;
                         tb_num_Press_Velocity.IsReadOnly = false;
                         tb_num_Force_Max.IsReadOnly = false;
@@ -767,7 +784,6 @@ namespace App_Control_Servo_Press_Delta
                         tb_num_Position_Min.IsReadOnly = false;
                         break;
                     case "Distance":
-                        tb_num_Press_PositionDistance.IsReadOnly = false;
                         tb_num_Press_Time.IsReadOnly = false;
                         tb_num_Press_Velocity.IsReadOnly = false;
                         tb_num_Position_Max.IsReadOnly = false;
@@ -776,13 +792,11 @@ namespace App_Control_Servo_Press_Delta
                         tb_num_Force_Min.IsReadOnly = false;
                         break;
                     case "Force Position":
-                        tb_num_Press_PositionDistance.IsReadOnly = false;
                         tb_num_Press_Force.IsReadOnly = false;
                         tb_num_Press_Time.IsReadOnly = false;
                         tb_num_Press_Velocity.IsReadOnly = false;
                         break;
                     case "Force Distance":
-                        tb_num_Press_PositionDistance.IsReadOnly = false;
                         tb_num_Press_Force.IsReadOnly = false;
                         tb_num_Press_Time.IsReadOnly = false;
                         tb_num_Press_Velocity.IsReadOnly = false;
@@ -808,7 +822,7 @@ namespace App_Control_Servo_Press_Delta
                     {
                         Global.Function1[0].Press_Condition = "";
                     }
-                    Global.Function1[0].Press_Pos = float.Parse(tb_num_Press_PositionDistance.Text);
+
                     Global.Function1[0].Press_Force = float.Parse(tb_num_Press_Force.Text);
                     Global.Function1[0].Press_Vel = float.Parse(tb_num_Press_Velocity.Text);
                     Global.Function1[0].Press_Time = float.Parse(tb_num_Press_Time.Text);
@@ -828,7 +842,7 @@ namespace App_Control_Servo_Press_Delta
                     {
                         Global.Function2[0].Press_Condition = "";
                     }
-                    Global.Function2[0].Press_Pos = float.Parse(tb_num_Press_PositionDistance.Text);
+
                     Global.Function2[0].Press_Force = float.Parse(tb_num_Press_Force.Text);
                     Global.Function2[0].Press_Vel = float.Parse(tb_num_Press_Velocity.Text);
                     Global.Function2[0].Press_Time = float.Parse(tb_num_Press_Time.Text);
@@ -840,6 +854,55 @@ namespace App_Control_Servo_Press_Delta
             }
             catch { }
           
+        }
+        private static float Caculate_Position_Distance(float mode, string Thickness_BearingsD, string Distance_Bearings_After , string Thickness_BearingsU , string Distance_Bearings_Before, string ofset_Model , string standby_position)
+        {
+
+            float Position = Global.Height_Shaft_Press
+                + (float)Data.ofset_Machine 
+                - (float)Data.Height_Jig_Base 
+                - Global.Thickness_Jig_Down 
+                - float.Parse(Thickness_BearingsD) 
+                - float.Parse(Distance_Bearings_After) 
+                - float.Parse(Thickness_BearingsU) 
+                - Global.Thickness_Jig_Up 
+                + float.Parse(ofset_Model);
+            float Distance = Global.Height_Shaft_Press
+                + (float)Data.ofset_Machine
+                - (float)Data.Height_Jig_Base
+                - Global.Thickness_Jig_Down
+                - float.Parse(Thickness_BearingsD)
+                - float.Parse(Distance_Bearings_After)
+                - float.Parse(Thickness_BearingsU)
+                - Global.Thickness_Jig_Up
+                + float.Parse(ofset_Model)
+                - float.Parse(standby_position);
+            Global.Standby_Position = Global.Height_Shaft_Press
+                + (float)Data.ofset_Machine
+                - (float)Data.Height_Jig_Base
+                - Global.Thickness_Jig_Down
+                - float.Parse(Thickness_BearingsD)
+                - float.Parse(Distance_Bearings_Before)
+                - float.Parse(Thickness_BearingsU)
+                - Global.Thickness_Jig_Up
+                + float.Parse(ofset_Model);
+
+            switch (mode)
+            {
+
+                case 1:
+                    return Position;
+                case 2:
+                    return 0;
+                case 3:
+                    return Distance;
+                case 4:
+                    return Position;
+                case 5:
+                    return Position;
+
+            }
+            return 0;
         }
 
         private void Save_Model()
@@ -861,6 +924,12 @@ namespace App_Control_Servo_Press_Delta
             List_Model.Jig_Down = cbb_JigD.SelectedItem.ToString();
             List_Model.Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
             List_Model.Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
+            List_Model.Upper_Bearings_Thicknness = float.Parse(tb_num_Thickness_BearingsU.Text);
+            List_Model.Lower_Bearings_Thicknness = float.Parse(tb_num_Thickness_BearingsD.Text);
+            List_Model.Pre_press_Bearings_distance = float.Parse(tb_num_Distance_Bearings_Before.Text);
+            List_Model.After_press_bearings_distance = float.Parse(tb_num_Distance_Bearings_After.Text);
+            List_Model.Ofset_position1 = float.Parse(tb_num_Ofset.Text);
+            List_Model.Ofset_position2 = 0;
             List_Model.Origin_Position= float.Parse(tb_num_Origin_PST.Text);
             List_Model.Origin_Velocity = float.Parse(tb_num_Origin_Velo.Text);
             List_Model.Standby_Position = float.Parse(tb_num_PST_Standby.Text);
@@ -893,7 +962,12 @@ namespace App_Control_Servo_Press_Delta
                         item.Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
                         item.Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
                         item.Height_Stand = float.Parse(tb_num_Stand_Height.Text);
-
+                        item.Upper_Bearings_Thicknness = float.Parse(tb_num_Thickness_BearingsU.Text);
+                        item.Lower_Bearings_Thicknness = float.Parse(tb_num_Thickness_BearingsD.Text);
+                        item.Pre_press_Bearings_distance = float.Parse(tb_num_Distance_Bearings_Before.Text);
+                        item.After_press_bearings_distance = float.Parse(tb_num_Distance_Bearings_After.Text);
+                        item.Ofset_position1 = float.Parse(tb_num_Ofset.Text);
+                        item.Ofset_position2 = 0;
                         item.Origin_Position = float.Parse(tb_num_Origin_PST.Text);
                         item.Origin_Velocity = float.Parse(tb_num_Origin_Velo.Text);
                         item.Standby_Position = float.Parse(tb_num_PST_Standby.Text);
@@ -1032,6 +1106,11 @@ namespace App_Control_Servo_Press_Delta
                             CheckValueInComboBox(obj.Jig_Mid.ToString(), cbb_JigM);
                             CheckValueInComboBox(obj.Jig_Down.ToString(), cbb_JigD);
                             tb_num_Stand_Height.Text = string.Format("{0:F2}", obj.Height_Stand);
+                            tb_num_Thickness_BearingsU.Text = string.Format("{0:F2}", obj.Upper_Bearings_Thicknness);
+                            tb_num_Thickness_BearingsD.Text = string.Format("{0:F2}", obj.Lower_Bearings_Thicknness);
+                            tb_num_Distance_Bearings_Before.Text = string.Format("{0:F2}", obj.Pre_press_Bearings_distance);
+                            tb_num_Distance_Bearings_After.Text = string.Format("{0:F2}", obj.After_press_bearings_distance);
+                            tb_num_Ofset.Text = string.Format("{0:F2}", obj.Ofset_position1);
                             Global.Function1.Clear();   
                             Global.Function2.Clear();
                             Global.Function1.AddRange(obj.Data_Func1);
@@ -1166,7 +1245,23 @@ namespace App_Control_Servo_Press_Delta
             }
 
         }  //
-
+        private bool AreTextBoxesFilled()
+        {
+            // Kiểm tra từng TextBox
+            return !string.IsNullOrWhiteSpace(tb_Model.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_BearingU.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_BearingD.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_Rotor.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_Shaft.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_num_Stand_Height.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_num_Thickness_BearingsD.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_num_Thickness_BearingsU.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_num_Distance_Bearings_After.Text) &&
+                   !string.IsNullOrWhiteSpace(tb_num_Distance_Bearings_Before.Text) &&
+                   !string.IsNullOrWhiteSpace(cbb_JigU.SelectedItem.ToString()) &&
+                   !string.IsNullOrWhiteSpace(cbb_JigM.SelectedItem.ToString()) &&
+                   !string.IsNullOrWhiteSpace(cbb_JigD.SelectedItem.ToString());
+        }
         private void Click_bt_Del_Model(object sender, RoutedEventArgs e)
         {
             if (MainWindow.UserName != "")
@@ -1206,7 +1301,54 @@ namespace App_Control_Servo_Press_Delta
         {
             if (MainWindow.UserName != "")
             {
+                if (!AreTextBoxesFilled())
+                {
+                    MessageBox.Show("Vui Lòng nhập đẩy đủ thông tin model");
+                }
+                else if (tb_num_Stand_Height.Text == "0")
+                {
+                    MessageBox.Show("Vui Lòng nhập giá trị độ cao tiêu chuẩn");
+                }
+                else if (tb_num_Thickness_BearingsU.Text == "0")
+                {
+                    MessageBox.Show("Vui Lòng nhập giá trị dày vòng bi trên");
+                }
+                else if (tb_num_Thickness_BearingsD.Text == "0")
+                {
+                    MessageBox.Show("Vui Lòng nhập giá trị dày vòng bi dưới");
+                }
+                else if (tb_num_Distance_Bearings_Before.Text == "0")
+                {
+                    MessageBox.Show("Vui Lòng nhập giá trị khoảng cách 2 vòng bi trước khi ép");
+                }
+                else if (tb_num_Distance_Bearings_After.Text == "0")
+                {
+                    MessageBox.Show("Vui Lòng nhập giá trị khoảng cách 2 vòng bi sau khi ép");
+                }
+                else if (Global.Standby_Position < float.Parse(tb_num_PST_Standby.Text) & tb_num_PST_Standby.Text != "" & tb_num_PST_Standby.Text != null)
+                {
+                    MessageBox.Show(" Vị trí chờ làm việc tối thiểu của Model là :" + Global.Standby_Position.ToString() + " , vui lòng kiểm tra lại!");
+                }
+                else if ((Global.Function1[0].Mode == 2 || Global.Function1[0].Mode == 3 || Global.Function1[0].Mode == 5) & (Global.Function1[0].End_Max_Pos_Limit < float.Parse(tb_num_PST_Standby.Text)|| Global.Function1[0].End_Min_Pos_Limit < float.Parse(tb_num_PST_Standby.Text)))
+                {
+                    MessageBox.Show("Giá trị giới hạn của điều kiện ép1 nhỏ hơn vị trí chờ làm việc, vui lòng kiểm tra lại !");
+                }
+                else if ((Global.Function2[0].Mode == 2 || Global.Function2[0].Mode == 3 || Global.Function2[0].Mode == 5) & (Global.Function2[0].End_Max_Pos_Limit < float.Parse(tb_num_PST_Standby.Text) || Global.Function2[0].End_Min_Pos_Limit < float.Parse(tb_num_PST_Standby.Text)))
+                {
+                    MessageBox.Show("Giá trị giới hạn của điều kiện ép1 nhỏ hơn vị trí chờ làm việc, vui lòng kiểm tra lại !");
+                }
+                else if ((Global.Function1[0].End_Max_Force_Limit > 3300) || Global.Function1[0].End_Min_Force_Limit > 3300)
+                {
+                    MessageBox.Show("Giá trị giới hạn lực ép của điều kiện ép 1 lớn hơn lực ép lớn nhất (3300N), vui lòng kiểm tra lại !");
+                }
+                else if ((Global.Function2[0].End_Max_Force_Limit > 3300) || Global.Function2[0].End_Min_Force_Limit > 3300)
+                {
+                    MessageBox.Show("Giá trị giới hạn lực ép của điều kiện ép 1 lớn hơn lực ép lớn nhất (3300N), vui lòng kiểm tra lại !");
+                }
+                else
+                {
                     Save_Model();
+                }
             }
 
             else

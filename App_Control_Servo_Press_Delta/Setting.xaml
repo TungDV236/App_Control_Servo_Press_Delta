@@ -78,7 +78,7 @@
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="ID"
                                          Binding="{Binding ID}"
-                                         Width="120" >
+                                         Width="200" >
 
                                     </DataGridTextColumn>
 
@@ -192,7 +192,7 @@
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="ID"
                                          Binding="{Binding ID}"
-                                         Width="120" >
+                                         Width="200" >
 
                                     </DataGridTextColumn>
 
@@ -300,7 +300,7 @@
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="ID"
                                          Binding="{Binding ID}"
-                                         Width="120" >
+                                         Width="200" >
 
                                     </DataGridTextColumn>
 
@@ -652,7 +652,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label  Grid.Column="0"   Content="{DynamicResource LB_Base_Jig_Thickness}" FontSize="15" HorizontalAlignment="Center" Margin="0,-5,0,0"   Style="{StaticResource Basic_labelStyle}"  />
-                                <Label  Grid.Column="1"   Content="---" FontSize="15" HorizontalAlignment="Center" Margin="0,-5,0,0"   Style="{StaticResource Basic_labelStyle}"  />
+                                <Label  Grid.Column="1"   Content="{DynamicResource LB_Ofset_Shaft_Machine}" FontSize="15" HorizontalAlignment="Center" Margin="0,-5,0,0"   Style="{StaticResource Basic_labelStyle}"  />
                                 <Label  Grid.Column="2"   Content="---" FontSize="15" HorizontalAlignment="Center" Margin="0,-5,0,0"   Style="{StaticResource Basic_labelStyle}"  />
 
                             </Grid>
@@ -667,13 +667,27 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBox  Grid.Column="0"  IsReadOnly="True"  x:Name="tb_Base_jig_thickness"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                                <TextBox  Grid.Column="1"  IsReadOnly="True"  x:Name="tb_ofset_height"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                                <TextBox  Grid.Column="1"  IsReadOnly="True"  x:Name="tb_Ofset_Shaft_Machine"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
                                 <TextBox  Grid.Column="2"  IsReadOnly="True"    Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
                                
                             </Grid>
 
 
                         </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0" Content="{DynamicResource lb_Cancel}"  x:Name ="BTN_Setting_MCancel"   Margin="5 0 5 0"  Click="Click_Para_Cancel"   Visibility="Visible" />
+                            <Button Grid.Column="2" Content="{DynamicResource lb_Edit}" x:Name="btn_Set_ParaEdit" Margin="5,5,5,0" Click="btn_Set_ParaEdit_Click" Height="32" VerticalAlignment="Top" />
+                            <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="btn_Set_ParaSave"  Height="30" Margin="5,5,4,5" Click="btn_Set_ParaSave_Click" />
+
+                        </Grid>
+
                     </Grid>
                 </Grid>
                 <Grid Grid.Column="2" >

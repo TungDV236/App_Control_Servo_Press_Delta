@@ -114,7 +114,7 @@ namespace App_Control_Servo_Press_Delta
             //
             PLC.StartTimer();
             Update_Status = new DispatcherTimer();
-            Update_Status.Interval = TimeSpan.FromMilliseconds(100);
+            Update_Status.Interval = TimeSpan.FromMilliseconds(200);
             Update_Status.Tick += Update_Status_Tick100ms;
             Update_Status.Start();
             //
@@ -894,14 +894,16 @@ namespace App_Control_Servo_Press_Delta
                     End_Min_Force_Limit2 = Global.list_model[0].Data_Func2[0].End_Min_Force_Limit,
                     End_Max_Pos_Limit2 = Global.list_model[0].Data_Func2[0].End_Max_Pos_Limit,
                     End_Min_Pos_Limit2 = Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit,
-                    Height_Jig_Top = Global.list_model[0].Thickness_Jig_Up,
-                    Height_Jig_Bottom = Global.list_model[0].Thickness_Jig_Down,
                     Standard_Roto = Global.list_model[0].Height_Stand
                 };
                 string jsonData = JsonConvert.SerializeObject(data);
                 MainWindow._queue.Add(jsonData);
             }
-            else if (!Data.Check_Done_Tranfer)
+            else 
+            
+            
+            
+            if (!Data.Check_Done_Tranfer)
             {
                 var data = new
                 {

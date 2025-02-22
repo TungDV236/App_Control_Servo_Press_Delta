@@ -89,12 +89,15 @@ namespace App_Control_Servo_Press_Delta
             Load_View(List_Middle_Jig, path.Jig_Mid);
             Load_View(List_Lower_Jig, path.Jig_Down);
             Common.Load_View_History(List_History_Error_Config);
+
         }
         private void Setting_Unloaded(object sender, RoutedEventArgs e)
         {
-            timer.Tick -= Timer_Tick;
-            timer.Stop();
-            timer = null;
+            if (timer != null)
+            {
+                timer.Stop(); // Dừng timer
+                timer.Tick -= Timer_Tick; // Hủy đăng ký sự kiện
+            }
             foreach (var button in Common.FindVisualChildren<Button>(this))
             {
                 button.Click -= Button_Click;
@@ -134,7 +137,8 @@ namespace App_Control_Servo_Press_Delta
         {
             if (!is_Forcus)
             {
-
+                tb_Base_jig_thickness.Text= Data.Height_Jig_Base.ToString();
+                tb_Ofset_Shaft_Machine.Text = Data.ofset_Machine.ToString();
             }
             if (!is_Forcus2)
             {
@@ -332,50 +336,8 @@ namespace App_Control_Servo_Press_Delta
 
         }
 
-        private void Click_Para_Save(object sender, RoutedEventArgs e)
-        {
-            if (AreTextBoxesFilled())
-            {
-                MessageBoxResult result = MessageBox.Show("Xác Nhận Lưu Thông Số Máy", "Warring", MessageBoxButton.OKCancel);
-                if (result == MessageBoxResult.OK)
-                {
-                    var data = new
-                    {
-
-                        // Limit_Y1 = TB_LimitYUp.Text
-                    };
-                    string jsonData = JsonConvert.SerializeObject(data);
-                    MainWindow._queue.Add(jsonData);
 
 
-                    // TB_LimitYUp.IsReadOnly = true;
-                    is_Forcus = false;
-                    MessageBox.Show("Lưu thông số cài đặt thành công");
-                }
-                else
-                {
-                    MessageBox.Show("Lưu thông số cài đặt thất bại");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông số");
-            }
-        }
-        private void Click_Para_Edit(object sender, RoutedEventArgs e)
-        {
-            if (MainWindow.UserName == "STI-Technical")
-            {
-
-
-            }
-            if (MainWindow.UserName != "")
-            {
-
-            }
-            MessageBox.Show("Có thể cài đặt thông số");
-            is_Forcus = true;
-        }
         private void Fill_Value_Mode(string path, string NameDatagrid, string id)
         {
             string jsons = File.ReadAllText(path); ;
@@ -1015,6 +977,86 @@ namespace App_Control_Servo_Press_Delta
         private void btn_off_bz_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btn_Set_ParaEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Global.Pressing)
+            {
+                if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service")
+                {
+
+                    tb_Ofset_Shaft_Machine.IsReadOnly = false;
+                    tb_Base_jig_thickness.IsReadOnly = false;
+
+                }
+                if (MainWindow.UserName != "")
+                {
+
+                    tb_Ofset_Shaft_Machine.IsReadOnly = true;
+                    tb_Base_jig_thickness.IsReadOnly = true;
+                }
+
+                BTN_Setting_MCancel.Visibility = Visibility.Visible;
+                is_Forcus = true;
+            }
+            else
+            {
+                MessageBox.Show("Máy đang hoạt dộng");
+            }
+        }
+
+        private void btn_Set_ParaSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Global.Pressing)
+            {
+                if (AreTextBoxesFilled())
+                {
+                    MessageBoxResult result = MessageBox.Show("Xác Nhận Lưu Thông Số Máy", "Warring", MessageBoxButton.OKCancel);
+                    if (result == MessageBoxResult.OK)
+                    {
+                        var data = new
+                        {
+                            Height_Jig_Base = tb_Base_jig_thickness.Text,
+                            ofset_Machine = tb_Ofset_Shaft_Machine.Text
+                        };
+                        string jsonData = JsonConvert.SerializeObject(data);
+                        MainWindow._queue.Add(jsonData);
+                        is_Forcus = false;
+                        BTN_Setting_MCancel.Visibility = Visibility.Hidden;
+
+                        tb_Ofset_Shaft_Machine.IsReadOnly = true;
+                        tb_Base_jig_thickness.IsReadOnly = true;
+                        MessageBox.Show("Lưu thông số cài đặt thành công");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lưu thông số cài đặt thất bại");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông số");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Máy đang hoạt dộng");
+
+            }
+        }
+
+        private void Click_Para_Cancel(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Xác Nhận Hủy chỉnh sửa Thông Số Máy", "Warring", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                is_Forcus = false;
+                BTN_Setting_MCancel.Visibility = Visibility.Hidden;
+                tb_Ofset_Shaft_Machine.IsReadOnly = true;
+                tb_Base_jig_thickness.IsReadOnly = true;
+                MessageBox.Show("Đã hủy chỉnh sửa thông số cài đặt");
+            }
         }
     }
 }

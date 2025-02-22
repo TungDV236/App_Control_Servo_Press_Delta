@@ -1,18 +1,14 @@
 [
   {
-    "ID": "JU80",
-    "Thickness": 70
+    "ID": "6203 U JIG",
+    "Thickness": 106
   },
   {
-    "ID": "JU81",
-    "Thickness": 71
+    "ID": "6205 U JIG",
+    "Thickness": 106
   },
   {
-    "ID": "JU82",
-    "Thickness": 82
-  },
-  {
-    "ID": "JU83",
-    "Thickness": 83
+    "ID": "6206 U JIG ",
+    "Thickness": 126
   }
-,{"ID":"JU84","Thickness":84.0}]
+]

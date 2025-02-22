@@ -57,6 +57,8 @@ namespace App_Control_Servo_Press_Delta
             timer.Tick += Timer_Tick;
             timer.Start();
             Global.Check_done_Order = false;
+            Global.Update_Order = false;
+            Global.Done_Visiable = false;
 
         }
         private void Monitor_Unloaded(object sender, RoutedEventArgs e)
@@ -215,6 +217,8 @@ namespace App_Control_Servo_Press_Delta
    
                     if (count_close >= 15 &  Global.Done_Visiable)
                     {
+                        Global.Fill_Done = false;
+                        Global.Update_Order = false;
                         Global.Done_Visiable = false;
                         this.Close();
                     }

@@ -115,10 +115,11 @@
     <system:String x:Key="lb_Import">Import Excel</system:String>
     <system:String x:Key="lb_Export">Export Excel</system:String>
     <system:String x:Key="lb_Delete">Delete</system:String>
-    <system:String x:Key="lb_Thickness_BearingsU">Save</system:String>
-    <system:String x:Key="lb_Thickness_BearingsD">Save</system:String>
-    <system:String x:Key="lb_Distance_Bearings_Before">Bearing_Distance_Before</system:String>
-    <system:String x:Key="lb_Distance_Bearings_After">Save</system:String>
+    <system:String x:Key="lb_Thickness_BearingsU">Upper Bearings Thickness (mm)</system:String>
+    <system:String x:Key="lb_Thickness_BearingsD">Lower Bearings Thickness (mm)</system:String>
+    <system:String x:Key="lb_Distance_Bearings_Before">Pre-press bearings distance (mm)</system:String>
+    <system:String x:Key="lb_Distance_Bearings_After">After-press  bearings distance (mm)</system:String>
+    <system:String x:Key="lb_Ofset_Model">Ofset model(mm)</system:String>
     <system:String x:Key="lb_Save">Save</system:String>
     <!-- Setting-->
 
@@ -141,5 +142,7 @@
     <system:String x:Key="lb_Edit">Edit</system:String>
     <system:String x:Key="btn_Off_Buzzer">Off Buzzer</system:String>
     <system:String x:Key="LB_Base_Jig_Thickness">Base Jig Thickness(mm)</system:String>
+    <system:String x:Key="LB_Ofset_Shaft_Machine">Ofset Shaft Machine(mm)</system:String>
+    <system:String x:Key="lb_Cancel">Cancel</system:String>
 
 </ResourceDictionary>

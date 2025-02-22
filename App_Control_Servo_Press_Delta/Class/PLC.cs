@@ -114,8 +114,8 @@ namespace App_Control_Servo_Press_Delta.Class
                 Data.End_Min_Force_Limit2 = data.End_Min_Force_Limit2;
                 Data.End_Max_Pos_Limit2 = data.End_Max_Pos_Limit2;
                 Data.End_Min_Pos_Limit2 = data.End_Min_Pos_Limit2;
-                Data.Height_Jig_Top = data.Height_Jig_Top;
-                Data.Height_Jig_Mid = data.Height_Jig_Mid;
+                Data.ofset_Machine = data.ofset_Machine;
+                Data.Height_Jig_Base = data.Height_Jig_Base;
                 Data.Height_Jig_Bottom = data.Height_Jig_Bottom;
                 Data.Standard_Roto = data.Standard_Roto;
                 Data.Height_Frame = data.Height_Frame;
@@ -145,6 +145,8 @@ namespace App_Control_Servo_Press_Delta.Class
                 Data.Check_From_HMI = data.Check_From_HMI;
                 Data.Check_To_HMI = data.Check_To_HMI;
                 Data.Check_Done_Tranfer = data.Check_Done_Tranfer;
+                Data.Total_NG = data.Total_NG;
+                Data.Total_OK = data.Total_OK;
 
 
 
@@ -154,7 +156,7 @@ namespace App_Control_Servo_Press_Delta.Class
             catch (Exception e)
             {
                 Common.Log_err("PLC", " Parse_Data", e.ToString());
-                //  MessageBox.Show(e.ToString());
+                  MessageBox.Show(e.ToString());
             }
         }
 
