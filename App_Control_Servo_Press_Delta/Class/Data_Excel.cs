@@ -30,6 +30,33 @@ namespace App_Control_Servo_Press_Delta.Class
         }
         Auto auto_screen = new Auto();
         Link_Path linkpath = new Link_Path();
+        public void Backup_File(string File_Root_name, string folder)
+        {
+            System.DateTime dateTime = System.DateTime.Now;
+            string formattedDate = dateTime.ToString("dd/MM/yy");
+            string formattedtime = dateTime.ToString("HH:mm:ss");
+            string ID = formattedDate.Replace("/", "_") + formattedtime.Replace(":", "_");
+            string relativeSourcePath = "";
+            if (folder == "Model")
+            {
+                relativeSourcePath = @"..\Debug\Model\" + File_Root_name; // Đường dẫn đến file gốc
+            }
+            if (folder == "Path")
+            {
+                relativeSourcePath = @"..\Debug\Path\" + File_Root_name; // Đường dẫn đến file gốc
+            }
+            string sourceFilePath = System.IO.Path.GetFullPath(relativeSourcePath); // Đường dẫn đến file gốc
+            string filePath = System.IO.Path.Combine("Backup", ID + "_" + File_Root_name);
+            string destinationFilePath = filePath; // Đường dẫn đến file sao chép
+            try
+            {
+                File.Copy(sourceFilePath, destinationFilePath, true); // true để ghi đè nếu file đã tồn tại
+            }
+            catch (IOException ex)
+            {
+                System.Windows.MessageBox.Show($"Lỗi sao chép file: {ex.Message}");
+            }
+        }
         public void Import_Model_Filepath()
         {
             string filePath;
@@ -69,6 +96,8 @@ namespace App_Control_Servo_Press_Delta.Class
                 System.Windows.MessageBox.Show("File không tồn tại.");
                 return;
             }
+
+            Backup_File("Model.Json", "Model");
             // Sử dụng EPPlus để đọc file Excel
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Thiết lập ngữ cảnh giấy phép
             using (var package = new ExcelPackage(new FileInfo(filePath)))
@@ -139,7 +168,7 @@ namespace App_Control_Servo_Press_Delta.Class
                         List_Model.Data_Func1[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 20].Text);
                         List_Model.Data_Func1[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 21].Text);
                         List_Model.Data_Func1[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 22].Text);
-                        List_Model.Data_Func1[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 23].Text);
+                        List_Model.Data_Func1[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 23].Text);
                         List_Model.Data_Func2[0].Mode = float.Parse(worksheet.Cells[row, 24].Text);
                         List_Model.Data_Func2[0].Press_Condition = CheckMode(worksheet.Cells[row, 24].Text, out checkMode2);
                         List_Model.Data_Func2[0].Press_Pos = float.Parse(worksheet.Cells[row, 25].Text);
@@ -149,7 +178,7 @@ namespace App_Control_Servo_Press_Delta.Class
                         List_Model.Data_Func2[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 29].Text);
                         List_Model.Data_Func2[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 30].Text);
                         List_Model.Data_Func2[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 31].Text);
-                        List_Model.Data_Func2[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 32].Text);
+                        List_Model.Data_Func2[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 32].Text);
                         Jsontemp = JsonConvert.SerializeObject(List_Model);
                         if (Json_new.Length < 2)
                         {
@@ -221,6 +250,8 @@ namespace App_Control_Servo_Press_Delta.Class
             string Jsontemp;
             string Json_new = "";
             Beer_Jig List_Beer_Jig = new Beer_Jig();
+
+            Backup_File(Model_name+".Json", "Model");
             // Kiểm tra xem file có tồn tại không
             if (!File.Exists(filePath))
             {
@@ -233,7 +264,7 @@ namespace App_Control_Servo_Press_Delta.Class
             {
                 // Lấy worksheet đầu tiên
                 var worksheet = package.Workbook.Worksheets[0];
-                if (((Model_name == "Model_Jig_Up" | Model_name == "Model_Jig_Down") & worksheet.Cells[1, 2].Text == "Thickness"))
+                if (((Model_name == "Jig_Up" | Model_name == "Jig_Down") & worksheet.Cells[1, 2].Text == "Thickness"))
                 {
                     for (int row = 2; row <= worksheet.Dimension.Rows; row++)
                     {
@@ -255,7 +286,7 @@ namespace App_Control_Servo_Press_Delta.Class
                     File.WriteAllText(linkpath_json, Json_new);
                     System.Windows.MessageBox.Show("Đã nhập dữ liệu thành công");
                 }
-                else if (((Model_name == "Model_Beer_Down" | Model_name == "Model_Beer_Up" | Model_name == "Model_Jig_Mid") & worksheet.Cells[1, 1].Text == "ID"))
+                else if (((Model_name == "Beer_Down" | Model_name == "Beer_Up" | Model_name == "Jig_Mid") & worksheet.Cells[1, 1].Text == "ID"))
                 {
                     for (int row = 2; row <= worksheet.Dimension.Rows; row++)
                     {
@@ -280,11 +311,11 @@ namespace App_Control_Servo_Press_Delta.Class
                 }
             }
         }
-        public static string open()
+        public static string open(string title)
         {
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
-                folderDialog.Description = "Chọn thư mục.";
+                folderDialog.Description = title;
                 folderDialog.ShowNewFolderButton = true; // Cho phép tạo thư mục mới
 
                 // Hiển thị hộp thoại và kiểm tra xem người dùng đã chọn thư mục hay chưa
@@ -298,13 +329,14 @@ namespace App_Control_Servo_Press_Delta.Class
             }
             return "";
         }
-        public static (string, string) Coppy_File(string File_Root_name)
+        public static (string, string) Coppy_File(string File_Root_name, string title, string NameFileExxport)
         {
             string relativeSourcePath = @"..\Debug\Template\" + File_Root_name + ".xlsx";
             string sourceFilePath = System.IO.Path.GetFullPath(relativeSourcePath); // Đường dẫn đến file gốc
-            string folder_path = open();
-            string filePath = System.IO.Path.Combine(folder_path, File_Root_name + "_Export.xlsx");
+            string folder_path = open(title);
+            string filePath = System.IO.Path.Combine(folder_path, NameFileExxport + "_Export.xlsx");
             string destinationFilePath = filePath; // Đường dẫn đến file sao chép
+            int count = 1;
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Thiết lập ngữ cảnh giấy phép
             if (!File.Exists(destinationFilePath))
             {
@@ -318,12 +350,30 @@ namespace App_Control_Servo_Press_Delta.Class
                     System.Windows.MessageBox.Show($"Lỗi sao chép file: {ex.Message}");
                 }
             }
+            else
+            {
+                try
+                {
+                    while (File.Exists(filePath))
+                    {
+
+                        filePath = System.IO.Path.Combine(folder_path, NameFileExxport + $"_Export_{count}.xlsx");
+                        count++;
+                    }
+                    File.Copy(sourceFilePath, filePath, true);
+
+                }
+                catch (IOException ex)
+                {
+                    System.Windows.MessageBox.Show($"Lỗi sao chép file: {ex.Message}");
+                }
+            }
 
             return (folder_path, filePath);
         }
-        public void Export_BJ_File(string File_Root_name, string Linkpath_Json, string Model_name)
+        public void Export_BJ_File(string File_Root_name, string Linkpath_Json, string Model_name, string title, string NameFileEXport)
         {
-            var result = Coppy_File(File_Root_name);
+            var result = Coppy_File(File_Root_name, title, NameFileEXport);
             var folderPath = result.Item1;
             string sourcePath = result.Item2;
 
@@ -403,9 +453,9 @@ namespace App_Control_Servo_Press_Delta.Class
                 System.Windows.MessageBox.Show($"Đã xảy ra lỗi khi xuất dữ liệu: {ex.Message}");
             }
         }
-        public void Export_Model_File(string File_Root_name, string Linkpath_Json)
+        public void Export_Model_File(string File_Root_name, string Linkpath_Json, bool Enable_Message, string title, string NameFileEXport)
         {
-            var result = Coppy_File(File_Root_name);
+            var result = Coppy_File(File_Root_name, title, NameFileEXport);
             var folderPath = result.Item1;
             string sourcePath = result.Item2;
 
@@ -454,7 +504,7 @@ namespace App_Control_Servo_Press_Delta.Class
                                 worksheet.Cells[nextRow, 10].Value = obj.Origin_Position;
                                 worksheet.Cells[nextRow, 11].Value = obj.Origin_Velocity;
                                 worksheet.Cells[nextRow, 12].Value = obj.Standby_Position;
-                                worksheet.Cells[nextRow, 13].Value = obj.Origin_Velocity;
+                                worksheet.Cells[nextRow, 13].Value = obj.Standby_Velocity;
                                 worksheet.Cells[nextRow, 14].Value = obj.Standby_Time;
                                 worksheet.Cells[nextRow, 15].Value = obj.Data_Func1[0].Mode;
                                 worksheet.Cells[nextRow, 16].Value = obj.Data_Func1[0].Press_Pos;
@@ -477,7 +527,11 @@ namespace App_Control_Servo_Press_Delta.Class
                                 nextRow = nextRow + 1;
                             }
                             package.Save();
-                            System.Windows.MessageBox.Show("Dữ liệu đã được xuất ra Excel thành công! Dữ liệu được lưu tại:" + filePath);
+
+                            if (Enable_Message)
+                            {
+                                System.Windows.MessageBox.Show("Dữ liệu đã được xuất ra Excel thành công! Dữ liệu được lưu tại:" + filePath);
+                            }
                         }
 
                     }
@@ -540,7 +594,7 @@ namespace App_Control_Servo_Press_Delta.Class
                             worksheet.Cells[nextRow, 10].Value = obj.Origin_Position;
                             worksheet.Cells[nextRow, 11].Value = obj.Origin_Velocity;
                             worksheet.Cells[nextRow, 12].Value = obj.Standby_Position;
-                            worksheet.Cells[nextRow, 13].Value = obj.Origin_Velocity;
+                            worksheet.Cells[nextRow, 13].Value = obj.Standby_Velocity;
                             worksheet.Cells[nextRow, 14].Value = obj.Standby_Time;
                             worksheet.Cells[nextRow, 15].Value = obj.Data_Func1[0].Mode;
                             worksheet.Cells[nextRow, 16].Value = obj.Data_Func1[0].Press_Pos;
@@ -572,9 +626,9 @@ namespace App_Control_Servo_Press_Delta.Class
                 System.Windows.MessageBox.Show($"Đã xảy ra lỗi khi xuất dữ liệu: {ex.Message}");
             }
         }
-        public void Export_History_File(string File_Root_name)
+        public void Export_History_File(string File_Root_name, string title, string NameFileEXport)
         {
-            var result = Coppy_File(File_Root_name);
+            var result = Coppy_File(File_Root_name, title, NameFileEXport);
             var folderPath = result.Item1;
             string sourcePath = result.Item2;
 
@@ -746,9 +800,9 @@ namespace App_Control_Servo_Press_Delta.Class
                 // Gán DataTable cho DataGridView
             }
         }
-        public void Export_IO_File(string File_Root_name)
+        public void Export_IO_File(string File_Root_name, string title, string NameFileEXport)
         {
-            var result = Coppy_File(File_Root_name);
+            var result = Coppy_File(File_Root_name, title, NameFileEXport);
             var folderPath = result.Item1;
             string sourcePath = result.Item2;
 
@@ -912,11 +966,11 @@ namespace App_Control_Servo_Press_Delta.Class
                 // Gán DataTable cho DataGridView
             }
         }
-        public void Export_Chart_File(string File_Root_name, List<Position> dataPoint)
+        public void Export_Chart_File(string File_Root_name, List<Position> dataPoint, string title)
         {
             string json = File.ReadAllText(linkpath.Chart);
             var data_Setting = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(json);
-            string folderPath = open();
+            string folderPath = open(title);
 
             // Kiểm tra xem đường dẫn thư mục có hợp lệ không
             System.DateTime dateTime = System.DateTime.Now;
@@ -978,11 +1032,11 @@ namespace App_Control_Servo_Press_Delta.Class
                 System.Windows.MessageBox.Show($"Đã xảy ra lỗi khi xuất dữ liệu: {ex.Message}");
             }
         }
-        public void Export_Report_All_File(string File_Root_name)
+        public void Export_Report_All_File(string File_Root_name, string title)
         {
             string json = File.ReadAllText(linkpath.Chart);
             var data_Setting = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(json);
-            string folderPath = open();
+            string folderPath = open(title);
 
             // Kiểm tra xem đường dẫn thư mục có hợp lệ không
             System.DateTime dateTime = System.DateTime.Now;

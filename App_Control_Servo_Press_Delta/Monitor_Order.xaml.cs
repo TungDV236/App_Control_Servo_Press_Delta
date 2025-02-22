@@ -137,6 +137,7 @@ namespace App_Control_Servo_Press_Delta
                     tb_BearingU.Text = ID_Model.ID_Bearing_Upper.ToString();
                     tb_BearingD.Text = ID_Model.ID_Bearing_Lower.ToString();
                     tb_Model.Text = ID_Model.Model.ToString();
+                    Quality.Text = ID_Model.Quality.ToString();
                     Global.Receive = false;
                     Check_Order = true;
                 }
@@ -209,9 +210,12 @@ namespace App_Control_Servo_Press_Delta
                     Global.Order_Code = Order_Code.Text;
                     Global.Model = tb_Model.Text;
                     count_close++;
-                    Global.Update_Order = true;
-                    if (count_close >= 15 & Global.Write_Done)
+
+                        Global.Update_Order = true;
+   
+                    if (count_close >= 15 &  Global.Done_Visiable)
                     {
+                        Global.Done_Visiable = false;
                         this.Close();
                     }
                 }
@@ -261,8 +265,11 @@ namespace App_Control_Servo_Press_Delta
         }
         private void MouseDown_Close(object sender, RoutedEventArgs e)
         {
+            if (!Global.Write_Done)
+            {
 
-            this.Close();
+                this.Close();
+            }    
 
         }
 

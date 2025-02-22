@@ -34,6 +34,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public static string Server  { get; set; }
         public static string PLC_IP { get; set; }
         public static string Order_Code { get; set; }
+        public static string Order_Code_Write_done { get; set; }
         public static string ID_Rotor { get; set; }
         public static string ID_Shaft { get; set; }
         public static string ID_BearingsU { get; set; }
@@ -43,6 +44,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public static double Position_Force_Max { get; set; }
         public static bool Pressing { get; set; }
         public static bool Check_Write_Model { get; set; }
+        public static bool Done_Visiable { get; set; }
         public static bool Write_Done  { get; set; }
         public static bool NumPad_Visiable { get; set; }
 
@@ -190,10 +192,10 @@ namespace App_Control_Servo_Press_Delta.Class
         public static ushort ID_Error1 { get; set; }
         public static ushort ID_Error2 { get; set; }
         public static bool M_Home_Ep_J_P { get; set; }
-        public static bool M_Ep_J_P { get; set; }
-        public static bool M_Ep_J_N { get; set; }
-        public static bool M_Door_J_P { get; set; }
-        public static bool M_Door_J_N { get; set; }
+        public static bool M_Ep_U_J_P { get; set; }
+        public static bool M_Ep_D_J_N { get; set; }
+        public static bool M_Door_U_J_P { get; set; }
+        public static bool M_Door_D_J_N { get; set; }
         public static bool M_Ep_ABS { get; set; }
         public static bool Working_Origin { get; set; }
         public static bool Begin_Press { get; set; }
@@ -324,28 +326,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public string ID { get; set; }
         public float Thickness { get; set; }
     }
-    public class Beer_UP
-    {
-        public string ID { get; set; }
-    }
-    public class Beer_Down
-    {
-        public string ID { get; set; }
-    }
-    public class Jig_Up
-    {
-        public string ID { get; set; }
-        public float Thickness { get; set; }
-    }
-    public class Jig_Mid
-    {
-        public string ID { get; set; }
-    }
-    public class Jig_Down
-    {
-        public string ID { get; set; }
-        public float Thickness { get; set; }
-    }
+
     public class List_Data
     {
         public string ID { get; set; }
@@ -355,6 +336,13 @@ namespace App_Control_Servo_Press_Delta.Class
     {
         public string ID { get; set; }
         public float Thickness { get; set; }
+    }
+    public class Data_Log
+    {
+        public int No { get; set; }
+        public string Time { get; set; }
+        public string User { get; set; }
+        public string Log { get; set; }
     }
 
 }

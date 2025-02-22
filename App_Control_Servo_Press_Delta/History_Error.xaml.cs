@@ -53,6 +53,7 @@ namespace App_Control_Servo_Press_Delta
             timer.Tick += Timer_Tick;
             timer.Start();
             LoadErrs();
+            Loadlog();
 
             // List_Err1 = History_UL.GetAllUsers();
         }
@@ -84,7 +85,7 @@ namespace App_Control_Servo_Press_Delta
                 foreach (JObject obj in List_Show_array)
 
                 {
-                    items_E.Add(new Items_Error { STT = index, Code = (string)obj["Code"], Content_ = (string)obj["Content_"], Solution = (string)obj["Solution"], Time = (string)obj["Time"] });
+                    items_E.Add(new Items_Error { STT = index, Code = (string)obj["Code"], Content_ = (string)obj["Description"], Solution = (string)obj["Solution"], Time = (string)obj["Time"] });
                     index++;
                 }
                 items_E.Reverse();
@@ -100,6 +101,36 @@ namespace App_Control_Servo_Press_Delta
             //}
             //catch
             //{ }
+        }
+        private void Loadlog()
+        {
+            List<Data_Log> items = new List<Data_Log>();
+            int index = 1;
+            try
+            {
+            string List_Show = File.ReadAllText(path.Log);
+            if (List_Show.Length > 0)
+            {
+                JArray List_Show_array = JArray.Parse(List_Show);
+                foreach (JObject obj in List_Show_array)
+
+                {
+                    items.Add(new Data_Log { No = index, User = (string)obj["Code"], Log = (string)obj["Log"], Time = (string)obj["Time"] });
+                    index++;
+                }
+                items.Reverse();
+                for (int i = 0; i < items.Count; i++)
+                {
+                    items[i].No = i + 1;
+                }
+                //  List_Error.ItemsSource = items_E;
+                List_History_Operation.ItemsSource = null;
+                List_History_Operation.ItemsSource = items;
+                //  List_Error.ItemsSource =  List<li> Users { get; set; }
+            }
+            }
+            catch
+            { }
         }
         private void Clear_Errs()
         {

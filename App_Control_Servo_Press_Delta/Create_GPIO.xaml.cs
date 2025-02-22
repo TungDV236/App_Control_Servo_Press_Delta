@@ -68,7 +68,7 @@ namespace App_Control_Servo_Press_Delta
 
         private void bt_export_Click(object sender, RoutedEventArgs e)
         {
-            excel.Export_IO_File("Template_IO");
+            excel.Export_IO_File("Template_IO", "Chọn vị trí xuất File", "GPIO");
         }
         private void MouseDown_Close(object sender, RoutedEventArgs e)
         {

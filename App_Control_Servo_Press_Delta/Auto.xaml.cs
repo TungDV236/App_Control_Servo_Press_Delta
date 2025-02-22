@@ -39,10 +39,8 @@ namespace App_Control_Servo_Press_Delta
         Common Common = new Common();
         private DispatcherTimer timer;
         public static string Order_Code;
-        private static bool Update_done = false;
+        private static bool Check_Log = false;
         private static int check;
-        private static double Height_Screen;
-        private static bool Receive;
         PLC plc = new PLC();
         
         public Auto()
@@ -52,6 +50,8 @@ namespace App_Control_Servo_Press_Delta
             Unloaded += Auto_Unloaded;
             var model1 = CreatePlotModel( "Thông số", "Vị Trí (mm)", 400, "Lực Ép (N/m)", 4000);
             plotView1.Model = model1;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
         }
 
         private void Auto_Loaded(object sender, RoutedEventArgs e)
@@ -61,11 +61,22 @@ namespace App_Control_Servo_Press_Delta
                 textBox.TextChanged += TextBox_TextChanged;
                 textBox.LostFocus += TextBox_LostFocus;
             }
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
             timer.Tick += Timer_Tick;
             timer.Start();
             Init_data();
+        }
+        private void Auto_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (timer != null)
+            {
+                timer.Tick -= Timer_Tick;
+                timer.Stop();
+            }
+            foreach (var textBox in Common.FindVisualChildren<TextBox>(this))
+            {
+                textBox.TextChanged -= TextBox_TextChanged;
+                textBox.LostFocus -= TextBox_LostFocus;
+            }
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -94,11 +105,7 @@ namespace App_Control_Servo_Press_Delta
             {
             }
         }
-        private void Auto_Unloaded(object sender, RoutedEventArgs e)
-        {
-            timer.Tick -= Timer_Tick;
-            timer.Stop();
-        }
+
         private void Update_Screen()
         {
             if (Global.Update_Order)
@@ -106,6 +113,18 @@ namespace App_Control_Servo_Press_Delta
                 Fill_Value_Mode();
                 Global.Update_Order = false;
                 
+            }
+            if (Global.Write_Done & !Global.Update_Order & !Check_Log)
+            {
+                Visiable_Order();
+                Global.Write_Done = false;
+                Check_Log = true;
+
+            }
+            if (!Global.Check_done_Order & Check_Log)
+            {
+                Check_Log = false;
+
             }
             if (Data.Product_OK )
             {
@@ -292,40 +311,6 @@ namespace App_Control_Servo_Press_Delta
                                 Global.list_model[0].Data_Func2.Clear();
                                 Global.list_model[0].Data_Func1.AddRange(obj.Data_Func1);
                                 Global.list_model[0].Data_Func2.AddRange(obj.Data_Func2);
-                                tb_Order_Code.Text = Global.Order_Code;
-                                tb_Model.Text = obj.Model;
-                                tb_Rotor.Text = obj.ID_Rotor;
-                                tb_Shaft.Text = obj.ID_Shaft;
-                                tb_BearingU.Text = obj.ID_Bearings_Up;
-                                tb_BearingD.Text = obj.ID_Bearings_Down;
-                                tb_JigU.Text = obj.Jig_Up;
-                                tb_JigM.Text = obj.Jig_Mid;
-                                tb_JigD.Text = obj.Jig_Down;
-                                tb_Stand_Height.Text = string.Format("{0:F2}", obj.Height_Stand);
-                                tb_Origin_Position.Text = string.Format("{0:F2}", obj.Origin_Position);
-                                tb_Origin_Velocity.Text = string.Format("{0:F2}", obj.Origin_Velocity);
-                                tb_Standby_PST.Text = string.Format("{0:F2}", obj.Standby_Position);
-                                tb_Velocity_Standby.Text = string.Format("{0:F2}", obj.Standby_Velocity);
-                                tb_Standby_Time.Text = string.Format("{0:F2}", obj.Standby_Time);
-                                tb_Pressing_condition1.Text = Global.list_model[0].Data_Func1[0].Press_Condition.ToString();
-                                tb_Pressing_Position1.Text = Global.list_model[0].Data_Func1[0].Press_Pos.ToString();
-                                tb_Pressing_Force1.Text = Global.list_model[0].Data_Func1[0].Press_Force.ToString();
-                                tb_Pressing_Velocity1.Text = Global.list_model[0].Data_Func1[0].Press_Vel.ToString();
-                                tb_Pressing_Time1.Text = Global.list_model[0].Data_Func1[0].Press_Time.ToString();
-                                tb_Max_Force1.Text = Global.list_model[0].Data_Func1[0].End_Max_Force_Limit.ToString();
-                                tb_Min_Force1.Text = Global.list_model[0].Data_Func1[0].End_Min_Force_Limit.ToString();
-                                tb_Max_Position1.Text = Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit.ToString();
-                                tb_Min_Position1.Text = Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit.ToString();
-
-                                tb_Pressing_condition2.Text = Global.list_model[0].Data_Func2[0].Press_Condition.ToString();
-                                tb_Pressing_Position2.Text = Global.list_model[0].Data_Func2[0].Press_Pos.ToString();
-                                tb_Pressing_Force2.Text = Global.list_model[0].Data_Func2[0].Press_Force.ToString();
-                                tb_Pressing_Velocity2.Text = Global.list_model[0].Data_Func2[0].Press_Vel.ToString();
-                                tb_Pressing_Time2.Text = Global.list_model[0].Data_Func2[0].Press_Time.ToString();
-                                tb_Max_Force2.Text = Global.list_model[0].Data_Func2[0].End_Max_Force_Limit.ToString();
-                                tb_Min_Force2.Text = Global.list_model[0].Data_Func2[0].End_Min_Force_Limit.ToString();
-                                tb_Max_Position2.Text = Global.list_model[0].Data_Func2[0].End_Max_Pos_Limit.ToString();
-                                tb_Min_Position2.Text = Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit.ToString();
                                 var data = new
                                 {
                                     Mode1 = Global.list_model[0].Data_Func1[0].Mode,
@@ -353,6 +338,8 @@ namespace App_Control_Servo_Press_Delta
                                 string jsonData = JsonConvert.SerializeObject(data);
                                 MainWindow._queue.Add(jsonData);
                                 Global.Check_Write_Model = true;
+
+
                             }
 
                             flag = true;
@@ -371,30 +358,84 @@ namespace App_Control_Servo_Press_Delta
 
             }
         }
-
-
-
-        private static string Fill_ID(string linkpath_json, string Value)
+        private void Visiable_Order ()
         {
-            string json = File.ReadAllText(linkpath_json);
-            var options = new JsonSerializerOptions { ReadCommentHandling = JsonCommentHandling.Skip };
-            var data = System.Text.Json.JsonSerializer.Deserialize<Beer_Jig[]>(json, options);
 
-            var newData = new List<Beer_Jig>();
+            tb_Order_Code.Text = Global.Order_Code;
+            tb_Model.Text = Global.list_model[0].Model;
+            tb_Rotor.Text = Global.list_model[0].ID_Rotor;
+            tb_Shaft.Text = Global.list_model[0].ID_Shaft;
+            tb_BearingU.Text = Global.list_model[0].ID_Bearings_Up;
+            tb_BearingD.Text = Global.list_model[0].ID_Bearings_Down;
+            tb_JigU.Text = Global.list_model[0].Jig_Up;
+            tb_JigM.Text = Global.list_model[0].Jig_Mid;
+            tb_JigD.Text = Global.list_model[0].Jig_Down;
 
-            foreach (var item in data)
+            tb_Stand_Height.Text = string.Format("{0:F2}", Global.list_model[0].Height_Stand);
+            tb_Origin_Position.Text = string.Format("{0:F2}", Global.list_model[0].Origin_Position);
+            tb_Origin_Velocity.Text = string.Format("{0:F2}", Global.list_model[0].Origin_Velocity);
+            tb_Standby_PST.Text = string.Format("{0:F2}", Global.list_model[0].Standby_Position);
+            tb_Velocity_Standby.Text = string.Format("{0:F2}", Global.list_model[0].Origin_Velocity);
+            tb_Standby_Time.Text = string.Format("{0:F2}", Global.list_model[0].Standby_Time);
+            tb_Pressing_condition1.Text = Global.list_model[0].Data_Func1[0].Press_Condition.ToString();
+            tb_Pressing_Position1.Text = Global.list_model[0].Data_Func1[0].Press_Pos.ToString();
+            tb_Pressing_Force1.Text = Global.list_model[0].Data_Func1[0].Press_Force.ToString();
+            tb_Pressing_Velocity1.Text = Global.list_model[0].Data_Func1[0].Press_Vel.ToString();
+            tb_Pressing_Time1.Text = Global.list_model[0].Data_Func1[0].Press_Time.ToString();
+            tb_Max_Force1.Text = Global.list_model[0].Data_Func1[0].End_Max_Force_Limit.ToString();
+            tb_Min_Force1.Text = Global.list_model[0].Data_Func1[0].End_Min_Force_Limit.ToString();
+            tb_Max_Position1.Text = Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit.ToString();
+            tb_Min_Position1.Text = Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit.ToString();
+
+            tb_Pressing_condition2.Text = Global.list_model[0].Data_Func2[0].Press_Condition.ToString();
+            tb_Pressing_Position2.Text = Global.list_model[0].Data_Func2[0].Press_Pos.ToString();
+            tb_Pressing_Force2.Text = Global.list_model[0].Data_Func2[0].Press_Force.ToString();
+            tb_Pressing_Velocity2.Text = Global.list_model[0].Data_Func2[0].Press_Vel.ToString();
+            tb_Pressing_Time2.Text = Global.list_model[0].Data_Func2[0].Press_Time.ToString();
+            tb_Max_Force2.Text = Global.list_model[0].Data_Func2[0].End_Max_Force_Limit.ToString();
+            tb_Min_Force2.Text = Global.list_model[0].Data_Func2[0].End_Min_Force_Limit.ToString();
+            tb_Max_Position2.Text = Global.list_model[0].Data_Func2[0].End_Max_Pos_Limit.ToString();
+            tb_Min_Position2.Text = Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit.ToString();
+            Global.Order_Code_Write_done = tb_Order_Code.Text;
+            System.DateTime dateTime = System.DateTime.Now;
+            string formattedDate = dateTime.ToString("dd/MM/yy");
+            string formattedtime = dateTime.ToString("HH:mm:ss");
+            List<Data_Log> data_Logs = new List<Data_Log>
             {
-                if (item.ID == Value)
-                {
-                    return item.ID;
-                }
-            }
-            var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
-            string newJsonString = System.Text.Json.JsonSerializer.Serialize(newData, jsonOptions);
-            // Write back to file
-            File.WriteAllText(linkpath_json, newJsonString);
-            return "";
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Scan_Order_Code:   " + Global.Order_Code , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Stand_Height:   " + Global.list_model[0].Height_Stand , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Origin_Position:   " + Global.list_model[0].Origin_Position, Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Origin_Velocity:   " + Global.list_model[0].Origin_Velocity , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Standby_Position:   " + Global.list_model[0].Standby_Position , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Standby_Velocity:   " + Global.list_model[0].Standby_Velocity , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Standby_Time:   " + Global.list_model[0].Standby_Time , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Mode1:   " + Global.list_model[0].Data_Func1[0].Mode , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Position1:   " + Global.list_model[0].Data_Func1[0].Press_Pos , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Force1:   " + Global.list_model[0].Data_Func1[0].Press_Force , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Velocity1:   " + Global.list_model[0].Data_Func1[0].Press_Vel , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Time1:   " + Global.list_model[0].Data_Func1[0].Press_Time , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Max_Force1:   " + Global.list_model[0].Data_Func1[0].End_Max_Force_Limit , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Min_Force1:   " + Global.list_model[0].Data_Func1[0].End_Min_Force_Limit , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Max_Position1:   " + Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Min_Position1:   " + Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Mode2:   " + Global.list_model[0].Data_Func2[0].Mode , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Position2:   " + Global.list_model[0].Data_Func2[0].Press_Pos , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Force2:   " + Global.list_model[0].Data_Func2[0].Press_Force , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Velocity2:   " + Global.list_model[0].Data_Func2[0].Press_Vel , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Time2:   " + Global.list_model[0].Data_Func2[0].Press_Time , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Max_Force2:   " + Global.list_model[0].Data_Func2[0].End_Max_Force_Limit , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Min_Force2:   " + Global.list_model[0].Data_Func2[0].End_Min_Force_Limit , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Max_Position2:   " + Global.list_model[0].Data_Func2[0].End_Max_Pos_Limit , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Min_Position2:   " + Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit , Time = formattedDate +" "+formattedtime}
+            };
+
+            // Chuyển danh sách sang định dạng JSON
+            string json_Log = JsonConvert.SerializeObject(data_Logs, Formatting.Indented);
+            Common.Log_Operation_Json(json_Log, path.Log);
+            Global.Done_Visiable = true;
         }
+
+
         public PlotModel CreatePlotModel( string title_series, string title_x, double max_x, string title_y, double max_y)
         {
             var model = new PlotModel { };
@@ -465,6 +506,8 @@ namespace App_Control_Servo_Press_Delta
             tb_Standby_PST.Text = "";
             tb_Velocity_Standby.Text = "";
             tb_Standby_Time.Text = "";
+            Global.Order_Code_Write_done = "";
+            Global.Order_Code = "";
         }
 
 

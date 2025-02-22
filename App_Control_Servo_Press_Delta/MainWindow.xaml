@@ -197,10 +197,8 @@
                                              Width="85"
                                              VerticalAlignment="Center">
                             </Label>
-                            <Button Grid.Row="11" x:Name="BTN_Exit"  Content="{DynamicResource btn_Close}" HorizontalAlignment="Stretch"  Height="25 " VerticalAlignment="Top" Background="Transparent" BorderBrush="White" BorderThickness="0"
-         Margin="0" Padding="0" 
-         MouseEnter="exitButton_MouseEnter" 
-         MouseLeave="exitButton_MouseLeave"
+                            <Button Grid.Row="11" x:Name="BTN_Exit"  Content="{DynamicResource btn_Close}" HorizontalAlignment="Stretch"  Height="35 " VerticalAlignment="Top"  BorderThickness="0"
+         Margin="3" Padding="0" 
          PreviewMouseDown="MouseDown_Close">
                             </Button>
                         </Grid>

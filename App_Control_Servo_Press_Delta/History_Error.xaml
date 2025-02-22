@@ -96,7 +96,7 @@
                                 Grid.ColumnSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="No" 
-                                    Binding="{Binding STT}"
+                                    Binding="{Binding No}"
                                     Width="80" >
                                 </DataGridTextColumn>
                                 <DataGridTextColumn Header="User" 

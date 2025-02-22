@@ -69,7 +69,7 @@ namespace App_Control_Servo_Press_Delta
         private DispatcherTimer Update_Sys;
         #endregion
 
-
+        public static bool Error_UnKnow_Order;
         public double newY1;
         private bool Flag;
         private bool Flag1;
@@ -295,6 +295,12 @@ namespace App_Control_Servo_Press_Delta
             float cpuUsage = cpuCounter.NextValue();
             string formattedCpuUsage = cpuUsage.ToString("F2") + "%";
             Per_CPU.Content = formattedCpuUsage;
+            if(Global.Order_Code_Write_done =="" & Global.Pressing == true)
+            {
+                Error_UnKnow_Order = true;
+            }
+            else Error_UnKnow_Order = false;
+
         }
 
         private void Button_MouseDown(object sender, RoutedEventArgs e)
@@ -699,7 +705,7 @@ namespace App_Control_Servo_Press_Delta
                         {
                             List_History_.STT = 1;
                             List_History_.Code = (string)obj["Code"];
-                            List_History_.Description = (string)obj["Content_"];
+                            List_History_.Description = (string)obj["Description"];
                             List_History_.Solution = (string)obj["Solution"];
                             List_History_.Time = dateTime.ToString();
                             string list_Error_Json = JsonConvert.SerializeObject(List_History_);

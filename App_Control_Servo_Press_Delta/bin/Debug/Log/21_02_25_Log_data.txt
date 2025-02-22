@@ -1,0 +1,9 @@
+10:29:53, Name_screen: Man, Textboxname: Go_Home_Vel, value_old: 0, value_new: 10
+10:29:56, Name_screen: Man, Textboxname: Jog_Distance_ABS, value_old: 0, value_new: 1
+10:30:25, Name_screen: Man, Textboxname: Jog_Max_Force, value_old: 0, value_new: 50
+17:26:34, Name_screen: Man, Textboxname: Go_Home_Vel, value_old: 20, value_new: 10
+17:26:36, Name_screen: Man, Textboxname: Jog_Distance_ABS, value_old: 10, value_new: 11
+17:26:39, Name_screen: Man, Textboxname: Jog_Vel, value_old: 10, value_new: 12
+17:29:57, Name_screen: Man, Textboxname: Go_Home_Vel, value_old: 10, value_new: 11
+17:32:59, Name_screen: Man, Textboxname: Go_Home_Vel, value_old: 11, value_new: 12
+17:33:10, Name_screen: Man, Textboxname: Jog_Distance_ABS, value_old: 10, value_new: 13

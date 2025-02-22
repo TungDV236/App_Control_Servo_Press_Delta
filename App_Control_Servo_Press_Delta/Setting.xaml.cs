@@ -875,39 +875,36 @@ namespace App_Control_Servo_Press_Delta
 
         private void btn_import_JigU_Click(object sender, RoutedEventArgs e)
         {
-            excel.Import_BJ_Filepath("Model_Beer_Up", path.Beer_Up);
+            excel.Import_BJ_Filepath("Jig_Up", path.Beer_Up);
             Common.Load_View(List_Upper_Jig, path.Jig_Up);
         }
 
         private void btn_export_JigU_Click(object sender, RoutedEventArgs e)
         {
-            excel.Export_BJ_File("Template_Model_Jig_Up", path.Jig_Up, "Model_Jig_Up");
+            excel.Export_BJ_File("Template_Model_Jig_Up", path.Jig_Up, "Model_Jig_Up", "Chọn thư mục lưu file", "Model_Jig_Up");
         }
 
         private void btn_import_JigM_Click(object sender, RoutedEventArgs e)
         {
-            excel.Import_BJ_Filepath("Model_Jig_Mid", path.Jig_Mid);
+            excel.Import_BJ_Filepath("Jig_Mid", path.Jig_Mid);
             Common.Load_View(List_Middle_Jig, path.Jig_Mid);
         }
 
         private void btn_export_JigM_Click(object sender, RoutedEventArgs e)
         {
-            excel.Export_BJ_File("Template_Model_Jig_Mid", path.Jig_Mid, "Model_Jig_Mid");
+            excel.Export_BJ_File("Template_Model_Jig_Mid", path.Jig_Mid, "Model_Jig_Mid", "Chọn thư mục lưu file", "Model_Jig_Mid");
         }
 
         private void btn_import_JigD_Click(object sender, RoutedEventArgs e)
         {
-            excel.Import_BJ_Filepath("Model_Jig_Down", path.Jig_Down);
+            excel.Import_BJ_Filepath("Jig_Down", path.Jig_Down);
             Common.Load_View(List_Lower_Jig, path.Jig_Down);
         }
 
         private void btn_export_JigD_Click(object sender, RoutedEventArgs e)
         {
 
-                excel.Export_BJ_File("Template_Model_Jig_Down", path.Jig_Down, "Model_Jig_Down");
-
-
-
+                excel.Export_BJ_File("Template_Model_Jig_Down", path.Jig_Down, "Model_Jig_Down", "Chọn thư mục lưu file", "Model_Jig_Down");
         }
 
         private void btn_import_HisE_Click(object sender, RoutedEventArgs e)
@@ -922,7 +919,7 @@ namespace App_Control_Servo_Press_Delta
 
         private void btn_export_HisE_Click(object sender, RoutedEventArgs e)
         {
-            excel.Export_History_File("Template_History");
+            excel.Export_History_File("Template_History", "Chọn thư mục lưu file", "Model_Jig_Up");
         }
 
         private void btn_Del_JigU_Click(object sender, RoutedEventArgs e)
@@ -937,32 +934,40 @@ namespace App_Control_Servo_Press_Delta
 
         private void btn_Del_JigM_Click(object sender, RoutedEventArgs e)
         {
-
+            Clear_JigM();
         }
 
         private void btn_Save_JigM_Click(object sender, RoutedEventArgs e)
         {
-
+            Save_JigM();
         }
 
         private void btn_Del_JigD_Click(object sender, RoutedEventArgs e)
         {
-
+            Clear_JigD();
         }
 
         private void btn_Save_JigD_Click(object sender, RoutedEventArgs e)
         {
-
+            Save_JigD();
         }
 
         private void btn_Del_HisE_Click(object sender, RoutedEventArgs e)
         {
+            if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service")
+            {
+                Clear_His();
+            }
+            else MessageBox.Show("Vui lòng đăng nhập tài khoản STI-Technical / STI-Service để cài đặt!");
 
         }
-
         private void btn_Save_HisE_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service")
+            {
+                Save_His();
+            }
+            else MessageBox.Show("Vui lòng đăng nhập tài khoản STI-Technical / STI-Service để cài đặt!");
         }
 
         private void btn_Set_SysEdit_Click(object sender, RoutedEventArgs e)
@@ -979,6 +984,7 @@ namespace App_Control_Servo_Press_Delta
 
                 is_Forcus2 = true;
             }
+            else MessageBox.Show("Vui lòng đăng nhập tài khoản STI-Technical / STI-Service để cài đặt!");
         }
 
         private void btn_Set_SysSave_Click(object sender, RoutedEventArgs e)
@@ -1001,8 +1007,9 @@ namespace App_Control_Servo_Press_Delta
                 TB_Server_Port.IsReadOnly = true;
                 TB_PLC_IP.IsReadOnly = true;
                 TB_PLC_Port.IsReadOnly = true;
-                is_Forcus2 = false; 
+                is_Forcus2 = false;
             }
+            else MessageBox.Show("Vui lòng đăng nhập tài khoản STI-Technical / STI-Service để cài đặt!");
         }
 
         private void btn_off_bz_Click(object sender, RoutedEventArgs e)

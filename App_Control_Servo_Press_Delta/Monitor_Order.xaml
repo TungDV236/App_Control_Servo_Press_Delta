@@ -19,14 +19,30 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="10">
+                <Grid Grid.Row="0" Margin="10" Width="450" HorizontalAlignment="Left">
                     <Grid>
                         <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5"  x:Name="FocusBorder"/>
-                        <TextBox  x:Name="Order_Code" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}" 
-                Text="{Binding Text_Ordercode, UpdateSourceTrigger=PropertyChanged}"  />
+                        <TextBox  x:Name="Order_Code" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"   />
                     </Grid>
 
-                    <Label Content="Order Code"
+                    <Label Content="{DynamicResource lb_Order_Code}" 
+                FontWeight="Bold"
+                Background="White"
+                Width="70"
+                Height="20"
+                Padding="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="10,-10,0,0"
+                Foreground="Black"/>
+                </Grid>
+                <Grid Grid.Row="0" Margin="470,10,10,10">
+                    <Grid>
+                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                        <TextBox  x:Name="Quality" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"   />
+                    </Grid>
+
+                    <Label Content="{DynamicResource lb_Quality}" 
                 FontWeight="Bold"
                 Background="White"
                 Width="70"

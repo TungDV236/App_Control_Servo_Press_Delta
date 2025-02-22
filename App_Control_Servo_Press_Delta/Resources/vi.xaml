@@ -48,6 +48,7 @@
     <system:String x:Key="lb_Auto_Max_Force">Lực ép lớn nhất</system:String>
     <system:String x:Key="lb_Auto_Min_Force">Lực ép nhỏ nhất</system:String>
 
+    <system:String x:Key="lb_Quality">Số Lượng</system:String>
 
     <system:String x:Key="lb_Auto_Chart">Đồ thị</system:String>
 
@@ -139,6 +140,7 @@
     <system:String x:Key="lb_SolutionEn">Cách xử lý (EN)</system:String>
     <system:String x:Key="lb_Edit">Sửa</system:String>
     <system:String x:Key="btn_Off_Buzzer">Tắt Còi</system:String>
+    <system:String x:Key="LB_Base_Jig_Thickness">Chiều dày Jig Đế (mm)</system:String>
 
 
 </ResourceDictionary>

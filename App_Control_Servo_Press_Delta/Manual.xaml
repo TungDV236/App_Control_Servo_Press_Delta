@@ -139,8 +139,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Button Grid.Column="0" Content="{DynamicResource lb_Go_Home}" x:Name="M_Home_Ep_J_P" FontSize="15"  Height="70"  Margin="5"  />
-                        <Button Grid.Column="1" Content="{DynamicResource lb_Up}" x:Name="M_Ep_J_P" FontSize="15"  Height="70" Margin="5"   />
-                        <Button Grid.Column="2" Content="{DynamicResource lb_Down}" x:Name="M_Ep_J_N"  FontSize="15"  Height="70"  Margin="5"   />
+                        <Button Grid.Column="1" Content="{DynamicResource lb_Up}" x:Name="M_Ep_U_J_P" FontSize="15"  Height="70" Margin="5"   />
+                        <Button Grid.Column="2" Content="{DynamicResource lb_Down}" x:Name="M_Ep_D_J_N"  FontSize="15"  Height="70"  Margin="5"   />
                         <Button Grid.Column="3" Content="Jog" x:Name="M_Ep_ABS"  FontSize="15"  Height="70" Margin="5" Click="M_Ep_ABS_Click"   />
                     </Grid>
 
@@ -167,8 +167,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Content="{DynamicResource lb_Up}" x:Name="M_Door_J_P" FontSize="15"  Height="70"  Margin="5,5,5,5"   />
-                        <Button Grid.Column="1" Content="{DynamicResource lb_Down}"  x:Name="M_Door_J_N" FontSize="15"  Height="70"  Margin="5,5,4,5"   />
+                        <Button Grid.Column="0" Content="{DynamicResource lb_Up}" x:Name="M_Door_U_J_P" FontSize="15"  Height="70"  Margin="5,5,5,5"   />
+                        <Button Grid.Column="1" Content="{DynamicResource lb_Down}"  x:Name="M_Door_D_J_N" FontSize="15"  Height="70"  Margin="5,5,4,5"   />
                     </Grid>
 
                 </Grid>

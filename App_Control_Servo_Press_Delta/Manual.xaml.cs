@@ -33,6 +33,7 @@ namespace App_Control_Servo_Press_Delta
         private static bool is_Forcus = false;
         private static bool Button_Down = false;
 
+        Link_Path path = new Link_Path();
         private static bool flag2;
         private bool keyboardIsOpen = false;
         public Manual()
@@ -40,11 +41,11 @@ namespace App_Control_Servo_Press_Delta
             InitializeComponent();
             Loaded += Manual_Loaded;  // Thêm sự kiện Loaded
             Unloaded += Manual_Unloaded;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(300);
         }
         private void Manual_Loaded(object sender, RoutedEventArgs e)
         {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
             foreach (var textBox in Common.FindVisualChildren<TextBox>(this))
             {
                 textBox.TextChanged += TextBox_TextChanged;
@@ -84,8 +85,7 @@ namespace App_Control_Servo_Press_Delta
             if (timer != null)
             {
                 timer.Tick -= Timer_Tick;
-                timer.Start();
-                timer = null;
+                timer.Stop();
             }
         }
         private void Timer_Tick(object sender, EventArgs e)
@@ -135,7 +135,8 @@ namespace App_Control_Servo_Press_Delta
                 {
                     M_Ep_ABS.Content = "Tương đối";
                 }
-            }    
+            }
+            check_status_btn();
 
         }
         private void check_status_btn()
@@ -149,38 +150,38 @@ namespace App_Control_Servo_Press_Delta
                 string jsonData = JsonConvert.SerializeObject(data);
                 MainWindow._queue.Add(jsonData);
             }
-            if (Data.M_Ep_J_P != Global.M_Ep_J_P)
+            if (Data.M_Ep_U_J_P != Global.M_Ep_J_P)
             {
                 var data = new
                 {
-                    M_Ep_J_P = Global.M_Ep_J_P
+                    M_Ep_U_J_P = Global.M_Ep_J_P
                 };
                 string jsonData = JsonConvert.SerializeObject(data);
                 MainWindow._queue.Add(jsonData);
             }
-            if (Data.M_Ep_J_N != Global.M_Ep_J_N)
+            if (Data.M_Ep_D_J_N != Global.M_Ep_J_N)
             {
                 var data = new
                 {
-                    M_Ep_J_N = Global.M_Ep_J_N
+                    M_Ep_D_J_N = Global.M_Ep_J_N
                 };
                 string jsonData = JsonConvert.SerializeObject(data);
                 MainWindow._queue.Add(jsonData);
             }
-            if (Data.M_Door_J_P != Global.M_Door_J_P)
+            if (Data.M_Door_U_J_P != Global.M_Door_J_P)
             {
                 var data = new
                 {
-                    M_Door_J_P = Global.M_Door_J_P
+                    M_Door_U_J_P = Global.M_Door_J_P
                 };
                 string jsonData = JsonConvert.SerializeObject(data);
                 MainWindow._queue.Add(jsonData);
             }
-            if (Data.M_Door_J_N != Global.M_Door_J_N)
+            if (Data.M_Door_D_J_N != Global.M_Door_J_N)
             {
                 var data = new
                 {
-                    M_Door_J_N = Global.M_Door_J_N
+                    M_Door_D_J_N = Global.M_Door_J_N
                 };
                 string jsonData = JsonConvert.SerializeObject(data);
                 MainWindow._queue.Add(jsonData);
@@ -220,6 +221,10 @@ namespace App_Control_Servo_Press_Delta
             if (!flag2 & !Global.NumPad_Visiable)
             {
                 NumPad numberPad = new NumPad(textBox);
+                Point position = this.PointToScreen(new Point(0, 0));
+
+                numberPad.Left = position.X + 600;
+                numberPad.Top = position.Y + 360;
                 numberPad.Show(); // Hiển thị cửa sổ như hộp thoại
                                   // MessageBox.Show("TextBox_GotFocus2");
                 flag2 = true;
@@ -277,7 +282,10 @@ namespace App_Control_Servo_Press_Delta
 
                     string jsonData = JsonConvert.SerializeObject(data);
                     MainWindow._queue.Add(jsonData);
+
+                    Common.Log_Operation("Write "+ textboxName +":   "+ doubleValue, path.Log);
                 }
+
             }
             is_Forcus = false;
             flag2 = false;
@@ -288,10 +296,15 @@ namespace App_Control_Servo_Press_Delta
         {
 
             string buttonName = ((Button)sender).Name;
+            string Taglog;
             if (buttonName != "")
             {
-
-
+                Taglog = buttonName;
+                if (Is_String(buttonName, "J_P", "J_N"))
+                {
+                    Taglog = buttonName.Substring(0, buttonName.Length - 4);
+                }
+                Common.Log_Operation("Press Button:   "+ Taglog , path.Log);
             }
         }
         private void Button_TouchDown(object sender, TouchEventArgs e)
@@ -313,19 +326,19 @@ namespace App_Control_Servo_Press_Delta
                     {
                         Global.M_Home_Ep_J_P = true;
                     }
-                    if (buttonName == "M_Ep_J_P")
+                    if (buttonName == "M_Ep_U_J_P")
                     {
                         Global.M_Ep_J_P = true;
                     }
-                    if (buttonName == "M_Ep_J_N")
+                    if (buttonName == "M_Ep_D_J_N")
                     {
                         Global.M_Ep_J_N = true;
                     }
-                    if (buttonName == "M_Door_J_P")
+                    if (buttonName == "M_Door_U_J_P")
                     {
                         Global.M_Door_J_P = true;
                     }
-                    if (buttonName == "M_Door_J_N")
+                    if (buttonName == "M_Door_D_J_N")
                     {
                         Global.M_Door_J_N = true;
                     }
@@ -353,19 +366,19 @@ namespace App_Control_Servo_Press_Delta
                     {
                         Global.M_Home_Ep_J_P = true;
                     }
-                    if (buttonName == "M_Ep_J_P")
+                    if (buttonName == "M_Ep_U_J_P")
                     {
                         Global.M_Ep_J_P = true;
                     }
-                    if (buttonName == "M_Ep_J_N")
+                    if (buttonName == "M_Ep_D_J_N")
                     {
                         Global.M_Ep_J_N = true;
                     }
-                    if (buttonName == "M_Door_J_P")
+                    if (buttonName == "M_Door_U_J_P")
                     {
                         Global.M_Door_J_P = true;
                     }
-                    if (buttonName == "M_Door_J_N")
+                    if (buttonName == "M_Door_D_J_N")
                     {
                         Global.M_Door_J_N = true;
                     }
@@ -392,19 +405,19 @@ namespace App_Control_Servo_Press_Delta
                     {
                         Global.M_Home_Ep_J_P = false;
                     }
-                    if (buttonName == "M_Ep_J_P")
+                    if (buttonName == "M_Ep_U_J_P")
                     {
                         Global.M_Ep_J_P = false;
                     }
-                    if (buttonName == "M_Ep_J_N")
+                    if (buttonName == "M_Ep_D_J_N")
                     {
                         Global.M_Ep_J_N = false;
                     }
-                    if (buttonName == "M_Door_J_P")
+                    if (buttonName == "M_Door_U_J_P")
                     {
                         Global.M_Door_J_P = false;
                     }
-                    if (buttonName == "M_Door_J_N")
+                    if (buttonName == "M_Door_D_J_N")
                     {
                         Global.M_Door_J_N = false;
                     }
@@ -431,19 +444,19 @@ namespace App_Control_Servo_Press_Delta
                     {
                         Global.M_Home_Ep_J_P = false;
                     }
-                    if (buttonName == "M_Ep_J_P")
+                    if (buttonName == "M_Ep_U_J_P")
                     {
                         Global.M_Ep_J_P = false;
                     }
-                    if (buttonName == "M_Ep_J_N")
+                    if (buttonName == "M_Ep_D_J_N")
                     {
                         Global.M_Ep_J_N = false;
                     }
-                    if (buttonName == "M_Door_J_P")
+                    if (buttonName == "M_Door_U_J_P")
                     {
                         Global.M_Door_J_P = false;
                     }
-                    if (buttonName == "M_Door_J_N")
+                    if (buttonName == "M_Door_D_J_N")
                     {
                         Global.M_Door_J_N = false;
                     }
@@ -466,10 +479,12 @@ namespace App_Control_Servo_Press_Delta
                 {
 
                     Keyboard.ClearFocus();
-                    TextBox_LostFocus(textBox, null);
+                  //  TextBox_LostFocus(textBox, null);
                     Global.clear_forcus = false;
                     Console.WriteLine("Đã lostforcus");
                     keyboardIsOpen = false;
+                    FocusBorder.Focusable = true;
+                    FocusBorder.Focus();
                     //  }
 
                 }//
@@ -483,12 +498,14 @@ namespace App_Control_Servo_Press_Delta
                 if (focusedElement is TextBox textBox)
                 {
                     //  textBox.Text = Global.Textbox_string ;
-                    TextBox_LostFocus(textBox, null);
+                    //  TextBox_LostFocus(textBox, null);
                     Keyboard.ClearFocus();
                     Global.clear_forcus = false;
                     Console.WriteLine("Đã lostforcus");
                     Global.Textbox_string = "";
                     keyboardIsOpen = false;
+                    FocusBorder.Focusable = true;
+                    FocusBorder.Focus();
                     //  }
 
                 }//

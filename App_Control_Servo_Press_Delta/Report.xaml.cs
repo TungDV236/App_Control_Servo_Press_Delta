@@ -314,7 +314,7 @@ namespace App_Control_Servo_Press_Delta
             {
                 if (Data_Report_temp.Time != null)
                 {
-                    excel.Export_Chart_File(part[0].Replace('/', '_') + "_" + Data_Report_temp.Time.Replace(':', '_'), List_Position);
+                    excel.Export_Chart_File(part[0].Replace('/', '_') + "_" + Data_Report_temp.Time.Replace(':', '_'), List_Position, "Chọn vị trí lưu File");
                 }
                 else
                 {
@@ -336,7 +336,7 @@ namespace App_Control_Servo_Press_Delta
             {
                 if (Global.List_report_all != null)
                 {
-                    excel.Export_Report_All_File(part[0].Replace('/', '_'));
+                    excel.Export_Report_All_File(part[0].Replace('/', '_'), "Chọn file Excel để nhập");
                 }
                 else
                 {

@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="1.5*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" x:Name="Grid_data1" >
-                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1" x:Name ="FocusBorder"/>
                     <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -114,6 +114,8 @@
                         </Grid>
                         <Grid  Margin="0,10,0,0" Grid.Row="1">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -257,7 +259,72 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                                 </Grid>
 
                             </Grid>
+                            <Grid Grid.Row="5"  Margin="5,12,5,0">
 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Margin="0,0,5,0">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,5,2.5" />
+                                        <ComboBox x:Name="cbb_JigM"
+                                            Margin="10,5,10,5"
+                                            Height="40" FontWeight="Bold"
+                                            FontSize="15"  
+                                            HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            Background="White"
+                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                    </Grid>
+
+                                    <Label Content="{DynamicResource lb_JigM}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Margin="5,0,0,0">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_num_Stand_Height"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                    </Grid>
+
+                                    <Label Content="{DynamicResource lb_Stand_Height}"   FontWeight="Bold"    Background="White"   Width="125"  Height="20"   Padding="1" 
+HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                </Grid>
+
+                            </Grid>
+                            <Grid Grid.Row="4"  Margin="5,12,5,0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Margin="0,0,5,0">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="5,2.5,5,2.5" />
+                                        <ComboBox x:Name="cbb_JigM"
+                                            Margin="10,5,10,5"
+                                            Height="40" FontWeight="Bold"
+                                            FontSize="15"  
+                                            HorizontalAlignment="Stretch"
+                                            HorizontalContentAlignment="Center"
+                                            Background="White"
+                                            BorderBrush="White"  VerticalAlignment="Top" />
+                                    </Grid>
+
+                                    <Label Content="{DynamicResource lb_JigM}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Margin="5,0,0,0">
+                                    <Grid>
+                                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                        <TextBox  x:Name="tb_num_Stand_Height"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                                    </Grid>
+
+                                    <Label Content="{DynamicResource lb_Stand_Height}"   FontWeight="Bold"    Background="White"   Width="125"  Height="20"   Padding="1" 
+HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                </Grid>
+
+                            </Grid>
                         </Grid>
                       
                     </Grid>
@@ -272,7 +339,7 @@ HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    For
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid Height="30" Grid.Row="0">
-                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5"/>
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="0.5" />
                             <Label Content="{DynamicResource lb_Operation_Parameter}"  FontSize="20"  HorizontalAlignment="Center"   FontFamily="Source Sans Pro"   Foreground="Black"    FontStyle="Normal"
   FontWeight="Bold"  Margin="2,0,0,0"  VerticalAlignment="Bottom">
                             </Label>

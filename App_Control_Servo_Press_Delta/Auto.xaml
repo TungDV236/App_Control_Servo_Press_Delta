@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
-             d:DesignHeight="849" d:DesignWidth="1752">
+             d:DesignHeight="846" d:DesignWidth="1752">
     <Grid>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
@@ -181,7 +181,7 @@
         FontFamily="Source Sans Pro"  >
                 </Label>
                 <Grid Grid.Row="1" Margin="10,10,10,5">
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="0,2,0,-5"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-5"/>
                     <oxy:PlotView x:Name="plotView1" Background ="Transparent" />
                 </Grid>
             </Grid>
@@ -198,14 +198,14 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0"   Content="{DynamicResource lb_Auto_Mode_Parameter}"  Height="30" Background="#FF596AFF"
                        Foreground="Black"
-                       FontSize="20" Width="300"
+                       FontSize="20" 
                        FontWeight="Bold"
-                       HorizontalAlignment="Left"
+                       HorizontalAlignment="Stretch"
                        HorizontalContentAlignment="Center"
                        VerticalContentAlignment="Center"
                        FontFamily="Source Sans Pro"  >
                 </Label>
-                <Button Grid.Row="0" Content="{DynamicResource btn_Visiable_Order}"   FontSize="15" Foreground="Black" Width="90" Padding="1"   FontWeight="Bold" FontFamily="Source Sans Pro"  HorizontalAlignment="Right" Click="Button_Click" />
+              
                 <Grid Grid.Row="1" Margin="0,10,0,5">
                     <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-8"/>
                     <Grid>
@@ -357,7 +357,7 @@
                     <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-8"/>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="25"/>
                             <RowDefinition Height="35"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -416,9 +416,7 @@
 
                 </Grid>
 
-                <Grid Grid.Row="6" Margin="0,5,0,0">
-                    <Border BorderBrush="Black" BorderThickness="1" />
-                </Grid>
+                <Button Grid.Row="6" Content="{DynamicResource btn_Visiable_Order}"   FontSize="25" Foreground="Black"  Padding="1" Height="45"  FontWeight="Bold" FontFamily="Source Sans Pro"  HorizontalAlignment="Stretch" Click="Button_Click" />
             </Grid>
         </Grid>
     </Grid>

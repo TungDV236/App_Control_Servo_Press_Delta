@@ -123,10 +123,10 @@ namespace App_Control_Servo_Press_Delta.Class
                 Data.ID_Error1 = data.ID_Error1;
                 Data.ID_Error2 = data.ID_Error2;
                 Data.M_Home_Ep_J_P = data.M_Home_Ep_J_P;
-                Data.M_Ep_J_P = data.M_Ep_J_P;
-                Data.M_Ep_J_N = data.M_Ep_J_N;
-                Data.M_Door_J_P = data.M_Door_J_P;
-                Data.M_Door_J_N = data.M_Door_J_N;
+                Data.M_Ep_U_J_P = data.M_Ep_U_J_P;
+                Data.M_Ep_D_J_N = data.M_Ep_D_J_N;
+                Data.M_Door_U_J_P = data.M_Door_U_J_P;
+                Data.M_Door_D_J_N = data.M_Door_D_J_N;
                 Data.M_Ep_ABS = data.M_Ep_ABS;
                 Data.Working_Origin = data.Working_Origin;
                 Data.Begin_Press = data.Begin_Press;

@@ -71,6 +71,7 @@
     <system:String x:Key="lb_Auto_Pressed_Force_Max">Pressed Force Max</system:String>
     <system:String x:Key="lb_Auto_Position_Force_Max">Position Force Max</system:String>
 
+    <system:String x:Key="lb_Quality">Quality</system:String>
 
     <!-- Man-->
     <system:String x:Key="lb_Press_Shaft">Press Shaft</system:String>
@@ -114,6 +115,10 @@
     <system:String x:Key="lb_Import">Import Excel</system:String>
     <system:String x:Key="lb_Export">Export Excel</system:String>
     <system:String x:Key="lb_Delete">Delete</system:String>
+    <system:String x:Key="lb_Thickness_BearingsU">Save</system:String>
+    <system:String x:Key="lb_Thickness_BearingsD">Save</system:String>
+    <system:String x:Key="lb_Distance_Bearings_Before">Bearing_Distance_Before</system:String>
+    <system:String x:Key="lb_Distance_Bearings_After">Save</system:String>
     <system:String x:Key="lb_Save">Save</system:String>
     <!-- Setting-->
 
@@ -135,5 +140,6 @@
     <system:String x:Key="lb_SolutionEn">Solution (EN)</system:String>
     <system:String x:Key="lb_Edit">Edit</system:String>
     <system:String x:Key="btn_Off_Buzzer">Off Buzzer</system:String>
+    <system:String x:Key="LB_Base_Jig_Thickness">Base Jig Thickness(mm)</system:String>
 
 </ResourceDictionary>

@@ -63,7 +63,7 @@ namespace App_Control_Servo_Press_Delta.Class
             }
         }
 
-        public async Task Emit_Server(string Code)
+        public async Task Emit_Server1(string Code)
         {
 
             using (SocketIOClient.SocketIO client1 = new SocketIOClient.SocketIO("http://"+ Global.Server))
@@ -108,9 +108,9 @@ namespace App_Control_Servo_Press_Delta.Class
                 }
             }
         }
-        public async Task Emit_Server1(string Code)
+        public async Task Emit_Server(string Code)
         {
-            using (SocketIOClient.SocketIO client1 = new SocketIOClient.SocketIO("http://127.0.0.1:3000"))
+            using (SocketIOClient.SocketIO client1 = new SocketIOClient.SocketIO("http://" + Global.Server))
             {
                 // Kết nối với server
                 await client1.ConnectAsync();
@@ -123,41 +123,38 @@ namespace App_Control_Servo_Press_Delta.Class
                     };
 
                     string json = System.Text.Json.JsonSerializer.Serialize(data_Setting);
-                    var tcs = new TaskCompletionSource<string>();
 
                     try
                     {
-                        // Lắng nghe phản hồi từ server
-                        client1.On("get_data_order_code", response1 =>
+                        // Sử dụng TaskCompletionSource để chờ phản hồi từ server
+                        var tcs = new TaskCompletionSource<string>();
+
+                        await client1.EmitAsync("get_data_order_code", response1 =>
                         {
+
+
                             string jsonString = response1.GetValue<System.Text.Json.JsonElement>().GetRawText();
-                            Console.WriteLine($"Phản hồi từ máy chủ: {jsonString}");
-
-                            // Thiết lập kết quả cho TaskCompletionSource
+                            // Đánh dấu TaskCompletionSource là hoàn thành
                             tcs.SetResult(jsonString);
-                        });
+                            Console.WriteLine($"Phản hồi từ máy chủ: {jsonString}\n");
 
-                        // Gửi dữ liệu đến server
-                        await client1.EmitAsync("get_data_order_code", json);
+                            var data_respond = response1.GetValue<System.Text.Json.JsonElement>().GetRawText();
+                            data_ = JsonConvert.DeserializeObject<dynamic>(data_respond);
+                            if (data_ != null)
+                            {
+                                Parse_Data(data_);
+                            }
+                        }, json);
 
-                        // Chờ đợi phản hồi từ server
-                        string response = await tcs.Task;
+                        // Chờ cho đến khi có phản hồi
+                        string result = await tcs.Task;
 
-                        // Xử lý phản hồi
-                        var data_ = JsonConvert.DeserializeObject<dynamic>(response);
-                        if (data_ != null)
-                        {
-                            Parse_Data(data_);
-                        }
+                        // Tại đây bạn có thể xử lý kết quả nếu cần
+                        Console.WriteLine($"Kết quả đã nhận: {result}");
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
-                    }
-                    finally
-                    {
-                        // Đảm bảo loại bỏ listener để tránh rò rỉ bộ nhớ
-                        client1.Off("get_data_order_code");
                     }
                 }
             }

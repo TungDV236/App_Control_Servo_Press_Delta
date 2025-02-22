@@ -24,6 +24,7 @@ using App_Control_Servo_Press_Delta;
 using System.Text.RegularExpressions;
 using System.Windows.Threading;
 using System.Data;
+using System.Diagnostics;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -44,18 +45,20 @@ namespace App_Control_Servo_Press_Delta
 
         public int Select_datagrid=0;
         private DispatcherTimer timer;
+        private static bool flag2;
+        private bool keyboardIsOpen = false;
         public Model()
         {
             InitializeComponent();
             Loaded += Model_Loaded;  // Thêm sự kiện Loaded
             Unloaded += Model_Unloaded;
 
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
         }
 
         private void Model_Loaded(object sender, RoutedEventArgs e)
         {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
             timer.Tick += Timer_Tick;
             timer.Start();
             Fill_ID(File.ReadAllText(path.Jig_Up), cbb_JigU);
@@ -75,6 +78,7 @@ namespace App_Control_Servo_Press_Delta
                 textBox.GotFocus += TextBox_GotFocus;
                 textBox.TextChanged += TextBox_TextChanged;
                 textBox.LostFocus += TextBox_LostFocus;
+                textBox.KeyDown += TextBox_KeyDown;
             }
             var Pressing_Condition = new List<DataView_PressingCondition>
             {
@@ -89,7 +93,26 @@ namespace App_Control_Servo_Press_Delta
         }
         private void Model_Unloaded(object sender, RoutedEventArgs e)
         {
-
+            foreach (var dataGrid in Common.FindVisualChildren<DataGrid>(this))
+            {
+                dataGrid.SelectionChanged -= Datagrid_SelectionChanged;
+            }
+            foreach (var Combobox in Common.FindVisualChildren<ComboBox>(this))
+            {
+                Combobox.SelectionChanged -= Combobox_Changed;
+            }
+            foreach (var textBox in Common.FindVisualChildren<TextBox>(this))
+            {
+                textBox.GotFocus -= TextBox_GotFocus;
+                textBox.TextChanged -= TextBox_TextChanged;
+                textBox.LostFocus -= TextBox_LostFocus;
+                textBox.KeyDown -= TextBox_KeyDown;
+            }
+            if (timer != null)
+            {
+                timer.Tick -= Timer_Tick;
+                timer.Stop();
+            }
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -100,6 +123,7 @@ namespace App_Control_Servo_Press_Delta
                     Update_Data();
                 });
 
+                CheckKeyboardStatus();
 
             }
             catch
@@ -112,14 +136,29 @@ namespace App_Control_Servo_Press_Delta
             TextBox textBox = (TextBox)sender;
             string textboxName = textBox.Name;
             string input = textBox.Text;
-            if (textboxName == "tb_BearingD"|| textboxName == "tb_BearingU"|| textboxName == "tb_Rotor"|| textboxName == "tb_Shaft")
+            if(Is_String(textboxName, "tb_num"))
             {
+                if (string.IsNullOrEmpty(textBox.Text))
+                {
+                    textBox.Text = "0";
+                    textBox.SelectAll(); // Select all text to allow easy replacement
+                }
+                if (!double.TryParse(textBox.Text, out _) & (textBox.Text != ""))
+                {
+                    MessageBox.Show("Vui Lòng nhập lại dữ liệu kiểu số");
+                    textBox.Text = "";
+                }
+                if (input.Contains(","))
+                {
+                    input = input.Replace(",", ".");
+                    // Cập nhật lại giá trị trong TextBox
+                    textBox.Text = input;
+                    // Đặt con trỏ về cuối
+                    textBox.CaretIndex = textBox.Text.Length;
+                }
+            }    
 
-                int caretIndex = textBox.CaretIndex;
-                textBox.Text = textBox.Text.ToUpper();
-                textBox.CaretIndex = caretIndex;
-            } 
-                
+
             if (textboxName == "tb_Model")
             {
                 Fill_Value_Mode();
@@ -138,11 +177,67 @@ namespace App_Control_Servo_Press_Delta
             TextBox textBox = (TextBox)sender;
             string textboxName = textBox.Name;
             IsForcus = true;
+            if (!flag2 & !Global.NumPad_Visiable & Is_String(textboxName, "tb_num") & textBox.IsReadOnly== false)
+            {
+                NumPad numberPad = new NumPad(textBox);
 
+                Point position = this.PointToScreen(new Point(0, 0));
+
+                numberPad.Left = position.X + 600;
+                numberPad.Top = position.Y + 360;
+                numberPad.Show(); // Hiển thị cửa sổ như hộp thoại
+                                  // MessageBox.Show("TextBox_GotFocus2");
+                flag2 = true;
+                // Common.Open_KeyBoard(); 
+            }
+
+        }
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string textboxName = textBox.Name;
+            if (e.Key == Key.Enter)
+            {
+                if(textboxName == "tb_Model")
+                {
+                    tb_Rotor.Focusable = true;
+                    tb_Rotor.Focus();
+                }    
+                else if (textboxName == "tb_Rotor")
+                {
+                    tb_Shaft.Focusable = true;
+                    tb_Shaft.Focus();
+                }
+                else if (textboxName == "tb_Shaft")
+                {
+                    tb_BearingU.Focusable = true;
+                    tb_BearingU.Focus();
+                }
+                else if (textboxName == "tb_BearingU")
+                {
+                    tb_BearingD.Focusable = true;
+                    tb_BearingD.Focus();
+                }
+                else if (textboxName == "tb_BearingD")
+                {
+                    tb_num_Stand_Height.Focusable = true;
+                    tb_num_Stand_Height.Focus();
+                }
+                else
+                {
+                    Keyboard.ClearFocus();
+                    FocusBorder.Focusable = true;
+                    FocusBorder.Focus();
+                }
+                // Mất focus khi nhấn Enter
+
+
+            }
         }
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
+            string textboxName = textBox.Name;
             int selectedValue;
             if (cbb_step.SelectedItem != null & cbb_Pressing_condition.SelectedItem != null)
             {
@@ -154,6 +249,15 @@ namespace App_Control_Servo_Press_Delta
                     Save_Parameter(selectedValue, selectedcondition.Content.ToString());
                 }
             }
+            if (Is_String(textboxName, "tb_num"))
+            {
+                if (string.IsNullOrEmpty(textBox.Text))
+                {
+                    textBox.Text = "0";
+                }
+            }    
+
+            flag2 = false;
             IsForcus = false;
         }
         private void Datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -823,10 +927,39 @@ namespace App_Control_Servo_Press_Delta
                     }
 
                 }
-                using (StreamWriter writer = new StreamWriter(System.IO.Path.Combine("Log", formattedDate.Replace("/", "_") + "_Model_Log.txt"), true)) // true để thêm
+
+                List<Data_Log> data_Logs = new List<Data_Log>
                 {
-                    writer.WriteLine(list_Model_Json);
-                }
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Model:" + tb_Model.Text , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Stand_Height:" + tb_num_Stand_Height.Text , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Origin_Position:" + tb_num_Origin_PST.Text, Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Origin_Velocity:" + tb_num_Origin_Velo.Text , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Standby_Position:" + tb_num_PST_Standby.Text , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Standby_Velocity:" + tb_num_Standby_Velocity.Text , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Standby_Time:" + tb_num_Standby_Time.Text , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Mode1:" + Global.Function1[0].Mode , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Position1:" +Global.Function1[0].Press_Pos, Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Force1:" + Global.Function1[0].Press_Force , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Velocity1:" + Global.Function1[0].Press_Vel , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Time1:" + Global.Function1[0].Press_Time, Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Max_Force1:" + Global.Function1[0].End_Max_Force_Limit , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Min_Force1:" + Global.Function1[0].End_Min_Force_Limit , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Max_Position1:" + Global.Function1[0].End_Max_Pos_Limit , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Min_Position1:" + Global.Function1[0].End_Min_Pos_Limit , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Mode2:" + Global.Function2[0].Mode , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Position2:" +Global.Function2[0].Press_Pos, Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Force2:" + Global.Function2[0].Press_Force , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Velocity2:" + Global.Function2[0].Press_Vel , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Time2:" + Global.Function2[0].Press_Time, Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Max_Force2:" + Global.Function2[0].End_Max_Force_Limit , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Min_Force2:" + Global.Function2[0].End_Min_Force_Limit , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Max_Position2:" + Global.Function2[0].End_Max_Pos_Limit , Time = formattedDate +" "+formattedtime},
+                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Min_Position2:" + Global.Function2[0].End_Min_Pos_Limit , Time = formattedDate +" "+formattedtime}
+                };
+
+                // Chuyển danh sách sang định dạng JSON
+                string json_Log = JsonConvert.SerializeObject(data_Logs, Formatting.Indented);
+                Common.Log_Operation_Json(json_Log, path.Log);
             }
             catch (Exception ex)
 
@@ -908,8 +1041,18 @@ namespace App_Control_Servo_Press_Delta
                             tb_num_PST_Standby.Text = string.Format("{0:F2}", obj.Standby_Position);
                             tb_num_Standby_Velocity.Text = string.Format("{0:F2}", obj.Standby_Velocity);
                             tb_num_Standby_Time.Text = string.Format("{0:F2}", obj.Standby_Time);
+                            cbb_Pressing_condition.SelectedIndex = -1;
+                            cbb_step.SelectedIndex = -1;
                             Load_View_Codition();
-                            Load_CBB();
+                            tb_num_Force_Max.Text = "0";
+                            tb_num_Force_Min.Text = "0";
+                            tb_num_Position_Max.Text = "0";
+                            tb_num_Position_Min.Text = "0";
+                            tb_num_Press_PositionDistance.Text = "0";
+                            tb_num_Press_Force.Text = "0";
+                            tb_num_Press_Velocity.Text = "0";
+                            tb_num_Press_Time.Text = "0";
+                            // Load_CBB();
                             flag = true;
                         }
                     }
@@ -949,6 +1092,7 @@ namespace App_Control_Servo_Press_Delta
                 }
                 var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
                 string newJsonString = System.Text.Json.JsonSerializer.Serialize(newData, jsonOptions);
+                Common.Log_Operation("Delete Model:  " + tb_Model.Text, path.Log);
                 // Write back to file
                 File.WriteAllText(path.Model, newJsonString);
                 Common.Load_View_Model(List_Models);
@@ -979,7 +1123,49 @@ namespace App_Control_Servo_Press_Delta
             }
         }
 
+        private void CheckKeyboardStatus()
+        {
+            var arrProcs = Process.GetProcessesByName("osk");
+            var focusedElement = Keyboard.FocusedElement;
 
+
+            if ((arrProcs.Length == 0) & keyboardIsOpen)
+            {
+
+                Console.WriteLine("Bàn phím ảo đang đóng.");
+                if (focusedElement is TextBox textBox)
+                {
+
+                    Keyboard.ClearFocus();
+                    TextBox_LostFocus(textBox, null);
+                    Global.clear_forcus = false;
+                    Console.WriteLine("Đã lostforcus");
+                    keyboardIsOpen = false;
+                    //  }
+
+                }//
+            }
+            else if (!(arrProcs.Length == 0) & !keyboardIsOpen)
+            {
+                keyboardIsOpen = true;
+            }
+            if (Global.clear_forcus)
+            {
+                if (focusedElement is TextBox textBox)
+                {
+                    //  textBox.Text = Global.Textbox_string ;
+                    TextBox_LostFocus(textBox, null);
+                    Keyboard.ClearFocus();
+                    Global.clear_forcus = false;
+                    Console.WriteLine("Đã lostforcus");
+                    Global.Textbox_string = "";
+                    keyboardIsOpen = false;
+                    //  }
+
+                }//
+            }
+
+        }  //
 
         private void Click_bt_Del_Model(object sender, RoutedEventArgs e)
         {
@@ -998,8 +1184,10 @@ namespace App_Control_Servo_Press_Delta
         {
             if (MainWindow.UserName != "")
             {
+                excel.Export_Model_File("Template_Model", path.Model, false, "Chọn thư mục lưu file Backup", "Model");
                 excel.Import_Model_Filepath();
-            Common.Load_View_Model(List_Models);
+
+                Common.Load_View_Model(List_Models);
             }
 
             else
@@ -1010,14 +1198,9 @@ namespace App_Control_Servo_Press_Delta
 
         private void Click_bt_Export_model(object sender, RoutedEventArgs e)
         {
-            excel.Export_Model_File("Template_Model", path.Model);
+            excel.Export_Model_File("Template_Model", path.Model, true, "Chọn thư mục lưu file", "Model");
         }
 
-        private void Click_bt_Template_model(object sender, RoutedEventArgs e)
-        {
-            var Result = Excel.Coppy_File("Template_Model");
-            MessageBox.Show("Đã tạo Template thành công.");
-        }
 
         private void Click_bt_Save_model(object sender, RoutedEventArgs e)
         {
@@ -1052,6 +1235,10 @@ namespace App_Control_Servo_Press_Delta
                 MessageBox.Show("Vui Lòng Đăng Nhập");
             }
 
+        }
+        private static bool Is_String(string input, string Compari_1)
+        {
+            return input.Contains(Compari_1) ;
         }
     }
 }

@@ -618,6 +618,67 @@
                         </Grid>
                     </Grid>
                 </Grid>
+                <Grid Grid.Column="1" Margin="-1,0,0,0" >
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Height="30" Grid.Row="0">
+                            <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+
+                            <Label Content="{DynamicResource lb_Operation_Parameter}"
+                                    FontSize="20"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="Source Sans Pro"
+                                    Foreground="Black"
+                                    FontStyle="Normal"
+                                    FontWeight="Bold"
+                                    Margin="2,0,0,0"
+                                    VerticalAlignment="Bottom">
+                            </Label>
+                        </Grid>
+                        <Grid Grid.Row="1"   Height="30" Margin="0,5,5,0">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="0"   Content="{DynamicResource LB_Base_Jig_Thickness}" FontSize="15" HorizontalAlignment="Center" Margin="0,-5,0,0"   Style="{StaticResource Basic_labelStyle}"  />
+                                <Label  Grid.Column="1"   Content="---" FontSize="15" HorizontalAlignment="Center" Margin="0,-5,0,0"   Style="{StaticResource Basic_labelStyle}"  />
+                                <Label  Grid.Column="2"   Content="---" FontSize="15" HorizontalAlignment="Center" Margin="0,-5,0,0"   Style="{StaticResource Basic_labelStyle}"  />
+
+                            </Grid>
+
+
+                        </Grid>
+                        <Grid Grid.Row="2"  Margin="5,-5,5,0" Height="50">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox  Grid.Column="0"  IsReadOnly="True"  x:Name="tb_Base_jig_thickness"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                                <TextBox  Grid.Column="1"  IsReadOnly="True"  x:Name="tb_ofset_height"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                                <TextBox  Grid.Column="2"  IsReadOnly="True"    Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                               
+                            </Grid>
+
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <Border  BorderBrush="#1f1f1f" BorderThickness="1"/>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

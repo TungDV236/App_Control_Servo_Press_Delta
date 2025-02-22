@@ -14,6 +14,7 @@ using System.Text.Json;
 using App_Control_Servo_Press_Delta.Class;
 using App_Control_Servo_Press_Delta;
 using System.Diagnostics;
+using System.Windows.Shapes;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -36,6 +37,8 @@ namespace App_Control_Servo_Press_Delta
         public string GPIO_EN = System.IO.Path.Combine("Path", "GPIO_EN.json");
         public string GPIO_VN = System.IO.Path.Combine("Path", "GPIO_VN.json");
         public string Chart = System.IO.Path.Combine("Path", "Chart.json");
+        public string Log = System.IO.Path.Combine("Log", "Log_Operation.json");
+        public string Log_VN = System.IO.Path.Combine("Log", "Log_Operation_VN.json");
     }
     public class ColorChecker
     {
@@ -340,6 +343,76 @@ namespace App_Control_Servo_Press_Delta
                 }
             }
             catch { }
+
+        }
+
+        public void Log_Operation( string Log, string path)
+        {
+            System.DateTime dateTime = System.DateTime.Now;
+            string formattedDate = dateTime.ToString("dd/MM/yy");
+            string formattedtime = dateTime.ToString("HH:mm:ss");
+            Data_Log data_Log = new Data_Log();
+            data_Log.No = 0;
+            data_Log.Time = formattedDate + " " + formattedtime;
+            data_Log.User = MainWindow.UserName;
+            data_Log.Log = Log;
+
+            string list_Json = JsonConvert.SerializeObject(data_Log);
+            try
+            {
+                string json = File.ReadAllText(path);
+
+                if (json.Length < 10)
+                {
+                    json = json.Remove(json.Length - 1);
+                    json = json + list_Json + "\n]";
+                    File.WriteAllText(path, json);
+                }
+                else
+                {
+                    json = json.Remove(json.Length - 1);
+                    json = json + ",\n" + list_Json + "\n]";
+                    File.WriteAllText(path, json);
+                }
+
+            }
+            catch (Exception ex)
+
+            {
+                string json_;
+                json_ = "[" + list_Json + "\n]";
+                File.WriteAllText(path, json_);
+            }
+
+        }
+        public void Log_Operation_Json(string list_Json, string path)
+        {
+            try
+            {
+                string json = File.ReadAllText(path);
+                list_Json = list_Json.Substring(1, list_Json.Length - 2);
+                if (json.Length < 10)
+                {
+                    json = json.Remove(json.Length - 1);
+                    json = json + list_Json + "\n]";
+                    File.WriteAllText(path, json);
+                }
+                else
+                {
+                    json = json.Remove(json.Length - 1);
+                    json = json + ",\n" + list_Json + "\n]";
+                    File.WriteAllText(path, json);
+                }
+
+            }
+            catch (Exception ex)
+
+            {
+                string json_;
+                list_Json = list_Json.Substring(1, list_Json.Length - 2);
+                json_ = "[" + list_Json + "\n]";
+                File.WriteAllText(path, json_);
+            }
 
         }
     }
