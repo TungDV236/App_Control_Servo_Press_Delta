@@ -45,20 +45,20 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="No" 
                                     Binding="{Binding STT}"
-                                    Width="80" >
+                                    Width="Auto" >
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="Code" 
                                     Binding="{Binding Code}"
-                                    Width="120" >
+                                    Width="Auto" >
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="Description"
                                     Binding="{Binding Content_}"
-                                    Width="260" >
+                                    Width="Auto" >
 
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="Solution"
                             Binding="{Binding Solution}"
-                            Width="260">
+                            Width="Auto">
 
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="Time"
@@ -97,15 +97,15 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="No" 
                                     Binding="{Binding No}"
-                                    Width="80" >
+                                    Width="Auto" >
                                 </DataGridTextColumn>
                                 <DataGridTextColumn Header="User" 
                                     Binding="{Binding User}"
-                                    Width="120" >
+                                    Width="Auto" >
                                 </DataGridTextColumn>
                                 <DataGridTextColumn Header="Log Operation"
                                     Binding="{Binding Log}"
-                                    Width="400" >
+                                    Width="Auto" >
 
                                 </DataGridTextColumn>
                                 <DataGridTextColumn Header="Time"

@@ -63,6 +63,7 @@
     <Style TargetType="TextBox" x:Key="BorderTransparentTextBoxStyle">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="FontWeight" Value="DemiBold" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -112,6 +113,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontWeight" Value="DemiBold" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -134,6 +136,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontWeight" Value="DemiBold" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -176,11 +179,11 @@
     </Style>
     <Style TargetType="Label" x:Key="Basic_labelStyle">
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontWeight" Value="Regular" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontFamily" Value="Source Sans Pro" />
-        <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
@@ -198,8 +201,10 @@
     <Style x:Key="txb-hint" TargetType="TextBox">
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="BorderBrush" Value="{DynamicResource TertiaryForegroundColor}" />
+        <Setter Property="FontFamily" Value="Source Sans Pro" />
+        <Setter Property="BorderBrush" Value="Gray" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource PrimaryBorderColor}" />
         <Setter Property="Template">
@@ -207,36 +212,37 @@
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
                         <Grid
-                                Width="Auto"
-                                Height="20"
-                                Margin="10,2,0,5"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                                Panel.ZIndex="1"
-                                Background="{TemplateBinding Background}">
+                            Width="Auto"
+                            Height="18"
+                            Margin="10,2,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Panel.ZIndex="1"
+                            Background="{TemplateBinding Background}">
                             <TextBlock
-                                    Margin="2"
-                                    FontSize="12"
-                                    FontWeight="Regular"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    Text="{TemplateBinding Tag}" />
+                                Margin="2"
+                                FontSize="12"
+                                FontWeight="Regular"
+                                Foreground="Black"
+                                FontFamily="Source Sans Pro"
+                                Text="{TemplateBinding Tag}" />
                         </Grid>
                         <Border
-                                x:Name="border"
-                                Margin="0,10,0,0"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="5"
-                                SnapsToDevicePixels="True">
+                            x:Name="border"
+                            Margin="0,10,0,0"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Margin="10,0,15,0" />
                         </Border>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
-        <Style.Triggers>
+<!--
+                        <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBackgroundColor50}" />
             </Trigger>
@@ -244,5 +250,148 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBackgroundColor80}" />
             </Trigger>
         </Style.Triggers>
+        -->
+
+       
+
+    </Style>
+    <Style x:Key="cbb-hint" TargetType="ComboBox">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Source Sans Pro" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBorderColor}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Grid
+                            Width="Auto"
+                            Height="18"
+                            Margin="10,2,0,5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Panel.ZIndex="1"
+                            Background="{TemplateBinding Background}">
+                            <TextBlock
+                                Margin="2"
+                                FontSize="12"
+                                FontWeight="Regular"
+                                Background="Transparent"
+                                Foreground="Black"
+                                FontFamily="Source Sans Pro"
+                                Text="{TemplateBinding Tag}" />
+                        </Grid>
+                        <Border
+                            x:Name="border"
+                            Margin="0,10,0,0"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="Gray"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="10,0,15,0" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--
+                        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBackgroundColor50}" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBackgroundColor80}" />
+            </Trigger>
+        </Style.Triggers>
+        -->
+
+
+
+    </Style>
+
+    <Style  TargetType="ToggleButton"  x:Key="Basic_ToggleButtonStyle">
+
+        <Setter Property="MaxHeight" Value="30"/>
+        <Setter Property="MaxWidth" Value="60"/>
+        <Setter Property="MinHeight" Value="30"/>
+        <Setter Property="MinWidth" Value="60"/>
+
+        <Setter Property="Template">
+
+
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="bk" Background="#FFD1D1D1" CornerRadius="15">
+                        <Ellipse x:Name="ep" Fill="#FFE6FF4B" HorizontalAlignment="Left" Margin="4" Width="22"></Ellipse>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="ep" Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="Background" TargetName="bk" Value="#FF14DE54"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- Style cho ToggleButton -->
+    <Style x:Key="ToggleSwitchStyle" TargetType="ToggleButton">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                        <!-- Nền của switch -->
+                        <Border x:Name="SwitchBackground"
+                                    Width="{TemplateBinding Width}"
+                                    Height="{TemplateBinding Height}"
+                                    CornerRadius="15"
+                                    Background="LightGray"/>
+
+                        <!-- Nút trượt -->
+                        <Ellipse x:Name="SwitchThumb"
+                                     Width="20" Height="20"
+                                     Fill="White"
+                                     HorizontalAlignment="Left"
+                                     Margin="3"/>
+
+                        <!-- Hiệu ứng khi bật -->
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <!-- Trạng thái TẮT -->
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="SwitchBackground"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="LightGray" Duration="0:0:0.2"/>
+                                        <ThicknessAnimation Storyboard.TargetName="SwitchThumb"
+                                                                Storyboard.TargetProperty="Margin"
+                                                                To="3" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <!-- Trạng thái BẬT -->
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="SwitchBackground"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="Blue" Duration="0:0:0.2"/>
+                                        <ThicknessAnimation Storyboard.TargetName="SwitchThumb"
+                                                                Storyboard.TargetProperty="Margin"
+                                                                To="25,0,0,0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

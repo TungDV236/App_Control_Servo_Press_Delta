@@ -53,19 +53,19 @@
     <system:String x:Key="lb_Auto_Chart">Đồ thị</system:String>
 
 
-    <system:String x:Key="lb_List_Model">Danh Sách Model</system:String>
-    <system:String x:Key="lb_Scan">Mã Quét</system:String>
+    <system:String x:Key="lb_List_Model">List Model</system:String>
+    <system:String x:Key="lb_Scan">Scan</system:String>
     <system:String x:Key="lb_State">Trạng Thái</system:String>
     <system:String x:Key="lb_Auto_Mode_Parameter">Thông số Model</system:String>
-    <system:String x:Key="lb_Order_Code">Mã Yêu Cầu</system:String>
-    <system:String x:Key="lb_Model">Mã Hàng</system:String>
-    <system:String x:Key="lb_Rotor">Mã Rotor</system:String>
-    <system:String x:Key="lb_Shaft">Mã Trục</system:String>
-    <system:String x:Key="lb_BearingU">Mã Bi Trên</system:String>
-    <system:String x:Key="lb_BearingD">Mã Bi Dưới</system:String>
-    <system:String x:Key="lb_JigU">Gá Trên</system:String>
-    <system:String x:Key="lb_JigD">Gá Dưới</system:String>
-    <system:String x:Key="lb_JigM">Gá Giữa</system:String>
+    <system:String x:Key="lb_Order_Code">ID Order</system:String>
+    <system:String x:Key="lb_Model">Model</system:String>
+    <system:String x:Key="lb_Rotor">ID Rotor</system:String>
+    <system:String x:Key="lb_Shaft">ID Trục</system:String>
+    <system:String x:Key="lb_BearingU">Vòng bi trên</system:String>
+    <system:String x:Key="lb_BearingD">Vòng bi dưới</system:String>
+    <system:String x:Key="lb_JigU">Jig Trên</system:String>
+    <system:String x:Key="lb_JigD">Jig Dưới</system:String>
+    <system:String x:Key="lb_JigM">Jig Giữa</system:String>
     <system:String x:Key="lb_Stand_Height">Chiều cao tiêu chuẩn</system:String>
 
     <system:String x:Key="lb_Auto_Stats">Thống kê</system:String>
@@ -96,8 +96,8 @@
     <!-- Report-->
 
     <system:String x:Key="btn_Search">Tìm kiếm</system:String>
-    <system:String x:Key="lb_From">Từ:</system:String>
-    <system:String x:Key="lb_to">Đến:</system:String>
+    <system:String x:Key="lb_From">Bắt đầu:</system:String>
+    <system:String x:Key="lb_to">Kết thúc:</system:String>
     <!-- Signal IO-->
 
 
@@ -126,11 +126,11 @@
     <system:String x:Key="lb_Ofset_Model">Ofset model(mm)</system:String>
     <!-- Setting-->
 
-    <system:String x:Key="lb_List_Upper_Bearings">Danh sách Vòng bi trên</system:String>
-    <system:String x:Key="lb_List_Lower_Bearings">Danh sách Vòng bi dưới</system:String>
-    <system:String x:Key="lb_List_Upper_Jig">Danh Sách Jig trên</system:String>
-    <system:String x:Key="lb_List_Middle_Jig">Danh sách Jig giữa</system:String>
-    <system:String x:Key="lb_List_Lower_Jig">Danh sách Jig dưới</system:String>
+    <system:String x:Key="lb_List_Upper_Bearings">Vòng bi trên</system:String>
+    <system:String x:Key="lb_List_Lower_Bearings">Vòng bi dưới</system:String>
+    <system:String x:Key="lb_List_Upper_Jig">Jig trên</system:String>
+    <system:String x:Key="lb_List_Middle_Jig">Jig giữa</system:String>
+    <system:String x:Key="lb_List_Lower_Jig">Jig dưới</system:String>
     <system:String x:Key="lb_History_Error_Config">Cài đặt Lỗi</system:String>
     <system:String x:Key="lb_Systems">Hệ Thống</system:String>
     <system:String x:Key="lb_Thicknness">Độ đày</system:String>
@@ -148,6 +148,10 @@
     <system:String x:Key="LB_Base_Jig_Thickness">Chiều dày Jig Đế (mm)</system:String>
     <system:String x:Key="LB_Ofset_Shaft_Machine">Ofset Trục Máy(mm)</system:String>
     <system:String x:Key="lb_Cancel">Hủy</system:String>
+    <system:String x:Key="lb_Setting_Master">Cài đặt Đầu vào</system:String>
+    <system:String x:Key="lb_Machine_Parameter">Thông số máy</system:String>
+    <system:String x:Key="lb_Upper_Bearings">Vòng bi trên</system:String>
+    <system:String x:Key="lb_Lower_Bearings">Vòng bi dưới</system:String>
 
 
 </ResourceDictionary>

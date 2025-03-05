@@ -284,7 +284,8 @@ namespace App_Control_Servo_Press_Delta
                     string jsonData = JsonConvert.SerializeObject(data);
                     MainWindow._queue.Add(jsonData);
 
-                    Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log);
+                  //  Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log_EN);
+                  //  Common.Log_Operation("Nhập thông số:  " + textboxName + ":   " + doubleValue, path.Log_VN);
                 }
                 if (double.TryParse(textBox.Text, out double doubleValue1) & textBox.Name == "Jog_Max_Force")
                 {
@@ -312,8 +313,9 @@ namespace App_Control_Servo_Press_Delta
            
 
 
-                    Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log);
-                }
+                    Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log_EN);
+                Common.Log_Operation("Nhập thông số : " + textboxName + ":   " + doubleValue, path.Log_VN);
+            }
             is_Forcus = false;
             flag2 = false;
             Keyboard.ClearFocus();
@@ -334,7 +336,8 @@ namespace App_Control_Servo_Press_Delta
                 {
                     Taglog = buttonName.Substring(0, buttonName.Length - 4);
                 }
-                Common.Log_Operation("Press Button:   "+ Taglog , path.Log);
+                Common.Log_Operation("Press Button:   "+ Taglog , path.Log_EN);
+                Common.Log_Operation("Nhấn nút:   " + Taglog, path.Log_VN);
             }
         }
         private void Button_TouchDown(object sender, TouchEventArgs e)

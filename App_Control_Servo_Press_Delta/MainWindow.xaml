@@ -292,7 +292,7 @@
                                                   Margin="0,5,0,-5"
                                                   FontFamily="Source Sans Pro">
                                             </Label>
-                                            <TextBox IsReadOnly="true" x:Name="tb_Position"  Margin="5" FontWeight="Bold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox IsReadOnly="true" x:Name="tb_Position"  Margin="5" FontWeight="DemiBold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Label  Content="{DynamicResource lb_Force}"
@@ -305,7 +305,7 @@
                                                   HorizontalContentAlignment="Center"
                                                   FontFamily="Source Sans Pro">
                                             </Label>
-                                            <TextBox IsReadOnly="true"  x:Name="tb_Force"   Margin="5" FontWeight="Bold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox IsReadOnly="true"  x:Name="tb_Force"   Margin="5" FontWeight="DemiBold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="2" Orientation="Vertical">
                                             <Label  Content="---"
@@ -318,7 +318,7 @@
                                                   HorizontalContentAlignment="Center"
                                                   FontFamily="Source Sans Pro">
                                             </Label>
-                                            <TextBox IsReadOnly="true" x:Name="TB_Spare1" Margin="5" FontWeight="Bold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox IsReadOnly="true" x:Name="TB_Spare1" Margin="5" FontWeight="DemiBold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
                                         </StackPanel>
                                         <StackPanel  Grid.Column="3" Orientation="Vertical">
                                             <Label  Content="---"
@@ -331,28 +331,29 @@
                                                     HorizontalContentAlignment="Center"
                                                   FontFamily="Source Sans Pro">
                                             </Label>
-                                            <TextBox IsReadOnly="true"  x:Name="TB_Spare2"  Margin="5" FontWeight="Bold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
+                                            <TextBox IsReadOnly="true"  x:Name="TB_Spare2"  Margin="5" FontWeight="DemiBold" FontSize="15" Height="35" Style="{StaticResource BorderBlackTextboxStyle}"/>
 
                                         </StackPanel>
-                                        <Grid Grid.Column="4">
+                                        <Grid Grid.Column="5">
+                                            <Grid Grid.Row="0">
+                                                <Button Grid.Column="0" Content="Test" x:Name="Test"  Padding="5,5" Height="35"  FontSize="10"  VerticalAlignment="Center"  Click="bt_test_Click"/>
+                                            </Grid>
+
+                                        </Grid>
+                                        <Grid Grid.Column="6">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"/>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
-                                            <Grid Grid.Row="0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <!--<Button  Grid.Column="0"   Content="Trục Ép"  x:Name="ORG_Y"  Margin="2" Height="28"   FontWeight="Bold" FontSize="13"  FontFamily="Source Sans Pro"/>-->
-                                            </Grid>
-                                            <Grid Grid.Row="1">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <!--<Button  Grid.Column="0"   Content="Cửa"  x:Name="ORG_CUM_IN"  Margin="2" Height="28"  FontWeight="Bold" FontSize="13" FontFamily="Source Sans Pro" />-->
-
-                                            </Grid>
+                                            <Label Content="{DynamicResource btn_Off_Buzzer}" FontWeight="DemiBold" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                            <ToggleButton Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,5"
+                                              IsChecked="False" x:Name="Sw_Offbuzzer"
+                                              Style="{StaticResource ToggleSwitchStyle}"
+                                              ToolTip="MaterialDesignSwitchLightToggleButton" Unchecked="Sw_Offbuzzer_UnChecked" Checked="Sw_Offbuzzer_Checked" />
 
                                         </Grid>
 

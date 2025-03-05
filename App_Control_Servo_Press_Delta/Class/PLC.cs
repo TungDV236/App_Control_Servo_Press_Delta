@@ -36,7 +36,7 @@ namespace App_Control_Servo_Press_Delta.Class
 
         public void StartTimer()
         {
-            timer = new System.Threading.Timer(Timer_Tick, null, 0, 200);
+            timer = new System.Threading.Timer(Timer_Tick, null, 0, 100);
             string json = File.ReadAllText(path.Setting);
             var data_Setting = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             Global.PLC_IP = data_Setting["PLC"];

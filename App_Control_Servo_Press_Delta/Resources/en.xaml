@@ -8,7 +8,7 @@
     <system:String x:Key="btn_Man">Manual</system:String>
     <system:String x:Key="btn_History">History</system:String>
     <system:String x:Key="btn_Home">Home</system:String>
-    <system:String x:Key="btn_GPIO">Signal GPIO</system:String>
+    <system:String x:Key="btn_GPIO">Signal IO</system:String>
     <system:String x:Key="btn_Report">Report</system:String>
     <system:String x:Key="btn_Model">Model</system:String>
     <system:String x:Key="btn_Setting">Setting</system:String>
@@ -53,7 +53,7 @@
     <system:String x:Key="lb_Scan">Scan</system:String>
     <system:String x:Key="lb_State">State</system:String>
     <system:String x:Key="lb_Auto_Mode_Parameter">Model Parameter</system:String>
-    <system:String x:Key="lb_Order_Code">Order Code</system:String>
+    <system:String x:Key="lb_Order_Code">ID Order</system:String>
     <system:String x:Key="lb_Model">Model</system:String>
     <system:String x:Key="lb_Rotor">ID Rotor</system:String>
     <system:String x:Key="lb_Shaft">ID Shaft</system:String>
@@ -144,5 +144,9 @@
     <system:String x:Key="LB_Base_Jig_Thickness">Base Jig Thickness(mm)</system:String>
     <system:String x:Key="LB_Ofset_Shaft_Machine">Ofset Shaft Machine(mm)</system:String>
     <system:String x:Key="lb_Cancel">Cancel</system:String>
+    <system:String x:Key="lb_Setting_Master">Setting Master</system:String>
+    <system:String x:Key="lb_Machine_Parameter">Machine Parameter</system:String>
+    <system:String x:Key="lb_Upper_Bearings">Upper Bearings</system:String>
+    <system:String x:Key="lb_Lower_Bearings">Lower Bearings</system:String>
 
 </ResourceDictionary>

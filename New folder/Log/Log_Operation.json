@@ -1,0 +1,1071 @@
+[
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Scan_Order_Code:   Â"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Stand_Height:   80.2"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Origin_Position:   11.1"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Origin_Velocity:   11.2"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Standby_Position:   11.3"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Standby_Velocity:   11.2"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Standby_Time:   11.5"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Mode1:   1"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Press_Position1:   13.5"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Press_Force1:   0"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Press_Velocity1:   13.7"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Press_Time1:   13.8"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Max_Force1:   13.2"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Min_Force1:   13.1"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Max_Position1:   0"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Min_Position1:   0"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Mode2:   2"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Press_Position2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Press_Force2:   14.6"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Press_Velocity2:   14.7"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Press_Time2:   14.8"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Max_Force2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Min_Force2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Max_Position2:   14.4"
+  },
+  {
+    "No": 0,
+    "Time": "21/02/25 19:24:53",
+    "User": "",
+    "Log": "Write Min_Position2:   14.3"
+  }
+
+,
+
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Model:V63"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Stand_Height:80.1"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Position:200.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Position:200.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Time:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Mode1:1"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position1:383.6"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force1:1000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force1:3000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Mode2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:16:59",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position2:0"
+  }
+
+,
+
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Model:V63"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Stand_Height:80.10"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Position:200.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Position:340.2"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Time:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Mode1:1"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position1:383.6"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force1:1000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force1:3000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Mode2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:22:19",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position2:0"
+  }
+
+,
+
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Model:V63"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Stand_Height:80.10"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Position:200.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Position:340.20"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Time:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Mode1:1"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position1:383.6"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force1:1000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force1:4000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Mode2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:56:07",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position2:0"
+  }
+
+,
+
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Model:V63"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Stand_Height:80.10"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Position:200.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Position:340.20"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Time:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Mode1:1"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position1:383.6"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force1:1000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force1:3500"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Mode2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 14:58:12",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position2:0"
+  }
+
+,
+
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Model:V63"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Stand_Height:80.10"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Position:200.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Origin_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Position:340.20"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Velocity:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Standby_Time:5.00"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Mode1:1"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position1:383.6"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time1:5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force1:1000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force1:3300"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position1:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Mode2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Press_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Press_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Press_Velocity2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Press_Time2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Max_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Min_Force2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Max_Position2:0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 17:25:06",
+    "User": "STI-Technical",
+    "Log": "Save Min_Position2:0"
+  }
+
+,
+
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Scan_Order_Code:   A"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Stand_Height:   80.1"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Origin_Position:   200"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Origin_Velocity:   5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Standby_Position:   340.2"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Standby_Velocity:   5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Standby_Time:   5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Mode1:   1"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Press_Position1:   383.6"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Press_Force1:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Press_Velocity1:   5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Press_Time1:   5"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Max_Force1:   1000"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Min_Force1:   3300"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Max_Position1:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Min_Position1:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Mode2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Press_Position2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Press_Force2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Press_Velocity2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Press_Time2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Max_Force2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Min_Force2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Max_Position2:   0"
+  },
+  {
+    "No": 0,
+    "Time": "22/02/25 18:12:46",
+    "User": "",
+    "Log": "Write Min_Position2:   0"
+  }
+
+]

@@ -14,7 +14,6 @@ using System.Text.Json;
 using App_Control_Servo_Press_Delta.Class;
 using App_Control_Servo_Press_Delta;
 using System.Diagnostics;
-using System.Windows.Shapes;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -23,8 +22,8 @@ namespace App_Control_Servo_Press_Delta
     {
         public string Setting = System.IO.Path.Combine("Path", "scnn.ini");
         public string Model = System.IO.Path.Combine("Model", "Model.json");
-        public string Beer_Up = System.IO.Path.Combine("Model", "Beer_Up.json");
-        public string Beer_Down = System.IO.Path.Combine("Model", "Beer_Down.json");
+        public string Bearings_Up = System.IO.Path.Combine("Model", "Bearings_Up.json");
+        public string Bearings_Down = System.IO.Path.Combine("Model", "Bearings_Down.json");
         public string Jig_Up = System.IO.Path.Combine("Model", "Jig_Up.json");
         public string Jig_Mid = System.IO.Path.Combine("Model", "Jig_Mid.json");
         public string Jig_Down = System.IO.Path.Combine("Model", "Jig_Down.json");
@@ -39,6 +38,7 @@ namespace App_Control_Servo_Press_Delta
         public string Chart = System.IO.Path.Combine("Path", "Chart.json");
         public string Log = System.IO.Path.Combine("Log", "Log_Operation.json");
         public string Log_VN = System.IO.Path.Combine("Log", "Log_Operation_VN.json");
+        public string Log_EN = System.IO.Path.Combine("Log", "Log_Operation_EN.json");
     }
     public class ColorChecker
     {
@@ -73,7 +73,7 @@ namespace App_Control_Servo_Press_Delta
                     JArray List_Show_array = JArray.Parse(List_Show);
                     foreach (JObject obj in List_Show_array)
                     {
-                        items.Add(new DataView_Model { STT = index, RotorID = (string)obj["RotorID"], Model = (string)obj["Model"], TrucID = (string)obj["TrucID"] });
+                        items.Add(new DataView_Model { No = index, ID_Rotor = (string)obj["ID_Rotor"], Model = (string)obj["Model"], ID_Shaft = (string)obj["ID_Shaft"] });
                         index++;
                     }
                     dataGrid.ItemsSource = items;
@@ -126,62 +126,29 @@ namespace App_Control_Servo_Press_Delta
 
             }
         }
-        public void Load_View(DataGrid dataGrid, string path)
-        {
-            string datagridname = dataGrid.Name;
-            List<DataView_Jig> items = new List<DataView_Jig>();
-            int index = 1;
-            try
-            {
-                string List_Show = File.ReadAllText(path);
-                if (List_Show.Length > 0)
-                {
-                    JArray List_Show_array = JArray.Parse(List_Show);
-                    foreach (JObject obj in List_Show_array)
-                    {
-                        if (datagridname == "List_Upper_Jig"|| datagridname == "List_Lower_Jig")
-                        {
-                            items.Add(new DataView_Jig { No = index, ID = (string)obj["ID"],Thickness = (string)obj["Thickness"] });
-                            index++;
-                        }
-                        if (datagridname == "List_Middle_Jig")
-                        {
-                            items.Add(new DataView_Jig { No = index, ID = (string)obj["ID"], Thickness = (string)obj["Thickness"] });
-                            index++;
-                        }
-                    }
-                    dataGrid.ItemsSource = items;
-                }
-            }
-            catch
-            {
-
-            }
-        }
+     
         public void Load_View_Report(DataGrid dataGrid, string time)
         {
-            // List<DataView_Report> items = new List<DataView_Report>();
-            Global.List_report = new List<DataView_Report>();
-            Global.List_report_all = new List<Data_Report_all>();
-            Global.List_report_temp = new List<DataView_Report>();
-            int index = 1;
+            Global.List_report_temp = new List<Data_Report>();
+            Global.List_report_all = new List<Data_Report>();
+            Global.List_report = new List<Data_Report>();
+            Global.List_report_temp.Clear();
             try
             {
                 string filepath = time + "_Report.json";
-                string List_Show = File.ReadAllText(System.IO.Path.Combine("Log", filepath));
-                if (List_Show.Length > 0)
+                string List_Show = File.ReadAllText(System.IO.Path.Combine("Report", filepath));
+                Global.List_report_temp = JsonConvert.DeserializeObject<List<Data_Report>>(List_Show);
+                for (int i = 0; i < Global.List_report_temp.Count; i++)
                 {
-                    JArray List_Show_array = JArray.Parse(List_Show);
-                    foreach (JObject obj in List_Show_array)
-                    {
-                        Global.List_report.Add(new DataView_Report { STT = index, Model = (string)obj["Model"], TrucID = (string)obj["TrucID"], RotorID = (string)obj["RotorID"], Force_Max = (string)obj["Force_Max"], Force = (string)obj["Force"], Time = (string)obj["Time"] });
-                        Global.List_report_all.Add(new Data_Report_all { STT = index, OrderCode = (string)obj["OrderCode"], Model = (string)obj["Model"], TrucID = (string)obj["TrucID"], RotorID = (string)obj["RotorID"], Beer_Up = (string)obj["Beer_Up"], Beer_Down = (string)obj["Beer_Down"], Jig_Up = (string)obj["Jig_Up"], Jig_Mid = (string)obj["Jig_Mid"], Jig_Down = (string)obj["Jig_Down"], HStand = (string)obj["HStand"], Force_Max = (string)obj["Force_Max"], Force = (string)obj["Force"], Position = (string)obj["Position"], Time = (string)obj["Time"] });
-                        index++;
-                    }
-                    //  dataGrid.ItemsSource = null;
-                    //  dataGrid.ItemsSource = Global.List_report;
-                    //   MessageBox.Show(items.ToString());
+                    Global.List_report_temp[i].STT = i; // Tăng giá trị lên 10
                 }
+                dataGrid.ItemsSource = null;
+               dataGrid.ItemsSource = Global.List_report_temp;
+                Global.List_report.Clear();
+
+                Global.List_report.AddRange(Global.List_report_temp);
+                //   MessageBox.Show(items.ToString());
+
             }
             catch
             {
@@ -189,7 +156,73 @@ namespace App_Control_Servo_Press_Delta
                 //MessageBox.Show("Lỗi mở file");
             }
         }
+        public void Load_Fill_View_Report(DataGrid dataGrid, DateTime timeStart, DateTime timeEnd, string ID_Shaft)
+        {
+            Global.List_report.Clear();
+            Global.List_report_all.Clear(); 
+            string directoryPath = @"..\Debug\Report\"; // Thay đổi đường dẫn theo thư mục của bạn
+            string[] part = timeStart.ToString().Split(' ');
+            DateTime startDate = DateTime.ParseExact(part[0], "dd/MM/yyyy", null);
+            string[] part1 = timeEnd.ToString().Split(' ');
+            DateTime endDate = DateTime.ParseExact(part1[0], "dd/MM/yyyy", null);
+            // Đọc tất cả các tệp JSON trong thư mục
 
+            try
+            {
+                foreach (var filePath in Directory.GetFiles(directoryPath, "*_report.json"))
+                {
+                    // Lấy tên tệp mà không có phần mở rộng
+                    string fileName = System.IO.Path.GetFileNameWithoutExtension(filePath);
+
+                    // Kiểm tra xem tên tệp có đúng định dạng không
+                    if (DateTime.TryParseExact(fileName.Substring(0, 10), "dd_MM_yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fileDate))
+                    {
+                        // Kiểm tra xem ngày tệp có nằm trong khoảng thời gian đã cho không
+                        if (fileDate >= startDate && fileDate <= endDate)
+                        {
+                            // Đọc tệp JSON
+                            string jsonString = File.ReadAllText(filePath);
+                            List<Data_Report> items = JsonConvert.DeserializeObject<List<Data_Report>>(jsonString);
+
+                            // Thêm các đối tượng vào danh sách
+                            Global.List_report_all.AddRange(items);
+                        }
+                    }
+                }
+                if (ID_Shaft !="")
+                {
+
+                    Global.List_report = Global.List_report_all.Where(item =>
+                    item.ID_Shaft == ID_Shaft &&
+                    DateTime.Parse(item.Time) >= timeStart &&
+                   DateTime.Parse(item.Time) <= timeEnd).ToList();
+                    for (int i = 0; i < Global.List_report.Count; i++)
+                    {
+                        Global.List_report[i].STT = i; // Tăng giá trị lên 10
+                    }
+                    dataGrid.ItemsSource = null;
+                    dataGrid.ItemsSource = Global.List_report;
+                }
+                else
+                {
+                    Global.List_report = Global.List_report_all.Where(item =>
+                        DateTime.Parse(item.Time) >= timeStart &&
+                        DateTime.Parse(item.Time) <= timeEnd).ToList();
+                    for (int i = 0; i < Global.List_report.Count; i++)
+                    {
+                        Global.List_report[i].STT = i; // Tăng giá trị lên 10
+                    }
+                    dataGrid.ItemsSource = null;
+                    dataGrid.ItemsSource = Global.List_report;
+                } 
+                    
+            }
+            catch
+            {
+                dataGrid.ItemsSource = null;
+                //MessageBox.Show("Lỗi mở file");
+            }
+        }
         public void SetEmptyTextBoxToZero(TextBox TextBox)
         {
             foreach (var textBox in FindVisualChildren<TextBox>(TextBox))
@@ -354,7 +387,13 @@ namespace App_Control_Servo_Press_Delta
             Data_Log data_Log = new Data_Log();
             data_Log.No = 0;
             data_Log.Time = formattedDate + " " + formattedtime;
-            data_Log.User = MainWindow.UserName;
+            if (MainWindow.UserName != null & MainWindow.UserName != "")
+            {
+                data_Log.User = MainWindow.UserName;
+            }
+            else data_Log.User = "OP";
+
+
             data_Log.Log = Log;
 
             string list_Json = JsonConvert.SerializeObject(data_Log);
@@ -414,6 +453,30 @@ namespace App_Control_Servo_Press_Delta
                 File.WriteAllText(path, json_);
             }
 
+        }
+        public void Load_View(DataGrid dataGrid, string path)
+        {
+            string datagridname = dataGrid.Name;
+            List<DataView_Jig> items = new List<DataView_Jig>();
+            int index = 1;
+            try
+            {
+                string List_Show = File.ReadAllText(path);
+                if (List_Show.Length > 0)
+                {
+                    JArray List_Show_array = JArray.Parse(List_Show);
+                    foreach (JObject obj in List_Show_array)
+                    {
+                            items.Add(new DataView_Jig { No = index, ID = (string)obj["ID"] });
+                            index++;
+                    }
+                    dataGrid.ItemsSource = items;
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 

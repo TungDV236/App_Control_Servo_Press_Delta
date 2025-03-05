@@ -1,179 +1,135 @@
 ﻿<Window x:Class="App_Control_Servo_Press_Delta.Monitor_Order"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
-        mc:Ignorable="d"
-        Width="600" 
-        Height="455" 
-        ResizeMode="NoResize" 
-        WindowStyle="None" 
-        AllowsTransparency="True"        
-        Background="Transparent" >
-    <Border CornerRadius="20" BorderThickness="1" BorderBrush="Black" Background="White" MouseDown="Grid_MouseDown" >
-        <Grid>
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    AllowsTransparency="True"
+    Background="Transparent"
+    WindowState="Maximized"
+    WindowStyle="None"
+    mc:Ignorable="d"  >
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="Gray"
+            Opacity="0.5">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding GridClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Grid>
+        <materialDesign:Card
+            HorizontalAlignment="Center" Height="415" Width="450"
+            materialDesign:ElevationAssist.Elevation="Dp16"
+            UniformCornerRadius="5" x:Name="FocusBorder" MouseDown="Grid_MouseDown" RenderTransformOrigin="0.5,0.5">
+            <materialDesign:Card.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0"/>
+                </TransformGroup>
+            </materialDesign:Card.RenderTransform>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="10" Width="450" HorizontalAlignment="Left">
-                    <Grid>
-                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5"  x:Name="FocusBorder"/>
-                        <TextBox  x:Name="Order_Code" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"   />
+                <Label Grid.Row="0" Content="Scan Order"  HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"  Height="35 " FontWeight="Bold" FontSize="25" VerticalAlignment="Top" Background="#FF8C8989" 
+                              Padding="0"  Margin="-1" >
+
+                </Label>
+                <Button Grid.Row="0" x:Name="BTN_Exit" HorizontalAlignment="Right" Width="35" Height="25 " VerticalAlignment="Top" Background="Transparent" BorderBrush="White" BorderThickness="0"
+                             Margin="5" Padding="0" 
+                             MouseEnter="exitButton_MouseEnter" 
+                             MouseLeave="exitButton_MouseLeave"
+                             PreviewMouseDown="MouseDown_Close">
+                    <StackPanel 
+                           Width="20">
+                        <Image  Source="Images\Exit.png"
+                                  HorizontalAlignment="Left"
+                                     Stretch="Fill">
+                        </Image>
+                    </StackPanel>
+                </Button>
+                <Grid Margin="5" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="5" Width="320" HorizontalAlignment="Left">
+                        <TextBox Tag="{DynamicResource lb_Order_Code}"   x:Name="Order_Code"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
+                    </Grid>
+                    <Grid Grid.Row="0" Margin="325,5,5,5">
+                        <TextBox Tag="{DynamicResource lb_Quality}"  x:Name="Quality" HorizontalAlignment="Left" Width="100" FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="10,-5,10,0">
+                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0" Content="{DynamicResource lb_List_Model}"   Name="lb_List_Model"
+                         FontWeight="Bold"   Background="White"     FontSize="20"   Height="30"   Padding="1" HorizontalContentAlignment="Center"
+                         HorizontalAlignment="Stretch"    VerticalAlignment="Top"   Margin="2,5,0,0"    Foreground="Black"/>
+                            <Grid Grid.Column="0" Grid.Row="1"  Margin="10,0,5,0">
+                                <TextBox Tag="{DynamicResource lb_Rotor}"  x:Name="tb_Rotor"   FontSize="15" Height="60" Style="{StaticResource txb-hint}"/>
+                            </Grid>
+                            <Grid Grid.Column="0" Grid.Row="2" Margin="10,0,5,0">
+                                <TextBox Tag="{DynamicResource lb_Shaft}"  x:Name="tb_Shaft"   FontSize="15" Height="60" Style="{StaticResource txb-hint}"/>
+                            </Grid>
+
+                            <Grid Grid.Column="0" Grid.Row="3" Margin="10,0,5,0">
+
+                                <TextBox Tag="{DynamicResource lb_BearingU}"  x:Name="tb_BearingU"   FontSize="15" Height="60"  Style="{StaticResource txb-hint}"/>
+                            </Grid>
+
+                            <Grid Grid.Column="0" Grid.Row="4"  Margin="10,0,5,10">
+                                <TextBox  Tag="{DynamicResource lb_BearingD}"  x:Name="tb_BearingD" FontSize="15" Height="60" Style="{StaticResource txb-hint}"/>
+                            </Grid>
+                            <Label Grid.Column="1" Grid.Row="0" Content="{DynamicResource lb_Scan}"  
+                         FontWeight="Bold"   Background="White"     FontSize="20"   Height="30"   Padding="1" HorizontalContentAlignment="Center"
+                         HorizontalAlignment="Stretch"    VerticalAlignment="Top"   Margin="0,5,5,0"    Foreground="Black"/>
+                            <Grid Grid.Column="1" Grid.Row="1"  Margin="10,0,10,0">
+                                <TextBox  Tag="{DynamicResource lb_Rotor}" x:Name="tb_Rotor_Scan"   FontSize="15" Height="60"  Style="{StaticResource txb-hint}"/>
+                            </Grid>
+                            <Grid Grid.Column="1" Grid.Row="2"  Margin="10,0,10,0">
+                                <TextBox  Tag="{DynamicResource lb_Shaft}"  x:Name="tb_Shaft_Scan"  FontSize="15" Height="60"  Style="{StaticResource txb-hint}"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Grid.Row="3"  Margin="10,0,10,0">
+                                <TextBox Tag="{DynamicResource lb_BearingU}"  x:Name="tb_BearingU_Scan"  FontSize="15" Height="60"  Style="{StaticResource txb-hint}"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1" Grid.Row="4" Margin="10,0,10,10">
+                                <TextBox Tag="{DynamicResource lb_BearingD}"  x:Name="tb_BearingD_Scan" FontSize="15" Height="60"  Style="{StaticResource txb-hint}"/>
+                            </Grid>
+
+                        </Grid>
                     </Grid>
 
-                    <Label Content="{DynamicResource lb_Order_Code}" 
-                FontWeight="Bold"
-                Background="White"
-                Width="70"
-                Height="20"
-                Padding="1"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="10,-10,0,0"
-                Foreground="Black"/>
-                </Grid>
-                <Grid Grid.Row="0" Margin="470,10,10,10">
-                    <Grid>
-                        <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                        <TextBox  x:Name="Quality" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"   />
-                    </Grid>
-
-                    <Label Content="{DynamicResource lb_Quality}" 
-                FontWeight="Bold"
-                Background="White"
-                Width="70"
-                Height="20"
-                Padding="1"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="10,-10,0,0"
-                Foreground="Black"/>
-                </Grid>
-                <Grid Grid.Row="1" Margin="10,-5,10,0">
-                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="0.5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" Content="{DynamicResource lb_List_Model}"   Name="lb_List_Model"
-                            FontWeight="Bold"   Background="White"     FontSize="20"   Height="30"   Padding="1" HorizontalContentAlignment="Center"
-                            HorizontalAlignment="Stretch"    VerticalAlignment="Top"   Margin="2,5,0,10"    Foreground="Black"/>
-                        <Grid Grid.Column="0" Grid.Row="1" Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Model"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Model}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-                        <Grid Grid.Column="0" Grid.Row="2"  Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Rotor"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Rotor}"     FontWeight="Bold"  Background="White" Width="70"   Height="20"  Padding="1"  
-                              HorizontalAlignment="Left"    VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-                        <Grid Grid.Column="0" Grid.Row="3"  Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Shaft" FontWeight="Bold"   FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Shaft}"     FontWeight="Bold"  Background="White" Width="70"   Height="20"  Padding="1"  
-                              HorizontalAlignment="Left"    VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-
-                        <Grid Grid.Column="0" Grid.Row="4"  Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_BearingU" FontWeight="Bold"   FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_BearingU}"     FontWeight="Bold"  Background="White" Width="90"   Height="20"  Padding="1"  
-                              HorizontalAlignment="Left"    VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-
-                        <Grid Grid.Column="0" Grid.Row="5"  Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_BearingD" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_BearingD}"     FontWeight="Bold"  Background="White" Width="100"   Height="20"  Padding="1"  
-                              HorizontalAlignment="Left"    VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-                        <Label Grid.Column="1" Grid.Row="0" Content="{DynamicResource lb_Scan}"  
-                            FontWeight="Bold"   Background="White"     FontSize="20"   Height="30"   Padding="1" HorizontalContentAlignment="Center"
-                            HorizontalAlignment="Stretch"    VerticalAlignment="Top"   Margin="0,5,0,10"    Foreground="Black"/>
-                        <Grid Grid.Column="1" Grid.Row="2"  Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Rotor_Scan"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Rotor}"     FontWeight="Bold"  Background="White" Width="70"   Height="20"  Padding="1"  
-                              HorizontalAlignment="Left"    VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-                        <Grid Grid.Column="1" Grid.Row="3"  Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Shaft_Scan" FontWeight="Bold"    FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Shaft}"     FontWeight="Bold"  Background="White" Width="70"   Height="20"  Padding="1"  
-                              HorizontalAlignment="Left"    VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1" Grid.Row="4"  Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_BearingU_Scan" FontWeight="Bold"    FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_BearingU}"     FontWeight="Bold"  Background="White" Width="90"   Height="20"  Padding="1"  
-                              HorizontalAlignment="Left"    VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-
-                        <Grid Grid.Column="1" Grid.Row="5"  Margin="5">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_BearingD_Scan" FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_BearingD}"     FontWeight="Bold"  Background="White" Width="100"   Height="20"  Padding="1"  
-                              HorizontalAlignment="Left"    VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
-                        </Grid>
-                        <Label Grid.Column="2" Grid.Row="0" Content="{DynamicResource lb_State}"  
-                            FontWeight="Bold"   Background="White"     FontSize="20"   Height="30"   Padding="1" HorizontalContentAlignment="Center"
-                            HorizontalAlignment="Stretch"    VerticalAlignment="Top"   Margin="0,5,5,10"    Foreground="Black"/>
-                        <Button Grid.Column="2" Grid.Row="2" Content="OK" x:Name="btn_state_ID_Rotor"  Height="40"  Margin="10,0,10,0"  Background="#05de25" />
-
-                        <Button Grid.Column="2" Grid.Row="3" Content="OK" x:Name="btn_state_ID_Shaft"  Height="40"  Margin="10,0,10,0"  Background="#05de25" />
-                        <Button Grid.Column="2" Grid.Row="4" Content="OK" x:Name="btn_state_BearingU"  Height="40"  Margin="10,0,10,0"  Background="#05de25" />
-                        <Button Grid.Column="2" Grid.Row="5" Content="OK" x:Name="btn_state_BearingD"  Height="40"  Margin="10,0,10,0"  Background="#05de25" />
-                    </Grid>
-                </Grid>
-                <Grid Grid.Row="2">
-                    <Button   x:Name="btn_exit" Content="{DynamicResource lb_exit}" Width="100" Height="30"  Margin="10,5,10,0"  Background="White"    MouseEnter="exitButton_MouseEnter"  MouseLeave="exitButton_MouseLeave"  PreviewMouseDown="MouseDown_Close" />
                 </Grid>
             </Grid>
-        </Grid>
-    </Border>
+
+        </materialDesign:Card>
+    </Grid>
+
 </Window>
+  

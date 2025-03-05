@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.Windows.Threading;
 using App_Control_Servo_Press_Delta.Class;
 using System.ComponentModel;
+using ViewModel;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -47,6 +48,7 @@ namespace App_Control_Servo_Press_Delta
             string json_ = File.ReadAllText(path.User_List);
             List<Data_name> dataList = JsonConvert.DeserializeObject<List<Data_name>>(json_);
 
+            DataContext = new MainWindow_VM();
             List<string> names = dataList.Select(item => item.Name).ToList();
             txtUsername.ItemsSource = names;
         }
@@ -107,6 +109,9 @@ namespace App_Control_Servo_Press_Delta
                             Is_Login = true;
                             MainWindow.UserName = Username;
                             LoginSuccessful?.Invoke(this, EventArgs.Empty);
+
+                            Common.Log_Operation("Login  " + Username, path.Log_EN);
+                            Common.Log_Operation("Đăng Nhập  " + Username, path.Log_VN);
                             Close();
                             break;
                         }
@@ -139,15 +144,7 @@ namespace App_Control_Servo_Press_Delta
              Common.Open_KeyBoard();
         }
 
-        private void exitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            btn_infor.Background = Brushes.Red; // Thay đổi màu nền khi di chuột qua
-        }
 
-        private void exitButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            btn_infor.Background = Brushes.Transparent; // Đặt lại màu nền khi chuột rời đi
-        }
         private void CheckKeyboardStatus()
         {
             var arrProcs = Process.GetProcessesByName("osk");

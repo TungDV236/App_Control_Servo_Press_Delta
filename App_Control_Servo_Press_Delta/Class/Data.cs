@@ -13,10 +13,11 @@ namespace App_Control_Servo_Press_Delta.Class
     {
 
         public static List<Position> List_Position_all { get; set; }
-        public static List<DataView_Report> List_report { get; set; }
-        public static List<Data_Report_all> List_report_all { get; set; }
-        public static List<DataView_Report> List_report_temp { get; set; }
+        public static List<Data_Report> List_report { get; set; }
+        public static List<Data_Report> List_report_all { get; set; }
+        public static List<Data_Report> List_report_temp { get; set; }
         public static List<DataPoint> DataPoints1 { get; set; } // Lưu trữ điểm cho biểu đồ 1
+        public static List<DataPoint> DataPoints_Chart { get; set; } // Lưu trữ điểm cho biểu đồ 1
         public static bool Start { get; set; }
         public static bool Receive { get; set; }
         public static bool Check_done_Order { get; set; }
@@ -41,8 +42,8 @@ namespace App_Control_Servo_Press_Delta.Class
         public static string ID_BearingsU { get; set; }
         public static string ID_BearingsD { get; set; }
         public static string Model { get; set; }
-        public static double Force_Max { get; set; }
-        public static double Position_Force_Max { get; set; }
+        public static float Force_Max { get; set; }
+        public static float Position_Force_Max { get; set; }
         public static bool Pressing { get; set; }
         public static bool Check_Write_Model { get; set; }
         public static bool Done_Visiable { get; set; }
@@ -57,10 +58,29 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool M_Door_J_P { get; set; }
         public static bool M_Door_J_N { get; set; }
         public static float Height_Shaft_Press { get; set; } = 697;
-        public static float Thickness_Jig_Up { get; set; } 
-        public static float Thickness_Jig_Down { get; set; }
+        public static float Import_Thickness_Jig_Up { get; set; } 
+        public static float Import_Thickness_Jig_Down { get; set; }
+        public static float Import_Thickness_Bearings_U { get; set; }
+        public static float Import_Thickness_Bearings_D{ get; set; }
+        public static float Auto_Thickness_Jig_Up { get; set; }
+        public static float Auto_Thickness_Jig_Down { get; set; }
+        public static float Auto_Thickness_Bearings_U { get; set; }
+        public static float Auto_Thickness_Bearings_D { get; set; }
+        public static float Model_Thickness_Jig_Up { get; set; }
+        public static float Model_Thickness_Jig_Down { get; set; }
+        public static float Model_Thickness_Bearings_U { get; set; }
+        public static float Model_Thickness_Bearings_D { get; set; }
+        public static float Model_Press_Pos1 { get; set; }
+        public static float Model_Press_Pos2 { get; set; }
+        public static float Auto_Press_Pos1 { get; set; }
+        public static float Auto_Press_Pos2 { get; set; }
+        public static float Auto_Pre_press_Bearings_distance { get; set; }
+        public static float Auto_After_press_bearings_distance { get; set; }
+        public static float Auto_Ofset_Model { get; set; }
         public static float Standby_Position  { get; set; }
         public static bool Fill_Done { get; set; }
+
+        public static string Order_Code_Report { get; set; }
     }
     public class Data_Report
     {
@@ -68,57 +88,11 @@ namespace App_Control_Servo_Press_Delta.Class
         public string Time { get; set; }
         public string OrderCode { get; set; }
         public string Model { get; set; }
-        public string TrucID { get; set; }
-        public string RotorID { get; set; }
-        public string Beer_Up { get; set; }
-        public string Beer_Down { get; set; }
-        public string Force_Max { get; set; }
+        public string ID_Shaft { get; set; }
+        public string ID_Rotor { get; set; }
+        public float Force_Max { get; set; }
+        public List<DataPoint> Chart  { get; set; }
         public string Status { get; set; }
-    }
-    public class DataView_Report
-    {
-        public int STT { get; set; }
-        public string Time { get; set; }
-        public string Model { get; set; }
-        public string TrucID { get; set; }
-        public string RotorID { get; set; }
-        public string Force { get; set; }
-        public string Force_Max { get; set; }
-    }
-
-    public class Data_Report_temp
-    {
-        public static int STT { get; set; }
-        public static string Time { get; set; }
-        public static string OrderCode { get; set; }
-        public static string Model { get; set; }
-        public static string TrucID { get; set; }
-        public static string RotorID { get; set; }
-        public static string Beer_Up { get; set; }
-        public static string Beer_Down { get; set; }
-        public static string Jig_Up { get; set; }
-        public static string Jig_Mid { get; set; }
-        public static string Jig_Down { get; set; }
-        public static string HStand { get; set; }
-        public static string Force { get; set; }
-        public static string Force_Max { get; set; }
-    }
-    public class Data_Report_temp2
-    {
-        public static int STT { get; set; }
-        public static string Time { get; set; }
-        public static string OrderCode { get; set; }
-        public static string Model { get; set; }
-        public static string TrucID { get; set; }
-        public static string RotorID { get; set; }
-        public static string Beer_Up { get; set; }
-        public static string Beer_Down { get; set; }
-        public static string Jig_Up { get; set; }
-        public static string Jig_Mid { get; set; }
-        public static string Jig_Down { get; set; }
-        public static string HStand { get; set; }
-        public static string Force { get; set; }
-        public static string Force_Max { get; set; }
     }
     public class Data_Report_all
     {
@@ -126,17 +100,16 @@ namespace App_Control_Servo_Press_Delta.Class
         public string Time { get; set; }
         public string OrderCode { get; set; }
         public string Model { get; set; }
-        public string TrucID { get; set; }
-        public string RotorID { get; set; }
-        public string Beer_Up { get; set; }
-        public string Beer_Down { get; set; }
-        public string Jig_Up { get; set; }
-        public string Jig_Mid { get; set; }
-        public string Jig_Down { get; set; }
-        public string HStand { get; set; }
-        public string Force { get; set; }
-        public string Force_Max { get; set; }
-        public string Position { get; set; }
+        public string ID_Shaft { get; set; }
+        public string ID_Rotor { get; set; }
+        public float Force_Max { get; set; }
+        public List<Chart> Chart { get; set; }
+        public string Status { get; set; }
+    }
+    public class Chart
+    {
+        public float PST { get; set; }
+        public float Force { get; set; }
     }
     public class Position
     {
@@ -222,10 +195,10 @@ namespace App_Control_Servo_Press_Delta.Class
     }
     public class DataView_Model
     {
-        public int STT { get; set; }
+        public int No { get; set; }
         public string Model { get; set; }
-        public string RotorID { get; set; }
-        public string TrucID { get; set; }
+        public string ID_Rotor { get; set; }
+        public string ID_Shaft { get; set; }
         // public string Time { get; set; }
     }
     public class DataView_Jig
@@ -254,7 +227,6 @@ namespace App_Control_Servo_Press_Delta.Class
     {
         public float Mode { get; set; }
         public string Press_Condition { get; set; }
-        public float Press_Pos { get; set; }
         public float Press_Force { get; set; }
         public float Press_Vel { get; set; }
         public float Press_Time { get; set; }
@@ -267,7 +239,6 @@ namespace App_Control_Servo_Press_Delta.Class
     {
         public float Mode { get; set; }
         public string Press_Condition { get; set; }
-        public float Press_Pos { get; set; }
         public float Press_Force { get; set; }
         public float Press_Vel { get; set; }
         public float Press_Time { get; set; }
@@ -287,12 +258,8 @@ namespace App_Control_Servo_Press_Delta.Class
         public string Jig_Mid { get; set; }
         public string Jig_Down { get; set; }
         public float Height_Stand { get; set; }
-        public float Thickness_Jig_Up { get; set; }
-        public float Thickness_Jig_Down { get; set; }
         public float Pre_press_Bearings_distance { get; set; }
         public float After_press_bearings_distance { get; set; }
-        public float Upper_Bearings_Thicknness { get; set; }
-        public float Lower_Bearings_Thicknness { get; set; }
         public float Ofset_position1 { get; set; }
         public float Ofset_position2 { get; set; }
         public float Origin_Position { get; set; }
@@ -314,12 +281,8 @@ namespace App_Control_Servo_Press_Delta.Class
         public string Jig_Mid { get; set; }
         public string Jig_Down { get; set; }
         public float Height_Stand { get; set; }
-        public float Thickness_Jig_Up { get; set; }
-        public float Thickness_Jig_Down { get; set; }
         public float Pre_press_Bearings_distance { get; set; }
         public float After_press_bearings_distance { get; set; }
-        public float Upper_Bearings_Thicknness { get; set; }
-        public float Lower_Bearings_Thicknness { get; set; }
         public float Ofset_position1 { get; set; }
         public float Ofset_position2 { get; set; }
 

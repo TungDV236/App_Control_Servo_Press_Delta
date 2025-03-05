@@ -45,21 +45,22 @@ namespace App_Control_Servo_Press_Delta
             InitializeComponent();
             Loaded += History_Loaded;  // Thêm sự kiện Loaded
             Unloaded += History_Unloaded;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(500);
         }
         private void History_Loaded(object sender, RoutedEventArgs e)
         {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(500);
+
             timer.Tick += Timer_Tick;
             timer.Start();
             LoadErrs();
-            Loadlog();
 
             // List_Err1 = History_UL.GetAllUsers();
         }
 
         private void History_Unloaded(object sender, RoutedEventArgs e)
         {
+            timer.Tick -= Timer_Tick;
             timer.Stop();
         }
 
@@ -68,6 +69,16 @@ namespace App_Control_Servo_Press_Delta
 
 
             LoadErrs();
+            if(Global.Language =="EN")
+            {
+
+                Loadlog(path.Log_EN);
+            }
+            if (Global.Language == "VN")
+            {
+
+                Loadlog(path.Log_VN);
+            }
             //  Main();
 
         }
@@ -76,46 +87,72 @@ namespace App_Control_Servo_Press_Delta
         {
             List<Items_Error> items_E = new List<Items_Error>();
             int index = 1;
-            //try
-            //{
-            string List_Show = File.ReadAllText(path.Error_EN);
-            if (List_Show.Length > 0)
+            try
             {
-                JArray List_Show_array = JArray.Parse(List_Show);
-                foreach (JObject obj in List_Show_array)
+            string List_Show_EN = File.ReadAllText(path.Error_EN);
+            string List_Show_VN = File.ReadAllText(path.Error_VN);
+            if (Global.Language == "EN")
+            {
+                if (List_Show_EN.Length > 0)
+                {
+                    JArray List_Show_array = JArray.Parse(List_Show_EN);
+                    foreach (JObject obj in List_Show_array)
 
-                {
-                    items_E.Add(new Items_Error { STT = index, Code = (string)obj["Code"], Content_ = (string)obj["Description"], Solution = (string)obj["Solution"], Time = (string)obj["Time"] });
-                    index++;
+                    {
+                        items_E.Add(new Items_Error { STT = index, Code = (string)obj["Code"], Content_ = (string)obj["Description"], Solution = (string)obj["Solution"], Time = (string)obj["Time"] });
+                        index++;
+                    }
+                    items_E.Reverse();
+                    for (int i = 0; i < items_E.Count; i++)
+                    {
+                        items_E[i].STT = i + 1;
+                    }
+                    //  List_Error.ItemsSource = items_E;
+                    List_Err.ItemsSource = null;
+                    List_Err.ItemsSource = items_E;
+                    //  List_Error.ItemsSource =  List<li> Users { get; set; }
                 }
-                items_E.Reverse();
-                for (int i = 0; i < items_E.Count; i++)
-                {
-                    items_E[i].STT = i + 1;
-                }
-                //  List_Error.ItemsSource = items_E;
-                List_Err.ItemsSource = null;
-                List_Err.ItemsSource = items_E;
-                //  List_Error.ItemsSource =  List<li> Users { get; set; }
             }
-            //}
-            //catch
-            //{ }
+            if (Global.Language == "VN")
+            {
+                if (List_Show_VN.Length > 0)
+                {
+                    JArray List_Show_array = JArray.Parse(List_Show_VN);
+                    foreach (JObject obj in List_Show_array)
+
+                    {
+                        items_E.Add(new Items_Error { STT = index, Code = (string)obj["Code"], Content_ = (string)obj["Description"], Solution = (string)obj["Solution"], Time = (string)obj["Time"] });
+                        index++;
+                    }
+                    items_E.Reverse();
+                    for (int i = 0; i < items_E.Count; i++)
+                    {
+                        items_E[i].STT = i + 1;
+                    }
+                    List_Err.ItemsSource = null;
+                    List_Err.ItemsSource = items_E;
+                }
+            }
+
+            }
+            catch
+            { }
+
         }
-        private void Loadlog()
+        private void Loadlog( string _path)
         {
             List<Data_Log> items = new List<Data_Log>();
             int index = 1;
             try
             {
-            string List_Show = File.ReadAllText(path.Log);
+            string List_Show = File.ReadAllText(_path);
             if (List_Show.Length > 0)
             {
                 JArray List_Show_array = JArray.Parse(List_Show);
                 foreach (JObject obj in List_Show_array)
 
                 {
-                    items.Add(new Data_Log { No = index, User = (string)obj["Code"], Log = (string)obj["Log"], Time = (string)obj["Time"] });
+                    items.Add(new Data_Log { No = index, User = (string)obj["User"], Log = (string)obj["Log"], Time = (string)obj["Time"] });
                     index++;
                 }
                 items.Reverse();
@@ -131,6 +168,7 @@ namespace App_Control_Servo_Press_Delta
             }
             catch
             { }
+          
         }
         private void Clear_Errs()
         {

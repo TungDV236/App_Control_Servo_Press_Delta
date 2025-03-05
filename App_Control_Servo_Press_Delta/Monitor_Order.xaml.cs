@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using App_Control_Servo_Press_Delta.Class;
+using Newtonsoft.Json;
 using OxyPlot.Series;
 
 namespace App_Control_Servo_Press_Delta
@@ -25,15 +27,17 @@ namespace App_Control_Servo_Press_Delta
 
         private DispatcherTimer timer;
         Common Common = new Common();
-        private  string code_old;
-        private  bool Check_Order;
-        private  int count_close;
-        private  int check1;
-        private  int check2;
-        private  int check3;
-        private  int check4;
-        private  int check5;
-        private  int step_scan;
+        private string code_old;
+        private bool Check_Order;
+        private int count_close;
+        private int check0;
+        private int check1;
+        private int check2;
+        private int check3;
+        private int check4;
+        private int check5;
+        private int step_scan;
+        Link_Path path = new Link_Path();
         Socket_client socket = new Socket_client();
         public Monitor_Order()
         {
@@ -77,24 +81,43 @@ namespace App_Control_Servo_Press_Delta
             {
                 Dispatcher.Invoke(() =>
                 {
-                  
+
 
                 });
-                if (code_old != Order_Code.Text & Order_Code.Text != null & Order_Code.Text!= "")
+
+                if (code_old != Order_Code.Text & Order_Code.Text != null)
                 {
+
                     code_old = Order_Code.Text;
-                    step_scan = 1;
+                    if (Order_Code.Text == "")
+                    {
+                        tb_Rotor.Text = "";
+                        tb_Shaft.Text = "";
+                    }    
+                        if (Order_Code.Text != "")
+                    {
+                        step_scan = 1;
+                    }
+
                 }
                 else if (code_old == Order_Code.Text & Order_Code.Text != null & Order_Code.Text != "" & step_scan == 1)
                 {
                     check1++;
-                    if (check1 >= 2)
+                    if (check1 == 2)
+                    {
+                        tb_Rotor.Focus();
+                    }
+                }
+                if (tb_Rotor.Text != null & tb_Rotor.Text != "" & tb_Shaft.Text != null & tb_Shaft.Text != "" & check0 < 3)
+                {
+                    check0++;
+                    if (check0 == 2)
                     {
                         tb_Rotor_Scan.Focus();
                         step_scan = 2;
                     }
                 }
-                if (tb_Rotor_Scan.Text != null & tb_Rotor_Scan.Text != "" & step_scan==2 )
+                if (tb_Rotor_Scan.Text != null & tb_Rotor_Scan.Text != "" & step_scan == 2)
                 {
                     check2++;
                     if (check2 >= 2)
@@ -104,7 +127,7 @@ namespace App_Control_Servo_Press_Delta
                     }
 
                 }
-                if (tb_Shaft_Scan.Text != null & tb_Shaft_Scan.Text != "" & step_scan == 3 )
+                if (tb_Shaft_Scan.Text != null & tb_Shaft_Scan.Text != "" & step_scan == 3)
                 {
                     check3++;
                     if (check3 >= 2)
@@ -134,73 +157,73 @@ namespace App_Control_Servo_Press_Delta
                 }
                 if (Global.Receive)
                 {
-                    tb_Rotor.Text = ID_Model.ID_Rotor.ToString();
-                    tb_Shaft.Text = ID_Model.ID_Shaft.ToString();
-                    tb_BearingU.Text = ID_Model.ID_Bearing_Upper.ToString();
-                    tb_BearingD.Text = ID_Model.ID_Bearing_Lower.ToString();
-                    tb_Model.Text = ID_Model.Model.ToString();
-                    Quality.Text = ID_Model.Quality.ToString();
-                    Global.Receive = false;
-                    Check_Order = true;
+                    if (ID_Model.Orrder_Code == Order_Code.Text)
+                    {
+                        tb_Rotor.Text = ID_Model.ID_Rotor.ToString();
+                        tb_Shaft.Text = ID_Model.ID_Shaft.ToString();
+                        Quality.Text = ID_Model.Quality.ToString();
+                        Global.Receive = false;
+                        Check_Order = true;
+                    }
+                    else
+                    {
+                        Global.Receive = false;
+                        step_scan = 0;
+                        check1 = 0;
+                        MessageBox.Show("OrderCode gửi từ Server có ID " + ID_Model.Orrder_Code + "không trùng với OrderCode Scan" + Order_Code.Text + "Vui lòng kiểm tra lại !");
+                        tb_Rotor.Text = "";
+                        tb_Shaft.Text = "";
+                        Order_Code.Text = "";
+                        Order_Code.Focus();
+                    }
+
                 }
                 if (Order_Code.Text == null || Order_Code.Text == "")
                 {
-                    btn_state_ID_Rotor.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
-                    btn_state_ID_Rotor.Content = "NG";
-                    btn_state_ID_Shaft.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
-                    btn_state_ID_Shaft.Content = "NG";
-                    btn_state_BearingU.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
-                    btn_state_BearingU.Content = "NG";
-                    btn_state_BearingD.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
-                    btn_state_BearingD.Content = "NG";
+                    tb_Rotor_Scan.Foreground = new SolidColorBrush(Color.FromRgb(222, 5, 5));
+                    tb_Shaft_Scan.Foreground = new SolidColorBrush(Color.FromRgb(222, 5, 5));
+                    tb_BearingU_Scan.Foreground = new SolidColorBrush(Color.FromRgb(222, 5, 5));
+                    tb_BearingD_Scan.Foreground = new SolidColorBrush(Color.FromRgb(222, 5, 5));
                 }
                 if (Check_Order)
                 {
                     if (tb_Rotor.Text == tb_Rotor_Scan.Text & tb_Rotor_Scan != null & tb_Rotor_Scan.Text != "")
                     {
-                        btn_state_ID_Rotor.Background = new SolidColorBrush(Color.FromRgb(5, 222, 37));
-                        btn_state_ID_Rotor.Content = "OK";
+                        tb_Rotor_Scan.Foreground = new SolidColorBrush(Color.FromRgb(5, 222, 37));
                     }
                     else
                     {
-                        btn_state_ID_Rotor.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
-                        btn_state_ID_Rotor.Content = "NG";
+                        tb_Rotor_Scan.Foreground = new SolidColorBrush(Color.FromRgb(222, 5, 5));
                     }
                     if (tb_Shaft.Text == tb_Shaft_Scan.Text & tb_Shaft_Scan != null & tb_Shaft_Scan.Text != "")
                     {
-                       btn_state_ID_Shaft.Background = new SolidColorBrush(Color.FromRgb(5, 222, 37));
-                        btn_state_ID_Shaft.Content = "OK";
+                        tb_Shaft_Scan.Foreground = new SolidColorBrush(Color.FromRgb(5, 222, 37));
                     }
                     else
                     {
-                        btn_state_ID_Shaft.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
-                        btn_state_ID_Shaft.Content = "NG";
+                        tb_Shaft_Scan.Foreground = new SolidColorBrush(Color.FromRgb(222, 5, 5));
                     }
                     if (tb_BearingU.Text == tb_BearingU_Scan.Text & tb_BearingU_Scan != null & tb_BearingU_Scan.Text != "")
                     {
-                        btn_state_BearingU.Background = new SolidColorBrush(Color.FromRgb(5, 222, 37));
-                        btn_state_BearingU.Content = "OK";
+                        tb_BearingU_Scan.Foreground = new SolidColorBrush(Color.FromRgb(5, 222, 37));
                     }
                     else
                     {
-                        btn_state_BearingU.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
-                        btn_state_BearingU.Content = "NG";
+                        tb_BearingU_Scan.Foreground = new SolidColorBrush(Color.FromRgb(222, 5, 5));
                     }
                     if (tb_BearingD.Text == tb_BearingD_Scan.Text & tb_BearingD_Scan != null & tb_BearingD_Scan.Text != "")
                     {
-                        btn_state_BearingD.Background = new SolidColorBrush(Color.FromRgb(5, 222, 37));
-                        btn_state_BearingD.Content = "OK";
+                        tb_BearingD_Scan.Foreground = new SolidColorBrush(Color.FromRgb(5, 222, 37));
                     }
                     else
                     {
-                        btn_state_BearingD.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
-                        btn_state_BearingD.Content = "NG";
+                        tb_BearingD_Scan.Foreground = new SolidColorBrush(Color.FromRgb(222, 5, 5));
                     }
-                    if (btn_state_BearingD.Content.ToString() == "OK" & btn_state_ID_Rotor.Content.ToString() == "OK" & btn_state_ID_Shaft.Content.ToString() == "OK" & btn_state_BearingU.Content.ToString() == "OK")
+                    if (ColorChecker.IsColorEqual(tb_Rotor_Scan.Foreground, Color.FromRgb(5, 222, 37)) & ColorChecker.IsColorEqual(tb_Shaft_Scan.Foreground, Color.FromRgb(5, 222, 37)) & ColorChecker.IsColorEqual(tb_BearingU_Scan.Foreground, Color.FromRgb(5, 222, 37)) & ColorChecker.IsColorEqual(tb_BearingD_Scan.Foreground, Color.FromRgb(5, 222, 37)))
                     {
                         Global.Check_done_Order = true;
                         Check_Order = false;
-                    }    
+                    }
 
                 }
                 if (Global.Check_done_Order)
@@ -210,12 +233,11 @@ namespace App_Control_Servo_Press_Delta
                     Global.ID_BearingsU = tb_BearingU_Scan.Text;
                     Global.ID_BearingsD = tb_BearingD_Scan.Text;
                     Global.Order_Code = Order_Code.Text;
-                    Global.Model = tb_Model.Text;
                     count_close++;
 
-                        Global.Update_Order = true;
-   
-                    if (count_close >= 15 &  Global.Done_Visiable)
+                    Global.Update_Order = true;
+
+                    if (count_close >= 15 & Global.Done_Visiable)
                     {
                         Global.Fill_Done = false;
                         Global.Update_Order = false;
@@ -223,7 +245,7 @@ namespace App_Control_Servo_Press_Delta
                         this.Close();
                     }
                 }
-                }
+            }
             catch
             {
             }
@@ -232,23 +254,27 @@ namespace App_Control_Servo_Press_Delta
         {
             TextBox textBox = (TextBox)sender;
             string textboxName = textBox.Name;
-           // if (textboxName == "Order_Code")
-           // {
-            int caretIndex = textBox.CaretIndex;
-            textBox.Text = textBox.Text.ToUpper();
-            textBox.CaretIndex = caretIndex;
-                // model = Model_Model.Text;
-          //  }
+            // if (textboxName == "Order_Code")
+            // {
+            //  int caretIndex = textBox.CaretIndex;
+            //  textBox.Text = textBox.Text.ToUpper();
+            //  textBox.CaretIndex = caretIndex;
+            // model = Model_Model.Text;
+            //  }
+
         }
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             string textboxName = textBox.Name;
-            if (textboxName == "Order_Code" & textboxName!=""& textboxName!=null)
+            if (textboxName == "Order_Code" & textboxName != "" & textboxName != null)
             {
                 socket.Emit_Server(Order_Code.Text);
-            }    
-
+            }
+            if ((textboxName == "tb_Rotor" || textboxName == "tb_Shaft") & (tb_Rotor.Text != null & tb_Rotor.Text != "" & tb_Shaft.Text != null & tb_Shaft.Text != ""))
+            {
+                Fill_Value_Mode();
+            }
 
         }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -260,23 +286,57 @@ namespace App_Control_Servo_Press_Delta
         }
         private void exitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            btn_exit.Background = Brushes.Red; // Thay đổi màu nền khi di chuột qua
+            BTN_Exit.Background = Brushes.Red; // Thay đổi màu nền khi di chuột qua
         }
 
         private void exitButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            btn_exit.Background = Brushes.Transparent; // Đặt lại màu nền khi chuột rời đi
+            BTN_Exit.Background = Brushes.Transparent; // Đặt lại màu nền khi chuột rời đi
         }
         private void MouseDown_Close(object sender, RoutedEventArgs e)
         {
             if (!Global.Write_Done)
             {
-
+                Global.Check_Write_Model = false;
+                Global.Fill_Done = false;
+                Global.Write_Done = false;
+                Global.Update_Order = false;
                 this.Close();
-            }    
+            }
 
         }
+        private void Fill_Value_Mode()
+        {
+            try
+            {
+                bool flag = false;
+                string json = File.ReadAllText(path.Model);
+                if (json.Length > 0)
+                {
+                    List<List_Model> jsonArray = JsonConvert.DeserializeObject<List<List_Model>>(json);
+                    //JArray jsonArray = JArray.Parse(json);
+                    foreach (var obj in jsonArray)
+                    {
+                        if ((string)obj.ID_Rotor == ID_Model.ID_Rotor.ToString() && (string)obj.ID_Shaft == ID_Model.ID_Shaft.ToString())
+                        {
+                            tb_BearingU.Text = obj.ID_Bearings_Up;
+                            tb_BearingD.Text = obj.ID_Bearings_Down;
+                            flag = true;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        MessageBox.Show("Không có Model trùng khớp với mã trục :" + ID_Model.ID_Shaft.ToString() + ", và mã vòng bi : " + ID_Model.ID_Rotor.ToString() + " , vui lòng kiểm tra lại Model!");
+                    }
+                    flag = false;
+                }
+            }
+            catch (Exception ex)
 
+            {
+
+            }
+        }
 
     }
 }

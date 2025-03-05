@@ -61,6 +61,8 @@ namespace App_Control_Servo_Press_Delta
         {
             timer.Tick += Timer_Tick;
             timer.Start();
+            Fill_ID(File.ReadAllText(path.Bearings_Up), cbb_BearingsU);
+            Fill_ID(File.ReadAllText(path.Bearings_Down), cbb_BearingsD);
             Fill_ID(File.ReadAllText(path.Jig_Up), cbb_JigU);
             Fill_ID(File.ReadAllText(path.Jig_Mid), cbb_JigM);
             Fill_ID(File.ReadAllText(path.Jig_Down), cbb_JigD);
@@ -208,21 +210,6 @@ namespace App_Control_Servo_Press_Delta
                     tb_Shaft.Focusable = true;
                     tb_Shaft.Focus();
                 }
-                else if (textboxName == "tb_Shaft")
-                {
-                    tb_BearingU.Focusable = true;
-                    tb_BearingU.Focus();
-                }
-                else if (textboxName == "tb_BearingU")
-                {
-                    tb_BearingD.Focusable = true;
-                    tb_BearingD.Focus();
-                }
-                else if (textboxName == "tb_BearingD")
-                {
-                    tb_num_Stand_Height.Focusable = true;
-                    tb_num_Stand_Height.Focus();
-                }
                 else
                 {
                     Keyboard.ClearFocus();
@@ -256,10 +243,11 @@ namespace App_Control_Servo_Press_Delta
                     textBox.Text = "0";
                 }
             }
-            Global.Function1[0].Press_Pos = Caculate_Position_Distance(Global.Function1[0].Mode, tb_num_Thickness_BearingsD.Text, tb_num_Distance_Bearings_After.Text,
-    tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
-            Global.Function2[0].Press_Pos = Caculate_Position_Distance(Global.Function2[0].Mode, tb_num_Thickness_BearingsD.Text, tb_num_Distance_Bearings_After.Text,
-    tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+            Global.Model_Press_Pos1 = Caculate_Position_Distance(Global.Function1[0].Mode, Global.Model_Thickness_Bearings_D.ToString(), tb_num_Distance_Bearings_After.Text,
+    Global.Auto_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+            Global.Model_Press_Pos2 = Caculate_Position_Distance(Global.Function2[0].Mode, Global.Model_Thickness_Bearings_D.ToString(), tb_num_Distance_Bearings_After.Text,
+    Global.Auto_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+            
             flag2 = false;
             IsForcus = false;
 
@@ -344,17 +332,27 @@ namespace App_Control_Servo_Press_Delta
             }
             if (comboboxname == "cbb_JigU" & comboBox.SelectedItem != null)
             {
-                Global.Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
+                Global.Model_Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
 
             }
             if (comboboxname == "cbb_JigD" & comboBox.SelectedItem != null)
             {
-                Global.Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
+                Global.Model_Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
             }
-            Global.Function1[0].Press_Pos = Caculate_Position_Distance(Global.Function1[0].Mode, tb_num_Thickness_BearingsD.Text, tb_num_Distance_Bearings_After.Text,
-tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
-            Global.Function2[0].Press_Pos = Caculate_Position_Distance(Global.Function2[0].Mode, tb_num_Thickness_BearingsD.Text, tb_num_Distance_Bearings_After.Text,
-    tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+            if (comboboxname == "cbb_BearingsU" & comboBox.SelectedItem != null)
+            {
+                
+                Global.Model_Thickness_Bearings_U = Fill_Jig(path.Bearings_Up, cbb_BearingsU.SelectedValue.ToString());
+            }
+            if (comboboxname == "cbb_BearingsD" & comboBox.SelectedItem != null)
+            {
+
+                Global.Model_Thickness_Bearings_D = Fill_Jig(path.Bearings_Down, cbb_BearingsD.SelectedValue.ToString());
+            }
+            Global.Model_Press_Pos1 = Caculate_Position_Distance(Global.Function1[0].Mode, Global.Model_Thickness_Bearings_D.ToString(), tb_num_Distance_Bearings_After.Text,
+ Global.Auto_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+            Global.Model_Press_Pos2 = Caculate_Position_Distance(Global.Function2[0].Mode, Global.Model_Thickness_Bearings_D.ToString(), tb_num_Distance_Bearings_After.Text,
+    Global.Auto_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
 
         }
         private void Update_Data()
@@ -382,7 +380,7 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 tb_num_Force_Min.Text = string.Format("{0:F2}", Global.Function1[0].End_Min_Force_Limit);
                 tb_num_Position_Max.Text = string.Format("{0:F2}", Global.Function1[0].End_Max_Pos_Limit);
                 tb_num_Position_Min.Text = string.Format("{0:F2}", Global.Function1[0].End_Min_Pos_Limit);
-                tb_num_Press_PositionDistance.Text = string.Format("{0:F2}", Global.Function1[0].Press_Pos);
+                tb_num_Press_PositionDistance.Text = string.Format("{0:F2}", Global.Model_Press_Pos1);
                 tb_num_Press_Force.Text = string.Format("{0:F2}", Global.Function1[0].Press_Force);
                 tb_num_Press_Velocity.Text = string.Format("{0:F2}", Global.Function1[0].Press_Vel);
                 tb_num_Press_Time.Text = string.Format("{0:F2}", Global.Function1[0].Press_Time);
@@ -394,7 +392,7 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 tb_num_Force_Min.Text = string.Format("{0:F2}", Global.Function2[0].End_Min_Force_Limit);
                 tb_num_Position_Max.Text = string.Format("{0:F2}", Global.Function2[0].End_Max_Pos_Limit);
                 tb_num_Position_Min.Text = string.Format("{0:F2}", Global.Function2[0].End_Min_Pos_Limit);
-                tb_num_Press_PositionDistance.Text = string.Format("{0:F2}", Global.Function2[0].Press_Pos);
+                tb_num_Press_PositionDistance.Text = string.Format("{0:F2}", Global.Model_Press_Pos2);
                 tb_num_Press_Force.Text = string.Format("{0:F2}", Global.Function2[0].Press_Force);
                 tb_num_Press_Velocity.Text = string.Format("{0:F2}", Global.Function2[0].Press_Vel);
                 tb_num_Press_Time.Text = string.Format("{0:F2}", Global.Function2[0].Press_Time);
@@ -409,7 +407,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 {
                     Mode = 0,
                     Press_Condition = "",
-                    Press_Pos = 0,
                     Press_Force = 0,
                     Press_Vel = 0,
                     Press_Time = 0,
@@ -425,7 +422,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 {
                     Mode = 0,
                     Press_Condition = "",
-                    Press_Pos = 0,
                     Press_Force = 0,
                     Press_Vel = 0,
                     Press_Time = 0,
@@ -440,7 +436,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
         {
             Global.Function1[0].Mode = 0;
             Global.Function1[0].Press_Condition = "---";
-            Global.Function1[0].Press_Pos = 0;
             Global.Function1[0].Press_Force = 0;
             Global.Function1[0].Press_Vel = 0;
             Global.Function1[0].Press_Time = 0;
@@ -450,7 +445,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
             Global.Function1[0].End_Min_Pos_Limit = 0;
             Global.Function2[0].Mode = 0;
             Global.Function2[0].Press_Condition = "---";
-            Global.Function2[0].Press_Pos = 0;
             Global.Function2[0].Press_Force = 0;
             Global.Function2[0].Press_Vel = 0;
             Global.Function2[0].Press_Time = 0;
@@ -475,21 +469,23 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
             cbb_Pressing_condition.SelectedIndex = -1;
             cbb_step.SelectedIndex = -1;
             //
-            tb_Model.Text = "";
             tb_Rotor.Text = "";
             tb_Shaft.Text = "";
-            tb_BearingD.Text = "";
-            tb_BearingU.Text = "";
+            cbb_BearingsU.SelectedIndex = -1;
+            cbb_BearingsD.SelectedIndex = -1;
             cbb_JigU.SelectedIndex = -1;
             cbb_JigM.SelectedIndex = -1;
             cbb_JigD.SelectedIndex = -1;
             tb_num_Stand_Height.Text = "0";
-            tb_num_Thickness_BearingsD.Text = "0";
-            tb_num_Thickness_BearingsU.Text = "0";
             tb_num_Distance_Bearings_After.Text = "0";
             tb_num_Distance_Bearings_Before.Text = "0";
             tb_num_Ofset.Text = "0";
-
+            Global.Model_Thickness_Bearings_D = 0;
+            Global.Model_Thickness_Bearings_U = 0;
+            Global.Model_Thickness_Jig_Up = 0;
+            Global.Model_Thickness_Jig_Down = 0;
+            Global.Model_Press_Pos1 = 0;
+            Global.Model_Press_Pos2 = 0;
             // Tạo dữ liệu mẫu
             var Pressing_Condition = new List<DataView_PressingCondition>
             {
@@ -526,7 +522,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                     cbb_step.SelectedIndex = -1;
                     Global.Function1[0].Mode = 0;
                     Global.Function1[0].Press_Condition = "";
-                    Global.Function1[0].Press_Pos = 0;
                     Global.Function1[0].Press_Force = 0;
                     Global.Function1[0].Press_Vel = 0;
                     Global.Function1[0].Press_Time = 0;
@@ -557,7 +552,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                     cbb_step.SelectedIndex = -1;
                     Global.Function2[0].Mode = 0;
                     Global.Function2[0].Press_Condition = "";
-                    Global.Function2[0].Press_Pos = 0;
                     Global.Function2[0].Press_Force = 0;
                     Global.Function2[0].Press_Vel = 0;
                     Global.Function2[0].Press_Time = 0;
@@ -596,7 +590,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                     {
                         Global.Function1[0].Mode = 0;
                         Global.Function1[0].Press_Condition = "---";
-                        Global.Function1[0].Press_Pos = 0;
                         Global.Function1[0].Press_Force = 0;
                         Global.Function1[0].Press_Vel = 0;
                         Global.Function1[0].Press_Time = 0;
@@ -630,7 +623,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                     {
                         Global.Function2[0].Mode = 0;
                         Global.Function2[0].Press_Condition = "---";
-                        Global.Function2[0].Press_Pos = 0;
                         Global.Function2[0].Press_Force = 0;
                         Global.Function2[0].Press_Vel = 0;
                         Global.Function2[0].Press_Time = 0;
@@ -682,27 +674,31 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
         }
         private static float Fill_Jig(string path, string id)
         {
-            string jsons = File.ReadAllText(path);
-            int flag = 0;
-            if (jsons.Length > 0)
+            try
             {
-                JArray jsonArray = JArray.Parse(jsons);
-                foreach (JObject obj in jsonArray)
+                string jsons = File.ReadAllText(path);
+                int flag = 0;
+                if (jsons.Length > 0)
                 {
-                    if ((string)obj["ID"] == id)
+                    JArray jsonArray = JArray.Parse(jsons);
+                    foreach (JObject obj in jsonArray)
                     {
-                        return (float)obj["Thickness"];
-                        flag = 1;
-                        break;
+                        if ((string)obj["ID"] == id)
+                        {
+
+                            flag = 1;
+                            return (float)obj["Thickness"];
+                        }
+
+                    }
+                    if (flag == 0)
+                    {
+                        MessageBox.Show("Jig chưa được chọn, Vui lòng chọn mã Jig");
                     }
 
                 }
-                if (flag == 0)
-                {
-                    MessageBox.Show("Jig chưa được chọn, Vui lòng chọn mã Jig");
-                }
-
             }
+           catch { }
 
             return -1;
         }
@@ -861,30 +857,30 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
             float Position = Global.Height_Shaft_Press
                 + (float)Data.ofset_Machine 
                 - (float)Data.Height_Jig_Base 
-                - Global.Thickness_Jig_Down 
+                - Global.Model_Thickness_Jig_Down 
                 - float.Parse(Thickness_BearingsD) 
                 - float.Parse(Distance_Bearings_After) 
                 - float.Parse(Thickness_BearingsU) 
-                - Global.Thickness_Jig_Up 
+                - Global.Model_Thickness_Jig_Up
                 + float.Parse(ofset_Model);
             float Distance = Global.Height_Shaft_Press
                 + (float)Data.ofset_Machine
                 - (float)Data.Height_Jig_Base
-                - Global.Thickness_Jig_Down
+                - Global.Model_Thickness_Jig_Down
                 - float.Parse(Thickness_BearingsD)
                 - float.Parse(Distance_Bearings_After)
                 - float.Parse(Thickness_BearingsU)
-                - Global.Thickness_Jig_Up
+                - Global.Model_Thickness_Jig_Up
                 + float.Parse(ofset_Model)
                 - float.Parse(standby_position);
             Global.Standby_Position = Global.Height_Shaft_Press
                 + (float)Data.ofset_Machine
                 - (float)Data.Height_Jig_Base
-                - Global.Thickness_Jig_Down
+                - Global.Model_Thickness_Jig_Down
                 - float.Parse(Thickness_BearingsD)
                 - float.Parse(Distance_Bearings_Before)
                 - float.Parse(Thickness_BearingsU)
-                - Global.Thickness_Jig_Up
+                - Global.Model_Thickness_Jig_Up
                 + float.Parse(ofset_Model);
 
             switch (mode)
@@ -917,15 +913,11 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
             List_Model.Model = tb_Model.Text;
             List_Model.ID_Rotor = tb_Rotor.Text;
             List_Model.ID_Shaft = tb_Shaft.Text;
-            List_Model.ID_Bearings_Up = tb_BearingU.Text;
-            List_Model.ID_Bearings_Down = tb_Shaft.Text;
+            List_Model.ID_Bearings_Up = cbb_BearingsU.SelectedItem.ToString();
+            List_Model.ID_Bearings_Down = cbb_BearingsD.SelectedItem.ToString();
             List_Model.Jig_Up = cbb_JigU.SelectedItem.ToString();
             List_Model.Jig_Mid = cbb_JigM.SelectedItem.ToString();
             List_Model.Jig_Down = cbb_JigD.SelectedItem.ToString();
-            List_Model.Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
-            List_Model.Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
-            List_Model.Upper_Bearings_Thicknness = float.Parse(tb_num_Thickness_BearingsU.Text);
-            List_Model.Lower_Bearings_Thicknness = float.Parse(tb_num_Thickness_BearingsD.Text);
             List_Model.Pre_press_Bearings_distance = float.Parse(tb_num_Distance_Bearings_Before.Text);
             List_Model.After_press_bearings_distance = float.Parse(tb_num_Distance_Bearings_After.Text);
             List_Model.Ofset_position1 = float.Parse(tb_num_Ofset.Text);
@@ -954,16 +946,12 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                         item.Model = tb_Model.Text;
                         item.ID_Rotor = tb_Rotor.Text;
                         item.ID_Shaft = tb_Shaft.Text;
-                        item.ID_Bearings_Up = tb_BearingU.Text;
-                        item.ID_Bearings_Down = tb_BearingD.Text;
+                        item.ID_Bearings_Up = cbb_BearingsU.SelectedValue.ToString();
+                        item.ID_Bearings_Down = cbb_BearingsD.SelectedValue.ToString();
                         item.Jig_Up = cbb_JigU.SelectedValue.ToString();
                         item.Jig_Mid = cbb_JigM.SelectedValue.ToString();
                         item.Jig_Down = cbb_JigD.SelectedValue.ToString();
-                        item.Thickness_Jig_Up = Fill_Jig(path.Jig_Up, cbb_JigU.SelectedValue.ToString());
-                        item.Thickness_Jig_Down = Fill_Jig(path.Jig_Down, cbb_JigD.SelectedValue.ToString());
                         item.Height_Stand = float.Parse(tb_num_Stand_Height.Text);
-                        item.Upper_Bearings_Thicknness = float.Parse(tb_num_Thickness_BearingsU.Text);
-                        item.Lower_Bearings_Thicknness = float.Parse(tb_num_Thickness_BearingsD.Text);
                         item.Pre_press_Bearings_distance = float.Parse(tb_num_Distance_Bearings_Before.Text);
                         item.After_press_bearings_distance = float.Parse(tb_num_Distance_Bearings_After.Text);
                         item.Ofset_position1 = float.Parse(tb_num_Ofset.Text);
@@ -978,6 +966,9 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                         var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
                         string newJsonString = System.Text.Json.JsonSerializer.Serialize(data, jsonOptions);
                         File.WriteAllText(path.Model, newJsonString);
+
+                        Common.Log_Operation("Edit Model:  " + tb_Model.Text, path.Log_EN);
+                        Common.Log_Operation("Sửa Model:  " + tb_Model.Text, path.Log_VN);
                         MessageBox.Show("Đã Lưu Thành Công");
                         flag = 1;
                         break;
@@ -985,21 +976,14 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 }
                 if (flag == 0)
                 {
-                    if (json.Length < 10)
-                    {
-                        json = json.Remove(json.Length - 1);
-                        json = json + list_Model_Json + "\n]";
-                        File.WriteAllText(path.Model, json);
-                        MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
-                    }
-                    else
-                    {
-                        json = json.Remove(json.Length - 1);
-                        json = json + ",\n" + list_Model_Json + "\n]";
-                        File.WriteAllText(path.Model, json);
-                        MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
-                    }
 
+                    json = json.Remove(json.Length - 1);
+                    json = json + ",\n" + list_Model_Json + "\n]";
+                    File.WriteAllText(path.Model, json);
+                    MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
+
+                    Common.Log_Operation("Create Model:  " + tb_Model.Text, path.Log_EN);
+                    Common.Log_Operation("Tạo Model:  " + tb_Model.Text, path.Log_VN);
                 }
 
                 List<Data_Log> data_Logs = new List<Data_Log>
@@ -1012,7 +996,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Standby_Velocity:" + tb_num_Standby_Velocity.Text , Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Standby_Time:" + tb_num_Standby_Time.Text , Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Mode1:" + Global.Function1[0].Mode , Time = formattedDate +" "+formattedtime},
-                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Position1:" +Global.Function1[0].Press_Pos, Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Force1:" + Global.Function1[0].Press_Force , Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Velocity1:" + Global.Function1[0].Press_Vel , Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Time1:" + Global.Function1[0].Press_Time, Time = formattedDate +" "+formattedtime},
@@ -1021,7 +1004,6 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Max_Position1:" + Global.Function1[0].End_Max_Pos_Limit , Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Min_Position1:" + Global.Function1[0].End_Min_Pos_Limit , Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Mode2:" + Global.Function2[0].Mode , Time = formattedDate +" "+formattedtime},
-                    new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Position2:" +Global.Function2[0].Press_Pos, Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Force2:" + Global.Function2[0].Press_Force , Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Velocity2:" + Global.Function2[0].Press_Vel , Time = formattedDate +" "+formattedtime},
                     new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Save Press_Time2:" + Global.Function2[0].Press_Time, Time = formattedDate +" "+formattedtime},
@@ -1034,6 +1016,7 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 // Chuyển danh sách sang định dạng JSON
                 string json_Log = JsonConvert.SerializeObject(data_Logs, Formatting.Indented);
                 Common.Log_Operation_Json(json_Log, path.Log);
+
             }
             catch (Exception ex)
 
@@ -1058,20 +1041,20 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
             {
                 switch (comboBox.Name)
                 {
-
-                    case "Model_Beer_Down":
+                    
+                    case "cbb_BearingsD":
                         Model_check = "Vòng bi dưới";
                         break;
-                    case "Model_Beer_Up":
+                    case "cbb_BearingsU":
                         Model_check = "Vòng bi trên";
                         break;
-                    case "Model_Jig_Up":
+                    case "cbb_JigU":
                         Model_check = "Jig trên";
                         break;
-                    case "Model_Jig_Mid":
+                    case "cbb_JigM":
                         Model_check = "Jig giữa";
                         break;
-                    case "Model_Jig_Down":
+                    case "cbb_JigD":
                         Model_check = "Jig dưới";
                         break;
 
@@ -1100,14 +1083,16 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                             tb_Model.Text = obj.Model;
                             tb_Rotor.Text = obj.ID_Rotor;
                             tb_Shaft.Text = obj.ID_Shaft;
-                            tb_BearingU.Text = obj.ID_Bearings_Up;
-                            tb_BearingD.Text = obj.ID_Bearings_Down;
+                            CheckValueInComboBox(obj.ID_Bearings_Up.ToString(), cbb_BearingsU);
+                            CheckValueInComboBox(obj.ID_Bearings_Down.ToString(), cbb_BearingsD);
                             CheckValueInComboBox(obj.Jig_Up.ToString(), cbb_JigU);
                             CheckValueInComboBox(obj.Jig_Mid.ToString(), cbb_JigM);
                             CheckValueInComboBox(obj.Jig_Down.ToString(), cbb_JigD);
                             tb_num_Stand_Height.Text = string.Format("{0:F2}", obj.Height_Stand);
-                            tb_num_Thickness_BearingsU.Text = string.Format("{0:F2}", obj.Upper_Bearings_Thicknness);
-                            tb_num_Thickness_BearingsD.Text = string.Format("{0:F2}", obj.Lower_Bearings_Thicknness);
+                           Global.Model_Thickness_Bearings_U = Fill_Bearings_JigUD (path.Bearings_Up, obj.ID_Bearings_Up.ToString());
+                            Global.Model_Thickness_Bearings_D = Fill_Bearings_JigUD(path.Bearings_Up, obj.ID_Bearings_Up.ToString());
+                            Global.Model_Thickness_Jig_Up = Fill_Bearings_JigUD(path.Jig_Up, obj.Jig_Up.ToString());
+                            Global.Model_Thickness_Jig_Down = Fill_Bearings_JigUD(path.Jig_Down, obj.Jig_Down.ToString());
                             tb_num_Distance_Bearings_Before.Text = string.Format("{0:F2}", obj.Pre_press_Bearings_distance);
                             tb_num_Distance_Bearings_After.Text = string.Format("{0:F2}", obj.After_press_bearings_distance);
                             tb_num_Ofset.Text = string.Format("{0:F2}", obj.Ofset_position1);
@@ -1171,7 +1156,8 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 }
                 var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
                 string newJsonString = System.Text.Json.JsonSerializer.Serialize(newData, jsonOptions);
-                Common.Log_Operation("Delete Model:  " + tb_Model.Text, path.Log);
+                Common.Log_Operation("Delete Model:  " + tb_Model.Text, path.Log_EN);
+                Common.Log_Operation("Xóa Model:  " + tb_Model.Text, path.Log_VN);
                 // Write back to file
                 File.WriteAllText(path.Model, newJsonString);
                 Common.Load_View_Model(List_Models);
@@ -1245,17 +1231,36 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
             }
 
         }  //
+        private static float Fill_Bearings_JigUD(string path, string id)
+        {
+            try
+            {
+                string jsons = File.ReadAllText(path); ;
+                if (jsons.Length > 0)
+                {
+                    JArray jsonArray = JArray.Parse(jsons);
+                    foreach (JObject obj in jsonArray)
+                    {
+                        if ((string)obj["ID"] == id)
+                        {
+                            return (float)obj["Thickness"];
+                        }
+                    }
+                }
+            }
+            catch { }
+
+            return -1;
+        }
         private bool AreTextBoxesFilled()
         {
             // Kiểm tra từng TextBox
             return !string.IsNullOrWhiteSpace(tb_Model.Text) &&
-                   !string.IsNullOrWhiteSpace(tb_BearingU.Text) &&
-                   !string.IsNullOrWhiteSpace(tb_BearingD.Text) &&
+                   !string.IsNullOrWhiteSpace(cbb_BearingsU.SelectedItem.ToString()) &&
+                   !string.IsNullOrWhiteSpace(cbb_BearingsD.SelectedItem.ToString()) &&
                    !string.IsNullOrWhiteSpace(tb_Rotor.Text) &&
                    !string.IsNullOrWhiteSpace(tb_Shaft.Text) &&
                    !string.IsNullOrWhiteSpace(tb_num_Stand_Height.Text) &&
-                   !string.IsNullOrWhiteSpace(tb_num_Thickness_BearingsD.Text) &&
-                   !string.IsNullOrWhiteSpace(tb_num_Thickness_BearingsU.Text) &&
                    !string.IsNullOrWhiteSpace(tb_num_Distance_Bearings_After.Text) &&
                    !string.IsNullOrWhiteSpace(tb_num_Distance_Bearings_Before.Text) &&
                    !string.IsNullOrWhiteSpace(cbb_JigU.SelectedItem.ToString()) &&
@@ -1279,9 +1284,11 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
         {
             if (MainWindow.UserName != "")
             {
-                excel.Export_Model_File("Template_Model", path.Model, false, "Chọn thư mục lưu file Backup", "Model");
+                excel.Export_Model_File("Template_Model", path.Model, false, "Chọn thư mục lưu file Backup", "Backup_Model");
                 excel.Import_Model_Filepath();
 
+                Common.Log_Operation("Import Model  " , path.Log_EN);
+                Common.Log_Operation("Nhập Model  " , path.Log_VN);
                 Common.Load_View_Model(List_Models);
             }
 
@@ -1309,13 +1316,13 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 {
                     MessageBox.Show("Vui Lòng nhập giá trị độ cao tiêu chuẩn");
                 }
-                else if (tb_num_Thickness_BearingsU.Text == "0")
+                else if (Global.Model_Thickness_Bearings_U <= 0)
                 {
-                    MessageBox.Show("Vui Lòng nhập giá trị dày vòng bi trên");
+                    MessageBox.Show("Vui Lòng nhập giá trị độ dày tại setting vòng bi trên");
                 }
-                else if (tb_num_Thickness_BearingsD.Text == "0")
+                else if (Global.Model_Thickness_Bearings_D <= 0)
                 {
-                    MessageBox.Show("Vui Lòng nhập giá trị dày vòng bi dưới");
+                    MessageBox.Show("Vui Lòng nhập giá trị độ dày tại setting vòng bi dưới");
                 }
                 else if (tb_num_Distance_Bearings_Before.Text == "0")
                 {
@@ -1327,7 +1334,7 @@ tb_num_Thickness_BearingsU.Text, tb_num_Distance_Bearings_Before.Text, tb_num_Of
                 }
                 else if (Global.Standby_Position < float.Parse(tb_num_PST_Standby.Text) & tb_num_PST_Standby.Text != "" & tb_num_PST_Standby.Text != null)
                 {
-                    MessageBox.Show(" Vị trí chờ làm việc tối thiểu của Model là :" + Global.Standby_Position.ToString() + " , vui lòng kiểm tra lại!");
+                    MessageBox.Show(" Vị trí chờ làm việc tối đa của Model là :" + Global.Standby_Position.ToString() + " , vui lòng kiểm tra lại!");
                 }
                 else if ((Global.Function1[0].Mode == 2 || Global.Function1[0].Mode == 3 || Global.Function1[0].Mode == 5) & (Global.Function1[0].End_Max_Pos_Limit < float.Parse(tb_num_PST_Standby.Text)|| Global.Function1[0].End_Min_Pos_Limit < float.Parse(tb_num_PST_Standby.Text)))
                 {

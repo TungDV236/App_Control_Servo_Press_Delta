@@ -75,6 +75,8 @@ namespace App_Control_Servo_Press_Delta
         private bool Flag1;
         private double _Force_max;
         private int pointCount = 0;
+        private DateTime lastSendTime = DateTime.MinValue;
+        private readonly TimeSpan sendInterval = TimeSpan.FromMilliseconds(300);
         public MainWindow()
         {
             InitializeComponent();
@@ -98,8 +100,12 @@ namespace App_Control_Servo_Press_Delta
         {
             if (_queue.Count > 0)
             {
-                // Gửi HTTP POST request khi số lượng phần tử thay đổi
-                PLC.SendPostRequestAsync();
+                if (DateTime.Now - lastSendTime >= sendInterval)
+                {
+                    lastSendTime = DateTime.Now; // Cập nhật thời gian gửi yêu cầu mới
+                                                 // Gửi HTTP POST request khi số lượng phần tử thay đổi
+                    PLC.SendPostRequestAsync();
+                }
             }
         }
 
@@ -114,7 +120,7 @@ namespace App_Control_Servo_Press_Delta
             //
             PLC.StartTimer();
             Update_Status = new DispatcherTimer();
-            Update_Status.Interval = TimeSpan.FromMilliseconds(200);
+            Update_Status.Interval = TimeSpan.FromMilliseconds(100);
             Update_Status.Tick += Update_Status_Tick100ms;
             Update_Status.Start();
             //
@@ -163,6 +169,15 @@ namespace App_Control_Servo_Press_Delta
             });
             //   Scan_Err();
            Animation(TB_Notification);
+            if (!string.IsNullOrWhiteSpace(TB_Notification.Text))
+            {
+                TB_Notification.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
+                TB_Notification.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            }
+            else
+            {
+                TB_Notification.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            }
             if(Data.Begin_Press)
             {
                 Global.Pressing= true;
@@ -178,8 +193,8 @@ namespace App_Control_Servo_Press_Delta
                 Update_Datachart();
                 if (Data.Force_PV > Global.Force_Max)
                 {
-                    Global.Force_Max = Data.Force_PV;
-                    Global.Position_Force_Max = Data.Position_PV;
+                    Global.Force_Max = (float)Data.Force_PV;
+                    Global.Position_Force_Max = (float)Data.Position_PV;
                 }    
             }
             else if (!Global.Pressing & Flag)
@@ -191,7 +206,7 @@ namespace App_Control_Servo_Press_Delta
             {
                 Check_Write_data_Setting();
             }
-
+            Clear_Datachart();
         }
         private void Update_Status_Tick1000ms(object sender, EventArgs e)
         {
@@ -440,6 +455,10 @@ namespace App_Control_Servo_Press_Delta
                 BTN_GPIO.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 BTN_Model.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 BTN_Manual.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+
+
+                Common.Log_Operation("Access Setting  ", path.Log_EN);
+                Common.Log_Operation("Truy cập chức năng cài đặt", path.Log_VN);
             }
             else
             {
@@ -680,68 +699,101 @@ namespace App_Control_Servo_Press_Delta
 
             List_History List_History_ = new List_History();
             System.DateTime dateTime = System.DateTime.Now;
-            string Fill_json = File.ReadAllText(path_His);
-            //   string json_ = File.ReadAllText(linkpath.Error);
-            string json = File.ReadAllText(path_Error);
+
             int cnt = 0;
-            //try
-            //{
-            if (Fill_json.Length > 0)
+            try
             {
-                JArray json_fillArray = JArray.Parse(Fill_json);
-                foreach (JObject obj in json_fillArray)
+                string Fill_json = File.ReadAllText(path_His);
+                //   string json_ = File.ReadAllText(linkpath.Error);
+                string json = File.ReadAllText(path_Error);
+                if (Fill_json.Length > 0)
                 {
-                    if ((string)obj["Code"] == code_E)
+                    JArray json_fillArray = JArray.Parse(Fill_json);
+                    foreach (JObject obj in json_fillArray)
                     {
-                        foreach (var data in List_History)
+                        if ((string)obj["Code"] == code_E)
                         {
-                            if (data.Code == code_E)
+                          // foreach (var data in List_History)
+                          // {
+                          //     if (data.Code == code_E)
+                          //     {
+                          //         cnt = 1;
+                          //         break;
+                          //     }
+                          // }
+                            if (cnt == 0)
                             {
-                                cnt = 1;
-                                break;
-                            }
-                        }
-                        if (cnt == 0)
-                        {
-                            List_History_.STT = 1;
-                            List_History_.Code = (string)obj["Code"];
-                            List_History_.Description = (string)obj["Description"];
-                            List_History_.Solution = (string)obj["Solution"];
-                            List_History_.Time = dateTime.ToString();
-                            string list_Error_Json = JsonConvert.SerializeObject(List_History_);
-                            List_History.Add(List_History_);
-                            if (json.Length < 50)
-                            {
-                                json = json.Remove(json.Length - 1);
-                                json = json + list_Error_Json + "]";
-                                File.WriteAllText(path_Error, json);
-                            }
-                            else
-                            {
+                                List_History_.STT = 1;
+                                List_History_.Code = (string)obj["Code"];
+                                List_History_.Description = (string)obj["Description"];
+                                List_History_.Solution = (string)obj["Solution"];
+                                List_History_.Time = dateTime.ToString();
+                                string list_Error_Json = JsonConvert.SerializeObject(List_History_);
+                                List_History.Add(List_History_);
+
                                 json = json.Remove(json.Length - 1);
                                 json = json + ",\r" + list_Error_Json + "]";
                                 File.WriteAllText(path_Error, json);
-                                //   List_Alarm.ItemsSource = List_History;
+                                Sw_Offbuzzer.IsChecked = true;
                             }
                         }
                     }
                 }
             }
+            catch (Exception e)
+            {
+                string Fill_json = File.ReadAllText(path_His);
+                if (Fill_json.Length > 0)
+                {
+                    JArray json_fillArray = JArray.Parse(Fill_json);
+                    foreach (JObject obj in json_fillArray)
+                    {
+                        if ((string)obj["Code"] == code_E)
+                        {
+                          // foreach (var data in List_History)
+                          // {
+                          //     if (data.Code == code_E)
+                          //     {
+                          //         cnt = 1;
+                          //         break;
+                          //     }
+                          // }
+                            if (cnt == 0)
+                            {
+                                List_History_.STT = 1;
+                                List_History_.Code = (string)obj["Code"];
+                                List_History_.Description = (string)obj["Description"];
+                                List_History_.Solution = (string)obj["Solution"];
+                                List_History_.Time = dateTime.ToString();
+                                string list_Error_Json = JsonConvert.SerializeObject(List_History_);
+                                List_History.Add(List_History_);
+
+                                string json = "[" + list_Error_Json + "]";
+                                File.WriteAllText(path_Error, json);
+                            }
+                        }
+                    }
+                }
+
+            }
+
         }
         public void Update_Datachart()
         {
-
             pointCount++;
             newY1 = Math.Sin(pointCount * 100) + 50;
-            double _Force_PV = Data.Force_PV;
-            double _Position_PV = Data.Position_PV;
+            //double _Force_PV = Data.Force_PV;
+            // double _Position_PV = Data.Position_PV;
+            double _Force_PV = newY1;
+            double _Position_PV = pointCount;
             newPoint1 = new DataPoint(_Position_PV, _Force_PV);
             Global.DataPoints1.Add(newPoint1);
-
+        }
+        public void Clear_Datachart()
+        {
             if (Global.DataPoints1 != null)
             {
-
-                if (Global.Pressing & !Flag)
+                if (!Global.Pressing & !Flag)
                 {
                     if (AreTextBoxesFilled())
                     {
@@ -761,28 +813,22 @@ namespace App_Control_Servo_Press_Delta
                         Global.DataPoints1.Clear();
                     }
                 }
-
-
-
-
             }
         }
         private void Save_Model()
         {
             System.DateTime dateTime = System.DateTime.Now;
+            string formattedDateTime = dateTime.ToString("yyyy-MM-ddTHH:mm:ss");
             string formattedDate = dateTime.ToString("dd/MM/yyyy");
-            string FilePath = System.IO.Path.Combine("Log", formattedDate.Replace('/', '_') + "_Report.json");
-            string formattedtime = dateTime.ToString("HH:mm:ss");
-            string ID = formattedDate.Replace("/", "") + formattedtime.Replace(":", "");
+            string FilePath = System.IO.Path.Combine("Report", formattedDate.Replace('/', '_') + "_Report.json");
             Data_Report List_Report = new Data_Report();
-            List_Report.Time = formattedtime;
-            List_Report.OrderCode = Data_Report_temp2.OrderCode;
-            List_Report.Model = Data_Report_temp2.Model;
-            List_Report.TrucID = Data_Report_temp2.TrucID;
-            List_Report.RotorID = Data_Report_temp2.RotorID;
-            List_Report.Beer_Up = Data_Report_temp2.Beer_Up;
-            List_Report.Beer_Down = Data_Report_temp2.Beer_Down;
-            List_Report.Force_Max = Data_Report_temp2.Force_Max;
+          
+            List_Report.Time = formattedDateTime;
+            List_Report.OrderCode = Global.Order_Code;
+            List_Report.Model = Global.list_model[0].Model;
+            List_Report.ID_Shaft = Global.list_model[0].ID_Shaft;
+            List_Report.ID_Rotor = Global.list_model[0].ID_Rotor;
+            List_Report.Force_Max = Global.Force_Max;
             if (Data.Product_NG)
             {
                 List_Report.Status = "NG";
@@ -794,7 +840,8 @@ namespace App_Control_Servo_Press_Delta
             else
             {
                 List_Report.Status = "Unknow";
-            }    
+            }
+            List_Report.Chart =Global.DataPoints1;
             string list_Json = JsonConvert.SerializeObject(List_Report);
             try
             {
@@ -856,7 +903,7 @@ namespace App_Control_Servo_Press_Delta
         public void Check_Write_data_Setting()
         {
             if ((Math.Round(Data.Mode1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Mode, 3)) ||
-                (Math.Round(Data.Press_Pos1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Press_Pos, 3)) ||
+                (Math.Round(Data.Press_Pos1, 3) != Math.Round(Global.Auto_Press_Pos1, 3)) ||
                 (Math.Round(Data.Press_Force1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Press_Force, 3)) ||
                 (Math.Round(Data.Press_Vel1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Press_Vel, 3)) ||
                 (Math.Round(Data.Press_Time1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].Press_Time, 3)) ||
@@ -865,7 +912,7 @@ namespace App_Control_Servo_Press_Delta
                  (Math.Round(Data.End_Max_Pos_Limit1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit, 3)) ||
                  (Math.Round(Data.End_Min_Pos_Limit1, 3) != Math.Round(Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit, 3)) ||
                  (Math.Round(Data.Mode2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Mode, 3)) ||
-                 (Math.Round(Data.Press_Pos2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Press_Pos, 3)) ||
+                 (Math.Round(Data.Press_Pos2, 3) != Math.Round(Global.Auto_Press_Pos2, 3)) ||
                  (Math.Round(Data.Press_Force2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Press_Force, 3)) ||
                 (Math.Round(Data.Press_Vel2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Press_Vel, 3)) ||
                 (Math.Round(Data.Press_Time2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].Press_Time, 3)) ||
@@ -877,7 +924,7 @@ namespace App_Control_Servo_Press_Delta
                 var data = new
                 {
                     Mode1 = Global.list_model[0].Data_Func1[0].Mode,
-                    Press_Pos1 = Global.list_model[0].Data_Func1[0].Press_Pos,
+                    Press_Pos1 = Global.Auto_Press_Pos1,
                     Press_Force1 = Global.list_model[0].Data_Func1[0].Press_Force,
                     Press_Vel1 = Global.list_model[0].Data_Func1[0].Press_Vel,
                     Press_Time1 = Global.list_model[0].Data_Func1[0].Press_Time,
@@ -886,7 +933,7 @@ namespace App_Control_Servo_Press_Delta
                     End_Max_Pos_Limit1 = Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit,
                     End_Min_Pos_Limit1 = Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit,
                     Mode2 = Global.list_model[0].Data_Func2[0].Mode,
-                    Press_Pos2 = Global.list_model[0].Data_Func2[0].Press_Pos,
+                    Press_Pos2 = Global.Auto_Press_Pos2,
                     Press_Force2 = Global.list_model[0].Data_Func2[0].Press_Force,
                     Press_Vel2 = Global.list_model[0].Data_Func2[0].Press_Vel,
                     Press_Time2 = Global.list_model[0].Data_Func2[0].Press_Time,
@@ -899,11 +946,7 @@ namespace App_Control_Servo_Press_Delta
                 string jsonData = JsonConvert.SerializeObject(data);
                 MainWindow._queue.Add(jsonData);
             }
-            else 
-            
-            
-            
-            if (!Data.Check_Done_Tranfer)
+            else  if (!Data.Check_Done_Tranfer)
             {
                 var data = new
                 {
@@ -969,8 +1012,47 @@ namespace App_Control_Servo_Press_Delta
             }
         }
 
+        private void bt_test_Click(object sender, RoutedEventArgs e)
+        {
+            bool newValue = !ColorChecker.IsColorEqual(((Button)sender).Background, Color.FromRgb(255, 255, 255));
+            if (!newValue)
+            {
+                Global.Pressing = true;
+                Global.Force_Max = 0;
+                Global.Position_Force_Max = 0;
+                Test.Background = new SolidColorBrush(Color.FromRgb(100, 149, 237));
+            }
+            if (newValue)
+            {
+                Global.Pressing = false;
 
+                Test.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            }
+        }
 
+        private void Sw_Offbuzzer_Checked(object sender, RoutedEventArgs e)
+        {
 
+            var data = new Dictionary<string, object>
+                        {
+                            { Sw_Offbuzzer.Name,true }
+
+                        };
+
+            string jsonData = JsonConvert.SerializeObject(data);
+            MainWindow._queue.Add(jsonData);
+        }
+        private void Sw_Offbuzzer_UnChecked(object sender, RoutedEventArgs e)
+        {
+
+            var data = new Dictionary<string, object>
+                        {
+                            { Sw_Offbuzzer.Name,false }
+
+                        };
+
+            string jsonData = JsonConvert.SerializeObject(data);
+            MainWindow._queue.Add(jsonData);
+        }
     }
 }

@@ -1,0 +1,142 @@
+﻿<Window x:Class="App_Control_Servo_Press_Delta.Popup.Popup_JigMid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:App_Control_Servo_Press_Delta"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    AllowsTransparency="True"
+    Background="Transparent"
+    WindowState="Maximized"
+    WindowStyle="None"
+    mc:Ignorable="d"  >
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="Gray"
+            Opacity="0.5">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding GridClickCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Grid>
+        <materialDesign:Card
+            HorizontalAlignment="Center" Height="525" Width="300"
+            materialDesign:ElevationAssist.Elevation="Dp16"
+            UniformCornerRadius="5" x:Name="FocusBorder" RenderTransformOrigin="0.5,0.5">
+            <materialDesign:Card.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0"/>
+                </TransformGroup>
+            </materialDesign:Card.RenderTransform>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="{DynamicResource lb_List_Middle_Jig}"  HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"  Height="35 " FontWeight="Bold" FontSize="25" VerticalAlignment="Top" Background="#FF8C8989" 
+                              Padding="0"  Margin="-1" >
+
+                </Label>
+                <Button Grid.Row="0" x:Name="BTN_Exit" HorizontalAlignment="Right" Width="35" Height="25 " VerticalAlignment="Top" Background="Transparent" BorderBrush="White" BorderThickness="0"
+                             Margin="2" Padding="0" 
+                             MouseEnter="exitButton_MouseEnter" 
+                             MouseLeave="exitButton_MouseLeave"
+                             PreviewMouseDown="MouseDown_Close">
+                    <StackPanel 
+                           Width="20">
+                        <Image  Source="..\Images\Exit.png"
+                                  HorizontalAlignment="Left"
+                                     Stretch="Fill">
+                        </Image>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Row="1" Margin="0,5,0,0" >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid  Grid.Row="0" Height="300"
+                               Margin="2,0,2,0">
+                            <DataGrid x:Name="List_Model"
+                              AutoGenerateColumns="False"
+                              FontSize="20"
+                              Foreground="Black"
+                              Background="White"
+                              BorderBrush="Black"
+                              BorderThickness="0.5"
+                              Margin="2,2,2,4"
+                              HorizontalGridLinesBrush="Black"
+                              CanUserResizeColumns="False"
+                              CanUserResizeRows="False"
+                              IsReadOnly="True"
+                              Grid.ColumnSpan="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="{DynamicResource lb_No}"
+                                         Foreground="Black"
+                                         Binding="{Binding No}"
+                                         Width="Auto">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="HorizontalAlignment"
+                                                 Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="ID"
+                                         Binding="{Binding ID}"
+                                         Width="Auto" >
+
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="2"  Margin="5,12,5,0">
+                            <Grid>
+                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
+                                <TextBox  x:Name="tb_ID"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                            </Grid>
+
+                            <TextBlock Text="ID"   FontWeight="Bold"    Background="White"   Height="20"   Padding="1" 
+                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        </Grid>
+                        <Grid Grid.Row="3" Height="50" Margin="5,12,5,20">
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid    Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1"  Content="{DynamicResource lb_Delete}" x:Name="btn_Del" Background="White"  Margin="0,0,5,0" Click="btn_Del_Click" />
+                        <Button Grid.Column="3" Content="{DynamicResource lb_Save}" x:Name="btn_Save" Background="White"   Margin="5,0,0,0" Click="btn_Save_Click"  />
+
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+        </materialDesign:Card>
+    </Grid>
+</Window>

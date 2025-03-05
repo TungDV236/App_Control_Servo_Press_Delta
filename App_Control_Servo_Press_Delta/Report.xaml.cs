@@ -22,6 +22,7 @@ using System.Windows.Threading;
 using System.Globalization;
 using System.Reflection;
 using App_Control_Servo_Press_Delta;
+using App_Control_Servo_Press_Delta.Popup;
 
 namespace App_Control_Servo_Press_Delta
 {
@@ -32,10 +33,12 @@ namespace App_Control_Servo_Press_Delta
     {
         Link_Path linkpath = new Link_Path();
         Common Common = new Common();
+        Excel excel = new Excel();
         private DispatcherTimer timer;
-        TimeSpan Time_Stop;
-        TimeSpan Time_Start;
+        DateTime Time_Stop;
+        DateTime Time_Start;
         public List<Position> List_Position { get; set; }
+        List<Data_Report> List_Report_Change = new List<Data_Report>();
         static int cnt = 0;
         public Report()
         {
@@ -45,8 +48,10 @@ namespace App_Control_Servo_Press_Delta
             Loaded += Report_Loaded;  // Thêm sự kiện Loaded
             Unloaded += Report_Unloaded;
             datePicker_start.SelectedDate = DateTime.Today;
+            datePicker_stop.SelectedDate = DateTime.Today;
             List_Position = new List<Position>();
             Global.List_Position_all = new List<Position>();
+            Global.DataPoints_Chart = new List<DataPoint>();
 
         }
         private void Timer_Tick(object sender, EventArgs e)
@@ -55,7 +60,6 @@ namespace App_Control_Servo_Press_Delta
             {
                 Read_time();
                 trim_date(datePicker_start.SelectedDate.Value);
-                fill_time();
                 cnt++;
             }
 
@@ -83,41 +87,45 @@ namespace App_Control_Servo_Press_Delta
         }
         private void DatePicker_SelectedDateChanged_start(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+
             // Lấy ngày đã chọn
-            if (datePicker_start.SelectedDate.HasValue)
+            if (datePicker_start.SelectedDate.HasValue )
             {
                 DateTime selectedDate = datePicker_start.SelectedDate.Value;
-
                 string[] part = selectedDate.ToString().Split(' ');
                 Select_date_start.Text = part[0];
-                // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
-                Common.Load_View_Report(List_Report, part[0].Replace('/', '_'));
-                fill_time();
+
             }
+
         }
         private void DatePicker_SelectedDateChanged_stop(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             // Lấy ngày đã chọn
+            if (datePicker_stop.SelectedDate.HasValue )
+            {
+                DateTime selectedDate = datePicker_stop.SelectedDate.Value;
+                string[] part = selectedDate.ToString().Split(' ');
+                Select_date_stop.Text = part[0];
 
+            }
         }
         private void YourMethod()
         {
 
-            List_Report.AddHandler(DataGrid.SelectionChangedEvent, new SelectionChangedEventHandler(Model_SelectionChanged));
         }
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             string textboxName = textBox.Name;
-            DateTime parsedDate;
-            bool isValid = DateTime.TryParseExact(textBox.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate);
-            if (isValid)
+            DateTime parsedDate; 
+            bool isValid = DateTime.TryParseExact((textBox.Text), "dd/mm/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate);
+            if (isValid &( textboxName == "Select_date_start" || textboxName == "Select_date_stop"))
             {
                 DateTime date = DateTime.Parse(textBox.Text + " 11:59:59 PM");
                 //  MessageBox.Show($"{textBox.Text} đúng định dạng !");
                 datePicker_start.SelectedDate = date;
             }
-            else
+            else if (!isValid & (textboxName == "Select_date_start" || textboxName == "Select_date_stop"))
             {
                 MessageBox.Show($"{textBox.Text} sai định dạng !");
                 string[] part = DateTime.Today.ToString().Split(' ');
@@ -126,54 +134,33 @@ namespace App_Control_Servo_Press_Delta
             }
 
         }
-        private void Model_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Report_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedRow = List_Report.SelectedItem as DataView_Report;
-            if (selectedRow != null)
-            {
-                Fill_Value_Mode(selectedRow.Time.ToString());
-            }
+            Fill_Value_Mode();
         }
-        private void Fill_Value_Mode(string time)
+        private void Init_data()
         {
-            DateTime selectedDate = datePicker_start.SelectedDate.Value;
-            string[] part = selectedDate.ToString().Split(' ');
-            // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
-            string filepath = part[0].Replace('/', '_') + "_Report.json";
-            string json = File.ReadAllText(System.IO.Path.Combine("Log", filepath));
-            int flag = 0;
-            if (json.Length > 0)
+
+
+
+        }
+        private void Fill_Value_Mode()
+        {
+            try
             {
-                JArray jsonArray = JArray.Parse(json);
-                foreach (JObject obj in jsonArray)
+
+                var selectedRow = List_Report.SelectedItem as Data_Report;
+                if (selectedRow != null)
                 {
-                    if ((string)obj["Time"] == time)
-                    {
-                        Data_Report_temp.Time = (string)obj["Time"];
-                        Data_Report_temp.OrderCode = (string)obj["OrderCode"];
-                        Data_Report_temp.Model = (string)obj["Model"];
-                        Data_Report_temp.TrucID = (string)obj["TrucID"];
-                        Data_Report_temp.RotorID = (string)obj["RotorID"];
-                        Data_Report_temp.Beer_Up = (string)obj["Beer_Up"];
-                        Data_Report_temp.Beer_Down = (string)obj["Beer_Down"];
-                        Data_Report_temp.Jig_Up = (string)obj["Jig_Up"];
-                        Data_Report_temp.Jig_Mid = (string)obj["Jig_Mid"];
-                        Data_Report_temp.Jig_Down = (string)obj["Jig_Down"];
-                        Data_Report_temp.HStand = (string)obj["HStand"];
-                        Data_Report_temp.Force = (string)obj["Force"];
-                        Data_Report_temp.Force_Max = (string)obj["Force_Max"];
-                        strim_Position((string)obj["Position"]);
-                        flag = 1;
-                        break;
-                    }
+                    List_Report_Change.Clear();
+                    List_Report_Change = Global.List_report.Where(item => item.Time == selectedRow.Time).ToList();
+                    Global.Order_Code_Report = List_Report_Change[0].OrderCode;
+                    Global.DataPoints_Chart.Clear();
+                    Global.DataPoints_Chart.AddRange(List_Report_Change[0].Chart);
                 }
-                if (flag == 0)
-                {
-
-                }
-
-
             }
+            catch { }
+
         }
         private void strim_Position(string data)
         {
@@ -214,7 +201,6 @@ namespace App_Control_Servo_Press_Delta
             string[] part = dateTime.ToString().Split(' ');
             // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
             Common.Load_View_Report(List_Report, part[0].Replace('/', '_'));
-            fill_time();
         }
         private void calendar_SelectedDateChanged_stop(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -266,101 +252,59 @@ namespace App_Control_Servo_Press_Delta
         private void Combobox_Changed(object sender, RoutedEventArgs e)
         {
             Read_time();
-            //   MessageBox.Show($"Bạn cần lọc thời gian từ: {Time_Start} đến {Time_Stop}");
-            fill_time();
         }
         private void Read_time()
         {
-            string hour_start = Hour_start.SelectedItem?.ToString() ?? "00";
-            string minute_start = Minute_start.SelectedItem?.ToString() ?? "00";
-            string second_start = Second_start.SelectedItem?.ToString() ?? "00";
-            string hour_stop = Hour_Stop.SelectedItem?.ToString() ?? "00";
-            string minute_stop = Minute_Stop.SelectedItem?.ToString() ?? "00";
-            string second_stop = Second_Stop.SelectedItem?.ToString() ?? "00";
-            Time_Start = new TimeSpan(int.Parse(hour_start), int.Parse(minute_start), int.Parse(second_start));
-            Time_Stop = new TimeSpan(int.Parse(hour_stop), int.Parse(minute_stop), int.Parse(second_stop));
-        }
-        private void fill_time()
-        {
-            var filteredRecords = Global.List_report.Where(r =>
+            DateTime parsedDateStart;
+            DateTime parsedDateStop;
+            if (DateTime.TryParseExact(Select_date_start.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDateStart))
             {
-                TimeSpan recordTime;
-                return TimeSpan.TryParse(r.Time, out recordTime) && recordTime >= Time_Start && recordTime <= Time_Stop;
-            }).ToList();
-
-            // Hiển thị kết quả
-            string mylistString = "";
-            int index = 1;
-            Global.List_report_temp.Clear();
-            foreach (var record in filteredRecords)
-            {
-                Global.List_report_temp.Add(new DataView_Report { STT = index, Model = record.Model, TrucID = record.TrucID, RotorID = record.RotorID, Force_Max = record.Force_Max, Force = record.Force, Time = record.Time });
-                mylistString = mylistString + record.Time;
-                index++;
-
+                int hour_start = int.TryParse(Hour_start.SelectedItem?.ToString(), out int hStart) ? hStart : 0;
+                int minute_start = int.TryParse(Minute_start.SelectedItem?.ToString(), out int mStart) ? mStart : 0;
+                int second_start = int.TryParse(Second_start.SelectedItem?.ToString(), out int sStart) ? sStart : 0;
+                Time_Start = new DateTime(parsedDateStart.Year, parsedDateStart.Month, parsedDateStart.Day, hour_start, minute_start, second_start);
             }
-            List_Report.ItemsSource = null;
-            List_Report.ItemsSource = Global.List_report_temp;
-            //   MessageBox.Show($"Thời gian đã lọc được là  {mylistString}");
-            // Hiển thị kết quả
-        }
-        private void Click_bt_Export_model(object sender, RoutedEventArgs e)
-        {
-            DateTime selectedDate = datePicker_start.SelectedDate.Value;
-            string[] part = selectedDate.ToString().Split(' ');
-            // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
-            Excel excel = new Excel();
-            try
+            if (DateTime.TryParseExact(Select_date_stop.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDateStop))
             {
-                if (Data_Report_temp.Time != null)
-                {
-                    excel.Export_Chart_File(part[0].Replace('/', '_') + "_" + Data_Report_temp.Time.Replace(':', '_'), List_Position, "Chọn vị trí lưu File");
-                }
-                else
-                {
 
-                    MessageBox.Show("Vui Lòng lựa chọn dữ liệu cần xuất Excel!");
-                }
-
+                int hour_stop = int.TryParse(Hour_Stop.SelectedItem?.ToString(), out int hStop) ? hStop : 0;
+                int minute_stop = int.TryParse(Minute_Stop.SelectedItem?.ToString(), out int mStop) ? mStop : 0;
+                int second_stop = int.TryParse(Second_Stop.SelectedItem?.ToString(), out int sStop) ? sStop : 0;
+                Time_Stop = new DateTime(parsedDateStop.Year, parsedDateStop.Month, parsedDateStop.Day, hour_stop, minute_stop, second_stop);
             }
-            catch { }
-
         }
-        private void Click_bt_Export_All(object sender, RoutedEventArgs e)
-        {
-            DateTime selectedDate = datePicker_start.SelectedDate.Value;
-            string[] part = selectedDate.ToString().Split(' ');
-            // selectedDateText.Text = $"Ngày đã chọn: {selectedDate.ToShortDateString()}"; // Hiển thị ngày
-            Excel excel = new Excel();
-            try
-            {
-                if (Global.List_report_all != null)
-                {
-                    excel.Export_Report_All_File(part[0].Replace('/', '_'), "Chọn file Excel để nhập");
-                }
-                else
-                {
 
-                    MessageBox.Show("Vui Lòng lựa chọn dữ liệu cần xuất Excel!");
-                }
-
-            }
-            catch { }
-        }
 
         private void Click_bt_chart(object sender, RoutedEventArgs e)
         {
 
+            Chart_Report chart = new Chart_Report();
+
+            chart.ShowDialog();
         }
 
         private void Click_bt_Export(object sender, RoutedEventArgs e)
         {
+            if (Global.List_report !=null)
+            {
 
+                excel.Export_Report_All_File("Template_Report", "Chọn vị trí lưu File", ConvertListToString(Global.List_report));
+            }   
+            else
+            {
+                MessageBox.Show("Vui Lòng lựa chọn dữ liệu cần xuất Excel!");
+            }    
         }
 
         private void Click_search(object sender, RoutedEventArgs e)
         {
-
+            Read_time();
+            Common.Load_Fill_View_Report(List_Report, Time_Start, Time_Stop, tb_Model_search.Text);
+        }
+        static string ConvertListToString(List<Data_Report> items)
+        {
+            // Sử dụng String.Join để chuyển đổi danh sách thành chuỗi
+            return string.Join(", ", items);
         }
     }
 

@@ -49,14 +49,16 @@ namespace App_Control_Servo_Press_Delta
             InitializeComponent();
             Loaded += Auto_Loaded;  // Thêm sự kiện Loaded
             Unloaded += Auto_Unloaded;
-            var model1 = CreatePlotModel( "Thông số", "Vị Trí (mm)", 400, "Lực Ép (N/m)", 4000);
-            plotView1.Model = model1;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(100);
         }
 
         private void Auto_Loaded(object sender, RoutedEventArgs e)
         {
+
+                var model1 = CreatePlotModel(Global.Language=="EN" ? "Parameter" : "Thông số", Global.Language == "EN" ? "Position (mm)" : "Vị Trí (mm)", 400, Global.Language == "EN" ? "Force (N)" :  "Lực Ép (N)", 4000);
+ 
+            plotView1.Model = model1;
             foreach (var textBox in Common.FindVisualChildren<TextBox>(this))
             {
                 textBox.TextChanged += TextBox_TextChanged;
@@ -147,8 +149,8 @@ namespace App_Control_Servo_Press_Delta
             else
             {
                 lb_Status.Visibility = Visibility.Hidden;
-                tb_Auto_Pressed_Force_Max.Text = "";
-                tb_Auto_Position_Force_Max.Text ="";
+                tb_Auto_Pressed_Force_Max.Text = "0";
+                tb_Auto_Position_Force_Max.Text ="0";
             }    
             tb_Auto_NG.Text = Data.Total_NG.ToString();
             tb_Auto_Pass.Text = Data.Total_OK.ToString();
@@ -174,13 +176,19 @@ namespace App_Control_Servo_Press_Delta
         }
         private void Init_data()
         {
+            
+            Global.Auto_Thickness_Bearings_D = 0;
+            Global.Auto_Thickness_Bearings_U = 0;
+            Global.Auto_Thickness_Jig_Up = 0;
+            Global.Auto_Thickness_Jig_Down = 0;
+            Global.Auto_Press_Pos1 = 0;
+            Global.Auto_Press_Pos2 = 0;
             Global.Data_Auto_FC1 = new List<DataFunC>
            {
                 new DataFunC
                 {
                     Mode = 0,
                     Press_Condition = "",
-                    Press_Pos = 0,
                     Press_Force = 0,
                     Press_Vel = 0,
                     Press_Time = 0,
@@ -196,7 +204,6 @@ namespace App_Control_Servo_Press_Delta
                 {
                     Mode = 0,
                     Press_Condition = "",
-                    Press_Pos = 0,
                     Press_Force = 0,
                     Press_Vel = 0,
                     Press_Time = 0,
@@ -212,7 +219,6 @@ namespace App_Control_Servo_Press_Delta
                 {
                     Mode = 0,
                     Press_Condition = "",
-                    Press_Pos = 0,
                     Press_Force = 0,
                     Press_Vel = 0,
                     Press_Time = 0,
@@ -235,8 +241,6 @@ namespace App_Control_Servo_Press_Delta
                     Jig_Mid="0",
                     Jig_Down="0",
                     Height_Stand=0,
-                    Thickness_Jig_Up=0,
-                    Thickness_Jig_Down=0,
                     Origin_Position=0,
                     Origin_Velocity=0,
                     Standby_Position=0,
@@ -248,7 +252,6 @@ namespace App_Control_Servo_Press_Delta
                                 {
                                 Mode =0,
                                 Press_Condition="",
-                                Press_Pos =0,
                                 Press_Force =0,
                                 Press_Vel =0,
                                 Press_Time =0,
@@ -263,7 +266,6 @@ namespace App_Control_Servo_Press_Delta
                                 {
                                 Mode =0,
                                 Press_Condition="",
-                                Press_Pos =0,
                                 Press_Force =0,
                                 Press_Vel =0,
                                 Press_Time =0,
@@ -287,26 +289,8 @@ namespace App_Control_Servo_Press_Delta
                     //JArray jsonArray = JArray.Parse(json);
                     foreach (var obj in jsonArray)
                     {
-                        if ((string)obj.Model == Global.Model)
-                        {
-                            if ((string)obj.ID_Rotor != Global.ID_Rotor)
-                            {
-                                MessageBox.Show(" Mã Rotor cài đặt Model không đúng");
-                            }
-                            else if ((string)obj.ID_Shaft != Global.ID_Shaft)
-                            {
-                                MessageBox.Show(" Mã Shaft cài đặt Model không đúng");
-                            }
-                            else if ((string)obj.ID_Bearings_Up != Global.ID_BearingsU)
-                            {
-                                MessageBox.Show(" Mã Bi trên cài đặt Model không đúng");
-                            }
-                            else if ((string)obj.ID_Bearings_Down != Global.ID_BearingsD)
-                            {
-                                MessageBox.Show(" Mã Bi dưới cài đặt Model không đúng");
-                            }
-                            else
-                            {
+                        if ((string)obj.ID_Rotor == Global.ID_Rotor && (string)obj.ID_Shaft == Global.ID_Shaft)
+                        { 
                                 Global.list_model[0].Model = obj.Model;
                                 Global.list_model[0].ID_Rotor = obj.ID_Rotor;
                                 Global.list_model[0].ID_Shaft = obj.ID_Shaft;
@@ -316,8 +300,13 @@ namespace App_Control_Servo_Press_Delta
                                 Global.list_model[0].Jig_Mid = obj.Jig_Mid;
                                 Global.list_model[0].Jig_Down = obj.Jig_Down;
                                 Global.list_model[0].Height_Stand = obj.Height_Stand;
-                                Global.list_model[0].Thickness_Jig_Up = obj.Thickness_Jig_Up;
-                                Global.list_model[0].Thickness_Jig_Down = obj.Thickness_Jig_Down;
+                                Global.Auto_Thickness_Jig_Up = Fill_Bearings_JigUD(path.Jig_Up, obj.Jig_Up);
+                                Global.Auto_Thickness_Jig_Down = Fill_Bearings_JigUD(path.Jig_Down, obj.Jig_Down);
+                                Global.Auto_Thickness_Bearings_U = Fill_Bearings_JigUD(path.Bearings_Up, obj.ID_Bearings_Up);
+                                Global.Auto_Thickness_Bearings_D = Fill_Bearings_JigUD(path.Bearings_Down, obj.ID_Bearings_Down);
+                                Global.Auto_Ofset_Model = obj.Ofset_position1;
+                                Global.Auto_Pre_press_Bearings_distance = obj.Pre_press_Bearings_distance;
+                                Global.Auto_After_press_bearings_distance = obj.After_press_bearings_distance;
                                 Global.list_model[0].Origin_Position = obj.Origin_Position;
                                 Global.list_model[0].Origin_Velocity = obj.Origin_Velocity;
                                 Global.list_model[0].Standby_Position = obj.Standby_Position;
@@ -326,11 +315,16 @@ namespace App_Control_Servo_Press_Delta
                                 Global.list_model[0].Data_Func1.Clear();
                                 Global.list_model[0].Data_Func2.Clear();
                                 Global.list_model[0].Data_Func1.AddRange(obj.Data_Func1);
-                                Global.list_model[0].Data_Func2.AddRange(obj.Data_Func2);
-                                var data = new
-                                {
+                                Global.list_model[0].Data_Func2.AddRange(obj.Data_Func2); 
+                            Global.Auto_Press_Pos1 = Caculate_Position_Distance(Global.list_model[0].Data_Func1[0].Mode, Global.Auto_Thickness_Bearings_D.ToString(), Global.Auto_After_press_bearings_distance.ToString(),
+                                                       Global.Auto_Thickness_Bearings_U.ToString(), Global.Auto_Pre_press_Bearings_distance.ToString(), Global.Auto_Ofset_Model.ToString(), Global.list_model[0].Standby_Position.ToString());
+                            Global.Auto_Press_Pos2 = Caculate_Position_Distance(Global.list_model[0].Data_Func2[0].Mode, Global.Auto_Thickness_Bearings_D.ToString(), Global.Auto_After_press_bearings_distance.ToString(),
+                                                       Global.Auto_Thickness_Bearings_U.ToString(), Global.Auto_Pre_press_Bearings_distance.ToString(), Global.Auto_Ofset_Model.ToString(), Global.list_model[0].Standby_Position.ToString());
+
+                            var data = new
+                            {
                                     Mode1 = Global.list_model[0].Data_Func1[0].Mode,
-                                    Press_Pos1 = Global.list_model[0].Data_Func1[0].Press_Pos,
+                                    Press_Pos1 = Global.Auto_Press_Pos1,
                                     Press_Force1 = Global.list_model[0].Data_Func1[0].Press_Force,
                                     Press_Vel1 = Global.list_model[0].Data_Func1[0].Press_Vel,
                                     Press_Time1 = Global.list_model[0].Data_Func1[0].Press_Time,
@@ -339,7 +333,7 @@ namespace App_Control_Servo_Press_Delta
                                     End_Max_Pos_Limit1 = Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit,
                                     End_Min_Pos_Limit1 = Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit,
                                     Mode2 = Global.list_model[0].Data_Func2[0].Mode,
-                                    Press_Pos2 = Global.list_model[0].Data_Func2[0].Press_Pos,
+                                    Press_Pos2 = Global.Auto_Press_Pos2,
                                     Press_Force2 = Global.list_model[0].Data_Func2[0].Press_Force,
                                     Press_Vel2 = Global.list_model[0].Data_Func2[0].Press_Vel,
                                     Press_Time2 = Global.list_model[0].Data_Func2[0].Press_Time,
@@ -349,12 +343,12 @@ namespace App_Control_Servo_Press_Delta
                                     End_Min_Pos_Limit2 = Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit,
                                     Standard_Roto = Global.list_model[0].Height_Stand
                                 };
-                                string jsonData = JsonConvert.SerializeObject(data);
+                            string jsonData = JsonConvert.SerializeObject(data);
                                 MainWindow._queue.Add(jsonData);
                                 Global.Check_Write_Model = true;
 
 
-                            }
+                            
 
                             flag = true;
                         }
@@ -392,7 +386,7 @@ namespace App_Control_Servo_Press_Delta
             tb_Velocity_Standby.Text = string.Format("{0:F2}", Global.list_model[0].Origin_Velocity);
             tb_Standby_Time.Text = string.Format("{0:F2}", Global.list_model[0].Standby_Time);
             tb_Pressing_condition1.Text = Global.list_model[0].Data_Func1[0].Press_Condition.ToString();
-            tb_Pressing_Position1.Text = Global.list_model[0].Data_Func1[0].Press_Pos.ToString();
+            tb_Pressing_Position1.Text = Global.Auto_Press_Pos1.ToString();
             tb_Pressing_Force1.Text = Global.list_model[0].Data_Func1[0].Press_Force.ToString();
             tb_Pressing_Velocity1.Text = Global.list_model[0].Data_Func1[0].Press_Vel.ToString();
             tb_Pressing_Time1.Text = Global.list_model[0].Data_Func1[0].Press_Time.ToString();
@@ -402,7 +396,7 @@ namespace App_Control_Servo_Press_Delta
             tb_Min_Position1.Text = Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit.ToString();
 
             tb_Pressing_condition2.Text = Global.list_model[0].Data_Func2[0].Press_Condition.ToString();
-            tb_Pressing_Position2.Text = Global.list_model[0].Data_Func2[0].Press_Pos.ToString();
+            tb_Pressing_Position2.Text = Global.Auto_Press_Pos2.ToString(); 
             tb_Pressing_Force2.Text = Global.list_model[0].Data_Func2[0].Press_Force.ToString();
             tb_Pressing_Velocity2.Text = Global.list_model[0].Data_Func2[0].Press_Vel.ToString();
             tb_Pressing_Time2.Text = Global.list_model[0].Data_Func2[0].Press_Time.ToString();
@@ -424,7 +418,7 @@ namespace App_Control_Servo_Press_Delta
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Standby_Velocity:   " + Global.list_model[0].Standby_Velocity , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Standby_Time:   " + Global.list_model[0].Standby_Time , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Mode1:   " + Global.list_model[0].Data_Func1[0].Mode , Time = formattedDate +" "+formattedtime},
-                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Position1:   " + Global.list_model[0].Data_Func1[0].Press_Pos , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Position1:   " + Global.Auto_Press_Pos1 , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Force1:   " + Global.list_model[0].Data_Func1[0].Press_Force , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Velocity1:   " + Global.list_model[0].Data_Func1[0].Press_Vel , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Time1:   " + Global.list_model[0].Data_Func1[0].Press_Time , Time = formattedDate +" "+formattedtime},
@@ -433,7 +427,7 @@ namespace App_Control_Servo_Press_Delta
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Max_Position1:   " + Global.list_model[0].Data_Func1[0].End_Max_Pos_Limit , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Min_Position1:   " + Global.list_model[0].Data_Func1[0].End_Min_Pos_Limit , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Mode2:   " + Global.list_model[0].Data_Func2[0].Mode , Time = formattedDate +" "+formattedtime},
-                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Position2:   " + Global.list_model[0].Data_Func2[0].Press_Pos , Time = formattedDate +" "+formattedtime},
+                new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Position2:   " + Global.Auto_Press_Pos2 , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Force2:   " + Global.list_model[0].Data_Func2[0].Press_Force , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Velocity2:   " + Global.list_model[0].Data_Func2[0].Press_Vel , Time = formattedDate +" "+formattedtime},
                 new Data_Log { No = 0, User = MainWindow.UserName, Log =  "Write Press_Time2:   " + Global.list_model[0].Data_Func2[0].Press_Time , Time = formattedDate +" "+formattedtime},
@@ -523,9 +517,78 @@ namespace App_Control_Servo_Press_Delta
             Global.Order_Code_Write_done = "";
             Global.Order_Code = "";
         }
+        private static float Caculate_Position_Distance(float mode, string Thickness_BearingsD, string Distance_Bearings_After, string Thickness_BearingsU, string Distance_Bearings_Before, string ofset_Model, string standby_position)
+        {
+
+            float Position = Global.Height_Shaft_Press
+                + (float)Data.ofset_Machine
+                - (float)Data.Height_Jig_Base
+                - Global.Model_Thickness_Jig_Down
+                - float.Parse(Thickness_BearingsD)
+                - float.Parse(Distance_Bearings_After)
+                - float.Parse(Thickness_BearingsU)
+                - Global.Model_Thickness_Jig_Up
+                + float.Parse(ofset_Model);
+            float Distance = Global.Height_Shaft_Press
+                + (float)Data.ofset_Machine
+                - (float)Data.Height_Jig_Base
+                - Global.Model_Thickness_Jig_Down
+                - float.Parse(Thickness_BearingsD)
+                - float.Parse(Distance_Bearings_After)
+                - float.Parse(Thickness_BearingsU)
+                - Global.Model_Thickness_Jig_Up
+                + float.Parse(ofset_Model)
+                - float.Parse(standby_position);
+            Global.Standby_Position = Global.Height_Shaft_Press
+                + (float)Data.ofset_Machine
+                - (float)Data.Height_Jig_Base
+                - Global.Model_Thickness_Jig_Down
+                - float.Parse(Thickness_BearingsD)
+                - float.Parse(Distance_Bearings_Before)
+                - float.Parse(Thickness_BearingsU)
+                - Global.Model_Thickness_Jig_Up
+                + float.Parse(ofset_Model);
+
+            switch (mode)
+            {
+
+                case 1:
+                    return Position;
+                case 2:
+                    return 0;
+                case 3:
+                    return Distance;
+                case 4:
+                    return Position;
+                case 5:
+                    return Position;
+
+            }
+            return 0;
+        }
 
 
+        private static float Fill_Bearings_JigUD(string path, string id)
+        {
+            try
+            {
+                string jsons = File.ReadAllText(path); ;
+                if (jsons.Length > 0)
+                {
+                    JArray jsonArray = JArray.Parse(jsons);
+                    foreach (JObject obj in jsonArray)
+                    {
+                        if ((string)obj["ID"] == id)
+                        {
+                            return (float)obj["Thickness"];
+                        }
+                    }
+                }
+            }
+            catch { }
 
+            return -1;
+        }
 
 
         private void Auto_RotorID_TextChanged(object sender, TextChangedEventArgs e)

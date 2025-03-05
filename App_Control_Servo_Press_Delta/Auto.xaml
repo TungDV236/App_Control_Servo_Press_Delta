@@ -42,10 +42,10 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0"  Content="{DynamicResource lb_Auto_PST_Origin}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="0" IsReadOnly ="True"     x:Name="tb_Origin_Position" Width="80" Margin="170,5,0,0" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="0" IsReadOnly ="True"     x:Name="tb_Origin_Position" Width="80" Margin="170,5,0,0" HorizontalAlignment="Left" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="0"  Content="mm" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="1"  Content="{DynamicResource lb_Auto_Velocity_Origin}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,5" />
-                        <TextBox Grid.Row="1" IsReadOnly ="True"   x:Name="tb_Origin_Velocity" Width="80"  Margin="170,0,0,0"  HorizontalAlignment="Left"  FontWeight="Bold" FontSize="15" Height="25"   Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="1" IsReadOnly ="True"   x:Name="tb_Origin_Velocity" Width="80"  Margin="170,0,0,0"  HorizontalAlignment="Left"  FontSize="15" Height="25"   Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="1"   Content="mm/s" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,0,0,0" />
                     </Grid>
                 </Grid>
@@ -58,13 +58,13 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0"   Content="{DynamicResource lb_Auto_PST_Standby}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="0"  IsReadOnly ="True"  x:Name="tb_Standby_PST"  Margin="170 5 0 0" Width="80"  HorizontalAlignment="Left"  FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="0"  IsReadOnly ="True"  x:Name="tb_Standby_PST"  Margin="170 5 0 0" Width="80"  HorizontalAlignment="Left"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="0"   Content="mm" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="1"    Content="{DynamicResource lb_Auto_Velocity_Standby}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="1"  IsReadOnly ="True"  x:Name="tb_Velocity_Standby"  Margin="170 5 0 0" Width="80"  HorizontalAlignment="Left"  FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="1"  IsReadOnly ="True"  x:Name="tb_Velocity_Standby"  Margin="170 5 0 0" Width="80"  HorizontalAlignment="Left"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="1"   Content="mm/s" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="2"   Content="{DynamicResource lb_Auto_Standby_Time}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,5" />
-                        <TextBox Grid.Row="2"  IsReadOnly ="True"  x:Name="tb_Standby_Time"  Margin="170 5 0 5" Width="80"  HorizontalAlignment="Left"  FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="2"  IsReadOnly ="True"  x:Name="tb_Standby_Time"  Margin="170 5 0 5" Width="80"  HorizontalAlignment="Left"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="2"   Content="s" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,5" />
                     </Grid>
                 </Grid>
@@ -87,31 +87,31 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="1"   Content="{DynamicResource lb_Auto_Step}"  Width="80"  Height="25" HorizontalAlignment="Left" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="1"  IsReadOnly ="True"  Text="1"  FontWeight="Bold" Width="60" HorizontalAlignment="Left" FontSize="15" Height="25" Style="{StaticResource BorderBlackTextboxStyle}" Margin="70,5,20,0"/>
-                        <TextBox Grid.Row="1"  IsReadOnly ="True"  x:Name="tb_Pressing_condition1"  FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderBlackTextboxStyle}"  Margin="140,5,10,0"/>
+                        <TextBox Grid.Row="1"  IsReadOnly ="True"  Text="1" FontWeight="DemiBold"  Width="60" HorizontalAlignment="Left"  FontSize="15" Height="25" Style="{StaticResource BorderBlackTextboxStyle}" Margin="70,5,20,0"/>
+                        <TextBox Grid.Row="1"  IsReadOnly ="True"  x:Name="tb_Pressing_condition1" FontWeight="DemiBold" FontSize="15" Height="25" Style="{StaticResource BorderBlackTextboxStyle}"  Margin="140,5,10,0"/>
                         <Label Grid.Row="3"   Content="{DynamicResource lb_Press_PositionDistance}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="3"  IsReadOnly ="True"  x:Name="tb_Pressing_Position1" Width="80" HorizontalAlignment="Left" Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="3"  IsReadOnly ="True"  x:Name="tb_Pressing_Position1" Width="80" HorizontalAlignment="Left" Margin="170,5,0,0" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="3"   Content="(mm)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="4"   Content="{DynamicResource lb_Auto_Pressing_Force}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="4"  IsReadOnly ="True"  x:Name="tb_Pressing_Force1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="4"  IsReadOnly ="True"  x:Name="tb_Pressing_Force1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="4"   Content="(N)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="5"   Content="{DynamicResource lb_Auto_Pressing_Velocity}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="5"  IsReadOnly ="True"  x:Name="tb_Pressing_Velocity1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="5"  IsReadOnly ="True"  x:Name="tb_Pressing_Velocity1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="5"   Content="(mm/s)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="6"   Content="{DynamicResource lb_Auto_Pressing_Time}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="6"  IsReadOnly ="True"  x:Name="tb_Pressing_Time1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="6"  IsReadOnly ="True"  x:Name="tb_Pressing_Time1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="6"   Content="(s)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="7"   Content="{DynamicResource lb_Auto_Max_Position}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="7"  IsReadOnly ="True"  x:Name="tb_Max_Position1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="7"  IsReadOnly ="True"  x:Name="tb_Max_Position1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="7"   Content="(mm)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="8"   Content="{DynamicResource lb_Auto_Min_Position}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="8"  IsReadOnly ="True"  x:Name="tb_Min_Position1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="8"  IsReadOnly ="True"  x:Name="tb_Min_Position1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="8"   Content="(mm)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="9"   Content="{DynamicResource lb_Auto_Max_Force}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="9"  IsReadOnly ="True"  x:Name="tb_Max_Force1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="9"  IsReadOnly ="True"  x:Name="tb_Max_Force1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="9"   Content="(N)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="10"   Content="{DynamicResource lb_Auto_Min_Force}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,5" />
-                        <TextBox Grid.Row="10"  IsReadOnly ="True"  x:Name="tb_Min_Force1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,5" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="10"  IsReadOnly ="True"  x:Name="tb_Min_Force1"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,5" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="10"   Content="(N)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,5" />
                     </Grid>
                 </Grid>
@@ -134,31 +134,31 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="1"   Content="{DynamicResource lb_Auto_Step}"  Width="80"  Height="25" HorizontalAlignment="Left" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
-                        <TextBox Grid.Row="1"  IsReadOnly ="True"  Text="2"  FontWeight="Bold" Width="60" HorizontalAlignment="Left" FontSize="15" Height="25" Style="{StaticResource BorderBlackTextboxStyle}" Margin="70,5,20,0"/>
-                        <TextBox Grid.Row="1"  IsReadOnly ="True"  x:Name="tb_Pressing_condition2"  FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderBlackTextboxStyle}"  Margin="140,5,10,0"/>
+                        <TextBox Grid.Row="1"  IsReadOnly ="True"  Text="2" FontWeight="DemiBold"  Width="60" HorizontalAlignment="Left" FontSize="15" Height="25" Style="{StaticResource BorderBlackTextboxStyle}" Margin="70,5,20,0"/>
+                        <TextBox Grid.Row="1"  IsReadOnly ="True"  x:Name="tb_Pressing_condition2" FontWeight="DemiBold" FontSize="15" Height="25" Style="{StaticResource BorderBlackTextboxStyle}"  Margin="140,5,10,0"/>
                         <Label Grid.Row="3"   Content="{DynamicResource lb_Auto_Pressing_Position}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="3"  IsReadOnly ="True"  x:Name="tb_Pressing_Position2" Width="80" HorizontalAlignment="Left" Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="3"  IsReadOnly ="True"  x:Name="tb_Pressing_Position2" Width="80" HorizontalAlignment="Left" Margin="170,5,0,0" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="3"   Content="(mm)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="4"   Content="{DynamicResource lb_Auto_Pressing_Force}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="4"  IsReadOnly ="True"  x:Name="tb_Pressing_Force2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="4"  IsReadOnly ="True"  x:Name="tb_Pressing_Force2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="4"   Content="(N)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="5"   Content="{DynamicResource lb_Auto_Pressing_Velocity}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="5"   IsReadOnly ="True"  x:Name="tb_Pressing_Velocity2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="5"   IsReadOnly ="True"  x:Name="tb_Pressing_Velocity2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="5"   Content="(mm/s)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="6"   Content="{DynamicResource lb_Auto_Pressing_Time}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="6"  IsReadOnly ="True"  x:Name="tb_Pressing_Time2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="6"  IsReadOnly ="True"  x:Name="tb_Pressing_Time2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="6"   Content="(s)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="7"   Content="{DynamicResource lb_Auto_Max_Position}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="7"  IsReadOnly ="True"  x:Name="tb_Max_Position2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="7"  IsReadOnly ="True"  x:Name="tb_Max_Position2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="7"   Content="(mm)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="8"   Content="{DynamicResource lb_Auto_Min_Position}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="8"  IsReadOnly ="True"  x:Name="tb_Min_Position2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="8"  IsReadOnly ="True"  x:Name="tb_Min_Position2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="8"   Content="(mm)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="9"   Content="{DynamicResource lb_Auto_Max_Force}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,0" />
-                        <TextBox Grid.Row="9" IsReadOnly ="True"  x:Name="tb_Max_Force2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="9" IsReadOnly ="True"  x:Name="tb_Max_Force2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,0" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="9"   Content="(N)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,0" />
                         <Label Grid.Row="10"   Content="{DynamicResource lb_Auto_Min_Force}" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="5,5,0,5" />
-                        <TextBox Grid.Row="10" IsReadOnly ="True"  x:Name="tb_Min_Force2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,5" FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                        <TextBox Grid.Row="10" IsReadOnly ="True"  x:Name="tb_Min_Force2"  Width="80" HorizontalAlignment="Left"  Margin="170,5,0,5"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                         <Label Grid.Row="10"   Content="(N)" Height="25" Style="{StaticResource Basic_labelStyle}" Margin="260,5,0,5" />
                     </Grid>
                 </Grid>
@@ -172,13 +172,13 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0"    Content="{DynamicResource lb_Auto_Chart}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Background="#FF596AFF"
-        Foreground="Black"
-        FontSize="20"
-        FontWeight="Bold"
-        Margin="10,0,10,0"
-        HorizontalContentAlignment="Center"
-        VerticalContentAlignment="Center"
-        FontFamily="Source Sans Pro"  >
+                        Foreground="Black"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Margin="10,0,10,0"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontFamily="Source Sans Pro"  >
                 </Label>
                 <Grid Grid.Row="1" Margin="10,10,10,5">
                     <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-5"/>
@@ -217,126 +217,67 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0"  Margin="5,12,5,0">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Order_Code"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" IsReadOnly="True" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Order_Code}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        <Grid Grid.Row="0"  Margin="5,0,5,0">
+                                <TextBox Tag="{DynamicResource lb_Order_Code}"   x:Name="tb_Order_Code" FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
+                            
                         </Grid>
-                        <Grid Grid.Row="1"  Margin="5,12,5,0">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Model"   FontWeight="Bold"  FontSize="15" Height="40" IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Model}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        <Grid Grid.Row="1"  Margin="5,-10,5,0">
+                            <TextBox Tag="{DynamicResource lb_Model}"   x:Name="tb_Model"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                         </Grid>
 
-                        <Grid Grid.Row="2"  Margin="5,12,5,0">
+                        <Grid Grid.Row="2"  Margin="5,-10,5,0">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="0,0,5,0">
-                                <Grid>
-                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_Rotor"   FontWeight="Bold"  FontSize="15" Height="40" IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                                </Grid>
-
-                                <Label Content="{DynamicResource lb_Rotor}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                <TextBox Tag="{DynamicResource lb_Rotor}"   x:Name="tb_Rotor"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                             </Grid>
                             <Grid Grid.Column="1" Margin="5,0,0,0">
-                                <Grid>
-                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_Shaft"   FontWeight="Bold"  FontSize="15" Height="40" IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                                </Grid>
-
-                                <Label Content="{DynamicResource lb_Shaft}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                   HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                <TextBox Tag="{DynamicResource lb_Shaft}"   x:Name="tb_Shaft"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                             </Grid>
 
                         </Grid>
-                        <Grid Grid.Row="3"  Margin="5,12,5,0">
+                        <Grid Grid.Row="3"  Margin="5,-10,5,0">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="0,0,5,0">
-                                <Grid>
-                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_BearingU"   FontWeight="Bold"  FontSize="15" Height="40" IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                                </Grid>
-
-                                <Label Content="{DynamicResource lb_BearingU}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                  HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                <TextBox Tag="{DynamicResource lb_BearingU}"   x:Name="tb_BearingU"   FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                             </Grid>
                             <Grid Grid.Column="1" Margin="5,0,0,0">
-                                <Grid>
-                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_BearingD"   FontWeight="Bold"  FontSize="15" Height="40" IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                                </Grid>
-
-                                <Label Content="{DynamicResource lb_BearingD}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                 HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                <TextBox Tag="{DynamicResource lb_BearingD}"   x:Name="tb_BearingD"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                             </Grid>
 
                         </Grid>
-                        <Grid Grid.Row="4"  Margin="5,12,5,0">
+                        <Grid Grid.Row="4"  Margin="5,-10,5,0">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="0,0,5,0">
-                                <Grid>
-                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_JigU"   FontWeight="Bold"  FontSize="15" Height="40" IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                                </Grid>
-
-                                <Label Content="{DynamicResource lb_JigU}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                <TextBox Tag="{DynamicResource lb_JigU}"   x:Name="tb_JigU"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                             </Grid>
                             <Grid Grid.Column="1" Margin="5,0,0,0">
-                                <Grid>
-                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_JigD"   FontWeight="Bold"  FontSize="15" Height="40" IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                                </Grid>
-
-                                <Label Content="{DynamicResource lb_JigD}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                    HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                <TextBox Tag="{DynamicResource lb_JigD}"   x:Name="tb_JigD"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                             </Grid>
 
                         </Grid>
-                        <Grid Grid.Row="5"  Margin="5,12,5,0">
+                        <Grid Grid.Row="5"  Margin="5,-10,5,0">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Margin="0,0,5,0">
-                                <Grid>
-                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_JigM"   FontWeight="Bold"  FontSize="15" Height="40"  IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                                </Grid>
-
-                                <Label Content="{DynamicResource lb_JigM}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
-                                    HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                <TextBox Tag="{DynamicResource lb_JigM}"   x:Name="tb_JigM"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                             </Grid>
                             <Grid Grid.Column="1" Margin="5,0,0,0">
-                                <Grid>
-                                    <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                    <TextBox  x:Name="tb_Stand_Height"   FontWeight="Bold"  FontSize="15" Height="40" IsReadOnly="True" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                                </Grid>
-
-                                <Label Content="{DynamicResource lb_Stand_Height}"   FontWeight="Bold"    Background="White"   Width="125"  Height="20"   Padding="1" 
-                                    HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                                <TextBox Tag="{DynamicResource lb_Stand_Height}"   x:Name="tb_Stand_Height"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                             </Grid>
 
                         </Grid>
@@ -345,13 +286,13 @@
                     </Grid>
                 </Grid>
                 <Label Grid.Row="2"   Content="{DynamicResource lb_Auto_Stats}"  Height="30" Background="#FF596AFF" Margin="0,15,0,5"
-        Foreground="Black"
-        FontSize="20"
-        FontWeight="Bold"
-        HorizontalAlignment="Stretch"
-        HorizontalContentAlignment="Center"
-        VerticalContentAlignment="Center"
-        FontFamily="Source Sans Pro"  >
+                        Foreground="Black"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontFamily="Source Sans Pro"  >
                 </Label>
                 <Grid Grid.Row="3" Margin="0,5,0,5">
                     <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-8"/>
@@ -366,11 +307,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0"  Content="{DynamicResource lb_Auto_Total}"  Width="80"  Height="25" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="15"  FontFamily="Source Sans Pro" FontWeight="Bold" Margin="10,5,0,0" />
-                        <TextBox Grid.Row="1"  Grid.Column="0"  IsReadOnly ="True"  x:Name="tb_Auto_Total"  FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}" Margin="15,5,00,0"/>
+                        <TextBox Grid.Row="1"  Grid.Column="0"  IsReadOnly ="True"  x:Name="tb_Auto_Total"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}" Margin="15,5,00,0"/>
                         <Label Grid.Row="0" Grid.Column="1"  Content="{DynamicResource lb_Auto_Pass}"  Width="80"  Height="25" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="15"  FontFamily="Source Sans Pro" FontWeight="Bold" Margin="10,5,0,0" />
-                        <TextBox Grid.Row="1"  Grid.Column="1"  IsReadOnly ="True"  x:Name="tb_Auto_Pass"  FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}" Margin="25,5,10,0"/>
+                        <TextBox Grid.Row="1"  Grid.Column="1"  IsReadOnly ="True"  x:Name="tb_Auto_Pass"  FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}" Margin="25,5,10,0"/>
                         <Label Grid.Row="0" Grid.Column="2"  Content="{DynamicResource lb_Auto_NG}"  Width="80"  Height="25" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="15"  FontFamily="Source Sans Pro" FontWeight="Bold" Margin="10,5,0,0" />
-                        <TextBox Grid.Row="1"  Grid.Column="2"  IsReadOnly ="True"  x:Name="tb_Auto_NG"  FontWeight="Bold" FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}" Margin="25,5,10,0"/>
+                        <TextBox Grid.Row="1"  Grid.Column="2"  IsReadOnly ="True"  x:Name="tb_Auto_NG"   FontSize="15" Height="25" Style="{StaticResource BorderTransparentTextBoxStyle}" Margin="25,5,10,0"/>
                     </Grid>
                 </Grid>
                 <Label Grid.Row="4"   Content="{DynamicResource lb_Auto_Pressed_Result}"  Height="30" Background="#FF596AFF" Margin="0,15,0,5"
@@ -390,23 +331,11 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0"  Margin="15,15,15,0">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Auto_Pressed_Force_Max"   IsReadOnly ="True"  FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Auto_Pressed_Force_Max}"   FontWeight="Bold"    Background="White"   Width="120"  Height="20"   Padding="1" 
-            HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        <Grid Grid.Row="0"  Margin="15,0,15,0">
+                            <TextBox Tag="{DynamicResource lb_Auto_Pressed_Force_Max}"   x:Name="tb_Auto_Pressed_Force_Max"  FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                         </Grid>
-                        <Grid Grid.Row="1"  Margin="15,10,15,0">
-                            <Grid>
-                                <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                                <TextBox  x:Name="tb_Auto_Position_Force_Max"  IsReadOnly ="True"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                            </Grid>
-
-                            <Label Content="{DynamicResource lb_Auto_Position_Force_Max}"   FontWeight="Bold"    Background="White"   Width="120"  Height="20"   Padding="1" 
-            HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
+                        <Grid Grid.Row="1"  Margin="15,-10,15,0">
+                            <TextBox Tag="{DynamicResource lb_Auto_Position_Force_Max}"   x:Name="tb_Auto_Position_Force_Max"   FontSize="15" Height="60" Margin="5" Style="{StaticResource txb-hint}"   />
                         </Grid>
 
                         <Label Grid.Row="2"   Content="OK" x:Name="lb_Status"  Height="30" Background="#00ff11" Margin="15,5,15,10"  Visibility="Hidden" Padding="0" Foreground="Black" FontSize="20" FontWeight="Bold" HorizontalAlignment="Stretch"

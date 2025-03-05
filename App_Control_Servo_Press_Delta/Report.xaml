@@ -27,14 +27,18 @@
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="{DynamicResource lb_From}" Height="25" FontSize="20" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
+            <Label Grid.Column="0" Content="{DynamicResource lb_From}" Height="25" FontSize="15"   Style="{StaticResource Basic_labelStyle}" Margin="15,5,0,0" />
             <Grid Grid.Column="1" Margin="5">
                 <Grid>
                     <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,-5" Height="50"/>
-                    <TextBox  x:Name="Select_date_start"  FontWeight="Bold" FontSize="15" Height="40"  Width="150" HorizontalAlignment="Left" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
-                    <DatePicker Grid.Column="0" Name="datePicker_start" Visibility="Visible"  Width="30" Height="35" BorderThickness="0.5" HorizontalAlignment="Right" BorderBrush="Transparent"
-                    SelectedDateChanged="DatePicker_SelectedDateChanged_start" Margin="10" MouseEnter="Move_datetime_start"   Style="{x:Null}" TextBlock.TextAlignment="Center" TextBlock.FontSize="15" TextBlock.FontWeight="Bold"  Calendar.SelectedDatesChanged="calendar_SelectedDateChanged_start">
-
+                    <TextBox  x:Name="Select_date_start" FontWeight="DemiBold" FontSize="15" Height="40"  Width="200" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="5,12,5,5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                    <DatePicker Grid.Column="0" Name="datePicker_start"  Visibility="Visible"  Width="30" Height="35" BorderThickness="0.5" HorizontalAlignment="Right" BorderBrush="Transparent"
+                    SelectedDateChanged="DatePicker_SelectedDateChanged_start" Margin="10,15,10,10" MouseEnter="Move_datetime_start"   Style="{x:Null}" TextBlock.TextAlignment="Center" TextBlock.FontSize="15" TextBlock.FontWeight="Bold"   Calendar.SelectedDatesChanged="calendar_SelectedDateChanged_start">
+                        <DatePicker.CalendarStyle>
+                            <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortraitForeground}">
+                                <!-- Bạn có thể tùy chỉnh thêm các thuộc tính của Calendar ở đây nếu cần -->
+                            </Style>
+                        </DatePicker.CalendarStyle>
                     </DatePicker>
                 </Grid>
 
@@ -49,25 +53,28 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Column="0" x:Name="Hour_start" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" BorderBrush="Transparent"/>
+                    <ComboBox Grid.Column="0" x:Name="Hour_start" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"/>
                     <Label Grid.Column="1" Content=":" FontSize="15"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <ComboBox Grid.Column="2" x:Name="Minute_start" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" BorderBrush="Transparent"/>
+                    <ComboBox Grid.Column="2" x:Name="Minute_start" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"/>
                     <Label Grid.Column="3" Content=":" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <ComboBox Grid.Column="4" x:Name="Second_start" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" BorderBrush="Transparent"/>
+                    <ComboBox Grid.Column="4" x:Name="Second_start" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="DemiBold" BorderBrush="Transparent"/>
                 </Grid>
 
 
 
 
             </Grid>
-            <Label Grid.Column="3" Content="{DynamicResource lb_to}" Height="25" FontSize="20" Style="{StaticResource Basic_labelStyle}" Margin="10,5,0,0" />
+            <Label Grid.Column="3" Content="{DynamicResource lb_to}" Height="25" FontSize="15" Style="{StaticResource Basic_labelStyle}" Margin="15,5,0,0" />
             <Grid Grid.Column="4" Margin="5">
                 <Grid>
                     <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,-5" Height="50"/>
-                    <TextBox  x:Name="Select_date_stop"  FontWeight="Bold" FontSize="15" Height="40"  Width="150" HorizontalAlignment="Left" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                    <TextBox  x:Name="Select_date_stop" FontWeight="DemiBold" FontSize="15" Height="40"  Width="200" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="5,12,5,5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                     <DatePicker Grid.Column="0" Name="datePicker_stop" Visibility="Visible"  Width="30" Height="35" BorderThickness="0.5" HorizontalAlignment="Right" BorderBrush="Transparent"
-                    SelectedDateChanged="DatePicker_SelectedDateChanged_stop" Margin="10" MouseEnter="Move_datetime_stop"   Style="{x:Null}" TextBlock.TextAlignment="Center" TextBlock.FontSize="15" TextBlock.FontWeight="Bold"  Calendar.SelectedDatesChanged="calendar_SelectedDateChanged_stop">
-
+                    SelectedDateChanged="DatePicker_SelectedDateChanged_stop" Margin="10,15,10,10" MouseEnter="Move_datetime_stop"   Style="{x:Null}" TextBlock.TextAlignment="Center" TextBlock.FontSize="15" TextBlock.FontWeight="Bold"  Calendar.SelectedDatesChanged="calendar_SelectedDateChanged_stop">
+                        <DatePicker.CalendarStyle>
+                            <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortraitForeground}">
+                            </Style>
+                        </DatePicker.CalendarStyle>
                     </DatePicker>
                 </Grid>
 
@@ -82,11 +89,11 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Column="0" x:Name="Hour_Stop" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" BorderBrush="Transparent"/>
+                    <ComboBox Grid.Column="0" x:Name="Hour_Stop" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15"  FontWeight="DemiBold" BorderBrush="Transparent"/>
                     <Label Grid.Column="1" Content=":" FontSize="15"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <ComboBox Grid.Column="2" x:Name="Minute_Stop" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" BorderBrush="Transparent"/>
+                    <ComboBox Grid.Column="2" x:Name="Minute_Stop" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15"  FontWeight="DemiBold" BorderBrush="Transparent"/>
                     <Label Grid.Column="3" Content=":" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <ComboBox Grid.Column="4" x:Name="Second_Stop" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" BorderBrush="Transparent"/>
+                    <ComboBox Grid.Column="4" x:Name="Second_Stop" Height="40" Margin="0,5,0,0" HorizontalContentAlignment="Center" FontSize="15"  FontWeight="DemiBold" BorderBrush="Transparent"/>
                 </Grid>
 
 
@@ -97,10 +104,10 @@
             <Grid Grid.Column="7"  Margin="5,12,5,0">
                 <Grid>
                     <Border BorderBrush ="Black" CornerRadius="4" BorderThickness="0.5" Margin="0,2.5,0,2.5" />
-                    <TextBox  x:Name="tb_Model_search"   FontWeight="Bold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
+                    <TextBox  x:Name="tb_Model_search"   FontWeight="DemiBold"  FontSize="15" Height="40" Margin="5" Style="{StaticResource BorderTransparentTextBoxStyle}"/>
                 </Grid>
 
-                <Label Content="{DynamicResource lb_Model}"   FontWeight="Bold"    Background="White"   Width="70"  Height="20"   Padding="1" 
+                <TextBlock Text="{DynamicResource lb_Shaft}"   FontWeight="Bold"    Background="White"   Height="20"   Padding="1" 
         HorizontalAlignment="Left"  VerticalAlignment="Top"   Margin="10,-10,0,0"    Foreground="Black"/>
             </Grid>
             <Button Grid.Column="8" Content="{DynamicResource btn_Search}" Width="120" x:Name="btn_off_bz" Padding="0"  Height="40" Margin="5,15,5,5"   Click="Click_search" />
@@ -118,12 +125,13 @@
                             CanUserResizeColumns="False"
                             CanUserResizeRows="False"
                             IsReadOnly="True"
-                            Grid.ColumnSpan="2">
+                            Grid.ColumnSpan="2"
+                      SelectionChanged="Report_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="STT"
                                                 Foreground="Black"
                                                 Binding="{Binding STT}"
-                                                Width="100">
+                                                Width="Auto">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="HorizontalAlignment"
@@ -133,36 +141,33 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Time"
                                                 Binding="{Binding Time}"
-                                                Width="300" >
+                                                Width="Auto" >
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="OrderCode"
+                                                Binding="{Binding OrderCode}"
+                                                Width="Auto" >
+
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Model"
                                                 Binding="{Binding Model}"
-                                                Width="150" >
+                                                Width="Auto" >
 
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="TrucID"
-                                                Binding="{Binding TrucID}"
-                                                Width="150" >
+                    <DataGridTextColumn Header="ID_Shaft"
+                                                Binding="{Binding ID_Shaft}"
+                                                Width="Auto" >
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="RotorID"
-                                                Binding="{Binding RotorID}"
-                                                Width="150" >
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Upper Bearings"
-                                                Binding="{Binding BearingU}"
-                                                Width="200" >
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Lower Bearings"
-                                                Binding="{Binding BearingD}"
-                                                Width="200" >
+                    <DataGridTextColumn Header="ID_Rotor"
+                                                Binding="{Binding ID_Rotor}"
+                                                Width="Auto" >
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Force Max"
                                                 Binding="{Binding Force_Max}"
-                                                Width="150" >
+                                                Width="Auto" >
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Result"
-                                                Binding="{Binding Result}"
-                                                Width="150" >
+                                                Binding="{Binding Status}"
+                                                Width="Auto" >
                     </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>

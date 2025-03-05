@@ -79,11 +79,17 @@ namespace App_Control_Servo_Press_Delta.Class
             string JigU = "";
             string JigM;
             string JigD;
-            float thicknessU;
-            float thicknessD;
+            string BearingsU;
+            string BearingsD;
+            float thicknessBearingsU;
+            float thicknessBearingsD;
+            float thicknessJigU;
+            float thicknessJigD;
             bool checkJigU =false;
             bool checkJigM = false;
             bool checkJigD = false;
+            bool checkBearingsU = false;
+            bool checkBearingsD = false;
             int checkMode1 = 0;
             int checkMode2 = 0;
            
@@ -113,33 +119,30 @@ namespace App_Control_Servo_Press_Delta.Class
                         List_Model.ID_Rotor = worksheet.Cells[row, 3].Text;
                         List_Model.ID_Bearings_Up = worksheet.Cells[row, 4].Text;
                         List_Model.ID_Bearings_Down = worksheet.Cells[row, 5].Text;
-                        checkJigU= Fill_JigUD(linkpath.Jig_Up, "JigU", worksheet.Cells[row, 6].Text, out JigU, out thicknessU);
-                        checkJigM = Fill_JigM(linkpath.Jig_Mid, "JigM", worksheet.Cells[row, 7].Text, out JigM);
-                        checkJigD = Fill_JigUD(linkpath.Jig_Down, "JigD", worksheet.Cells[row, 8].Text, out JigD, out thicknessD);
+                        checkBearingsU = Fill_Bearings_JigUD(linkpath.Bearings_Up,  worksheet.Cells[row, 4].Text, out BearingsU, out thicknessBearingsU); 
+                        checkBearingsD = Fill_Bearings_JigUD(linkpath.Bearings_Down, worksheet.Cells[row, 5].Text, out BearingsD, out thicknessBearingsD);
+                        checkJigU = Fill_Bearings_JigUD(linkpath.Jig_Up,  worksheet.Cells[row, 6].Text, out JigU, out thicknessJigU);
+                        checkJigM = Fill_JigM(linkpath.Jig_Mid, worksheet.Cells[row, 7].Text, out JigM);
+                        checkJigD = Fill_Bearings_JigUD(linkpath.Jig_Down,  worksheet.Cells[row, 8].Text, out JigD, out thicknessJigD);
                         List_Model.Jig_Up = JigU;
                         List_Model.Jig_Mid = JigM;
                         List_Model.Jig_Down = JigD;
                         List_Model.Height_Stand = float.Parse(worksheet.Cells[row, 9].Text);
-                        List_Model.Upper_Bearings_Thicknness = float.Parse(worksheet.Cells[row, 10].Text);
-                        List_Model.Lower_Bearings_Thicknness = float.Parse(worksheet.Cells[row, 11].Text);
-                        List_Model.After_press_bearings_distance = float.Parse(worksheet.Cells[row, 12].Text);
-                        List_Model.Pre_press_Bearings_distance = float.Parse(worksheet.Cells[row, 13].Text);
-                        List_Model.Ofset_position1 = float.Parse(worksheet.Cells[row, 14].Text);
-                        List_Model.Ofset_position2 = float.Parse(worksheet.Cells[row, 15].Text);
-                        List_Model.Thickness_Jig_Up = thicknessU;
-                        List_Model.Thickness_Jig_Down = thicknessD;
-                        List_Model.Origin_Position = float.Parse(worksheet.Cells[row, 16].Text);
-                        List_Model.Origin_Velocity = float.Parse(worksheet.Cells[row, 17].Text);
-                        List_Model.Standby_Position = float.Parse(worksheet.Cells[row, 18].Text);
-                        List_Model.Standby_Velocity = float.Parse(worksheet.Cells[row, 19].Text);
-                        List_Model.Standby_Time = float.Parse(worksheet.Cells[row, 20].Text);
+                        List_Model.After_press_bearings_distance = float.Parse(worksheet.Cells[row, 10].Text);
+                        List_Model.Pre_press_Bearings_distance = float.Parse(worksheet.Cells[row, 11].Text);
+                        List_Model.Ofset_position1 = float.Parse(worksheet.Cells[row, 12].Text);
+                        List_Model.Ofset_position2 = float.Parse(worksheet.Cells[row, 13].Text);
+                        List_Model.Origin_Position = float.Parse(worksheet.Cells[row, 14].Text);
+                        List_Model.Origin_Velocity = float.Parse(worksheet.Cells[row, 15].Text);
+                        List_Model.Standby_Position = float.Parse(worksheet.Cells[row, 16].Text);
+                        List_Model.Standby_Velocity = float.Parse(worksheet.Cells[row, 17].Text);
+                        List_Model.Standby_Time = float.Parse(worksheet.Cells[row, 18].Text);
                         List_Model.Data_Func1 = new List<DataFunC>
                         {
                             new DataFunC
                             {
                                 Mode = 0,
                                 Press_Condition = "",
-                                Press_Pos = 0,
                                 Press_Force = 0,
                                 Press_Vel = 0,
                                 Press_Time = 0,
@@ -155,7 +158,6 @@ namespace App_Control_Servo_Press_Delta.Class
                             {
                                 Mode = 0,
                                 Press_Condition = "",
-                                Press_Pos = 0,
                                 Press_Force = 0,
                                 Press_Vel = 0,
                                 Press_Time = 0,
@@ -165,30 +167,24 @@ namespace App_Control_Servo_Press_Delta.Class
                                 End_Min_Pos_Limit = 0
                              }
                         };
-                        List_Model.Data_Func1[0].Mode = float.Parse(worksheet.Cells[row, 21].Text  );
-                        List_Model.Data_Func1[0].Press_Condition =CheckMode(worksheet.Cells[row, 21].Text,out checkMode1);
-                        List_Model.Data_Func1[0].Press_Pos = Caculate_Position_Distance(List_Model.Data_Func1[0].Mode, List_Model.Thickness_Jig_Down, List_Model.Lower_Bearings_Thicknness, 
-                                                                                        List_Model.After_press_bearings_distance, List_Model.Thickness_Jig_Up, List_Model.Pre_press_Bearings_distance,
-                                                                                        List_Model.Thickness_Jig_Up, List_Model.Ofset_position1, List_Model.Standby_Position);
-                        List_Model.Data_Func1[0].Press_Force = float.Parse(worksheet.Cells[row, 22].Text);
-                        List_Model.Data_Func1[0].Press_Vel = float.Parse(worksheet.Cells[row, 23].Text);
-                        List_Model.Data_Func1[0].Press_Time = float.Parse(worksheet.Cells[row, 24].Text);
-                        List_Model.Data_Func1[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 25].Text);
-                        List_Model.Data_Func1[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 26].Text);
-                        List_Model.Data_Func1[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 27].Text);
-                        List_Model.Data_Func1[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 28].Text);
-                        List_Model.Data_Func2[0].Mode = float.Parse(worksheet.Cells[row, 29].Text);
-                        List_Model.Data_Func2[0].Press_Condition = CheckMode(worksheet.Cells[row, 29].Text, out checkMode2);
-                        List_Model.Data_Func2[0].Press_Pos = Caculate_Position_Distance(List_Model.Data_Func2[0].Mode, List_Model.Thickness_Jig_Down, List_Model.Lower_Bearings_Thicknness,
-                                                                                        List_Model.After_press_bearings_distance, List_Model.Thickness_Jig_Up, List_Model.Pre_press_Bearings_distance,
-                                                                                        List_Model.Thickness_Jig_Up, List_Model.Ofset_position1, List_Model.Standby_Position);
-                        List_Model.Data_Func2[0].Press_Force = float.Parse(worksheet.Cells[row, 30].Text);
-                        List_Model.Data_Func2[0].Press_Vel = float.Parse(worksheet.Cells[row, 31].Text);
-                        List_Model.Data_Func2[0].Press_Time = float.Parse(worksheet.Cells[row, 32].Text);
-                        List_Model.Data_Func2[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 33].Text);
-                        List_Model.Data_Func2[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 34].Text);
-                        List_Model.Data_Func2[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 35].Text);
-                        List_Model.Data_Func2[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 36].Text);
+                        List_Model.Data_Func1[0].Mode = float.Parse(worksheet.Cells[row, 19].Text  );
+                        List_Model.Data_Func1[0].Press_Condition =CheckMode(worksheet.Cells[row, 19].Text,out checkMode1);
+                        List_Model.Data_Func1[0].Press_Force = float.Parse(worksheet.Cells[row, 20].Text);
+                        List_Model.Data_Func1[0].Press_Vel = float.Parse(worksheet.Cells[row, 21].Text);
+                        List_Model.Data_Func1[0].Press_Time = float.Parse(worksheet.Cells[row, 22].Text);
+                        List_Model.Data_Func1[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 23].Text);
+                        List_Model.Data_Func1[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 24].Text);
+                        List_Model.Data_Func1[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 25].Text);
+                        List_Model.Data_Func1[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 26].Text);
+                        List_Model.Data_Func2[0].Mode = float.Parse(worksheet.Cells[row, 27].Text);
+                        List_Model.Data_Func2[0].Press_Condition = CheckMode(worksheet.Cells[row, 27].Text, out checkMode2);
+                        List_Model.Data_Func2[0].Press_Force = float.Parse(worksheet.Cells[row, 28].Text);
+                        List_Model.Data_Func2[0].Press_Vel = float.Parse(worksheet.Cells[row, 29].Text);
+                        List_Model.Data_Func2[0].Press_Time = float.Parse(worksheet.Cells[row, 30].Text);
+                        List_Model.Data_Func2[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 31].Text);
+                        List_Model.Data_Func2[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 32].Text);
+                        List_Model.Data_Func2[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 33].Text);
+                        List_Model.Data_Func2[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 34].Text);
                         Jsontemp = JsonConvert.SerializeObject(List_Model);
                         if (Json_new.Length < 2)
                         {
@@ -205,17 +201,27 @@ namespace App_Control_Servo_Press_Delta.Class
                     if ( !checkJigU )
                     {
 
-                        System.Windows.MessageBox.Show("Mã Jig_Up khong có trong model jig, vui lòng kiểm tra lại");
+                        System.Windows.MessageBox.Show("Mã Jig_Up không có trong model jig, vui lòng kiểm tra lại");
                     }
                     else if ( !checkJigM )
                     {
 
-                        System.Windows.MessageBox.Show("Mã Jig_Mid khong có trong model jig, vui lòng kiểm tra lại");
+                        System.Windows.MessageBox.Show("Mã Jig_Mid không có trong model jig, vui lòng kiểm tra lại");
                     }
                     else if (!checkJigD)
                     {
 
-                        System.Windows.MessageBox.Show("Mã Jig_Down khong có trong model jig, vui lòng kiểm tra lại");
+                        System.Windows.MessageBox.Show("Mã Jig_Down không có trong model jig, vui lòng kiểm tra lại");
+                    }
+                    else if (!checkBearingsU)
+                    {
+
+                        System.Windows.MessageBox.Show("Mã Bearings_Up không có trong model Bearings_Up, vui lòng kiểm tra lại");
+                    }
+                    else if (!checkBearingsD)
+                    {
+
+                        System.Windows.MessageBox.Show("Mã Bearings_Down không có trong model Bearings_Down, vui lòng kiểm tra lại");
                     }
                     else if (checkMode1 == 6)
                     {
@@ -511,33 +517,31 @@ namespace App_Control_Servo_Press_Delta.Class
                                 worksheet.Cells[nextRow, 7].Value = obj.Jig_Mid;
                                 worksheet.Cells[nextRow, 8].Value = obj.Jig_Down;
                                 worksheet.Cells[nextRow, 9].Value = obj.Height_Stand;
-                                worksheet.Cells[nextRow, 10].Value = obj.Upper_Bearings_Thicknness;
-                                worksheet.Cells[nextRow, 11].Value = obj.Lower_Bearings_Thicknness;
-                                worksheet.Cells[nextRow, 12].Value = obj.Pre_press_Bearings_distance;
-                                worksheet.Cells[nextRow, 13].Value = obj.After_press_bearings_distance;
-                                worksheet.Cells[nextRow, 14].Value = obj.Ofset_position1;
-                                worksheet.Cells[nextRow, 15].Value = obj.Ofset_position2;
-                                worksheet.Cells[nextRow, 16].Value = obj.Origin_Position;
-                                worksheet.Cells[nextRow, 17].Value = obj.Origin_Velocity;
-                                worksheet.Cells[nextRow, 18].Value = obj.Standby_Position;
-                                worksheet.Cells[nextRow, 19].Value = obj.Standby_Velocity;
-                                worksheet.Cells[nextRow, 20].Value = obj.Standby_Time;
-                                worksheet.Cells[nextRow, 21].Value = obj.Data_Func1[0].Mode;
-                                worksheet.Cells[nextRow, 22].Value = obj.Data_Func1[0].Press_Force;
-                                worksheet.Cells[nextRow, 23].Value = obj.Data_Func1[0].Press_Vel;
-                                worksheet.Cells[nextRow, 24].Value = obj.Data_Func1[0].Press_Time;
-                                worksheet.Cells[nextRow, 25].Value = obj.Data_Func1[0].End_Max_Force_Limit;
-                                worksheet.Cells[nextRow, 26].Value = obj.Data_Func1[0].End_Min_Force_Limit;
-                                worksheet.Cells[nextRow, 27].Value = obj.Data_Func1[0].End_Max_Pos_Limit;
-                                worksheet.Cells[nextRow, 28].Value = obj.Data_Func1[0].End_Min_Pos_Limit;
-                                worksheet.Cells[nextRow, 29].Value = obj.Data_Func2[0].Mode;
-                                worksheet.Cells[nextRow, 30].Value = obj.Data_Func2[0].Press_Force;
-                                worksheet.Cells[nextRow, 31].Value = obj.Data_Func2[0].Press_Vel;
-                                worksheet.Cells[nextRow, 32].Value = obj.Data_Func2[0].Press_Time;
-                                worksheet.Cells[nextRow, 33].Value = obj.Data_Func2[0].End_Max_Force_Limit;
-                                worksheet.Cells[nextRow, 34].Value = obj.Data_Func2[0].End_Min_Force_Limit;
-                                worksheet.Cells[nextRow, 35].Value = obj.Data_Func2[0].End_Max_Pos_Limit;
-                                worksheet.Cells[nextRow, 36].Value = obj.Data_Func2[0].End_Min_Pos_Limit;
+                                worksheet.Cells[nextRow, 10].Value = obj.Pre_press_Bearings_distance;
+                                worksheet.Cells[nextRow, 11].Value = obj.After_press_bearings_distance;
+                                worksheet.Cells[nextRow, 12].Value = obj.Ofset_position1;
+                                worksheet.Cells[nextRow, 13].Value = obj.Ofset_position2;
+                                worksheet.Cells[nextRow, 14].Value = obj.Origin_Position;
+                                worksheet.Cells[nextRow, 15].Value = obj.Origin_Velocity;
+                                worksheet.Cells[nextRow, 16].Value = obj.Standby_Position;
+                                worksheet.Cells[nextRow, 17].Value = obj.Standby_Velocity;
+                                worksheet.Cells[nextRow, 18].Value = obj.Standby_Time;
+                                worksheet.Cells[nextRow, 19].Value = obj.Data_Func1[0].Mode;
+                                worksheet.Cells[nextRow, 20].Value = obj.Data_Func1[0].Press_Force;
+                                worksheet.Cells[nextRow, 21].Value = obj.Data_Func1[0].Press_Vel;
+                                worksheet.Cells[nextRow, 22].Value = obj.Data_Func1[0].Press_Time;
+                                worksheet.Cells[nextRow, 23].Value = obj.Data_Func1[0].End_Max_Force_Limit;
+                                worksheet.Cells[nextRow, 24].Value = obj.Data_Func1[0].End_Min_Force_Limit;
+                                worksheet.Cells[nextRow, 25].Value = obj.Data_Func1[0].End_Max_Pos_Limit;
+                                worksheet.Cells[nextRow, 26].Value = obj.Data_Func1[0].End_Min_Pos_Limit;
+                                worksheet.Cells[nextRow, 27].Value = obj.Data_Func2[0].Mode;
+                                worksheet.Cells[nextRow, 28].Value = obj.Data_Func2[0].Press_Force;
+                                worksheet.Cells[nextRow, 29].Value = obj.Data_Func2[0].Press_Vel;
+                                worksheet.Cells[nextRow, 30].Value = obj.Data_Func2[0].Press_Time;
+                                worksheet.Cells[nextRow, 31].Value = obj.Data_Func2[0].End_Max_Force_Limit;
+                                worksheet.Cells[nextRow, 32].Value = obj.Data_Func2[0].End_Min_Force_Limit;
+                                worksheet.Cells[nextRow, 33].Value = obj.Data_Func2[0].End_Max_Pos_Limit;
+                                worksheet.Cells[nextRow, 34].Value = obj.Data_Func2[0].End_Min_Pos_Limit;
                                 nextRow = nextRow + 1;
                             }
                             package.Save();
@@ -565,33 +569,31 @@ namespace App_Control_Servo_Press_Delta.Class
                         worksheet.Cells[2, 7].Value = "Jig_Mid";
                         worksheet.Cells[2, 8].Value = "Jig_Down";
                         worksheet.Cells[2, 9].Value = "Height_Stand";
-                        worksheet.Cells[2, 10].Value = "Upper_Bearings_thickness";
-                        worksheet.Cells[2, 11].Value = "Lower_Bearings_thickness";
-                        worksheet.Cells[2, 12].Value = "Pre-Press_Bearings_Distance";
-                        worksheet.Cells[2, 13].Value = "After-Press_Bearings_Distance";
-                        worksheet.Cells[2, 14].Value = "Ofset_Press";
-                        worksheet.Cells[2, 15].Value = "Ofset2";
-                        worksheet.Cells[2, 16].Value = "Origin_Position";
-                        worksheet.Cells[2, 17].Value = "Origin_Velocity";
-                        worksheet.Cells[2, 18].Value = "Standby_Position";
-                        worksheet.Cells[2, 19].Value = "Standby_Velocity";
-                        worksheet.Cells[2, 20].Value = "Standby_Time";
-                        worksheet.Cells[2, 21].Value = "Mode";
-                        worksheet.Cells[2, 22].Value = "Press_Force";
-                        worksheet.Cells[2, 23].Value = "Press_Velocity";
-                        worksheet.Cells[2, 24].Value = "Press_Time";
-                        worksheet.Cells[2, 25].Value = "Max_Force";
-                        worksheet.Cells[2, 26].Value = "Min_Force";
-                        worksheet.Cells[2, 27].Value = "Max_Position";
-                        worksheet.Cells[2, 28].Value = "Min_Position";
-                        worksheet.Cells[2, 29].Value = "Mode";
-                        worksheet.Cells[2, 30].Value = "Press_Force";
-                        worksheet.Cells[2, 31].Value = "Press_Velocity";
-                        worksheet.Cells[2, 32].Value = "Press_Time";
-                        worksheet.Cells[2, 33].Value = "Max_Force";
-                        worksheet.Cells[2, 34].Value = "Min_Force";
-                        worksheet.Cells[2, 35].Value = "Max_Position";
-                        worksheet.Cells[2, 36].Value = "Min_Position";
+                        worksheet.Cells[2, 10].Value = "Pre-Press_Bearings_Distance";
+                        worksheet.Cells[2, 11].Value = "After-Press_Bearings_Distance";
+                        worksheet.Cells[2, 12].Value = "Ofset_Press";
+                        worksheet.Cells[2, 13].Value = "Ofset2";
+                        worksheet.Cells[2, 14].Value = "Origin_Position";
+                        worksheet.Cells[2, 15].Value = "Origin_Velocity";
+                        worksheet.Cells[2, 16].Value = "Standby_Position";
+                        worksheet.Cells[2, 17].Value = "Standby_Velocity";
+                        worksheet.Cells[2, 18].Value = "Standby_Time";
+                        worksheet.Cells[2, 19].Value = "Mode";
+                        worksheet.Cells[2, 20].Value = "Press_Force";
+                        worksheet.Cells[2, 21].Value = "Press_Velocity";
+                        worksheet.Cells[2, 22].Value = "Press_Time";
+                        worksheet.Cells[2, 23].Value = "Max_Force";
+                        worksheet.Cells[2, 24].Value = "Min_Force";
+                        worksheet.Cells[2, 25].Value = "Max_Position";
+                        worksheet.Cells[2, 26].Value = "Min_Position";
+                        worksheet.Cells[2, 27].Value = "Mode";
+                        worksheet.Cells[2, 28].Value = "Press_Force";
+                        worksheet.Cells[2, 29].Value = "Press_Velocity";
+                        worksheet.Cells[2, 30].Value = "Press_Time";
+                        worksheet.Cells[2, 31].Value = "Max_Force";
+                        worksheet.Cells[2, 32].Value = "Min_Force";
+                        worksheet.Cells[2, 33].Value = "Max_Position";
+                        worksheet.Cells[2, 34].Value = "Min_Position";
 
                         int nextRow = 3;
                         List<List_Model> jsonArray = JsonConvert.DeserializeObject<List<List_Model>>(Fill_json);
@@ -608,33 +610,31 @@ namespace App_Control_Servo_Press_Delta.Class
                             worksheet.Cells[nextRow, 7].Value = obj.Jig_Mid;
                             worksheet.Cells[nextRow, 8].Value = obj.Jig_Down;
                             worksheet.Cells[nextRow, 9].Value = obj.Height_Stand;
-                            worksheet.Cells[nextRow, 10].Value = obj.Upper_Bearings_Thicknness;
-                            worksheet.Cells[nextRow, 11].Value = obj.Lower_Bearings_Thicknness;
-                            worksheet.Cells[nextRow, 12].Value = obj.Pre_press_Bearings_distance;
-                            worksheet.Cells[nextRow, 13].Value = obj.After_press_bearings_distance;
-                            worksheet.Cells[nextRow, 14].Value = obj.Ofset_position1;
-                            worksheet.Cells[nextRow, 15].Value = obj.Ofset_position2;
-                            worksheet.Cells[nextRow, 16].Value = obj.Origin_Position;
-                            worksheet.Cells[nextRow, 17].Value = obj.Origin_Velocity;
-                            worksheet.Cells[nextRow, 18].Value = obj.Standby_Position;
-                            worksheet.Cells[nextRow, 19].Value = obj.Standby_Velocity;
-                            worksheet.Cells[nextRow, 20].Value = obj.Standby_Time;
-                            worksheet.Cells[nextRow, 21].Value = obj.Data_Func1[0].Mode;
-                            worksheet.Cells[nextRow, 22].Value = obj.Data_Func1[0].Press_Force;
-                            worksheet.Cells[nextRow, 23].Value = obj.Data_Func1[0].Press_Vel;
-                            worksheet.Cells[nextRow, 24].Value = obj.Data_Func1[0].Press_Time;
-                            worksheet.Cells[nextRow, 25].Value = obj.Data_Func1[0].End_Max_Force_Limit;
-                            worksheet.Cells[nextRow, 26].Value = obj.Data_Func1[0].End_Min_Force_Limit;
-                            worksheet.Cells[nextRow, 27].Value = obj.Data_Func1[0].End_Max_Pos_Limit;
-                            worksheet.Cells[nextRow, 28].Value = obj.Data_Func1[0].End_Min_Pos_Limit;
-                            worksheet.Cells[nextRow, 29].Value = obj.Data_Func2[0].Mode;
-                            worksheet.Cells[nextRow, 30].Value = obj.Data_Func2[0].Press_Force;
-                            worksheet.Cells[nextRow, 31].Value = obj.Data_Func2[0].Press_Vel;
-                            worksheet.Cells[nextRow, 32].Value = obj.Data_Func2[0].Press_Time;
-                            worksheet.Cells[nextRow, 33].Value = obj.Data_Func2[0].End_Max_Force_Limit;
-                            worksheet.Cells[nextRow, 34].Value = obj.Data_Func2[0].End_Min_Force_Limit;
-                            worksheet.Cells[nextRow, 35].Value = obj.Data_Func2[0].End_Max_Pos_Limit;
-                            worksheet.Cells[nextRow, 36].Value = obj.Data_Func2[0].End_Min_Pos_Limit;
+                            worksheet.Cells[nextRow, 10].Value = obj.Pre_press_Bearings_distance;
+                            worksheet.Cells[nextRow, 11].Value = obj.After_press_bearings_distance;
+                            worksheet.Cells[nextRow, 12].Value = obj.Ofset_position1;
+                            worksheet.Cells[nextRow, 13].Value = obj.Ofset_position2;
+                            worksheet.Cells[nextRow, 14].Value = obj.Origin_Position;
+                            worksheet.Cells[nextRow, 15].Value = obj.Origin_Velocity;
+                            worksheet.Cells[nextRow, 16].Value = obj.Standby_Position;
+                            worksheet.Cells[nextRow, 17].Value = obj.Standby_Velocity;
+                            worksheet.Cells[nextRow, 18].Value = obj.Standby_Time;
+                            worksheet.Cells[nextRow, 19].Value = obj.Data_Func1[0].Mode;
+                            worksheet.Cells[nextRow, 20].Value = obj.Data_Func1[0].Press_Force;
+                            worksheet.Cells[nextRow, 21].Value = obj.Data_Func1[0].Press_Vel;
+                            worksheet.Cells[nextRow, 22].Value = obj.Data_Func1[0].Press_Time;
+                            worksheet.Cells[nextRow, 23].Value = obj.Data_Func1[0].End_Max_Force_Limit;
+                            worksheet.Cells[nextRow, 24].Value = obj.Data_Func1[0].End_Min_Force_Limit;
+                            worksheet.Cells[nextRow, 25].Value = obj.Data_Func1[0].End_Max_Pos_Limit;
+                            worksheet.Cells[nextRow, 26].Value = obj.Data_Func1[0].End_Min_Pos_Limit;
+                            worksheet.Cells[nextRow, 27].Value = obj.Data_Func2[0].Mode;
+                            worksheet.Cells[nextRow, 28].Value = obj.Data_Func2[0].Press_Force;
+                            worksheet.Cells[nextRow, 29].Value = obj.Data_Func2[0].Press_Vel;
+                            worksheet.Cells[nextRow, 30].Value = obj.Data_Func2[0].Press_Time;
+                            worksheet.Cells[nextRow, 31].Value = obj.Data_Func2[0].End_Max_Force_Limit;
+                            worksheet.Cells[nextRow, 32].Value = obj.Data_Func2[0].End_Min_Force_Limit;
+                            worksheet.Cells[nextRow, 33].Value = obj.Data_Func2[0].End_Max_Pos_Limit;
+                            worksheet.Cells[nextRow, 34].Value = obj.Data_Func2[0].End_Min_Pos_Limit;
                             nextRow = nextRow + 1;
                         }
                         package.SaveAs(filePath);
@@ -1024,18 +1024,18 @@ namespace App_Control_Servo_Press_Delta.Class
                     worksheet.Cells[1, 12].Value = "Force_max:";
                     worksheet.Cells[1, 13].Value = "Lực Ép:";
                     worksheet.Cells[1, 14].Value = "Vị Trí:";
-                    worksheet.Cells[2, 1].Value = Data_Report_temp.OrderCode;
-                    worksheet.Cells[2, 2].Value = Data_Report_temp.Model;
-                    worksheet.Cells[2, 3].Value = Data_Report_temp.RotorID;
-                    worksheet.Cells[2, 4].Value = Data_Report_temp.TrucID;
-                    worksheet.Cells[2, 5].Value = Data_Report_temp.Beer_Up;
-                    worksheet.Cells[2, 6].Value = Data_Report_temp.Beer_Down;
-                    worksheet.Cells[2, 7].Value = Data_Report_temp.Jig_Up;
-                    worksheet.Cells[2, 8].Value = Data_Report_temp.Jig_Mid;
-                    worksheet.Cells[2, 9].Value = Data_Report_temp.Jig_Down;
-                    worksheet.Cells[2, 10].Value = Data_Report_temp.HStand;
-                    worksheet.Cells[2, 11].Value = Data_Report_temp.Force;
-                    worksheet.Cells[2, 12].Value = Data_Report_temp.Force_Max;
+                //    worksheet.Cells[2, 1].Value = Data_Report_temp.OrderCode;
+                //    worksheet.Cells[2, 2].Value = Data_Report_temp.Model;
+                //    worksheet.Cells[2, 3].Value = Data_Report_temp.RotorID;
+                //    worksheet.Cells[2, 4].Value = Data_Report_temp.TrucID;
+                //    worksheet.Cells[2, 5].Value = Data_Report_temp.Beer_Up;
+                //    worksheet.Cells[2, 6].Value = Data_Report_temp.Beer_Down;
+                //    worksheet.Cells[2, 7].Value = Data_Report_temp.Jig_Up;
+                //    worksheet.Cells[2, 8].Value = Data_Report_temp.Jig_Mid;
+                //    worksheet.Cells[2, 9].Value = Data_Report_temp.Jig_Down;
+                //    worksheet.Cells[2, 10].Value = Data_Report_temp.HStand;
+                //    worksheet.Cells[2, 11].Value = Data_Report_temp.Force;
+                //    worksheet.Cells[2, 12].Value = Data_Report_temp.Force_Max;
 
                     nextRow = 2;
                     for (int i = 0; i < dataPoint.Count; i++)
@@ -1053,10 +1053,9 @@ namespace App_Control_Servo_Press_Delta.Class
                 System.Windows.MessageBox.Show($"Đã xảy ra lỗi khi xuất dữ liệu: {ex.Message}");
             }
         }
-        public void Export_Report_All_File(string File_Root_name, string title)
+        public void Export_Report_All_File(string File_Root_name, string title, string datajson)
         {
-            string json = File.ReadAllText(linkpath.Chart);
-            var data_Setting = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+            string json = datajson;
             string folderPath = open(title);
 
             // Kiểm tra xem đường dẫn thư mục có hợp lệ không
@@ -1075,46 +1074,34 @@ namespace App_Control_Servo_Press_Delta.Class
                 using (var package = new ExcelPackage())
                 {
                     worksheet = package.Workbook.Worksheets.Add("Sheet1");
-                    int nextRow = 0;
-                    foreach (var data in Global.List_report_all)
+                    int nextRow = 1;
+                    foreach (var data in Global.List_report)
                     {
-                        nextRow++;
-                        worksheet.Cells[nextRow, 1].Value = "Time:";
-                        worksheet.Cells[nextRow, 2].Value = "Order_Code:";
-                        worksheet.Cells[nextRow, 3].Value = "Model:";
-                        worksheet.Cells[nextRow, 4].Value = "RotorID:";
-                        worksheet.Cells[nextRow, 5].Value = "TrucID:";
-                        worksheet.Cells[nextRow, 6].Value = "Beer_Up:";
-                        worksheet.Cells[nextRow, 7].Value = "Beer_Down:";
-                        worksheet.Cells[nextRow, 8].Value = "Jig_Up:";
-                        worksheet.Cells[nextRow, 9].Value = "Jig_Mid:";
-                        worksheet.Cells[nextRow, 10].Value = "Jig_Down:";
-                        worksheet.Cells[nextRow, 11].Value = "Hstand:";
-                        worksheet.Cells[nextRow, 12].Value = "Force:";
-                        worksheet.Cells[nextRow, 13].Value = "Force_max:";
-                        worksheet.Cells[nextRow, 14].Value = "Lực Ép:";
-                        worksheet.Cells[nextRow, 15].Value = "Vị Trí:";
+                        worksheet.Cells[nextRow, 1].Value = "Time";
+                        worksheet.Cells[nextRow, 2].Value = "Order_Code";
+                        worksheet.Cells[nextRow, 3].Value = "Model";
+                        worksheet.Cells[nextRow, 4].Value = "ID_Shaft";
+                        worksheet.Cells[nextRow, 5].Value = "ID_Rotor";
+                        worksheet.Cells[nextRow, 6].Value = "Force_max";
+                        worksheet.Cells[nextRow, 7].Value = "Status";
+                        worksheet.Cells[nextRow, 8].Value = "Position";
+                        worksheet.Cells[nextRow, 9].Value = "Force";
                         nextRow++;
                         worksheet.Cells[nextRow, 1].Value = data.Time;
                         worksheet.Cells[nextRow, 2].Value = data.OrderCode;
                         worksheet.Cells[nextRow, 3].Value = data.Model;
-                        worksheet.Cells[nextRow, 4].Value = data.RotorID;
-                        worksheet.Cells[nextRow, 5].Value = data.TrucID;
-                        worksheet.Cells[nextRow, 6].Value = data.Beer_Up;
-                        worksheet.Cells[nextRow, 7].Value = data.Beer_Down;
-                        worksheet.Cells[nextRow, 8].Value = data.Jig_Up;
-                        worksheet.Cells[nextRow, 9].Value = data.Jig_Mid;
-                        worksheet.Cells[nextRow, 10].Value = data.Jig_Down;
-                        worksheet.Cells[nextRow, 11].Value = data.HStand;
-                        worksheet.Cells[nextRow, 12].Value = data.Force;
-                        worksheet.Cells[nextRow, 13].Value = data.Force_Max;
-                        strim_Position(data.Position);
-                        for (int i = 0; i < Global.List_Position_all.Count; i++)
+                        worksheet.Cells[nextRow, 4].Value = data.ID_Shaft;
+                        worksheet.Cells[nextRow, 5].Value = data.ID_Rotor;
+                        worksheet.Cells[nextRow, 6].Value = data.Force_Max;
+                        worksheet.Cells[nextRow, 7].Value = data.Status;
+                        for (int i = 0; i < data.Chart.Count; i++)
                         {
-                            worksheet.Cells[nextRow, 14].Value = Global.List_Position_all[i].Force;
-                            worksheet.Cells[nextRow, 15].Value = Global.List_Position_all[i].PST;
+                            worksheet.Cells[nextRow, 8].Value = data.Chart[i].X;
+                            worksheet.Cells[nextRow, 9].Value = data.Chart[i].Y;
                             nextRow++;
                         }
+
+                        nextRow++;
                     }
                     package.SaveAs(FinalPath);
                     System.Windows.MessageBox.Show("Dữ liệu đã được xuất ra Excel thành công!");
@@ -1201,98 +1188,57 @@ namespace App_Control_Servo_Press_Delta.Class
 
             return "---";
         }
-        private static bool Fill_JigUD(string path, string NameJig, string id,out string ID_Jig,out float Thickness)
+        private static bool Fill_Bearings_JigUD(string path, string id,out string ID_Jig,out float Thickness)
         {
             ID_Jig = "";
             Thickness = 0;
-            string jsons = File.ReadAllText(path); ;
-            if (jsons.Length > 0)
+            try
             {
-                JArray jsonArray = JArray.Parse(jsons);
-                foreach (JObject obj in jsonArray)
+                string jsons = File.ReadAllText(path); ;
+                if (jsons.Length > 0)
                 {
-                    if ( (string)obj["ID"] == id)
+                    JArray jsonArray = JArray.Parse(jsons);
+                    foreach (JObject obj in jsonArray)
                     {
-                        ID_Jig = (string)obj["ID"];
-                        Thickness = (float)obj["Thickness"];
-                        return true;
-                        break;
+                        if ((string)obj["ID"] == id)
+                        {
+                            ID_Jig = (string)obj["ID"];
+                            Thickness = (float)obj["Thickness"];
+                            return true;
+                        }
                     }
                 }
             }
+            catch { }
+           
             return false;
         }
-        private static bool Fill_JigM(string path, string NameDatagrid, string id , out string ID_Jig)
+        private static bool Fill_JigM(string path,  string id , out string ID_Jig)
         {
 
             ID_Jig = "";
-            string jsons = File.ReadAllText(path); ;
-            if (jsons.Length > 0)
+            try
             {
-                JArray jsonArray = JArray.Parse(jsons);
-                foreach (JObject obj in jsonArray)
+                string jsons = File.ReadAllText(path); ;
+                if (jsons.Length > 0)
                 {
-
-                    if ( (string)obj["ID"] == id)
+                    JArray jsonArray = JArray.Parse(jsons);
+                    foreach (JObject obj in jsonArray)
                     {
-                        ID_Jig = (string)obj["ID"];
-                        return true;
-                        break;
-                    }
 
+                        if ((string)obj["ID"] == id)
+                        {
+                            ID_Jig = (string)obj["ID"];
+                            return true;
+                        }
+
+                    }
                 }
             }
+            catch {}
             return false;
         }
-        private static float Caculate_Position_Distance(float mode,float Thickness_Jig_Down, float Thickness_BearingsD, float Distance_Bearings_After, float Thickness_BearingsU, float Distance_Bearings_Before,float Thickness_Jig_Up, float ofset_Model, float standby_position)
-        {
-
-            float Position = Global.Height_Shaft_Press
-                + (float)Data.ofset_Machine
-                - (float)Data.Height_Jig_Base
-                - Thickness_Jig_Down
-                - Thickness_BearingsD
-                - Distance_Bearings_After
-                - Thickness_BearingsU
-                - Thickness_Jig_Up
-                + ofset_Model;
-            float Distance = Global.Height_Shaft_Press
-                + (float)Data.ofset_Machine
-                - (float)Data.Height_Jig_Base
-                - Thickness_Jig_Down
-                - Thickness_BearingsD
-                - Distance_Bearings_After
-                - Thickness_BearingsU
-                - Thickness_Jig_Up
-                + ofset_Model
-                - standby_position;
-            Global.Standby_Position = Global.Height_Shaft_Press
-                + (float)Data.ofset_Machine
-                - (float)Data.Height_Jig_Base
-                - Global.Thickness_Jig_Down
-                - Thickness_BearingsD
-                - Distance_Bearings_Before
-                - Thickness_BearingsU
-                - Thickness_Jig_Up
-                + ofset_Model;
-
-            switch (mode)
-            {
-
-                case 1:
-                    return Position;
-                case 2:
-                    return 0;
-                case 3:
-                    return Distance;
-                case 4:
-                    return Position;
-                case 5:
-                    return Position;
-
-            }
-            return 0;
-        }
+ 
 
     }
 }
