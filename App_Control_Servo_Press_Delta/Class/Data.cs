@@ -173,6 +173,10 @@ namespace App_Control_Servo_Press_Delta.Class
         public static double Height_Shaft { get; set; }
         public static ushort ID_Error1 { get; set; }
         public static ushort ID_Error2 { get; set; }
+        public static ushort ID_Error3 { get; set; }
+        public static ushort ID_Error4 { get; set; }
+        public static ushort ID_Alarm1 { get; set; }
+        public static ushort ID_Alarm2 { get; set; }
         public static bool M_Home_Ep_J_P { get; set; }
         public static bool M_Ep_U_J_P { get; set; }
         public static bool M_Ep_D_J_N { get; set; }
@@ -184,6 +188,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool Done_Press { get; set; }
         public static bool Product_OK { get; set; }
         public static bool Product_NG { get; set; }
+        public static bool Ready { get; set; }
         public static double Position_PV { get; set; }
         public static double Force_PV { get; set; }
         public static bool Check_From_HMI { get; set; }

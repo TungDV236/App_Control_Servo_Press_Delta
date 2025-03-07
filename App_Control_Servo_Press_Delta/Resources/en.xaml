@@ -3,7 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!-- Main-->
 
-    <system:String x:Key="lb_Machine_Press_Bearings">MACHINE PRESS BEARINGS</system:String>
+    <system:String x:Key="lb_Machine_Press_Bearings">PRESS BEARINGS MACHINE</system:String>
     <system:String x:Key="btn_Auto">Auto</system:String>
     <system:String x:Key="btn_Man">Manual</system:String>
     <system:String x:Key="btn_History">History</system:String>

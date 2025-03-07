@@ -74,70 +74,72 @@ namespace App_Control_Servo_Press_Delta.Class
         }
         public void Import_Model(string filePath)
         {
-            string Jsontemp;
-            string Json_new = "";
-            string JigU = "";
-            string JigM;
-            string JigD;
-            string BearingsU;
-            string BearingsD;
-            float thicknessBearingsU;
-            float thicknessBearingsD;
-            float thicknessJigU;
-            float thicknessJigD;
-            bool checkJigU =false;
-            bool checkJigM = false;
-            bool checkJigD = false;
-            bool checkBearingsU = false;
-            bool checkBearingsD = false;
-            int checkMode1 = 0;
-            int checkMode2 = 0;
-           
-            //  List_Model List_Model = new List_Model();
-            List_Model List_Model = new List_Model();
-          
-            // Kiểm tra xem file có tồn tại không
-            if (!File.Exists(filePath))
+            try
             {
-                System.Windows.MessageBox.Show("File không tồn tại.");
-                return;
-            }
+                string Jsontemp;
+                string Json_new = "";
+                string JigU = "";
+                string JigM;
+                string JigD;
+                string BearingsU;
+                string BearingsD;
+                float thicknessBearingsU;
+                float thicknessBearingsD;
+                float thicknessJigU;
+                float thicknessJigD;
+                bool checkJigU = false;
+                bool checkJigM = false;
+                bool checkJigD = false;
+                bool checkBearingsU = false;
+                bool checkBearingsD = false;
+                int checkMode1 = 0;
+                int checkMode2 = 0;
 
-            Backup_File("Model.Json", "Model");
-            // Sử dụng EPPlus để đọc file Excel
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Thiết lập ngữ cảnh giấy phép
-            using (var package = new ExcelPackage(new FileInfo(filePath)))
-            {
-                // Lấy worksheet đầu tiên
-                var worksheet = package.Workbook.Worksheets[0];
-                if (worksheet.Cells[1, 1].Text == "Model")
+                //  List_Model List_Model = new List_Model();
+                List_Model List_Model = new List_Model();
+
+                // Kiểm tra xem file có tồn tại không
+                if (!File.Exists(filePath))
                 {
-                    for (int row = 3; row <= worksheet.Dimension.Rows; row++)
+                    System.Windows.MessageBox.Show("File không tồn tại.");
+                    return;
+                }
+
+                Backup_File("Model.Json", "Model");
+                // Sử dụng EPPlus để đọc file Excel
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Thiết lập ngữ cảnh giấy phép
+                using (var package = new ExcelPackage(new FileInfo(filePath)))
+                {
+                    // Lấy worksheet đầu tiên
+                    var worksheet = package.Workbook.Worksheets[0];
+                    if (worksheet.Cells[1, 1].Text == "Model")
                     {
-                        List_Model.Model = worksheet.Cells[row, 1].Text;
-                        List_Model.ID_Shaft = worksheet.Cells[row, 2].Text;
-                        List_Model.ID_Rotor = worksheet.Cells[row, 3].Text;
-                        List_Model.ID_Bearings_Up = worksheet.Cells[row, 4].Text;
-                        List_Model.ID_Bearings_Down = worksheet.Cells[row, 5].Text;
-                        checkBearingsU = Fill_Bearings_JigUD(linkpath.Bearings_Up,  worksheet.Cells[row, 4].Text, out BearingsU, out thicknessBearingsU); 
-                        checkBearingsD = Fill_Bearings_JigUD(linkpath.Bearings_Down, worksheet.Cells[row, 5].Text, out BearingsD, out thicknessBearingsD);
-                        checkJigU = Fill_Bearings_JigUD(linkpath.Jig_Up,  worksheet.Cells[row, 6].Text, out JigU, out thicknessJigU);
-                        checkJigM = Fill_JigM(linkpath.Jig_Mid, worksheet.Cells[row, 7].Text, out JigM);
-                        checkJigD = Fill_Bearings_JigUD(linkpath.Jig_Down,  worksheet.Cells[row, 8].Text, out JigD, out thicknessJigD);
-                        List_Model.Jig_Up = JigU;
-                        List_Model.Jig_Mid = JigM;
-                        List_Model.Jig_Down = JigD;
-                        List_Model.Height_Stand = float.Parse(worksheet.Cells[row, 9].Text);
-                        List_Model.After_press_bearings_distance = float.Parse(worksheet.Cells[row, 10].Text);
-                        List_Model.Pre_press_Bearings_distance = float.Parse(worksheet.Cells[row, 11].Text);
-                        List_Model.Ofset_position1 = float.Parse(worksheet.Cells[row, 12].Text);
-                        List_Model.Ofset_position2 = float.Parse(worksheet.Cells[row, 13].Text);
-                        List_Model.Origin_Position = float.Parse(worksheet.Cells[row, 14].Text);
-                        List_Model.Origin_Velocity = float.Parse(worksheet.Cells[row, 15].Text);
-                        List_Model.Standby_Position = float.Parse(worksheet.Cells[row, 16].Text);
-                        List_Model.Standby_Velocity = float.Parse(worksheet.Cells[row, 17].Text);
-                        List_Model.Standby_Time = float.Parse(worksheet.Cells[row, 18].Text);
-                        List_Model.Data_Func1 = new List<DataFunC>
+                        for (int row = 3; row <= worksheet.Dimension.Rows; row++)
+                        {
+                            List_Model.Model = worksheet.Cells[row, 1].Text;
+                            List_Model.ID_Shaft = worksheet.Cells[row, 2].Text;
+                            List_Model.ID_Rotor = worksheet.Cells[row, 3].Text;
+                            List_Model.ID_Bearings_Up = worksheet.Cells[row, 4].Text;
+                            List_Model.ID_Bearings_Down = worksheet.Cells[row, 5].Text;
+                            checkBearingsU = Fill_Bearings_JigUD(linkpath.Bearings_Up, worksheet.Cells[row, 4].Text, out BearingsU, out thicknessBearingsU);
+                            checkBearingsD = Fill_Bearings_JigUD(linkpath.Bearings_Down, worksheet.Cells[row, 5].Text, out BearingsD, out thicknessBearingsD);
+                            checkJigU = Fill_Bearings_JigUD(linkpath.Jig_Up, worksheet.Cells[row, 6].Text, out JigU, out thicknessJigU);
+                            checkJigM = Fill_JigM(linkpath.Jig_Mid, worksheet.Cells[row, 7].Text, out JigM);
+                            checkJigD = Fill_Bearings_JigUD(linkpath.Jig_Down, worksheet.Cells[row, 8].Text, out JigD, out thicknessJigD);
+                            List_Model.Jig_Up = JigU;
+                            List_Model.Jig_Mid = JigM;
+                            List_Model.Jig_Down = JigD;
+                            List_Model.Height_Stand = float.Parse(worksheet.Cells[row, 9].Text);
+                            List_Model.After_press_bearings_distance = float.Parse(worksheet.Cells[row, 10].Text);
+                            List_Model.Pre_press_Bearings_distance = float.Parse(worksheet.Cells[row, 11].Text);
+                            List_Model.Ofset_position1 = float.Parse(worksheet.Cells[row, 12].Text);
+                            List_Model.Ofset_position2 = float.Parse(worksheet.Cells[row, 13].Text);
+                            List_Model.Origin_Position = float.Parse(worksheet.Cells[row, 14].Text);
+                            List_Model.Origin_Velocity = float.Parse(worksheet.Cells[row, 15].Text);
+                            List_Model.Standby_Position = float.Parse(worksheet.Cells[row, 16].Text);
+                            List_Model.Standby_Velocity = float.Parse(worksheet.Cells[row, 17].Text);
+                            List_Model.Standby_Time = float.Parse(worksheet.Cells[row, 18].Text);
+                            List_Model.Data_Func1 = new List<DataFunC>
                         {
                             new DataFunC
                             {
@@ -152,7 +154,7 @@ namespace App_Control_Servo_Press_Delta.Class
                                 End_Min_Pos_Limit = 0
                             }
                         };
-                        List_Model.Data_Func2 = new List<DataFunC>
+                            List_Model.Data_Func2 = new List<DataFunC>
                         {
                             new DataFunC
                             {
@@ -167,84 +169,93 @@ namespace App_Control_Servo_Press_Delta.Class
                                 End_Min_Pos_Limit = 0
                              }
                         };
-                        List_Model.Data_Func1[0].Mode = float.Parse(worksheet.Cells[row, 19].Text  );
-                        List_Model.Data_Func1[0].Press_Condition =CheckMode(worksheet.Cells[row, 19].Text,out checkMode1);
-                        List_Model.Data_Func1[0].Press_Force = float.Parse(worksheet.Cells[row, 20].Text);
-                        List_Model.Data_Func1[0].Press_Vel = float.Parse(worksheet.Cells[row, 21].Text);
-                        List_Model.Data_Func1[0].Press_Time = float.Parse(worksheet.Cells[row, 22].Text);
-                        List_Model.Data_Func1[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 23].Text);
-                        List_Model.Data_Func1[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 24].Text);
-                        List_Model.Data_Func1[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 25].Text);
-                        List_Model.Data_Func1[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 26].Text);
-                        List_Model.Data_Func2[0].Mode = float.Parse(worksheet.Cells[row, 27].Text);
-                        List_Model.Data_Func2[0].Press_Condition = CheckMode(worksheet.Cells[row, 27].Text, out checkMode2);
-                        List_Model.Data_Func2[0].Press_Force = float.Parse(worksheet.Cells[row, 28].Text);
-                        List_Model.Data_Func2[0].Press_Vel = float.Parse(worksheet.Cells[row, 29].Text);
-                        List_Model.Data_Func2[0].Press_Time = float.Parse(worksheet.Cells[row, 30].Text);
-                        List_Model.Data_Func2[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 31].Text);
-                        List_Model.Data_Func2[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 32].Text);
-                        List_Model.Data_Func2[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 33].Text);
-                        List_Model.Data_Func2[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 34].Text);
-                        Jsontemp = JsonConvert.SerializeObject(List_Model);
-                        if (Json_new.Length < 2)
+                            List_Model.Data_Func1[0].Mode = float.Parse(worksheet.Cells[row, 19].Text);
+                            List_Model.Data_Func1[0].Press_Condition = CheckMode(worksheet.Cells[row, 19].Text, out checkMode1);
+                            List_Model.Data_Func1[0].Press_Force = float.Parse(worksheet.Cells[row, 20].Text);
+                            List_Model.Data_Func1[0].Press_Vel = float.Parse(worksheet.Cells[row, 21].Text);
+                            List_Model.Data_Func1[0].Press_Time = float.Parse(worksheet.Cells[row, 22].Text);
+                            List_Model.Data_Func1[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 23].Text);
+                            List_Model.Data_Func1[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 24].Text);
+                            List_Model.Data_Func1[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 25].Text);
+                            List_Model.Data_Func1[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 26].Text);
+                            List_Model.Data_Func2[0].Mode = float.Parse(worksheet.Cells[row, 27].Text);
+                            List_Model.Data_Func2[0].Press_Condition = CheckMode(worksheet.Cells[row, 27].Text, out checkMode2);
+                            List_Model.Data_Func2[0].Press_Force = float.Parse(worksheet.Cells[row, 28].Text);
+                            List_Model.Data_Func2[0].Press_Vel = float.Parse(worksheet.Cells[row, 29].Text);
+                            List_Model.Data_Func2[0].Press_Time = float.Parse(worksheet.Cells[row, 30].Text);
+                            List_Model.Data_Func2[0].End_Max_Force_Limit = float.Parse(worksheet.Cells[row, 31].Text);
+                            List_Model.Data_Func2[0].End_Min_Force_Limit = float.Parse(worksheet.Cells[row, 32].Text);
+                            List_Model.Data_Func2[0].End_Max_Pos_Limit = float.Parse(worksheet.Cells[row, 33].Text);
+                            List_Model.Data_Func2[0].End_Min_Pos_Limit = float.Parse(worksheet.Cells[row, 34].Text);
+                            Jsontemp = JsonConvert.SerializeObject(List_Model);
+                            if (Json_new.Length < 2)
+                            {
+                                Json_new = Json_new + Jsontemp;
+                            }
+                            else
+                            {
+                                Json_new = Json_new + "," + Jsontemp;
+                            }
+
+
+                        }
+                        Json_new = "[" + Json_new + "]";
+                        if (!checkJigU)
                         {
-                            Json_new = Json_new + Jsontemp;
+
+                            System.Windows.MessageBox.Show("Mã Jig_Up không có trong model jig, vui lòng kiểm tra lại");
+                        }
+                        else if (!checkJigM)
+                        {
+
+                            System.Windows.MessageBox.Show("Mã Jig_Mid không có trong model jig, vui lòng kiểm tra lại");
+                        }
+                        else if (!checkJigD)
+                        {
+
+                            System.Windows.MessageBox.Show("Mã Jig_Down không có trong model jig, vui lòng kiểm tra lại");
+                        }
+                        else if (!checkBearingsU)
+                        {
+
+                            System.Windows.MessageBox.Show("Mã Bearings_Up không có trong model Bearings_Up, vui lòng kiểm tra lại");
+                        }
+                        else if (!checkBearingsD)
+                        {
+
+                            System.Windows.MessageBox.Show("Mã Bearings_Down không có trong model Bearings_Down, vui lòng kiểm tra lại");
+                        }
+                        else if (checkMode1 == 6)
+                        {
+
+                            System.Windows.MessageBox.Show("Mode1 cài đặt không chính xác, vui lòng kiểm tra lại");
+                        }
+                        else if (checkMode2 == 6)
+                        {
+
+                            System.Windows.MessageBox.Show("Mode2 cài đặt không chính xác, vui lòng kiểm tra lại");
                         }
                         else
                         {
-                            Json_new = Json_new + "," + Jsontemp;
+
+                            File.WriteAllText(linkpath.Model, Json_new);
+                            System.Windows.MessageBox.Show("Đã nhập dữ liệu thành công");
                         }
-
-
-                    }
-                    Json_new = "[" + Json_new + "]";
-                    if ( !checkJigU )
-                    {
-
-                        System.Windows.MessageBox.Show("Mã Jig_Up không có trong model jig, vui lòng kiểm tra lại");
-                    }
-                    else if ( !checkJigM )
-                    {
-
-                        System.Windows.MessageBox.Show("Mã Jig_Mid không có trong model jig, vui lòng kiểm tra lại");
-                    }
-                    else if (!checkJigD)
-                    {
-
-                        System.Windows.MessageBox.Show("Mã Jig_Down không có trong model jig, vui lòng kiểm tra lại");
-                    }
-                    else if (!checkBearingsU)
-                    {
-
-                        System.Windows.MessageBox.Show("Mã Bearings_Up không có trong model Bearings_Up, vui lòng kiểm tra lại");
-                    }
-                    else if (!checkBearingsD)
-                    {
-
-                        System.Windows.MessageBox.Show("Mã Bearings_Down không có trong model Bearings_Down, vui lòng kiểm tra lại");
-                    }
-                    else if (checkMode1 == 6)
-                    {
-
-                        System.Windows.MessageBox.Show("Mode1 cài đặt không chính xác, vui lòng kiểm tra lại");
-                    }
-                    else if (checkMode2 == 6)
-                    {
-
-                        System.Windows.MessageBox.Show("Mode2 cài đặt không chính xác, vui lòng kiểm tra lại");
                     }
                     else
                     {
-
-                        File.WriteAllText(linkpath.Model, Json_new);
-                        System.Windows.MessageBox.Show("Đã nhập dữ liệu thành công");
+                        System.Windows.MessageBox.Show("File nhập không đúng mẫu");
                     }
                 }
-                else
-                {
-                    System.Windows.MessageBox.Show("File nhập không đúng mẫu");
-                }
             }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
+                Common common = new Common();
+                common.Log_err(ex.ToString());
+
+            }
+
         }
         public void Import_BJ_Filepath(string Model_name, string linkpath_json)
         {

@@ -1286,14 +1286,23 @@ namespace App_Control_Servo_Press_Delta
 
         private void Click_bt_Import_model(object sender, RoutedEventArgs e)
         {
+
             if (MainWindow.UserName != "")
             {
-                excel.Export_Model_File("Template_Model", path.Model, false, "Chọn thư mục lưu file Backup", "Backup_Model");
-                excel.Import_Model_Filepath();
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn nhập file excel hay không ?", "Xác nhận nhập excel", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    excel.Export_Model_File("Template_Model", path.Model, false, "Chọn thư mục lưu file Backup", "Backup_Model");
+                    excel.Import_Model_Filepath();
 
-                Common.Log_Operation("Import Model  " , path.Log_EN);
-                Common.Log_Operation("Nhập Model  " , path.Log_VN);
-                Common.Load_View_Model(List_Models);
+                    Common.Log_Operation("Import Model  ", path.Log_EN);
+                    Common.Log_Operation("Nhập Model  ", path.Log_VN);
+                    Common.Load_View_Model(List_Models);
+                }
+                else
+                {
+                    MessageBox.Show("Nhập Excel đã hủy");
+                }
             }
 
             else
@@ -1356,9 +1365,27 @@ namespace App_Control_Servo_Press_Delta
                 {
                     MessageBox.Show("Giá trị giới hạn lực ép của điều kiện ép 1 lớn hơn lực ép lớn nhất (3300N), vui lòng kiểm tra lại !");
                 }
+                else if ((Global.Function1[0].End_Min_Pos_Limit > 395) || Global.Function1[0].End_Max_Pos_Limit > 395)
+                {
+                    MessageBox.Show("Giá trị giới hạn vị trí của điều kiện ép 1 lớn hơn vị trí max (395mm), vui lòng kiểm tra lại !");
+                }
+                else if ((Global.Function2[0].End_Min_Pos_Limit > 395) || Global.Function2[0].End_Max_Pos_Limit > 395)
+                {
+                    MessageBox.Show("Giá trị giới hạn vị trí của điều kiện ép 2 lớn hơn vị trí max (395mm), vui lòng kiểm tra lại !");
+                }
                 else
                 {
-                    Save_Model();
+                    MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn Lưu mã Model: " + tb_Model.Text + " ?", "Xác nhận lưu", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes )
+                    {
+                        Save_Model();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lưu model không thành công!");
+                    }    
+
                 }
             }
 

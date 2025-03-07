@@ -1,0 +1,94 @@
+[
+  {
+    "Model": "V63",
+    "ID_Shaft": "DJT010W-01",
+    "ID_Rotor": "MP257WW-02",
+    "ID_Bearings_Up": "6203",
+    "ID_Bearings_Down": "6303",
+    "Jig_Up": "6203 U JIG",
+    "Jig_Mid": "JIG 1",
+    "Jig_Down": "6203 D JIG",
+    "Height_Stand": 80.0999985,
+    "Pre_press_Bearings_distance": 165.199997,
+    "After_press_bearings_distance": 201.600006,
+    "Ofset_position1": 0.100000001,
+    "Ofset_position2": 0,
+    "Origin_Position": 200,
+    "Origin_Velocity": 5,
+    "Standby_Position": 350,
+    "Standby_Velocity": 5,
+    "Standby_Time": 5,
+    "Data_Func1": [
+      {
+        "Mode": 1,
+        "Press_Condition": "Position",
+        "Press_Force": 0,
+        "Press_Vel": 5,
+        "Press_Time": 5,
+        "End_Max_Force_Limit": 1000,
+        "End_Min_Force_Limit": 3300,
+        "End_Max_Pos_Limit": 0,
+        "End_Min_Pos_Limit": 0
+      }
+    ],
+    "Data_Func2": [
+      {
+        "Mode": 0,
+        "Press_Condition": "---",
+        "Press_Force": 0,
+        "Press_Vel": 0,
+        "Press_Time": 0,
+        "End_Max_Force_Limit": 0,
+        "End_Min_Force_Limit": 0,
+        "End_Max_Pos_Limit": 0,
+        "End_Min_Pos_Limit": 0
+      }
+    ]
+  },
+  {
+    "Model": "V62",
+    "ID_Shaft": "DJT010W-01",
+    "ID_Rotor": "MP257WW-01",
+    "ID_Bearings_Up": "6205",
+    "ID_Bearings_Down": "6203",
+    "Jig_Up": "6203 U JIG",
+    "Jig_Mid": "JIG 2",
+    "Jig_Down": "6303 D JIG",
+    "Height_Stand": 0,
+    "Pre_press_Bearings_distance": 250,
+    "After_press_bearings_distance": 222.199997,
+    "Ofset_position1": 0.100000001,
+    "Ofset_position2": 0,
+    "Origin_Position": 10,
+    "Origin_Velocity": 5,
+    "Standby_Position": 270,
+    "Standby_Velocity": 5,
+    "Standby_Time": 5,
+    "Data_Func1": [
+      {
+        "Mode": 1,
+        "Press_Condition": "Position",
+        "Press_Force": 0,
+        "Press_Vel": 5,
+        "Press_Time": 10,
+        "End_Max_Force_Limit": 3300,
+        "End_Min_Force_Limit": 0,
+        "End_Max_Pos_Limit": 0,
+        "End_Min_Pos_Limit": 0
+      }
+    ],
+    "Data_Func2": [
+      {
+        "Mode": 0,
+        "Press_Condition": "---",
+        "Press_Force": 0,
+        "Press_Vel": 0,
+        "Press_Time": 0,
+        "End_Max_Force_Limit": 0,
+        "End_Min_Force_Limit": 0,
+        "End_Max_Pos_Limit": 0,
+        "End_Min_Pos_Limit": 0
+      }
+    ]
+  }
+]

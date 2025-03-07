@@ -26,7 +26,7 @@
             </i:Interaction.Triggers>
         </Grid>
         <materialDesign:Card
-            HorizontalAlignment="Center" Height="525" Width="300"
+            HorizontalAlignment="Center" Height="525" Width="350"
             materialDesign:ElevationAssist.Elevation="Dp16"
             UniformCornerRadius="5" x:Name="FocusBorder" RenderTransformOrigin="0.5,0.5">
             <materialDesign:Card.RenderTransform>
@@ -47,19 +47,6 @@
                               Padding="0"  Margin="-1" >
 
                 </Label>
-                <Button Grid.Row="0" x:Name="BTN_Exit" HorizontalAlignment="Right" Width="35" Height="25 " VerticalAlignment="Top" Background="Transparent" BorderBrush="White" BorderThickness="0"
-                             Margin="2" Padding="0" 
-                             MouseEnter="exitButton_MouseEnter" 
-                             MouseLeave="exitButton_MouseLeave"
-                             PreviewMouseDown="MouseDown_Close">
-                    <StackPanel 
-                           Width="20">
-                        <Image  Source="..\Images\Exit.png"
-                                  HorizontalAlignment="Left"
-                                     Stretch="Fill">
-                        </Image>
-                    </StackPanel>
-                </Button>
                 <Grid Grid.Row="1" Margin="0,5,0,0" >
                     <Grid >
                         <Grid.RowDefinitions>
@@ -98,6 +85,11 @@
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Header="ID"
                                          Binding="{Binding ID}"
+                                         Width="Auto" >
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Thickness"
+                                         Binding="{Binding Thickness}"
                                          Width="Auto" >
 
                                     </DataGridTextColumn>

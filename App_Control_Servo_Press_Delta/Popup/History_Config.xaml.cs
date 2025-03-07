@@ -422,7 +422,7 @@ namespace App_Control_Servo_Press_Delta.Popup
 
         private void btn_export_HisE_Click(object sender, RoutedEventArgs e)
         {
-            excel.Export_History_File("Template_History", "Chọn thư mục lưu file", "Model_Jig_Up");
+            excel.Export_History_File("Template_History", "Chọn thư mục lưu file", "History");
         }
 
         private void btn_Del_HisE_Click(object sender, RoutedEventArgs e)
@@ -436,25 +436,36 @@ namespace App_Control_Servo_Press_Delta.Popup
         }
         private void btn_Save_HisE_Click(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service")
+
+
+            if (tb_code.Text != "" & tb_DescriptionEN.Text != "" & tb_DescriptionVN.Text != "" & tb_SolutionEn.Text != "" & tb_SolutionVN.Text != "")
             {
-                Save_His();
+                if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service" || Is_String(MainWindow.UserName, "Admin"))
+                {
+                    MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn Lưu mã Lỗi: " + tb_code.Text + " ?", "Xác nhận Lưu", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        Save_His();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lưu model không thành công!");
+                    }
+                }
+                else
+                {
+
+                    MessageBox.Show("Vui Lòng đăng nhập quyền cao nhất!");
+                }
+
             }
-            else MessageBox.Show("Vui lòng đăng nhập tài khoản STI-Technical / STI-Service để cài đặt!");
+            else
+            {
+                MessageBox.Show("Vui Lòng nhập đầy đủ thông số");
+            }
         }
 
-        private void exitButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            BTN_Exit.Background = Brushes.Red; // Thay đổi màu nền khi di chuột qua
-        }
 
-        private void exitButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            BTN_Exit.Background = Brushes.Transparent; // Đặt lại màu nền khi chuột rời đi
-        }
-        private void MouseDown_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

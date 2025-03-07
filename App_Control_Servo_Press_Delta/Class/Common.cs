@@ -31,7 +31,8 @@ namespace App_Control_Servo_Press_Delta
         public string Error_VN = System.IO.Path.Combine("Path", "Error_VN.json");
         public string History_EN = System.IO.Path.Combine("Path", "History_EN.json");
         public string History_VN = System.IO.Path.Combine("Path", "History_VN.json");
-        public string Alarm = System.IO.Path.Combine("Path", "Alarm.json");
+        public string Alarm_EN = System.IO.Path.Combine("Path", "Alarm_EN.json");
+        public string Alarm_VN = System.IO.Path.Combine("Path", "Alarm_VN.json");
         public string User_List = System.IO.Path.Combine("Path", "UserCredentials.json");
         public string GPIO_EN = System.IO.Path.Combine("Path", "GPIO_EN.json");
         public string GPIO_VN = System.IO.Path.Combine("Path", "GPIO_VN.json");
@@ -302,7 +303,6 @@ namespace App_Control_Servo_Press_Delta
                     {
 
                         return item.IO_Define;
-                        break;
                     }
                 }
             }

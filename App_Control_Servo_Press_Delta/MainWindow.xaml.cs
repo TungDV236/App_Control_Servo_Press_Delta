@@ -47,7 +47,8 @@ namespace App_Control_Servo_Press_Delta
 
         #endregion
         #region khai báo dữ liệu
-        List<List_History> List_History = new List<List_History>();
+        List<List_History> List_History_EN = new List<List_History>();
+        List<List_History> List_History_VN = new List<List_History>();
         PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
 
         DataPoint newPoint1 = new DataPoint();
@@ -63,6 +64,7 @@ namespace App_Control_Servo_Press_Delta
         #region khai bao biến private
         private static uint Value_Al_old;
         private static uint Value_Err_old;
+        private static uint Value_Err_old2;
         private static string Status_PLC;
         private int position = 0;
         private DispatcherTimer Update_Status;
@@ -243,7 +245,9 @@ namespace App_Control_Servo_Press_Delta
 
             try
             {
-                Scan();
+                Scan_Error();
+                Scan_Error2();
+                Scan_Alarm();
                 Dispatcher.Invoke(() =>
                 {
                     Update_Screen();
@@ -552,7 +556,7 @@ namespace App_Control_Servo_Press_Delta
 
 
 
-        public void Scan()
+        public void Scan_Error()
         {
 
             uint Value_Err = (uint)((Data.ID_Error2 << 16) | Data.ID_Error1);
@@ -587,18 +591,139 @@ namespace App_Control_Servo_Press_Delta
                     }
                 }
                 Value_Err_old = Value_Err;
-                List<List_History> List_History_Copy = new List<List_History>(List_History);
-                for (int i = 0; i < List_History_Copy.Count; i++)
+                List<List_History> List_History_Copy_EN = new List<List_History>(List_History_EN);
+                List<List_History> List_History_Copy_VN = new List<List_History>(List_History_VN);
+                for (int i = 0; i < List_History_Copy_EN.Count; i++)
                 {
-                    List_History_Copy[i].STT = i + 1;
+                    List_History_Copy_EN[i].STT = i + 1;
                 }
-                List_History = List_History_Copy;
+
+                List_History_EN.Clear();
+                List_History_EN = List_History_Copy_EN;
+                for (int i = 0; i < List_History_Copy_VN.Count; i++)
+                {
+                    List_History_Copy_VN[i].STT = i + 1;
+                }
+
+                List_History_VN.Clear();
+                List_History_VN = List_History_Copy_VN;
             }
 
 
 
         }
+        public void Scan_Error2()
+        {
 
+            uint Value_Err = (uint)((Data.ID_Error4 << 16) | Data.ID_Error3);
+
+            string code_E = "";
+            // Phát hiện sự thay đổi của bit
+
+            uint changed_E_Bits = Value_Err_old2 ^ Value_Err;
+            //  Console.WriteLine("Changed bits:");
+
+            if (Value_Err != Value_Err_old2)
+            {
+                for (int i = 0; i < 32; i++)
+                {
+                    if ((changed_E_Bits & (1U << i)) != 0)
+                    {
+                        if ((Value_Err & (1U << i)) != 0)
+                        {
+                            code_E = Choose_Data_Err2(i);
+                            //   Console.WriteLine(" ma loi: " + code_E + "da xu ly");
+                            //   Clear_History(code_E);
+                            Add_Err(code_E, path.History_EN, path.Error_EN);
+                            Add_Err(code_E, path.History_VN, path.Error_VN);
+                        }
+                        else
+                        {
+                            code_E = Choose_Data_Err2(i);
+                            //  Console.WriteLine(" ma loi: " + code_E + "ton tai");
+                            // Save_History(code_E);
+                            Clear_His(code_E);
+                        }
+                    }
+                }
+                Value_Err_old2 = Value_Err;
+                List<List_History> List_History_Copy_EN = new List<List_History>(List_History_EN);
+                List<List_History> List_History_Copy_VN = new List<List_History>(List_History_VN);
+                for (int i = 0; i < List_History_Copy_EN.Count; i++)
+                {
+                    List_History_Copy_EN[i].STT = i + 1;
+                }
+
+                List_History_EN.Clear();
+                List_History_EN = List_History_Copy_EN;
+                for (int i = 0; i < List_History_Copy_VN.Count; i++)
+                {
+                    List_History_Copy_VN[i].STT = i + 1;
+                }
+
+                List_History_VN.Clear();
+                List_History_VN = List_History_Copy_VN;
+            }
+
+
+
+        }
+        public void Scan_Alarm()
+        {
+
+            uint Value_Alarm = (uint)((Data.ID_Alarm2 << 16) | Data.ID_Alarm1);
+
+            string code_E = "";
+            // Phát hiện sự thay đổi của bit
+
+            uint changed_E_Bits = Value_Al_old ^ Value_Alarm;
+            //  Console.WriteLine("Changed bits:");
+
+            if (Value_Alarm != Value_Al_old)
+            {
+                for (int i = 0; i < 32; i++)
+                {
+                    if ((changed_E_Bits & (1U << i)) != 0)
+                    {
+                        if ((Value_Alarm & (1U << i)) != 0)
+                        {
+                            code_E = Choose_Data_Al(i);
+                            //   Console.WriteLine(" ma loi: " + code_E + "da xu ly");
+                            //   Clear_History(code_E);
+                            Add_Err(code_E, path.History_EN, path.Alarm_EN);
+                            Add_Err(code_E, path.History_VN, path.Alarm_VN);
+                        }
+                        else
+                        {
+                            code_E = Choose_Data_Err2(i);
+                            //  Console.WriteLine(" ma loi: " + code_E + "ton tai");
+                            // Save_History(code_E);
+                            Clear_His(code_E);
+                        }
+                    }
+                }
+                Value_Al_old = Value_Alarm;
+                List<List_History> List_History_Copy_EN = new List<List_History>(List_History_EN);
+                List<List_History> List_History_Copy_VN = new List<List_History>(List_History_VN);
+                for (int i = 0; i < List_History_Copy_EN.Count; i++)
+                {
+                    List_History_Copy_EN[i].STT = i + 1;
+                }
+
+                List_History_EN.Clear();
+                List_History_EN = List_History_Copy_EN;
+                for (int i = 0; i < List_History_Copy_VN.Count; i++)
+                {
+                    List_History_Copy_VN[i].STT = i + 1;
+                }
+
+                List_History_VN.Clear();
+                List_History_VN = List_History_Copy_VN;
+            }
+
+
+
+        }
         public static string Choose_Data_Err(int i)
         {
             switch (i)
@@ -744,6 +869,81 @@ namespace App_Control_Servo_Press_Delta
                 default:
                     return "Invalid option";
             }
+
+        }
+        public static string Choose_Data_Err2(int i)
+        {
+            switch (i)
+            {
+
+                case 0:
+                    return "E20";
+                case 1:
+                    return "E21";
+                case 2:
+                    return "E22";
+                case 3:
+                    return "E23";
+                case 4:
+                    return "E24";
+                case 5:
+                    return "E25";
+                case 6:
+                    return "E26";
+                case 7:
+                    return "E27";
+                case 8:
+                    return "E28";
+                case 9:
+                    return "E29";
+                case 10:
+                    return "E2A";
+                case 11:
+                    return "E2B";
+                case 12:
+                    return "E2C";
+                case 13:
+                    return "E2D";
+                case 14:
+                    return "E2E";
+                case 15:
+                    return "E2F";
+                case 16:
+                    return "E30";
+                case 17:
+                    return "E31";
+                case 18:
+                    return "E32";
+                case 19:
+                    return "E33";
+                case 20:
+                    return "E34";
+                case 21:
+                    return "E35";
+                case 22:
+                    return "E36";
+                case 23:
+                    return "E37";
+                case 24:
+                    return "E38";
+                case 25:
+                    return "E39";
+                case 26:
+                    return "E3A";
+                case 27:
+                    return "E3B";
+                case 28:
+                    return "E3C";
+                case 29:
+                    return "E3D";
+                case 30:
+                    return "E3E";
+                case 31:
+                    return "E3F";
+
+                default:
+                    return "Invalid option";
+            }
         }
         private void Add_Err(string code_E, string path_His, string path_Error)
         {
@@ -780,8 +980,16 @@ namespace App_Control_Servo_Press_Delta
                                 List_History_.Solution = (string)obj["Solution"];
                                 List_History_.Time = dateTime.ToString();
                                 string list_Error_Json = JsonConvert.SerializeObject(List_History_);
-                                List_History.Add(List_History_);
+                                if (path_Error == System.IO.Path.Combine("Path", "Error_EN.json")|| path_Error == System.IO.Path.Combine("Path", "Alarm_EN.json"))
+                                {
 
+                                    List_History_EN.Add(List_History_);
+                                }
+                                if (path_Error == System.IO.Path.Combine("Path", "Error_VN.json")|| path_Error == System.IO.Path.Combine("Path", "Alarm_VN.json"))
+                                {
+
+                                    List_History_VN.Add(List_History_);
+                                }
                                 json = json.Remove(json.Length - 1);
                                 json = json + ",\r" + list_Error_Json + "]";
                                 File.WriteAllText(path_Error, json);
@@ -819,7 +1027,16 @@ namespace App_Control_Servo_Press_Delta
                                 List_History_.Solution = (string)obj["Solution"];
                                 List_History_.Time = dateTime.ToString();
                                 string list_Error_Json = JsonConvert.SerializeObject(List_History_);
-                                List_History.Add(List_History_);
+                                if (path_Error == System.IO.Path.Combine("Path", "Error_EN.json") || path_Error == System.IO.Path.Combine("Path", "Alarm_EN.json"))
+                                {
+
+                                    List_History_EN.Add(List_History_);
+                                }
+                                if (path_Error == System.IO.Path.Combine("Path", "Error_VN.json") || path_Error == System.IO.Path.Combine("Path", "Alarm_VN.json"))
+                                {
+
+                                    List_History_VN.Add(List_History_);
+                                }
 
                                 string json = "[" + list_Error_Json + "]";
                                 File.WriteAllText(path_Error, json);
@@ -829,6 +1046,7 @@ namespace App_Control_Servo_Press_Delta
                 }
 
             }
+            List_History_ = null;
 
         }
         public void Update_Datachart()
@@ -923,7 +1141,7 @@ namespace App_Control_Servo_Press_Delta
         {
             var newData = new List<List_History>();
 
-            foreach (var item in List_History)
+            foreach (var item in List_History_EN)
             {
                 if (item.Code != code_E)
                 {
@@ -931,7 +1149,20 @@ namespace App_Control_Servo_Press_Delta
                     newData.Add(item);
                 }
             }
-            List_History = newData;
+            List_History_EN.Clear();
+            List_History_EN = newData;
+            var newData1 = new List<List_History>();
+
+            foreach (var item in List_History_VN)
+            {
+                if (item.Code != code_E)
+                {
+
+                    newData.Add(item);
+                }
+            }
+            List_History_VN.Clear();
+            List_History_VN = newData1;
             //  History_Error.List_Error.ItemsSource = List_History;
             Console.WriteLine(" ma loi: " + code_E + "da xu ly");
             //    Common.Load_View_Model(List_History_);
@@ -940,7 +1171,16 @@ namespace App_Control_Servo_Press_Delta
         {
             TextBox textBox = (TextBox)sender;
 
-            string mylistString = Status_PLC + string.Join("           ", List_History.Select(o => $"{o.STT}" + " - " + $"{o.Code}" + " - " + $" {o.Description}")) + "                                               ";
+
+            string mylistString = "";
+            if (Global.Language=="EN")
+            {
+                mylistString = Status_PLC + string.Join("           ", List_History_EN.Select(o => $"{o.STT}" + " - " + $"{o.Code}" + " - " + $" {o.Description}")) + "                                               ";
+            }
+            if (Global.Language == "VN")
+            {
+                mylistString = Status_PLC + string.Join("           ", List_History_VN.Select(o => $"{o.STT}" + " - " + $"{o.Code}" + " - " + $" {o.Description}")) + "                                               ";
+            }
 
             string _mylistString = mylistString + mylistString + mylistString;
 

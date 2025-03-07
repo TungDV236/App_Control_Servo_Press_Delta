@@ -129,6 +129,10 @@ namespace App_Control_Servo_Press_Delta.Class
                 Data.Height_Shaft = data.Height_Shaft;
                 Data.ID_Error1 = data.ID_Error1;
                 Data.ID_Error2 = data.ID_Error2;
+                Data.ID_Error3 = data.ID_Error3;
+                Data.ID_Error4 = data.ID_Error4;
+                Data.ID_Alarm1 = data.ID_Alarm1;
+                Data.ID_Alarm2 = data.ID_Alarm2; 
                 Data.M_Home_Ep_J_P = data.M_Home_Ep_J_P;
                 Data.M_Ep_U_J_P = data.M_Ep_U_J_P;
                 Data.M_Ep_D_J_N = data.M_Ep_D_J_N;
@@ -140,6 +144,7 @@ namespace App_Control_Servo_Press_Delta.Class
                 Data.Done_Press = data.Done_Press;
                 Data.Product_OK = data.Product_OK;
                 Data.Product_NG = data.Product_NG;
+                Data.Ready = data.Ready;
                 Data.Position_PV = data.Position_PV;
                 Data.Force_PV = data.Force_PV;
                 Data.IB0 = data.IB0;

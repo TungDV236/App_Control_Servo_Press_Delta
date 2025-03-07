@@ -1,0 +1,318 @@
+08:33:43, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:43, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:43, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:43, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:43, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:44, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:44, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:44, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:44, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:44, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:45, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:45, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:45, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:45, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:45, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:45, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:46, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:46, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:46, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:46, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:47, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:47, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:47, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:47, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:47, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:48, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:48, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:48, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:48, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:48, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:49, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:49, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:49, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:49, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:49, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:49, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:50, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:50, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:50, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:50, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:50, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:51, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:51, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:51, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:51, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:51, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:52, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:52, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:52, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:52, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:52, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:53, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:53, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:54, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:54, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:54, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:54, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:54, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:55, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:55, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:55, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:55, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:55, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:56, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:56, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:56, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:56, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:56, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:57, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:57, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:57, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:57, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:57, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:57, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:58, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:58, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:58, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:58, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:58, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:59, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:59, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:59, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:59, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:33:59, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:00, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:00, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:00, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:00, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:01, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:01, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:01, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:01, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:01, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:01, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:02, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:02, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:02, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:02, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:34:02, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+08:37:22, status: Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot convert null to 'bool' because it is a non-nullable value type
+   at CallSite.Target(Closure , CallSite , Object )
+   at App_Control_Servo_Press_Delta.Class.PLC.Parse_Data(Object data) in E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\Class\PLC.cs:line 157
+15:44:09, status: System.IO.FileNotFoundException: Could not find file 'E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\Path\Alarm_EN.json'.
+File name: 'E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\Path\Alarm_EN.json'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at App_Control_Servo_Press_Delta.MainWindow.Add_Err(String code_E, String path_His, String path_Error)
+15:44:16, status: System.IO.FileNotFoundException: Could not find file 'E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\Path\Alarm_VN.json'.
+File name: 'E:\Cong Viec\STI\Du An\06.Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\App_Control_Servo_Press_Delta\bin\Debug\Path\Alarm_VN.json'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at App_Control_Servo_Press_Delta.MainWindow.Add_Err(String code_E, String path_His, String path_Error)

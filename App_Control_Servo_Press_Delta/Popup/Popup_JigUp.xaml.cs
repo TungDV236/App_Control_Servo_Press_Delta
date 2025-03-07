@@ -202,25 +202,24 @@ namespace App_Control_Servo_Press_Delta.Popup
                         string newJsonString = System.Text.Json.JsonSerializer.Serialize(data, jsonOptions);
                         File.WriteAllText(pathstring, newJsonString);
                         MessageBox.Show("Đã Lưu Thành Công");
+
+                        Common.Log_Operation("Edit Model Jig :   " + tb_ID.Text, path.Log_EN);
+                        Common.Log_Operation("Sửa Model Jig :   " + tb_ID.Text, path.Log_VN);
                         flag = 1;
                         break;
                     }
                 }
                 if (flag == 0)
                 {
-                    if (json.Length < 10)
+                    if (json.Length >0)
                     {
-                        json = json.Remove(json.Length - 1);
-                        json = json + list_Json + "]";
-                        File.WriteAllText(pathstring, json);
-                        MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
-                    }
-                    else
-                    {
+
                         json = json.Remove(json.Length - 1);
                         json = json + "," + list_Json + "]";
                         File.WriteAllText(pathstring, json);
                         MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
+                        Common.Log_Operation("Create Model Jig :   " + tb_ID.Text, path.Log_EN);
+                        Common.Log_Operation("Tạo Model Jig :   " + tb_ID.Text, path.Log_VN);
                     }
                 }
 
@@ -232,6 +231,8 @@ namespace App_Control_Servo_Press_Delta.Popup
                 jsons = "[" + list_Json + "]";
                 File.WriteAllText(pathstring, jsons);
                 MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
+                Common.Log_Operation("Create Model Jig :   " + tb_ID.Text, path.Log_EN);
+                Common.Log_Operation("Tạo Model Jig :   " + tb_ID.Text, path.Log_VN);
             }
             Common.Load_View(List_Model, pathstring);
         }
@@ -239,10 +240,9 @@ namespace App_Control_Servo_Press_Delta.Popup
         {
             try
             {
-                string jsons = File.ReadAllText(pathstring);
-                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa mã Jig: " + tb_ID.Text + " ?", "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-                if (result == MessageBoxResult.Yes & tb_ID.Text.Length > 0)
+                string jsons = File.ReadAllText(pathstring);
+                if (tb_ID.Text.Length > 0)
                 {
 
                     var options = new JsonSerializerOptions { ReadCommentHandling = JsonCommentHandling.Skip };
@@ -261,6 +261,9 @@ namespace App_Control_Servo_Press_Delta.Popup
                     string newJsonString = System.Text.Json.JsonSerializer.Serialize(newData, jsonOptions);
                     // Write back to file
                     File.WriteAllText(pathstring, newJsonString);
+
+                    Common.Log_Operation("Delete Model Jig :   " + tb_ID.Text, path.Log_EN);
+                    Common.Log_Operation("Xóa Model Jig :   " + tb_ID.Text, path.Log_VN);
                 }
                 else
                 {
@@ -277,29 +280,65 @@ namespace App_Control_Servo_Press_Delta.Popup
 
         private void btn_Del_Click(object sender, RoutedEventArgs e)
         {
-            Clear_JigU();
+
+
+                if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service" || Is_String(MainWindow.UserName, "Admin"))
+                {
+                    MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa mã Jig : " + tb_ID.Text + " ?", "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        Clear_JigU();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa model không thành công!");
+                    }
+                }
+                else
+                {
+
+                    MessageBox.Show("Vui Lòng đăng nhập quyền cao nhất!");
+                }
+
+            
+
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            Save_JigU();
+            if( tb_ID.Text !="" & tb_Thichness.Text!= "")
+            {
+                if (MainWindow.UserName == "STI-Technical" || MainWindow.UserName == "STI-Service" || Is_String(MainWindow.UserName, "Admin"))
+                {
+                    MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn Lưu mã Model: " + tb_ID.Text + " ?", "Xác nhận Lưu", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        Save_JigU();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lưu model không thành công!");
+                    }
+                }  
+                else
+                {
+
+                    MessageBox.Show("Vui Lòng đăng nhập quyền cao nhất!");
+                }    
+                
+            }
+            else
+            {
+                MessageBox.Show("Vui Lòng nhập đầy đủ thông số");
+            }
+ 
         }
-        private void exitButton_MouseEnter(object sender, MouseEventArgs e)
+
+        private static bool Is_String(string input, string Compari_1)
         {
-            BTN_Exit.Background = Brushes.Red; // Thay đổi màu nền khi di chuột qua
-        }
-
-        private void exitButton_MouseLeave(object sender,MouseEventArgs e)
-        {
-            BTN_Exit.Background = Brushes.Transparent; // Đặt lại màu nền khi chuột rời đi
-        }
-        private void MouseDown_Close(object sender, RoutedEventArgs e)
-        {
-
-
-                this.Close();
-
-
+            return input.Contains(Compari_1);
         }
     }
 }

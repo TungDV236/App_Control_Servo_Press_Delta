@@ -143,56 +143,7 @@ namespace App_Control_Servo_Press_Delta
                     M_Ep_ABS.Content = "Tương đối";
                 }
             }
-            check_status_btn();
 
-        }
-        private void check_status_btn()
-        {
-            //  if (Data.M_Home_Ep_J_P != Global.M_Home_Ep_J_P)
-            //  {
-            //      var data = new
-            //      {
-            //          M_Home_Ep_J_P = Global.M_Home_Ep_J_P
-            //      };
-            //      string jsonData = JsonConvert.SerializeObject(data);
-            //      MainWindow._queue.Add(jsonData);
-            //  }
-            //  if (Data.M_Ep_U_J_P != Global.M_Ep_J_P)
-            //  {
-            //      var data = new
-            //      {
-            //          M_Ep_U_J_P = Global.M_Ep_J_P
-            //      };
-            //      string jsonData = JsonConvert.SerializeObject(data);
-            //      MainWindow._queue.Add(jsonData);
-            //  }
-            //  if (Data.M_Ep_D_J_N != Global.M_Ep_J_N)
-            //  {
-            //      var data = new
-            //      {
-            //          M_Ep_D_J_N = Global.M_Ep_J_N
-            //      };
-            //      string jsonData = JsonConvert.SerializeObject(data);
-            //      MainWindow._queue.Add(jsonData);
-            //  }
-            //  if (Data.M_Door_U_J_P != Global.M_Door_J_P)
-            //  {
-            //      var data = new
-            //      {
-            //          M_Door_U_J_P = Global.M_Door_J_P
-            //      };
-            //      string jsonData = JsonConvert.SerializeObject(data);
-            //      MainWindow._queue.Add(jsonData);
-            //  }
-            //  if (Data.M_Door_D_J_N != Global.M_Door_J_N)
-            //  {
-            //      var data = new
-            //      {
-            //          M_Door_D_J_N = Global.M_Door_J_N
-            //      };
-            //      string jsonData = JsonConvert.SerializeObject(data);
-            //      MainWindow._queue.Add(jsonData);
-            //  }
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
