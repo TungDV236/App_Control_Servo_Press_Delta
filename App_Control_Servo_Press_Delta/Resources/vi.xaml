@@ -111,10 +111,10 @@
     <system:String x:Key="lb_Press_Velocity">Vận Tốc Ép</system:String>
     <system:String x:Key="lb_Press_Time">Thời gian Ép</system:String>
     <system:String x:Key="lb_Basic_Limit">Giới hạn cơ bản</system:String>
-    <system:String x:Key="lb_Force_Min">Lực lớn nhất</system:String>
-    <system:String x:Key="lb_Force Max">Lực nhỏ nhất</system:String>
-    <system:String x:Key="lb_Position_Min">Vị trí xa nhất</system:String>
-    <system:String x:Key="lb_Position_Max">Vị trí gần nhất</system:String>
+    <system:String x:Key="lb_Force_Min">Lực nhỏ nhất</system:String>
+    <system:String x:Key="lb_Force Max">Lực lớn nhất</system:String>
+    <system:String x:Key="lb_Position_Min">Vị trí gần nhất</system:String>
+    <system:String x:Key="lb_Position_Max">Vị trí xa nhất</system:String>
     <system:String x:Key="lb_Import">Nhập Excel</system:String>
     <system:String x:Key="lb_Export">Xuất Excel</system:String>
     <system:String x:Key="lb_Delete">Xóa</system:String>

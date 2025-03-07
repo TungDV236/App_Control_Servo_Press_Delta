@@ -135,8 +135,10 @@ namespace App_Control_Servo_Press_Delta
             }
 
             }
-            catch
-            { }
+            catch (Exception e)
+            {
+                Common.Log_err(e.ToString());
+            }
 
         }
         private void Loadlog( string _path)
@@ -166,9 +168,11 @@ namespace App_Control_Servo_Press_Delta
                 //  List_Error.ItemsSource =  List<li> Users { get; set; }
             }
             }
-            catch
-            { }
-          
+            catch (Exception e)
+            {
+                Common.Log_err(e.ToString());
+            }
+
         }
         private void Clear_Errs()
         {

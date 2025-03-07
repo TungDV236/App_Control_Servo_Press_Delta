@@ -67,6 +67,7 @@ namespace App_Control_Servo_Press_Delta
         private int position = 0;
         private DispatcherTimer Update_Status;
         private DispatcherTimer Update_Sys;
+        private DispatcherTimer Check_Para;
         #endregion
 
         public static bool Error_UnKnow_Order;
@@ -76,7 +77,7 @@ namespace App_Control_Servo_Press_Delta
         private double _Force_max;
         private int pointCount = 0;
         private DateTime lastSendTime = DateTime.MinValue;
-        private readonly TimeSpan sendInterval = TimeSpan.FromMilliseconds(300);
+        private readonly TimeSpan sendInterval = TimeSpan.FromMilliseconds(500);
         public MainWindow()
         {
             InitializeComponent();
@@ -90,22 +91,18 @@ namespace App_Control_Servo_Press_Delta
             _queue.CollectionChanged += Queue_CollectionChanged;
             socket.ConnectToServer();
             // Đặt kích thước và vị trí của cửa sổ
-             this.Left = workingArea.Left -7;
-             this.Top = workingArea.Top;
-             this.Width = workingArea.Width + 11;
-             this.Height = workingArea.Height + 5;
+            this.Left = workingArea.Left - 7;
+            this.Top = workingArea.Top;
+            this.Width = workingArea.Width + 11;
+            this.Height = workingArea.Height + 5;
             // Program.Main();
         }
         private void Queue_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (_queue.Count > 0)
             {
-                if (DateTime.Now - lastSendTime >= sendInterval)
-                {
-                    lastSendTime = DateTime.Now; // Cập nhật thời gian gửi yêu cầu mới
-                                                 // Gửi HTTP POST request khi số lượng phần tử thay đổi
                     PLC.SendPostRequestAsync();
-                }
+
             }
         }
 
@@ -128,6 +125,7 @@ namespace App_Control_Servo_Press_Delta
             Update_Sys.Interval = TimeSpan.FromMilliseconds(1000);
             Update_Sys.Tick += Update_Status_Tick1000ms;
             Update_Sys.Start();
+
             //
             Pannel_Monitor.Children.Clear();
             Pannel_Monitor.Children.Add(Auto_Screen);
@@ -161,14 +159,55 @@ namespace App_Control_Servo_Press_Delta
         {
             Dispatcher.Invoke(() =>
             {
+                if (Global.Pressing)
+                {
+                    Update_Datachart();
+                    if (Data.Force_PV > Global.Force_Max)
+                    {
+                        Global.Force_Max = (float)Data.Force_PV;
+                        Global.Position_Force_Max = (float)Data.Position_PV;
+                    }
+                   
+
+
+                }
+                else if (!Global.Pressing & Flag)
+                {
+                    Flag = false;
+                    Flag1 = false;
+                }
+                if (Global.Auto_Order_Code == "")
+                {
+                    if (!Data.Alarm_Scan_Data)
+                    {
+                        var data = new
+                        {
+                            Alarm_Scan_Data = true
+                        };
+                        string jsonData = JsonConvert.SerializeObject(data);
+                        MainWindow._queue.Add(jsonData);
+                    }
+                }
+                else
+                {
+                    if (Data.Alarm_Scan_Data)
+                    {
+                        var data = new
+                        {
+                            Alarm_Scan_Data = false
+                        };
+                        string jsonData = JsonConvert.SerializeObject(data);
+                        MainWindow._queue.Add(jsonData);
+                    }
+                }
                 // ud.bt_Blue(bt_Origin, Data.Flag_Org, false);
                 // ud.bt_Blue(bt_Reset, Data.Reset, false);
 
-               // Position.Text = Math.Round(Data.Position, 2).ToString("F1");
-               // Momen_PV.Text = Math.Round(Data.Momen_PV, 2).ToString("F1");
+                // Position.Text = Math.Round(Data.Position, 2).ToString("F1");
+                // Momen_PV.Text = Math.Round(Data.Momen_PV, 2).ToString("F1");
             });
             //   Scan_Err();
-           Animation(TB_Notification);
+            Animation(TB_Notification);
             if (!string.IsNullOrWhiteSpace(TB_Notification.Text))
             {
                 TB_Notification.Background = new SolidColorBrush(Color.FromRgb(222, 5, 5));
@@ -178,36 +217,27 @@ namespace App_Control_Servo_Press_Delta
             {
                 TB_Notification.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             }
-            if(Data.Begin_Press)
+            if (Data.Begin_Press)
             {
-                Global.Pressing= true;
+                Global.Pressing = true;
                 Global.Force_Max = 0;
                 Global.Position_Force_Max = 0;
             }
-            if(Data.Done_Press)
+            if (Data.Done_Press)
             {
                 Global.Pressing = false;
             }
-            if (Global.Pressing)
-            {
-                Update_Datachart();
-                if (Data.Force_PV > Global.Force_Max)
-                {
-                    Global.Force_Max = (float)Data.Force_PV;
-                    Global.Position_Force_Max = (float)Data.Position_PV;
-                }    
-            }
-            else if (!Global.Pressing & Flag)
-            {
-                Flag = false;
-                Flag1 = false;
-            }
-            if (Global.Check_Write_Model)
+
+
+            if (Global.Count_check == 5 & Global.Check_Write_Model)
             {
                 Check_Write_data_Setting();
             }
+
             Clear_Datachart();
         }
+
+
         private void Update_Status_Tick1000ms(object sender, EventArgs e)
         {
 
@@ -217,13 +247,19 @@ namespace App_Control_Servo_Press_Delta
                 Dispatcher.Invoke(() =>
                 {
                     Update_Screen();
-                    tb_Position.Text= Math.Round(Data.Position_PV , 2).ToString("F3");
+                    tb_Position.Text = Math.Round(Data.Position_PV, 2).ToString("F3");
                     tb_Force.Text = Math.Round(Data.Force_PV, 2).ToString("F3");
+                    var data = new
+                    {
+                        Check_connect_Display = true
+                    };
+                    string jsonData = JsonConvert.SerializeObject(data);
+                    MainWindow._queue.Add(jsonData);
                 });
             }
-            catch
+            catch (Exception ex)
             {
-
+                Common.Log_err(ex.ToString());
             }
         }
         private void LanguageComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -287,7 +323,7 @@ namespace App_Control_Servo_Press_Delta
 
                 MainWindow._queue.Clear();
                 lb_Connect.Foreground = System.Windows.Media.Brushes.Red;
-                if (Global.Language =="EN")
+                if (Global.Language == "EN")
                 {
 
                     Status_PLC = formattedDate + " - " + formattedtime + " - " + "Disconnect PLC";
@@ -295,8 +331,8 @@ namespace App_Control_Servo_Press_Delta
                 if (Global.Language == "VN")
                 {
                     Status_PLC = formattedDate + " - " + formattedtime + " - " + "Mất kết Nối PLC";
-                }    
-                
+                }
+
             }
             if (Socket_client.IsConnected)
             {
@@ -310,7 +346,7 @@ namespace App_Control_Servo_Press_Delta
             float cpuUsage = cpuCounter.NextValue();
             string formattedCpuUsage = cpuUsage.ToString("F2") + "%";
             Per_CPU.Content = formattedCpuUsage;
-            if(Global.Order_Code_Write_done =="" & Global.Pressing == true)
+            if (Global.Order_Code_Write_done == "" & Global.Pressing == true)
             {
                 Error_UnKnow_Order = true;
             }
@@ -423,27 +459,37 @@ namespace App_Control_Servo_Press_Delta
 
         private void Click_BTN_Model(object sender, RoutedEventArgs e)
         {
-            //if (UserName != "")
-            //{
-            Pannel_Monitor.Children.Clear();
-            Pannel_Monitor.Children.Add(Model_Screen);
-            BTN_Model.Background = new SolidColorBrush(Color.FromRgb(100, 149, 237));
-            BTN_Auto.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-            BTN_Report.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-            BTN_History.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-            BTN_GPIO.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-            BTN_Manual.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-            BTN_Setting.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-            //}
-            //else
-            //{
-            //MessageBox.Show("Vui Lòng Đăng Nhập");
-            //}
+            if (!Global.Pressing)
+            {
+                if (UserName != "")
+                {
+                    Pannel_Monitor.Children.Clear();
+                    Pannel_Monitor.Children.Add(Model_Screen);
+                    BTN_Model.Background = new SolidColorBrush(Color.FromRgb(100, 149, 237));
+                    BTN_Auto.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    BTN_Report.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    BTN_History.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    BTN_GPIO.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    BTN_Manual.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    BTN_Setting.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                }
+                else
+                {
+                    MessageBox.Show("Vui Lòng Đăng Nhập");
+                }
+            } 
+            else
+            {
+                MessageBox.Show("Máy đang Ép, vui lòng dừng máy!");
+            }    
+
         }
 
 
         private void Click_BTN_Setting(object sender, RoutedEventArgs e)
         {
+            if (!Global.Pressing)
+            {
             if (UserName != "")
             {
                 Pannel_Monitor.Children.Clear();
@@ -464,7 +510,12 @@ namespace App_Control_Servo_Press_Delta
             {
                 MessageBox.Show("Vui Lòng Đăng Nhập");
             }
-        }
+        } 
+            else
+            {
+                MessageBox.Show("Máy đang Ép, vui lòng dừng máy!");
+            }
+}
         private void LoginWindow_LoginSuccessful(object sender, EventArgs e)
         {
             lb_Name.Content = UserName;
@@ -523,7 +574,7 @@ namespace App_Control_Servo_Press_Delta
                             code_E = Choose_Data_Err(i);
                             //   Console.WriteLine(" ma loi: " + code_E + "da xu ly");
                             //   Clear_History(code_E);
-                            Add_Err(code_E,path.History_EN,path.Error_EN);
+                            Add_Err(code_E, path.History_EN, path.Error_EN);
                             Add_Err(code_E, path.History_VN, path.Error_VN);
                         }
                         else
@@ -713,14 +764,14 @@ namespace App_Control_Servo_Press_Delta
                     {
                         if ((string)obj["Code"] == code_E)
                         {
-                          // foreach (var data in List_History)
-                          // {
-                          //     if (data.Code == code_E)
-                          //     {
-                          //         cnt = 1;
-                          //         break;
-                          //     }
-                          // }
+                            // foreach (var data in List_History)
+                            // {
+                            //     if (data.Code == code_E)
+                            //     {
+                            //         cnt = 1;
+                            //         break;
+                            //     }
+                            // }
                             if (cnt == 0)
                             {
                                 List_History_.STT = 1;
@@ -734,7 +785,7 @@ namespace App_Control_Servo_Press_Delta
                                 json = json.Remove(json.Length - 1);
                                 json = json + ",\r" + list_Error_Json + "]";
                                 File.WriteAllText(path_Error, json);
-                                Sw_Offbuzzer.IsChecked = true;
+                                Sw_Offbuzzer.IsChecked = false;
                             }
                         }
                     }
@@ -742,7 +793,9 @@ namespace App_Control_Servo_Press_Delta
             }
             catch (Exception e)
             {
-                string Fill_json = File.ReadAllText(path_His);
+                Common.Log_err(e.ToString());
+           
+            string Fill_json = File.ReadAllText(path_His);
                 if (Fill_json.Length > 0)
                 {
                     JArray json_fillArray = JArray.Parse(Fill_json);
@@ -750,14 +803,14 @@ namespace App_Control_Servo_Press_Delta
                     {
                         if ((string)obj["Code"] == code_E)
                         {
-                          // foreach (var data in List_History)
-                          // {
-                          //     if (data.Code == code_E)
-                          //     {
-                          //         cnt = 1;
-                          //         break;
-                          //     }
-                          // }
+                            // foreach (var data in List_History)
+                            // {
+                            //     if (data.Code == code_E)
+                            //     {
+                            //         cnt = 1;
+                            //         break;
+                            //     }
+                            // }
                             if (cnt == 0)
                             {
                                 List_History_.STT = 1;
@@ -782,10 +835,10 @@ namespace App_Control_Servo_Press_Delta
         {
             pointCount++;
             newY1 = Math.Sin(pointCount * 100) + 50;
-            //double _Force_PV = Data.Force_PV;
-            // double _Position_PV = Data.Position_PV;
-            double _Force_PV = newY1;
-            double _Position_PV = pointCount;
+            double _Force_PV = Data.Force_PV;
+             double _Position_PV = Data.Position_PV;
+            //double _Force_PV = newY1;
+            //double _Position_PV = pointCount;
             newPoint1 = new DataPoint(_Position_PV, _Force_PV);
             Global.DataPoints1.Add(newPoint1);
         }
@@ -822,7 +875,7 @@ namespace App_Control_Servo_Press_Delta
             string formattedDate = dateTime.ToString("dd/MM/yyyy");
             string FilePath = System.IO.Path.Combine("Report", formattedDate.Replace('/', '_') + "_Report.json");
             Data_Report List_Report = new Data_Report();
-          
+
             List_Report.Time = formattedDateTime;
             List_Report.OrderCode = Global.Order_Code;
             List_Report.Model = Global.list_model[0].Model;
@@ -841,7 +894,7 @@ namespace App_Control_Servo_Press_Delta
             {
                 List_Report.Status = "Unknow";
             }
-            List_Report.Chart =Global.DataPoints1;
+            List_Report.Chart = Global.DataPoints1;
             string list_Json = JsonConvert.SerializeObject(List_Report);
             try
             {
@@ -851,9 +904,10 @@ namespace App_Control_Servo_Press_Delta
                 File.WriteAllText(FilePath, json);
                 // MessageBox.Show("Đã Lưu  Thành Công");
             }
-            catch
+            catch (Exception e)
             {
-                string json_;
+                Common.Log_err(e.ToString());
+            string json_;
                 json_ = "[\n" + list_Json + "\n]";
                 File.WriteAllText(FilePath, json_);
                 //  MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
@@ -919,10 +973,20 @@ namespace App_Control_Servo_Press_Delta
                  (Math.Round(Data.End_Max_Force_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Max_Force_Limit, 3)) ||
                  (Math.Round(Data.End_Min_Force_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Min_Force_Limit, 3)) ||
                  (Math.Round(Data.End_Max_Pos_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Max_Pos_Limit, 3)) ||
-                 (Math.Round(Data.End_Min_Pos_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit, 3))) 
+                 (Math.Round(Data.End_Min_Pos_Limit2, 3) != Math.Round(Global.list_model[0].Data_Func2[0].End_Min_Pos_Limit, 3)) ||
+                 (Math.Round(Data.Origin_Work_Pos, 3) != Math.Round(Global.list_model[0].Origin_Position, 3)) ||
+                 (Math.Round(Data.Origin_Work_Vel, 3) != Math.Round(Global.list_model[0].Origin_Velocity, 3)) ||
+                 (Math.Round(Data.Standby_Pos, 3) != Math.Round(Global.list_model[0].Standby_Position, 3)) ||
+                 (Math.Round(Data.Standby_Vel, 3) != Math.Round(Global.list_model[0].Standby_Velocity, 3)) ||
+                 (Math.Round(Data.Standby_Time, 3) != Math.Round(Global.list_model[0].Standby_Time, 3)))
             {
                 var data = new
                 {
+                    Origin_Work_Pos = Global.list_model[0].Origin_Position,
+                    Origin_Work_Vel = Global.list_model[0].Origin_Velocity,
+                    Standby_Pos = Global.list_model[0].Standby_Position,
+                    Standby_Vel = Global.list_model[0].Standby_Velocity,
+                    Standby_Time = Global.list_model[0].Standby_Time,
                     Mode1 = Global.list_model[0].Data_Func1[0].Mode,
                     Press_Pos1 = Global.Auto_Press_Pos1,
                     Press_Force1 = Global.list_model[0].Data_Func1[0].Press_Force,
@@ -946,7 +1010,7 @@ namespace App_Control_Servo_Press_Delta
                 string jsonData = JsonConvert.SerializeObject(data);
                 MainWindow._queue.Add(jsonData);
             }
-            else  if (!Data.Check_Done_Tranfer)
+            else if (!Data.Check_Done_Tranfer)
             {
                 var data = new
                 {
@@ -962,6 +1026,8 @@ namespace App_Control_Servo_Press_Delta
                 Global.Check_Write_Model = false;
                 Global.Write_Done = true;
             }
+
+            Global.Count_check = 0;
 
         }
         private void exitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -1014,45 +1080,48 @@ namespace App_Control_Servo_Press_Delta
 
         private void bt_test_Click(object sender, RoutedEventArgs e)
         {
-            bool newValue = !ColorChecker.IsColorEqual(((Button)sender).Background, Color.FromRgb(255, 255, 255));
-            if (!newValue)
-            {
-                Global.Pressing = true;
-                Global.Force_Max = 0;
-                Global.Position_Force_Max = 0;
-                Test.Background = new SolidColorBrush(Color.FromRgb(100, 149, 237));
-            }
-            if (newValue)
-            {
-                Global.Pressing = false;
-
-                Test.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-            }
+          //  bool newValue = !ColorChecker.IsColorEqual(((Button)sender).Background, Color.FromRgb(255, 255, 255));
+          //  if (!newValue)
+          //  {
+          //      Global.Pressing = true;
+          //      Global.Force_Max = 0;
+          //      Global.Position_Force_Max = 0;
+          //      Test.Background = new SolidColorBrush(Color.FromRgb(100, 149, 237));
+          //  }
+          //  if (newValue)
+          //  {
+          //      Global.Pressing = false;
+          //
+          //      Test.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+          //  }
         }
 
         private void Sw_Offbuzzer_Checked(object sender, RoutedEventArgs e)
         {
+            if (MainWindow.UserName != "")
+            {
 
-            var data = new Dictionary<string, object>
-                        {
-                            { Sw_Offbuzzer.Name,true }
-
-                        };
-
-            string jsonData = JsonConvert.SerializeObject(data);
-            MainWindow._queue.Add(jsonData);
+                var data = new
+                {
+                    Off_Buzzer = true
+                };
+                string jsonData = JsonConvert.SerializeObject(data);
+                MainWindow._queue.Add(jsonData);
+            }
+            else MessageBox.Show("Vui lòng đăng nhập");
         }
         private void Sw_Offbuzzer_UnChecked(object sender, RoutedEventArgs e)
         {
-
-            var data = new Dictionary<string, object>
-                        {
-                            { Sw_Offbuzzer.Name,false }
-
-                        };
-
+            if (MainWindow.UserName != "")
+            {
+                var data = new
+            {
+                Off_Buzzer = false
+            };
             string jsonData = JsonConvert.SerializeObject(data);
             MainWindow._queue.Add(jsonData);
+        }
+            else MessageBox.Show("Vui lòng đăng nhập");
         }
     }
 }

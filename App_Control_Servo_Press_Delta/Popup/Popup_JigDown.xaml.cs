@@ -142,8 +142,11 @@ namespace App_Control_Servo_Press_Delta.Popup
                     }
                 }
             }
-            catch { }
-            
+            catch (Exception e)
+            {
+                Common.Log_err(e.ToString());
+            }
+
         }
 
 
@@ -205,9 +208,10 @@ namespace App_Control_Servo_Press_Delta.Popup
                 }
 
             }
-            catch
+            catch (Exception e)
             {
-                string jsons;
+                Common.Log_err(e.ToString());
+            string jsons;
                 jsons = "[" + list_Json + "]";
                 File.WriteAllText(pathstring, jsons);
                 MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
@@ -247,9 +251,9 @@ namespace App_Control_Servo_Press_Delta.Popup
                     MessageBox.Show("Không tìm thấy mã Model: " + tb_ID.Text + " cần xóa");
                 }
             }
-            catch
+            catch (Exception e)
             {
-
+                Common.Log_err(e.ToString());
             }
 
             Common.Load_View(List_Model, pathstring);

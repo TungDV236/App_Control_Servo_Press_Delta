@@ -128,8 +128,7 @@ namespace App_Control_Servo_Press_Delta
             }
             catch (Exception ex)
             {
-                Common.Log_err("LoginWindown", "Read path User_List", ex.ToString());
-                // MessageBox.Show(e.ToString());
+                Common.Log_err(ex.ToString());
             }
         }
 

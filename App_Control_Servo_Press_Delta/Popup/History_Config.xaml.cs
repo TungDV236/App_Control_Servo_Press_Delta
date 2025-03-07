@@ -129,8 +129,9 @@ namespace App_Control_Servo_Press_Delta.Popup
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
+                Common.Log_err(ex.ToString());
             }
         }
         private void Update_Screen()
@@ -284,9 +285,11 @@ namespace App_Control_Servo_Press_Delta.Popup
                     MessageBox.Show("Đã Lưu Và Tạo Model Mới Thành Công");
                 }
             }
-            catch
+            catch (Exception e)
             {
-                string json_;
+                Common.Log_err(e.ToString());
+        
+            string json_;
                 json_ = "[" + list_His_Json_EN + "]";
                 File.WriteAllText(path.History_EN, json_);
                 json_ = "[" + list_His_Json_VN + "]";
@@ -305,84 +308,96 @@ namespace App_Control_Servo_Press_Delta.Popup
         private void Clear_His()
         {
             MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa mã lỗi: " + tb_code.Text, "Confirm Action", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes & tb_code.Text.Length > 0)
+            try
             {
-
-                string json_EN = File.ReadAllText(path.History_EN);
-                string json_VN = File.ReadAllText(path.History_VN);
-                var options = new JsonSerializerOptions { ReadCommentHandling = JsonCommentHandling.Skip };
-                var data_EN = System.Text.Json.JsonSerializer.Deserialize<List_History_temp[]>(json_EN, options);
-                var data_VN = System.Text.Json.JsonSerializer.Deserialize<List_History_temp[]>(json_VN, options);
-
-                var newData = new List<List_History_temp>();
-
-                foreach (var item in data_EN)
+                if (result == MessageBoxResult.Yes & tb_code.Text.Length > 0)
                 {
-                    if (item.Code != tb_code.Text)
-                    {
-                        newData.Add(item);
-                    }
-                }
-                var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
-                string newJsonString = System.Text.Json.JsonSerializer.Serialize(newData, jsonOptions);
-                // Write back to file
-                File.WriteAllText(path.History_EN, newJsonString);
-                foreach (var item in data_VN)
-                {
-                    if (item.Code != tb_code.Text)
-                    {
-                        newData.Add(item);
-                    }
-                }
-                newJsonString = System.Text.Json.JsonSerializer.Serialize(newData, jsonOptions);
-                // Write back to file
-                File.WriteAllText(path.History_VN, newJsonString);
 
-                Common.Load_View_History(List_History_Error_Config);
+                    string json_EN = File.ReadAllText(path.History_EN);
+                    string json_VN = File.ReadAllText(path.History_VN);
+                    var options = new JsonSerializerOptions { ReadCommentHandling = JsonCommentHandling.Skip };
+                    var data_EN = System.Text.Json.JsonSerializer.Deserialize<List_History_temp[]>(json_EN, options);
+                    var data_VN = System.Text.Json.JsonSerializer.Deserialize<List_History_temp[]>(json_VN, options);
+
+                    var newData = new List<List_History_temp>();
+
+                    foreach (var item in data_EN)
+                    {
+                        if (item.Code != tb_code.Text)
+                        {
+                            newData.Add(item);
+                        }
+                    }
+                    var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
+                    string newJsonString = System.Text.Json.JsonSerializer.Serialize(newData, jsonOptions);
+                    // Write back to file
+                    File.WriteAllText(path.History_EN, newJsonString);
+                    foreach (var item in data_VN)
+                    {
+                        if (item.Code != tb_code.Text)
+                        {
+                            newData.Add(item);
+                        }
+                    }
+                    newJsonString = System.Text.Json.JsonSerializer.Serialize(newData, jsonOptions);
+                    // Write back to file
+                    File.WriteAllText(path.History_VN, newJsonString);
+
+                    Common.Load_View_History(List_History_Error_Config);
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy mã Lỗi: " + tb_code.Text + " cần xóa");
+                }
             }
-            else
+            catch (Exception e)
             {
-                MessageBox.Show("Không tìm thấy mã Lỗi: " + tb_code.Text + " cần xóa");
+                Common.Log_err(e.ToString());
             }
 
         }
         private void Fill_Value_His()
         {
-
-            string json_EN = File.ReadAllText(path.History_EN);
-            string json_VN = File.ReadAllText(path.History_VN);
-            if (json_EN.Length > 0)
+            try
             {
-                JArray jsonArray = JArray.Parse(json_EN);
-                foreach (JObject obj in jsonArray)
+                string json_EN = File.ReadAllText(path.History_EN);
+                string json_VN = File.ReadAllText(path.History_VN);
+                if (json_EN.Length > 0)
                 {
-                    if ((string)obj["Code"] == tb_code.Text)
+                    JArray jsonArray = JArray.Parse(json_EN);
+                    foreach (JObject obj in jsonArray)
                     {
-                        tb_code.Text = (string)obj["Code"];
-                        tb_DescriptionEN.Text = (string)obj["Description"];
-                        tb_SolutionEn.Text = (string)obj["Solution"];
+                        if ((string)obj["Code"] == tb_code.Text)
+                        {
+                            tb_code.Text = (string)obj["Code"];
+                            tb_DescriptionEN.Text = (string)obj["Description"];
+                            tb_SolutionEn.Text = (string)obj["Solution"];
+                        }
+
+
                     }
 
+                }
+                if (json_VN.Length > 0)
+                {
+                    JArray jsonArray = JArray.Parse(json_VN);
+                    foreach (JObject obj in jsonArray)
+                    {
+                        if ((string)obj["Code"] == tb_code.Text)
+                        {
+                            tb_code.Text = (string)obj["Code"];
+                            tb_DescriptionVN.Text = (string)obj["Description"];
+                            tb_SolutionVN.Text = (string)obj["Solution"];
+                        }
+
+
+                    }
 
                 }
-
             }
-            if (json_VN.Length > 0)
+            catch (Exception e)
             {
-                JArray jsonArray = JArray.Parse(json_VN);
-                foreach (JObject obj in jsonArray)
-                {
-                    if ((string)obj["Code"] == tb_code.Text)
-                    {
-                        tb_code.Text = (string)obj["Code"];
-                        tb_DescriptionVN.Text = (string)obj["Description"];
-                        tb_SolutionVN.Text = (string)obj["Solution"];
-                    }
-
-
-                }
-
+                Common.Log_err(e.ToString());
             }
         }
         public static string[] SplitString(string input, char delimiter)

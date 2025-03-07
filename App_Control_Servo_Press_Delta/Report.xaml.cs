@@ -159,7 +159,10 @@ namespace App_Control_Servo_Press_Delta
                     Global.DataPoints_Chart.AddRange(List_Report_Change[0].Chart);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Common.Log_err(ex.ToString());
+            }
 
         }
         private void strim_Position(string data)

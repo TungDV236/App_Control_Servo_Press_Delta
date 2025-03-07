@@ -246,8 +246,9 @@ namespace App_Control_Servo_Press_Delta
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Common.Log_err(ex.ToString());
             }
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -332,9 +333,8 @@ namespace App_Control_Servo_Press_Delta
                 }
             }
             catch (Exception ex)
-
             {
-
+                Common.Log_err(ex.ToString());
             }
         }
 

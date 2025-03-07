@@ -92,6 +92,7 @@ namespace App_Control_Servo_Press_Delta
 
             Init_data();
             Clear_Model();
+            Global.Clear_Auto = true;
         }
         private void Model_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -128,8 +129,9 @@ namespace App_Control_Servo_Press_Delta
                 CheckKeyboardStatus();
 
             }
-            catch
+            catch (Exception ex)
             {
+                Common.Log_err(ex.ToString());
             }
         }
 
@@ -244,9 +246,9 @@ namespace App_Control_Servo_Press_Delta
                 }
             }
             Global.Model_Press_Pos1 = Caculate_Position_Distance(Global.Function1[0].Mode, Global.Model_Thickness_Bearings_D.ToString(), tb_num_Distance_Bearings_After.Text,
-    Global.Auto_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+    Global.Model_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
             Global.Model_Press_Pos2 = Caculate_Position_Distance(Global.Function2[0].Mode, Global.Model_Thickness_Bearings_D.ToString(), tb_num_Distance_Bearings_After.Text,
-    Global.Auto_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+    Global.Model_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
             
             flag2 = false;
             IsForcus = false;
@@ -350,9 +352,9 @@ namespace App_Control_Servo_Press_Delta
                 Global.Model_Thickness_Bearings_D = Fill_Jig(path.Bearings_Down, cbb_BearingsD.SelectedValue.ToString());
             }
             Global.Model_Press_Pos1 = Caculate_Position_Distance(Global.Function1[0].Mode, Global.Model_Thickness_Bearings_D.ToString(), tb_num_Distance_Bearings_After.Text,
- Global.Auto_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+ Global.Model_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
             Global.Model_Press_Pos2 = Caculate_Position_Distance(Global.Function2[0].Mode, Global.Model_Thickness_Bearings_D.ToString(), tb_num_Distance_Bearings_After.Text,
-    Global.Auto_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
+    Global.Model_Thickness_Bearings_U.ToString(), tb_num_Distance_Bearings_Before.Text, tb_num_Ofset.Text, tb_num_PST_Standby.Text);
 
         }
         private void Update_Data()
@@ -698,7 +700,9 @@ namespace App_Control_Servo_Press_Delta
 
                 }
             }
-           catch { }
+            catch (Exception ex)
+            {
+            }
 
             return -1;
         }
@@ -1090,7 +1094,7 @@ namespace App_Control_Servo_Press_Delta
                             CheckValueInComboBox(obj.Jig_Down.ToString(), cbb_JigD);
                             tb_num_Stand_Height.Text = string.Format("{0:F2}", obj.Height_Stand);
                            Global.Model_Thickness_Bearings_U = Fill_Bearings_JigUD (path.Bearings_Up, obj.ID_Bearings_Up.ToString());
-                            Global.Model_Thickness_Bearings_D = Fill_Bearings_JigUD(path.Bearings_Up, obj.ID_Bearings_Up.ToString());
+                            Global.Model_Thickness_Bearings_D = Fill_Bearings_JigUD(path.Bearings_Down, obj.ID_Bearings_Down.ToString());
                             Global.Model_Thickness_Jig_Up = Fill_Bearings_JigUD(path.Jig_Up, obj.Jig_Up.ToString());
                             Global.Model_Thickness_Jig_Down = Fill_Bearings_JigUD(path.Jig_Down, obj.Jig_Down.ToString());
                             tb_num_Distance_Bearings_Before.Text = string.Format("{0:F2}", obj.Pre_press_Bearings_distance);

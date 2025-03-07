@@ -60,7 +60,7 @@ namespace App_Control_Servo_Press_Delta
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                Common.Log_err(ex.ToString());
             }
         }
         void Update_IO()

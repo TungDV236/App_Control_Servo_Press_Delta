@@ -336,7 +336,7 @@
                                         </StackPanel>
                                         <Grid Grid.Column="5">
                                             <Grid Grid.Row="0">
-                                                <Button Grid.Column="0" Content="Test" x:Name="Test"  Padding="5,5" Height="35"  FontSize="10"  VerticalAlignment="Center"  Click="bt_test_Click"/>
+                                                <Button Grid.Column="0" Content="Test" x:Name="Test"  Padding="5,5" Height="35"  Visibility="Hidden" FontSize="10"  VerticalAlignment="Center"  Click="bt_test_Click"/>
                                             </Grid>
 
                                         </Grid>

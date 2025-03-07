@@ -79,8 +79,10 @@ namespace App_Control_Servo_Press_Delta
                     dataGrid.ItemsSource = items;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Common common = new Common();
+                common.Log_err(ex.ToString());
 
             }
         }
@@ -121,8 +123,10 @@ namespace App_Control_Servo_Press_Delta
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
+                Common common = new Common();
+                common.Log_err(ex.ToString());
 
             }
         }
@@ -150,9 +154,11 @@ namespace App_Control_Servo_Press_Delta
                 //   MessageBox.Show(items.ToString());
 
             }
-            catch
+            catch (Exception ex)
             {
-                dataGrid.ItemsSource = null;
+                Common common = new Common();
+                common.Log_err(ex.ToString());
+            dataGrid.ItemsSource = null;
                 //MessageBox.Show("Lỗi mở file");
             }
         }
@@ -217,11 +223,12 @@ namespace App_Control_Servo_Press_Delta
                 } 
                     
             }
-            catch
+            catch (Exception ex)
             {
-                dataGrid.ItemsSource = null;
-                //MessageBox.Show("Lỗi mở file");
-            }
+                Common common = new Common();
+                common.Log_err(ex.ToString());
+
+             }
         }
         public void SetEmptyTextBoxToZero(TextBox TextBox)
         {
@@ -341,14 +348,14 @@ namespace App_Control_Servo_Press_Delta
                 }
             }
         }
-        public void Log_err(string name_screen, string Function, string status)
+        public void Log_err( string status)
         {
             System.DateTime dateTime = System.DateTime.Now;
             string formattedDate = dateTime.ToString("dd/MM/yy");
             string formattedtime = dateTime.ToString("HH:mm:ss");
             using (StreamWriter writer = new StreamWriter(System.IO.Path.Combine("Log", formattedDate.Replace("/", "_") + "_Tag_Err.txt"), true)) // true để thêm
             {
-                writer.WriteLine(formattedtime + ", Name_screen: " + name_screen + ", Function: " + Function + ", status: " + status);
+                writer.WriteLine(formattedtime +  ", status: " + status);
             }
 
         }
@@ -375,7 +382,12 @@ namespace App_Control_Servo_Press_Delta
                     Process process = Process.Start(new ProcessStartInfo(((Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\osk.exe"))));
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Common common = new Common();
+                common.Log_err(ex.ToString());
+
+            }
 
         }
 
@@ -445,9 +457,10 @@ namespace App_Control_Servo_Press_Delta
 
             }
             catch (Exception ex)
-
             {
-                string json_;
+                Common common = new Common();
+                common.Log_err(ex.ToString());
+            string json_;
                 list_Json = list_Json.Substring(1, list_Json.Length - 2);
                 json_ = "[" + list_Json + "\n]";
                 File.WriteAllText(path, json_);
@@ -473,8 +486,10 @@ namespace App_Control_Servo_Press_Delta
                     dataGrid.ItemsSource = items;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Common common = new Common();
+                common.Log_err(ex.ToString());
 
             }
         }

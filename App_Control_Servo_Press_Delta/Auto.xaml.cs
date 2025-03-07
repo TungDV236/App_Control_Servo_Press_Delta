@@ -90,11 +90,17 @@ namespace App_Control_Servo_Press_Delta
                     if (PLC.IsConnected & check < 5)
                     {
                         check++;
+
                     }
                     if (!PLC.IsConnected)
                     { check = 0; }
                     Update_Screen();
-
+                    Global.Auto_Order_Code = tb_Order_Code.Text;
+                    if (Global.Clear_Auto)
+                    {
+                        Clear();
+                        Global.Clear_Auto=false;
+                    }    
 
                 });
                 if (Global.DataPoints1 != null & Global.Pressing)
@@ -104,8 +110,9 @@ namespace App_Control_Servo_Press_Delta
                 // Cập nhật đồ thị
                 plotView1.InvalidatePlot(true);
             }
-            catch
+            catch (Exception ex)
             {
+                Common.Log_err(ex.ToString());
             }
         }
 
@@ -323,6 +330,11 @@ namespace App_Control_Servo_Press_Delta
 
                             var data = new
                             {
+                                Origin_Work_Pos = Global.list_model[0].Origin_Position,
+                                Origin_Work_Vel = Global.list_model[0].Origin_Velocity,
+                                Standby_Pos = Global.list_model[0].Standby_Position,
+                                Standby_Vel = Global.list_model[0].Standby_Velocity,
+                                Standby_Time = Global.list_model[0].Standby_Time,
                                     Mode1 = Global.list_model[0].Data_Func1[0].Mode,
                                     Press_Pos1 = Global.Auto_Press_Pos1,
                                     Press_Force1 = Global.list_model[0].Data_Func1[0].Press_Force,
@@ -346,9 +358,9 @@ namespace App_Control_Servo_Press_Delta
                             string jsonData = JsonConvert.SerializeObject(data);
                                 MainWindow._queue.Add(jsonData);
                                 Global.Check_Write_Model = true;
+                            Global.Count_check = 0;
 
 
-                            
 
                             flag = true;
                         }
@@ -364,6 +376,7 @@ namespace App_Control_Servo_Press_Delta
 
             {
 
+                Common.Log_err( ex.ToString());
             }
         }
         private void Visiable_Order ()
@@ -514,6 +527,24 @@ namespace App_Control_Servo_Press_Delta
             tb_Standby_PST.Text = "";
             tb_Velocity_Standby.Text = "";
             tb_Standby_Time.Text = "";
+            tb_Pressing_condition1.Text = "";
+            tb_Pressing_Position1.Text = "";
+            tb_Pressing_Force1.Text = "";
+            tb_Pressing_Velocity1.Text = "";
+            tb_Pressing_Time1.Text = "";
+            tb_Max_Position1.Text = "";
+            tb_Min_Position1.Text = "";
+            tb_Max_Force1.Text = "";
+            tb_Min_Force1.Text = "";
+            tb_Pressing_condition2.Text = "";
+            tb_Pressing_Position2.Text = "";
+            tb_Pressing_Force2.Text = "";
+            tb_Pressing_Velocity2.Text = "";
+            tb_Pressing_Time2.Text = "";
+            tb_Max_Position2.Text = "";
+            tb_Min_Position2.Text = "";
+            tb_Max_Force2.Text = "";
+            tb_Min_Force2.Text = "";
             Global.Order_Code_Write_done = "";
             Global.Order_Code = "";
         }
@@ -523,11 +554,11 @@ namespace App_Control_Servo_Press_Delta
             float Position = Global.Height_Shaft_Press
                 + (float)Data.ofset_Machine
                 - (float)Data.Height_Jig_Base
-                - Global.Model_Thickness_Jig_Down
+                - Global.Auto_Thickness_Jig_Down
                 - float.Parse(Thickness_BearingsD)
                 - float.Parse(Distance_Bearings_After)
                 - float.Parse(Thickness_BearingsU)
-                - Global.Model_Thickness_Jig_Up
+                - Global.Auto_Thickness_Jig_Up
                 + float.Parse(ofset_Model);
             float Distance = Global.Height_Shaft_Press
                 + (float)Data.ofset_Machine
@@ -585,7 +616,9 @@ namespace App_Control_Servo_Press_Delta
                     }
                 }
             }
-            catch { }
+            catch (Exception e)
+            {
+            }
 
             return -1;
         }

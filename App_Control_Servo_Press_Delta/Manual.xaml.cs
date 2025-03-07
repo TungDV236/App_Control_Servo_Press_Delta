@@ -57,7 +57,7 @@ namespace App_Control_Servo_Press_Delta
             foreach (var button in Common.FindVisualChildren<Button>(this))
             {
                 button.Click += Button_Click;
-                button.MouseDown += Button_MouseDown;
+                button.PreviewMouseDown += Button_MouseDown;
                 button.PreviewMouseUp += Button_MouseUp;
                 button.MouseLeave += Button_MouseLeave;
                 button.TouchDown += Button_TouchDown;
@@ -96,12 +96,18 @@ namespace App_Control_Servo_Press_Delta
                 Dispatcher.Invoke(() =>
                 {
                     Update_Screen();
+                    ud.bt_Green(M_Home_Ep_J_P, Data.M_Home_Ep_J_P);
+                    ud.bt_Green(M_Ep_U_J_P, Data.M_Ep_U_J_P);
+                    ud.bt_Green(M_Ep_D_J_N, Data.M_Ep_D_J_N);
+                    ud.bt_Green(M_Door_U_J_P, Data.M_Door_U_J_P);
+                    ud.bt_Green(M_Door_D_J_N, Data.M_Door_D_J_N);
                 });
 
                 CheckKeyboardStatus();
             }
-            catch
+            catch (Exception ex)
             {
+                Common.Log_err(ex.ToString());
             }
         }
 
@@ -125,7 +131,7 @@ namespace App_Control_Servo_Press_Delta
                 {
                     M_Ep_ABS.Content = "Tuyệt đối";
                 }
-            }    
+            }
             else
             {
                 if (Global.Language == "EN")
@@ -142,51 +148,51 @@ namespace App_Control_Servo_Press_Delta
         }
         private void check_status_btn()
         {
-            if (Data.M_Home_Ep_J_P != Global.M_Home_Ep_J_P)
-            {
-                var data = new
-                {
-                    M_Home_Ep_J_P = Global.M_Home_Ep_J_P
-                };
-                string jsonData = JsonConvert.SerializeObject(data);
-                MainWindow._queue.Add(jsonData);
-            }
-            if (Data.M_Ep_U_J_P != Global.M_Ep_J_P)
-            {
-                var data = new
-                {
-                    M_Ep_U_J_P = Global.M_Ep_J_P
-                };
-                string jsonData = JsonConvert.SerializeObject(data);
-                MainWindow._queue.Add(jsonData);
-            }
-            if (Data.M_Ep_D_J_N != Global.M_Ep_J_N)
-            {
-                var data = new
-                {
-                    M_Ep_D_J_N = Global.M_Ep_J_N
-                };
-                string jsonData = JsonConvert.SerializeObject(data);
-                MainWindow._queue.Add(jsonData);
-            }
-            if (Data.M_Door_U_J_P != Global.M_Door_J_P)
-            {
-                var data = new
-                {
-                    M_Door_U_J_P = Global.M_Door_J_P
-                };
-                string jsonData = JsonConvert.SerializeObject(data);
-                MainWindow._queue.Add(jsonData);
-            }
-            if (Data.M_Door_D_J_N != Global.M_Door_J_N)
-            {
-                var data = new
-                {
-                    M_Door_D_J_N = Global.M_Door_J_N
-                };
-                string jsonData = JsonConvert.SerializeObject(data);
-                MainWindow._queue.Add(jsonData);
-            }
+            //  if (Data.M_Home_Ep_J_P != Global.M_Home_Ep_J_P)
+            //  {
+            //      var data = new
+            //      {
+            //          M_Home_Ep_J_P = Global.M_Home_Ep_J_P
+            //      };
+            //      string jsonData = JsonConvert.SerializeObject(data);
+            //      MainWindow._queue.Add(jsonData);
+            //  }
+            //  if (Data.M_Ep_U_J_P != Global.M_Ep_J_P)
+            //  {
+            //      var data = new
+            //      {
+            //          M_Ep_U_J_P = Global.M_Ep_J_P
+            //      };
+            //      string jsonData = JsonConvert.SerializeObject(data);
+            //      MainWindow._queue.Add(jsonData);
+            //  }
+            //  if (Data.M_Ep_D_J_N != Global.M_Ep_J_N)
+            //  {
+            //      var data = new
+            //      {
+            //          M_Ep_D_J_N = Global.M_Ep_J_N
+            //      };
+            //      string jsonData = JsonConvert.SerializeObject(data);
+            //      MainWindow._queue.Add(jsonData);
+            //  }
+            //  if (Data.M_Door_U_J_P != Global.M_Door_J_P)
+            //  {
+            //      var data = new
+            //      {
+            //          M_Door_U_J_P = Global.M_Door_J_P
+            //      };
+            //      string jsonData = JsonConvert.SerializeObject(data);
+            //      MainWindow._queue.Add(jsonData);
+            //  }
+            //  if (Data.M_Door_D_J_N != Global.M_Door_J_N)
+            //  {
+            //      var data = new
+            //      {
+            //          M_Door_D_J_N = Global.M_Door_J_N
+            //      };
+            //      string jsonData = JsonConvert.SerializeObject(data);
+            //      MainWindow._queue.Add(jsonData);
+            //  }
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -284,8 +290,8 @@ namespace App_Control_Servo_Press_Delta
                     string jsonData = JsonConvert.SerializeObject(data);
                     MainWindow._queue.Add(jsonData);
 
-                  //  Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log_EN);
-                  //  Common.Log_Operation("Nhập thông số:  " + textboxName + ":   " + doubleValue, path.Log_VN);
+                    //  Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log_EN);
+                    //  Common.Log_Operation("Nhập thông số:  " + textboxName + ":   " + doubleValue, path.Log_VN);
                 }
                 if (double.TryParse(textBox.Text, out double doubleValue1) & textBox.Name == "Jog_Max_Force")
                 {
@@ -310,10 +316,10 @@ namespace App_Control_Servo_Press_Delta
 
 
                 }
-           
 
 
-                    Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log_EN);
+
+                Common.Log_Operation("Write " + textboxName + ":   " + doubleValue, path.Log_EN);
                 Common.Log_Operation("Nhập thông số : " + textboxName + ":   " + doubleValue, path.Log_VN);
             }
             is_Forcus = false;
@@ -322,8 +328,8 @@ namespace App_Control_Servo_Press_Delta
         }
 
 
-        
-            
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -336,49 +342,51 @@ namespace App_Control_Servo_Press_Delta
                 {
                     Taglog = buttonName.Substring(0, buttonName.Length - 4);
                 }
-                Common.Log_Operation("Press Button:   "+ Taglog , path.Log_EN);
+                Common.Log_Operation("Press Button:   " + Taglog, path.Log_EN);
                 Common.Log_Operation("Nhấn nút:   " + Taglog, path.Log_VN);
+
             }
+            Console.WriteLine(buttonName + "Click");
         }
         private void Button_TouchDown(object sender, TouchEventArgs e)
         {
             string buttonName = ((Button)sender).Name;
-            if (buttonName != "" & !Button_Down)
-            {
-                if (Is_String(buttonName, "J_P", "J_N"))
-                {
-                    var data = new Dictionary<string, object>
-                        {
-                            { buttonName, true }
-
-                        };
-
-                    string jsonData = JsonConvert.SerializeObject(data);
-                    MainWindow._queue.Add(jsonData);
-                    if(buttonName == "M_Home_Ep_J_P")
-                    {
-                        Global.M_Home_Ep_J_P = true;
-                    }
-                    if (buttonName == "M_Ep_U_J_P")
-                    {
-                        Global.M_Ep_J_P = true;
-                    }
-                    if (buttonName == "M_Ep_D_J_N")
-                    {
-                        Global.M_Ep_J_N = true;
-                    }
-                    if (buttonName == "M_Door_U_J_P")
-                    {
-                        Global.M_Door_J_P = true;
-                    }
-                    if (buttonName == "M_Door_D_J_N")
-                    {
-                        Global.M_Door_J_N = true;
-                    }
-
-                }
-                Button_Down = true;
-            }
+           if (buttonName != "" & !Button_Down)
+           {
+               if (Is_String(buttonName, "J_P", "J_N"))
+               {
+                   var data = new Dictionary<string, object>
+                       {
+                           { buttonName, true }
+          
+                       };
+          
+                   string jsonData = JsonConvert.SerializeObject(data);
+                   MainWindow._queue.Add(jsonData);
+                   if (buttonName == "M_Home_Ep_J_P")
+                   {
+                       Global.M_Home_Ep_J_P = true;
+                   }
+                   if (buttonName == "M_Ep_U_J_P")
+                   {
+                       Global.M_Ep_J_P = true;
+                   }
+                   if (buttonName == "M_Ep_D_J_N")
+                   {
+                       Global.M_Ep_J_N = true;
+                   }
+                   if (buttonName == "M_Door_U_J_P")
+                   {
+                       Global.M_Door_J_P = true;
+                   }
+                   if (buttonName == "M_Door_D_J_N")
+                   {
+                       Global.M_Door_J_N = true;
+                   }
+          
+               }
+               Button_Down = true;
+           }
         }
         private void Button_MouseDown(object sender, RoutedEventArgs e)
         {
@@ -390,9 +398,9 @@ namespace App_Control_Servo_Press_Delta
                     var data = new Dictionary<string, object>
                         {
                             { buttonName, true }
-
+               
                         };
-
+               
                     string jsonData = JsonConvert.SerializeObject(data);
                     MainWindow._queue.Add(jsonData);
                     if (buttonName == "M_Home_Ep_J_P")
@@ -455,7 +463,7 @@ namespace App_Control_Servo_Press_Delta
                         Global.M_Door_J_N = false;
                     }
                 }
-
+               
                 Button_Down = false;
             }
         }
@@ -466,33 +474,33 @@ namespace App_Control_Servo_Press_Delta
             {
                 if (Is_String(buttonName, "J_P", "J_N"))
                 {
-                    var data = new Dictionary<string, object>
-                        {
-                            { buttonName, false }
-                        };
-                    string jsonData = JsonConvert.SerializeObject(data);
-                    // MainWindow._queue.Add(jsonData);
-                    MainWindow._queue.Add(jsonData);
-                    if (buttonName == "M_Home_Ep_J_P")
-                    {
-                        Global.M_Home_Ep_J_P = false;
-                    }
-                    if (buttonName == "M_Ep_U_J_P")
-                    {
-                        Global.M_Ep_J_P = false;
-                    }
-                    if (buttonName == "M_Ep_D_J_N")
-                    {
-                        Global.M_Ep_J_N = false;
-                    }
-                    if (buttonName == "M_Door_U_J_P")
-                    {
-                        Global.M_Door_J_P = false;
-                    }
-                    if (buttonName == "M_Door_D_J_N")
-                    {
-                        Global.M_Door_J_N = false;
-                    }
+                    //  var data = new Dictionary<string, object>
+                    //      {
+                    //          { buttonName, false }
+                    //      };
+                    //  string jsonData = JsonConvert.SerializeObject(data);
+                    //  // MainWindow._queue.Add(jsonData);
+                    //  MainWindow._queue.Add(jsonData);
+                    //  if (buttonName == "M_Home_Ep_J_P")
+                    //  {
+                    //      Global.M_Home_Ep_J_P = false;
+                    //  }
+                    //  if (buttonName == "M_Ep_U_J_P")
+                    //  {
+                    //      Global.M_Ep_J_P = false;
+                    //  }
+                    //  if (buttonName == "M_Ep_D_J_N")
+                    //  {
+                    //      Global.M_Ep_J_N = false;
+                    //  }
+                    //  if (buttonName == "M_Door_U_J_P")
+                    //  {
+                    //      Global.M_Door_J_P = false;
+                    //  }
+                    //  if (buttonName == "M_Door_D_J_N")
+                    //  {
+                    //      Global.M_Door_J_N = false;
+                    //  }
                 }
 
                 Button_Down = false;
@@ -512,7 +520,7 @@ namespace App_Control_Servo_Press_Delta
                 {
 
                     Keyboard.ClearFocus();
-                  //  TextBox_LostFocus(textBox, null);
+                    //  TextBox_LostFocus(textBox, null);
                     Global.clear_forcus = false;
                     Console.WriteLine("Đã lostforcus");
                     keyboardIsOpen = false;
@@ -558,12 +566,14 @@ namespace App_Control_Servo_Press_Delta
         private void M_Ep_ABS_Click(object sender, RoutedEventArgs e)
         {
             bool newValue = !Data.M_Ep_ABS;
-                var data = new Dictionary<string, object>
+            var data = new Dictionary<string, object>
                         {
                             { "M_Ep_ABS" , newValue }
                         };
-                string jsonData = JsonConvert.SerializeObject(data);
-                MainWindow._queue.Add(jsonData);
+            string jsonData = JsonConvert.SerializeObject(data);
+            MainWindow._queue.Add(jsonData);
         }
+
+
     }
 }

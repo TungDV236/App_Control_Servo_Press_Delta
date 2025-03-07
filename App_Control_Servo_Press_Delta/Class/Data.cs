@@ -79,8 +79,11 @@ namespace App_Control_Servo_Press_Delta.Class
         public static float Auto_Ofset_Model { get; set; }
         public static float Standby_Position  { get; set; }
         public static bool Fill_Done { get; set; }
+        public static int Count_check { get; set; }
 
+        public static string Auto_Order_Code { get; set; }
         public static string Order_Code_Report { get; set; }
+        public static bool Clear_Auto { get; set; }
     }
     public class Data_Report
     {
@@ -188,7 +191,10 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool Check_Done_Tranfer { get; set; }
         public static ushort Total_NG { get; set; }
         public static ushort Total_OK { get; set; }
-        public static bool Alarm_Scan_Order { get; set; }
+        public static bool Alarm_Scan_Data { get; set; }
+        public static bool Alarm_LC { get; set; }
+        public static bool Off_Buzzer { get; set; }
+        public static bool Check_connect_Display { get; set; }
 
 
 
@@ -269,6 +275,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public float Standby_Time { get; set; }
         public List<DataFunC> Data_Func1 { get; set; }
         public List<DataFunC> Data_Func2 { get; set; }
+
     }
     public class List_Model_Temp
     {

@@ -64,9 +64,9 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox  Grid.Column="0"  IsReadOnly="True"  x:Name="tb_Base_jig_thickness" FontSize="15"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                            <TextBox  Grid.Column="1"  IsReadOnly="True"  x:Name="tb_Ofset_Shaft_Machine"  FontSize="15"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
-                            <TextBox  Grid.Column="2"  IsReadOnly="True"    Margin="2"  FontSize="15"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                            <TextBox  Grid.Column="0"   x:Name="tb_Base_jig_thickness" FontSize="15"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                            <TextBox  Grid.Column="1"  x:Name="tb_Ofset_Shaft_Machine"  FontSize="15"  Margin="2"  Style="{StaticResource BorderBlackTextboxStyle}"  />
+                            <TextBox  Grid.Column="2"    Margin="2"  FontSize="15"  Style="{StaticResource BorderBlackTextboxStyle}"  />
 
                         </Grid>
 
@@ -214,10 +214,7 @@
                             <Button Grid.Column="2" Content="{DynamicResource lb_Save}" x:Name="btn_Set_SysSave"  Height="30" Margin="5,5,4,5" Click="btn_Set_SysSave_Click" />
 
                         </Grid>
-                        <Grid Grid.Row="6">
-
-                            <Button  Content="{DynamicResource btn_Off_Buzzer}" Width="100" x:Name="btn_off_bz"  Height="40" Margin="5,5,4,5"  />
-                        </Grid>
+                        <Grid Grid.Row="6"/>
                     </Grid>
                 </Grid>
             </Grid>

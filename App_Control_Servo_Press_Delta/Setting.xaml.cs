@@ -87,7 +87,10 @@ namespace App_Control_Servo_Press_Delta
                 dataGrid.SelectionChanged += Model_SelectionChanged;
             }
             BTN_Setting_MCancel.Visibility = Visibility.Hidden;
+            tb_Ofset_Shaft_Machine.IsReadOnly = true;
+            tb_Base_jig_thickness.IsReadOnly = true;
 
+            Global.Clear_Auto = true;
 
         }
         private void Setting_Unloaded(object sender, RoutedEventArgs e)
@@ -123,8 +126,9 @@ namespace App_Control_Servo_Press_Delta
  
                 
             }
-            catch
+            catch (Exception ex)
             {
+                Common.Log_err(ex.ToString());
             }
         }
         private void Update_Screen()
@@ -348,7 +352,7 @@ namespace App_Control_Servo_Press_Delta
                     tb_Base_jig_thickness.IsReadOnly = false;
 
                 }
-                if (MainWindow.UserName != "")
+                else if (MainWindow.UserName != "")
                 {
 
                     tb_Ofset_Shaft_Machine.IsReadOnly = true;

@@ -1,4 +1,0 @@
-10:19:36, Name_screen: Man, Textboxname: Go_Home_Vel, value_old: 20, value_new: 10
-10:19:42, Name_screen: Man, Textboxname: Jog_Distance_ABS, value_old: 10, value_new: 11
-10:19:45, Name_screen: Man, Textboxname: Jog_Vel, value_old: 10, value_new: 12
-10:19:50, Name_screen: Man, Textboxname: Jog_Max_Force, value_old: 33000, value_new: 3000

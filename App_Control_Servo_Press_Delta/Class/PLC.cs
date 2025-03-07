@@ -27,6 +27,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public static bool IsConnected;
         public static string Hostting_;
         private System.Threading.Timer timer;
+        private System.Threading.Timer timer2;
         private readonly object timerLock = new object();
         private readonly BlockingCollection<string> queue = new BlockingCollection<string>();
         Common Common = new Common();
@@ -37,6 +38,7 @@ namespace App_Control_Servo_Press_Delta.Class
         public void StartTimer()
         {
             timer = new System.Threading.Timer(Timer_Tick, null, 0, 100);
+            timer2 = new System.Threading.Timer(Timer_Tick, null, 0, 100);
             string json = File.ReadAllText(path.Setting);
             var data_Setting = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             Global.PLC_IP = data_Setting["PLC"];
@@ -70,8 +72,13 @@ namespace App_Control_Servo_Press_Delta.Class
                     if (data_ != null)
                     {
                         Parse_Data(data_);
+                        if (Global.Check_Write_Model)
+                        {
+                            Global.Count_check++;
+                        }
                     }
-                    Flag_PLC = 0;
+
+                        Flag_PLC = 0;
                 }
             }
             catch
@@ -147,6 +154,10 @@ namespace App_Control_Servo_Press_Delta.Class
                 Data.Check_Done_Tranfer = data.Check_Done_Tranfer;
                 Data.Total_NG = data.Total_NG;
                 Data.Total_OK = data.Total_OK;
+                Data.Alarm_Scan_Data = data.Alarm_Scan_Data;
+                Data.Alarm_LC = data.Alarm_LC;
+                Data.Off_Buzzer = data.Off_Buzzer;
+                Data.Check_connect_Display = data.Check_connect_Display;
 
 
 
@@ -155,8 +166,8 @@ namespace App_Control_Servo_Press_Delta.Class
             }
             catch (Exception e)
             {
-                Common.Log_err("PLC", " Parse_Data", e.ToString());
-                  MessageBox.Show(e.ToString());
+                Common.Log_err(e.ToString());
+                  //MessageBox.Show(e.ToString());
             }
         }
 
@@ -165,33 +176,41 @@ namespace App_Control_Servo_Press_Delta.Class
         public async Task SendPostRequestAsync()
         {
 
-
-            using (HttpClient client = new HttpClient())
+            if (MainWindow._queue.Count > 0)
             {
-                try
+                using (HttpClient client = new HttpClient())
                 {
-                    string json = MainWindow._queue[0];
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await client.PostAsync("http://" + Global.PLC_IP + "/api/Control_PLC_1", content);
+                    try
+                    {
+                        string json = MainWindow._queue[0];
+                        var content = new StringContent(json, Encoding.UTF8, "application/json");
+                        HttpResponseMessage response = await client.PostAsync("http://" + Global.PLC_IP + "/api/Control_PLC_1", content);
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        if (MainWindow._queue.Count > 0)
+                        System.DateTime dateTime = System.DateTime.Now;
+                        string formattedDate = dateTime.ToString("dd/MM/yy");
+                        string formattedtime = dateTime.ToString("HH:mm:ss");
+                        Console.WriteLine(formattedDate + " " + formattedtime + json);
+                        if (response.IsSuccessStatusCode)
                         {
+                            //  await Task.Delay(100);
+
                             MainWindow._queue.RemoveAt(0);
+
+                            Console.WriteLine("Request sent successfully!");
                         }
-                        Console.WriteLine("Request sent successfully!");
+                        else
+                        {
+                            Console.WriteLine($"Error: {response.StatusCode}");
+                        }
                     }
-                    else
-                    {
-                        Console.WriteLine($"Error: {response.StatusCode}");
-                    }
-                }
+                
+ 
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Exception: {ex.Message}");
                 }
             }
+        }
         }
 
 
